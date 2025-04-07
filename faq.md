@@ -69,3 +69,7 @@
 ![](source/images/faq/image-1.png)
 
 如果发现插件作者没有填写 `requirements.txt` 文件，请在插件仓库提交 issue，提醒作者补充。
+
+### 启动 AstrBot 之后报错 json.decoder.JSONDecodeError: Expecting value: linexxx columnxxx
+
+报错 `json.decoder.JSONDecodeError: Expecting value: linexxx columnxxx` 并且报错信息中带有 `shared_preference.py`，请删除 `data/sharedpreference.json` 文件，重启 AstrBot 即可。

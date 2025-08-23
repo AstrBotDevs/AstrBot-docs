@@ -84,13 +84,35 @@ docker logs napcat
 如果登录阶段没有出现问题，即成功部署。
 
 ## 连接到 AstrBot
+> [!TIP]
+>  - 如果 AstrBot 与 Napcat 均使用 Docker 部署，需要确保两个容器处于同一个网络中才能正常通信，连接的 IP 也要填写 Docker 内的虚拟地址。
 
-## 在 AstrBot 配置 aiocqhttp
+### 在 NapCatQQ 中添加 WebSocket 客户端
+
+进入 NapCatQQ 的管理面板，点击 `网络配置->新建->WebSockets客户端`。
+
+![](https://napneko.github.io/assets/use/Astrbot-onebot-2.png)
+
+在新弹出的窗口中：
+
+- 勾选 `启用`。
+- `URL` 填写 `ws://宿主机IP:端口/ws`。如 `ws://localhost:6199/ws`或`ws://127.0.0.1:6199/ws`。
+- 消息格式：`Array`
+- 心跳间隔: `5000`
+- 重连间隔: `5000`
+
+> [!WARNING]
+> 1. 切记后面加一个 `/ws`!
+> 2. 这里的 IP 不是 `0.0.0.0`
+
+点击 `保存`。
+
+### 在 AstrBot 配置 aiocqhttp
 
 1. 进入 AstrBot 的管理面板
 2. 点击左边栏 `消息平台`
 3. 然后在右边的界面中，点击 `+ 新增适配器` 
-4. 选择 `aiocqhttp(OneBotv11)`
+4. 选择 `接入QQ个人号(aiocqhttp)`
 
 弹出的配置项填写：
 
@@ -108,26 +130,6 @@ docker logs napcat
 填写完毕后，进入 `配置` 页，点击 `其他配置` 选项卡，找到 `管理员 ID`，填写你的 QQ 号（不是机器人的 QQ 号）。
 
 切记点击右下角 `保存`，AstrBot 重启并会应用配置。
-
-### 在 NapCatQQ 中添加 WebSocket 客户端
-
-切换回 NapCatQQ 的管理面板，点击 `网络配置->新建->WebSockets客户端`。
-
-![](https://napneko.github.io/assets/use/Astrbot-onebot-2.png)
-
-在新弹出的窗口中：
-
-- 勾选 `启用`。
-- `URL` 填写 `ws://宿主机IP:端口/ws`。如 `ws://localhost:6199/ws`或`ws://127.0.0.1:6199/ws`。
-- 消息格式：`Array`
-- 心跳间隔: `5000`
-- 重连间隔: `5000`
-
-> [!WARNING]
-> 1. 切记后面加一个 `/ws`!
-> 2. 这里的 IP 不是 `0.0.0.0`
-
-点击 `保存`。
 
 前往 AstrBot WebUI `控制台`，如果出现 `aiocqhttp(OneBot v11) 适配器已连接。` 相关蓝色的日志，说明连接成功。
 

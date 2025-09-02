@@ -6,6 +6,7 @@ export const themeConfig: DefaultTheme.Config = {
     nav: [
         { text: "主页", link: "/" },
         { text: "开始", link: "/what-is-astrbot" },
+        { text: "v4 版本文档(beta)", link: "https://docs-v4.astrbot.app" },
     ],
     sidebar,
 

@@ -100,6 +100,7 @@ docker logs napcat
 - 消息格式：`Array`
 - 心跳间隔: `5000`
 - 重连间隔: `5000`
+- Token: 连接密钥，请填写任意高强度的密钥。
 
 > [!WARNING]
 > 1. 切记后面加一个 `/ws`!
@@ -122,6 +123,7 @@ docker logs napcat
 - 启用(enable): 勾选。
 - 反向 WebSocket 主机地址：请填写你的机器的 IP 地址。一般情况下请直接填写 `0.0.0.0`
 - 反向 WebSocket 端口：填写一个端口，例如 `6199`。
+- Token：填写刚刚在 NapCatQQ 中填写的连接密钥。 
 
 点击 `保存`。
 
@@ -136,3 +138,25 @@ docker logs napcat
 ## 🎉 大功告成！
 
 此时，你的 AstrBot 和 NapCatQQ 应该已经连接成功。使用 `私聊` 的方式在 QQ 对机器人发送 `/help` 以检查是否连接成功。
+
+## 附录：增强连接安全性
+
+如果你的服务运行在公网地址，请务必采取以下措施以防止被网络攻击。
+
+1. 修改 NapCatQQ WebUI 默认密码
+
+![image-1](../source/images/napcat/image-1.png)
+
+2. 修改从 NapCat 启动的 OneBot 服务连接 Token
+
+![image](../source/images/napcat/image.png)
+
+同时也需要修改 AstrBot 上配置的对应的消息平台适配器的 Token 为上面填写的 Token。
+
+![alt text](../source/images/napcat/image-2.png)
+
+除了上面的检查，我们还建议你：
+
+1. 保证服务器密码为强密码
+2. 保证 AstrBot WebUI 密码不是默认密码（AstrBot 目前会强制用户在使用前修改默认密码）
+3. 减少不必要的防火墙端口放行

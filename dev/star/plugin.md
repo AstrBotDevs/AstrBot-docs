@@ -1164,6 +1164,16 @@ class SearchTool(FunctionTool):
 tool = SearchTool()
 tool_set = ToolSet([tool])
 
+# 参见上文
+# llm_resp = await provider.text_chat(
+#   prompt="Hi!",
+#   context=[
+#       {"role": "user", "content": "balabala"},
+#       {"role": "assistant", "content": "response balabala"}
+#   ],
+#   system_prompt="You are a helpful assistant.",
+#   func_tool=tool_set
+# )
 ```
 
 ##### 以装饰器的形式
@@ -1192,7 +1202,7 @@ async def get_weather(self, event: AstrMessageEvent, location: str):
 > 对于装饰器注册的 llm_tool，如果需要调用 Provider.text_chat()，func_tool（ToolSet 类型） 可以通过以下方式获取：
 > ```py
 > func_tool = self.context.get_llm_tool_manager() # 获取 AstrBot 的 LLM Tool Manager，包含了所有插件和 MCP 注册的 Tool
-> tool = func_tool.get_func("xxx")
+> tool = func_tool.get_func("get_weather")
 > if tool:
 >     tool_set = ToolSet()
 >     tool_set.add_tool(tool)

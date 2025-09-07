@@ -1174,14 +1174,14 @@ tool_set = ToolSet([tool])
 
 ```py{3,4,5,6,7}
 @filter.llm_tool(name="get_weather") # 如果 name 不填，将使用函数名
-async def get_weather(self, event: AstrMessageEvent, location: str) -> MessageEventResult:
+async def get_weather(self, event: AstrMessageEvent, location: str):
     '''获取天气信息。
 
     Args:
         location(string): 地点
     '''
     resp = self.get_weather_from_api(location)
-    yield event.plain_result("天气信息: " + resp)
+    return str(resp)
 ```
 
 在 `location(string): 地点` 中，`location` 是参数名，`string` 是参数类型，`地点` 是参数描述。
@@ -1197,6 +1197,32 @@ async def get_weather(self, event: AstrMessageEvent, location: str) -> MessageEv
 >     tool_set = ToolSet()
 >     tool_set.add_tool(tool)
 > ```
+
+##### 返回值
+
+接受 `str` 类型返回值或者 `mcp.types.CallToolResult` 返回值(>=4.0.0)。
+
+```python
+resp = self.get_weather_from_api(location)
+return str(resp)
+```
+
+或者 
+
+```python
+from mcp.types import TextContent, CallToolResult
+
+text_content = mcp.types.TextContent(
+    type="text",
+    text=str(resp),
+)
+result = CallToolResult(
+    type="text",
+    content=[text_content]
+)
+
+return result
+```
 
 #### 对话管理器 ConversationManager
 

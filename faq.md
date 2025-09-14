@@ -9,15 +9,25 @@
 ### 管理面板的密码忘记了
 
 如果你忘记了 AstrBot 的管理面板的密码, 你可以在`AstrBot/data/cmd_config.json`配置文件中找到`"dashboard"`字段进行修改,
-其中`"username"`是你的用户名, `"password"`是你的密码, 经过 md5 加密。
+其中`"username"`是你的用户名, 而`"password"`是你已经过程序 md5 哈希处理的密码,
 
-如果想要修改账号密码, 你可以这样做:
+假若您要修改账号及密码, 你可以这样做:
 
-1. 修改`"username"`字段, 注意保留`""`, 如果不想修改用户名, 可以不修改
-2. 进入网站:[在线 md5 生成](https://www.metools.info/code/c26.html)
-3. 在转换前文本框输入你的新密码
-4. 选择 MD5 加密(32 位), 请确认选择 32 位选项
-5. 将转换后的字符粘贴至配置文件, 注意保留`""`
+> tips:修改时请注意保留包裹字段前后的`""`   
+例: `"username"` 是正确的 ， 但`username`缺少 `""` 会无法识别
+
+1. 更正用户名:修改`"username"`即可修改用户名
+2. 更正密码:先进入网站:[在线 md5 生成](https://it-tools.tech/hash-text)
+3. 在网站文本框输入你的新密码
+
+<img width="400" height="130" alt="image" src="https://github.com/user-attachments/assets/7798c1a0-7b47-4be6-a02f-ae964bf5e4fd" />
+
+4. 复制下方生成的 "MD5"
+
+<img width="400" height="130" alt="image" src="https://github.com/user-attachments/assets/e8bf8dc4-7c7b-426c-8ea7-ce9c16efefd8" />
+
+
+5. 将复制的文本粘贴至配置文件`"password"` 字段保存即可
 
 ## Bot 本体相关
 

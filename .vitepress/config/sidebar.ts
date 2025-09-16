@@ -103,6 +103,7 @@ function deploy(): DefaultTheme.SidebarItem[] {
                 // { text: "😌 社区提供的部署脚本", link: "/linux-one" },
                 { text: "🤗 安卓 Termux 部署", link: "/termux" },
                 { text: "🍉 优云智算 GPU 部署", link: "/compshare" },
+                { text: "⭐️ 社区提供的部署方式", link: "/community-deployment" },
             ],
         },
         {

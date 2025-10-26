@@ -213,6 +213,20 @@ async def on_message(self, event: AstrMessageEvent):
 >
 > 代码处理函数可能会忽略插件类的定义，所有的处理函数都需写在插件类中。
 
+### 插件 Logo
+
+> v4.5.0 及以上版本支持。低版本不会报错，但不会生效。
+
+你可以在插件目录下添加一个 `logo.png` 文件，作为插件的 Logo 显示在插件市场中。请保持长宽比为 1:1，推荐尺寸为 256x256。
+
+![插件 logo 示例](../../source/images/plugin/plugin_logo.png)
+
+### 插件展示名
+
+> v4.5.0 及以上版本支持。低版本不会报错，但不会生效。
+
+你可以修改(或添加) `metadata.yaml` 文件中的 `display_name` 字段，作为插件在插件市场等场景中的展示名，以方便用户阅读。
+
 ### 消息事件的监听
 
 事件监听器可以收到平台下发的消息内容，可以实现指令、指令组、事件监听等功能。
@@ -724,7 +738,7 @@ AstrBot 提供了”强大“的配置解析和可视化功能。能够让用户
 
 ![editor_mode_fullscreen](../../source/images/plugin/image-7.png)
 
-**_special** 字段仅 v4.0.0 之后可用。目前支持填写 `select_provider`, `select_provider_tts`, `select_provider_stt`, `select_persona`, `select_knowledgebase`，用于让用户快速选择用户在 WebUI 上已经配置好的模型提供商、人设、知识库等数据。结果均为字符串。以 select_provider 为例，将呈现以下效果:
+**_special** 字段仅 v4.0.0 之后可用。目前支持填写 `select_provider`, `select_provider_tts`, `select_provider_stt`, `select_persona`，用于让用户快速选择用户在 WebUI 上已经配置好的模型提供商、人设等数据。结果均为字符串。以 select_provider 为例，将呈现以下效果:
 
 ![](../source/images/plugin/image.png)
 

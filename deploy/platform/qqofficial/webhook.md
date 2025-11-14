@@ -4,6 +4,7 @@
 ## 申请一个机器人
 
 > [!WARNING]
+>
 > 1. 截至目前，QQ 官方机器人需要设置 IP 白名单。
 > 2. 支持群聊、私聊、频道聊天、频道私聊。
 >
@@ -40,8 +41,8 @@
 ## 在 AstrBot 配置
 
 1. 进入 AstrBot 的管理面板
-2. 点击左边栏 `消息平台`
-3. 然后在右边的界面中，点击 `+ 新增适配器` 
+2. 点击左边栏 `机器人`
+3. 然后在右边的界面中，点击 `+ 创建机器人`
 4. 选择 `qq_official_webhook`
 
 弹出的配置项填写：
@@ -69,7 +70,7 @@
 
 接着重启 AstrBot。
 
-## 🎉 大功告成！
+## 🎉 大功告成
 
 此时，你的 AstrBot 应该已经连接成功。如果发送消息没有反应，请等待一两分钟后重启 AstrBot 再进行确认（测试时发现回调地址不会立即生效）。
 
@@ -77,7 +78,7 @@
 
 如果你还没有相关经验，这里推荐使用 Caddy 作为反向代理的工具，请参考：
 
-1. 安装 Caddy: https://caddy2.dengxiaolong.com/docs/install
-2. 设置反向代理: https://caddy2.dengxiaolong.com/docs/quick-starts/reverse-proxy
+1. 安装 Caddy: <https://caddy2.dengxiaolong.com/docs/install>
+2. 设置反向代理: <https://caddy2.dengxiaolong.com/docs/quick-starts/reverse-proxy>
 
 Caddy 将自动为您申请 TLS 证书，以达到接入 Webhook 的目的。

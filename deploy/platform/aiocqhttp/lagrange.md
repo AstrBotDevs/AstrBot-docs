@@ -1,12 +1,10 @@
 # 接入 Lagrange
 
 > [!TIP]
+>
 > - 请合理控制使用频率。过于频繁地发送消息可能会被判定为异常行为，增加触发风控机制的风险。
 > - 本项目严禁用于任何违反法律法规的用途。若您意图将 AstrBot 应用于非法产业或活动，我们**明确反对并拒绝**您使用本项目。
-
-
-> [!TIP]
-> 最新的部署方式请以 [Lagrange Doc](https://lagrangedev.github.io/Lagrange.Doc/Lagrange.OneBot/Config/#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85) 为准。
+> - 最新的部署方式请以 [Lagrange Doc](https://lagrangedev.github.io/Lagrange.Doc/Lagrange.OneBot/Config/#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85) 为准。
 
 ## 下载
 
@@ -44,14 +42,13 @@
 
 一定要保证 `Suffix` 为 `/ws`。
 
-
 ## 连接到 AstrBot
 
 ### 配置 aiocqhttp
 
 1. 进入 AstrBot 的管理面板
-2. 点击左边栏 `消息平台`
-3. 然后在右边的界面中，点击 `+ 新增适配器` 
+2. 点击左边栏 `机器人`
+3. 然后在右边的界面中，点击 `+ 创建机器人`
 4. 选择 `aiocqhttp(OneBotv11)`
 
 弹出的配置项填写：

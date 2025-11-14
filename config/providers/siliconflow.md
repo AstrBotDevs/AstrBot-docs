@@ -1,8 +1,6 @@
-# 接入 TokenPony（小马算力）
+# 接入硅基流动
 
-[AstrBot](https://astrbot.app/) 是一个开源的一站式 Agent 聊天机器人平台及开发框架。支持将大模型能力接入 QQ、飞书、钉钉、Slack、Telegram、Discord 等多种主流消息平台上，提供开箱即用的 RAG、Agent、MCP 等功能，并拥有丰富的 API 接口，以方便进行二次开发和集成。AstrBot 拥有强大的社区和丰富的插件生态。
-
-TokenPony（小马算力）提供统一的 API，让您可以通过单一端点访问数百个 AI 模型，同时自动处理回退并选择最具成本效益的选项。
+硅基流动依托自研推理引擎实现大模型高效推理加速，提供高效能、低成本的多品类大模型 API 服务，按量收费，助力应用开发轻松实现。
 
 ## 部署并配置 AstrBot
 
@@ -29,31 +27,19 @@ http://127.0.0.1:6185
 
 ### 配置对话模型
 
-注册并登录小马算力 [TokenPony](https://www.tokenpony.cn/3YPyf) 。
+在硅基流动 [API Keys](https://cloud.siliconflow.cn/me/account/ak) 页面创建一个新的 API Key，留存备用。
 
-在小马算力 [API Keys](https://www.tokenpony.cn/#/user/keys) 页面创建一个新的 API Key，留存备用。
+在硅基流动[模型页面](https://cloud.siliconflow.cn/me/models)选择需要使用的模型，留存模型名称备用。
 
-在小马算力[模型页面](https://www.tokenpony.cn/#/model)选择需要使用的模型，留存模型名称备用。
-
-进入 AstrBot WebUI，点击左栏 `服务提供商` -> `新增提供商` -> 选择 `小马算力` (需要版本 >= 4.3.3)
-
-![配置对话模型_1](../../source/images/tokenpony/image.png)
-
-> 如果没有看到 `小马算力` 选项，您也可以直接点击图中的 `接入 OpenAI`，并将 `API Base URL` 修改为 `https://api.tokenpony.cn/v1`。
+进入 AstrBot WebUI，点击左栏 `服务提供商` -> `新增提供商` -> 选择 `硅基流动`。
 
 粘贴上面创建和选择的 `API Key` 和 `模型名称`，点击保存，完成创建。您可以点击下方 `服务提供商可用性` 的 `刷新` 按钮测试配置是否成功。
 
-### 应用对话模型
-
-在 AstrBot WebUI，点击左栏 `配置文件`，找到 AI 配置中的 `默认聊天模型`，选择刚刚创建的 `tokenpony`(小马算力) 提供商，点击保存。
-
-![配置对话模型_2](../../source/images/tokenpony/image_1.png)
+![配置对话模型_1](../../source/images/siliconflow/image.png)
 
 ### 在线聊天测试（可选）
 
 您可在 AstrBot WebUI 左栏 `聊天` 页面来测试您配置的模型。
-
-![聊天测试](../../source/images/tokenpony/image_2.png)
 
 ## 接入消息平台（以飞书为例）
 
@@ -90,7 +76,15 @@ http://127.0.0.1:6185
 
 如果您正在用国际版飞书，请将 `domain` 设置为 `https://open.larksuite.com`。
 
-点击 `保存`。
+在下方的 `配置文件` 中，点击 `选择配置文件` 右边的 ↗️ 箭头按钮。
+
+![选择配置文件](../../source/images/siliconflow/image-2.png)
+
+在呼出的配置页面中，点击默认聊天模型右边的选择提供商按钮，选择刚刚创建的硅基流动的提供商，点击右下角的保存按钮。保存成功后关闭该页面。
+
+![选择提供商](../../source/images/siliconflow/image-3.png)
+
+点击 `保存`，创建机器人。
 
 ### 设置回调和权限
 
@@ -134,9 +128,7 @@ http://127.0.0.1:6185
 
 ### 🎉 大功告成
 
-在群内发送一个 `/help` 指令，机器人将做出响应。
-
-![成功](../../source/images/lark/image-13.png)
+在群内发送测试消息 `hi`，机器人将做出响应。
 
 ## 更多功能
 

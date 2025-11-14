@@ -213,6 +213,20 @@ async def on_message(self, event: AstrMessageEvent):
 >
 > 代码处理函数可能会忽略插件类的定义，所有的处理函数都需写在插件类中。
 
+### 插件 Logo
+
+> v4.5.0 及以上版本支持。低版本不会报错，但不会生效。
+
+你可以在插件目录下添加一个 `logo.png` 文件，作为插件的 Logo 显示在插件市场中。请保持长宽比为 1:1，推荐尺寸为 256x256。
+
+![插件 logo 示例](../../source/images/plugin/plugin_logo.png)
+
+### 插件展示名
+
+> v4.5.0 及以上版本支持。低版本不会报错，但不会生效。
+
+你可以修改(或添加) `metadata.yaml` 文件中的 `display_name` 字段，作为插件在插件市场等场景中的展示名，以方便用户阅读。
+
 ### 消息事件的监听
 
 事件监听器可以收到平台下发的消息内容，可以实现指令、指令组、事件监听等功能。
@@ -626,7 +640,7 @@ async def test(self, event: AstrMessageEvent):
 
 > 当前适配情况：仅 aiocqhttp
 
-QQ 表情 ID 参考：https://bot.q.qq.com/wiki/develop/api-v2/openapi/emoji/model.html#EmojiType
+QQ 表情 ID 参考：<https://bot.q.qq.com/wiki/develop/api-v2/openapi/emoji/model.html#EmojiType>
 
 ```python
 from astrbot.api.event import filter, AstrMessageEvent
@@ -638,7 +652,6 @@ async def test(self, event: AstrMessageEvent):
 ```
 
 ![发送 QQ 表情](../../source/images/plugin/image-5.png)
-
 
 ### 控制事件传播
 
@@ -724,7 +737,7 @@ AstrBot 提供了”强大“的配置解析和可视化功能。能够让用户
 
 ![editor_mode_fullscreen](../../source/images/plugin/image-7.png)
 
-**_special** 字段仅 v4.0.0 之后可用。目前支持填写 `select_provider`, `select_provider_tts`, `select_provider_stt`, `select_persona`, `select_knowledgebase`，用于让用户快速选择用户在 WebUI 上已经配置好的模型提供商、人设、知识库等数据。结果均为字符串。以 select_provider 为例，将呈现以下效果:
+**_special** 字段仅 v4.0.0 之后可用。目前支持填写 `select_provider`, `select_provider_tts`, `select_provider_stt`, `select_persona`，用于让用户快速选择用户在 WebUI 上已经配置好的模型提供商、人设等数据。结果均为字符串。以 select_provider 为例，将呈现以下效果:
 
 ![](../source/images/plugin/image.png)
 
@@ -749,7 +762,6 @@ class ConfigPlugin(Star):
 **配置版本管理**
 
 如果您在发布不同版本时更新了 Schema，请注意，AstrBot 会递归检查 Schema 的配置项，如果发现配置文件中缺失了某个配置项，会自动添加默认值。但是 AstrBot 不会删除配置文件中**多余的**配置项，即使这个配置项在新的 Schema 中不存在（您在新的 Schema 中删除了这个配置项）。
-
 
 ### 文转图
 
@@ -928,8 +940,6 @@ await empty_mention_waiter(event, session_filter=CustomFilter()) # 这里传入 
 
 甚至，可以使用这个特性来让群内组队！
 
-
-
 ### AI
 
 #### 通过提供商调用 LLM
@@ -966,8 +976,8 @@ async def test(self, event: AstrMessageEvent):
 - `model`(str): 可选。用于强制指定使用的模型。默认使用这个提供商默认配置的模型。
 - `tool_calls_result`(dict): 可选。用于传入工具调用的结果。
 
-
 ::: details LLMResponse 类型定义
+
 ```py
 
 @dataclass
@@ -1064,17 +1074,18 @@ class LLMResponse:
             )
         return ret
 ```
+
 :::
 
 #### 获取其他类型的提供商
 
+> 嵌入、重排序 没有 “当前使用”。这两个提供商主要用于知识库。
+
 - 获取当前使用的语音识别提供商(STTProvider): `self.context.get_using_stt_provider(umo=event.unified_msg_origin)`。
 - 获取当前使用的语音合成提供商(TTSProvider): `self.context.get_using_tts_provider(umo=event.unified_msg_origin)`。
-- 获取当前使用的嵌入提供商(EmbeddingProvider): `self.context.get_using_embedding_provider(umo=event.unified_msg_origin)`。
 - 获取所有语音识别提供商: `self.context.get_all_stt_providers()`。
 - 获取所有语音合成提供商: `self.context.get_all_tts_providers()`。
 - 获取所有嵌入提供商: `self.context.get_all_embedding_providers()`。
-
 
 ::: details STTProvider / TTSProvider / EmbeddingProvider 类型定义
 
@@ -1130,41 +1141,56 @@ class STTProvider(AbstractProvider):
 
 函数工具给了大语言模型调用外部工具的能力。在 AstrBot 中，函数工具有多种定义方式。
 
-##### 以类的形式
+##### 以类的形式（推荐）
 
-这是最灵活的定义形式。
+推荐在插件目录下新建 `tools` 文件夹，然后在其中编写工具类：
+
+`tools/search.py`:
 
 ```py
-from astrbot.api import ToolSet, FunctionTool
-from dataclasses import dataclass, field
+from astrbot.api import FunctionTool
 from astrbot.api.event import AstrMessageEvent
+from dataclasses import dataclass, field
 
 @dataclass
-class SearchTool(FunctionTool):
-    name: str = "get_current_weather" # tool 的名称
-    description: str = "Get the current weather in a given location." # tool 的描述
-    parameters: dict = field(default_factory=lambda: {
-        "type": "object",
-        "properties": {
-            "location": {
-                "type": "string",
-                "description": "The city and state, e.g. San Francisco, CA"
+class HelloWorldTool(FunctionTool):
+    name: str = "hello_world" # 工具名称
+    description: str = "Say hello to the world." # 工具描述
+    parameters: dict = field(
+        default_factory=lambda: {
+            "type": "object",
+            "properties": {
+                "greeting": {
+                    "type": "string",
+                    "description": "The greeting message.",
+                },
             },
-            "unit": {
-                "type": "string",
-                "enum": ["celsius", "fahrenheit"]
-            }
-        },
-        "required": ["location"]
-    }) # tool 的参数定义
+            "required": ["greeting"],
+        }
+    ) # 工具参数定义，见 OpenAI 官网或 https://json-schema.org/understanding-json-schema/
 
-    async def run(self, event: AstrMessageEvent, location: str, unit: str):
-        # Your implementation here
-        ...
+    async def run(
+        self,
+        event: AstrMessageEvent, # 必须包含此 event 参数在前面，用于获取上下文
+        greeting: str, # 工具参数，必须与 parameters 中定义的参数名一致
+    ):
+        return f"{greeting}, World!" # 也支持 mcp.types.CallToolResult 类型
+```
 
-tool = SearchTool()
-tool_set = ToolSet([tool])
+要将上述工具注册到 AstrBot，可以在插件主文件的 `__init__.py` 中添加以下代码：
 
+```py
+from .tools.search import SearchTool
+
+class MyPlugin(Star):
+    def __init__(self, context: Context):
+        super().__init__(context)
+        # >= v4.5.1 使用：
+        self.context.add_llm_tools(HelloWorldTool(), SecondTool(), ...)
+
+        # < v4.5.1 之前使用：
+        tool_mgr = self.context.provider_manager.llm_tools
+        tool_mgr.func_list.append(HelloWorldTool())
 ```
 
 ##### 以装饰器的形式
@@ -1191,6 +1217,7 @@ async def get_weather(self, event: AstrMessageEvent, location: str) -> MessageEv
 
 > [!NOTE]
 > 对于装饰器注册的 llm_tool，如果需要调用 Provider.text_chat()，func_tool（ToolSet 类型） 可以通过以下方式获取：
+>
 > ```py
 > func_tool = self.context.get_llm_tool_manager() # 获取 AstrBot 的 LLM Tool Manager，包含了所有插件和 MCP 注册的 Tool
 > tool = func_tool.get_func("xxx")
@@ -1212,8 +1239,8 @@ curr_cid = await conv_mgr.get_curr_conversation_id(uid)
 conversation = await conv_mgr.get_conversation(uid, curr_cid)  # Conversation
 ```
 
-
 ::: details Conversation 类型定义
+
 ```py
 @dataclass
 class Conversation:
@@ -1237,13 +1264,13 @@ class Conversation:
     created_at: int = 0
     updated_at: int = 0
 ```
+
 :::
-
-
 
 **所有方法**
 
 ##### `new_conversation`
+
 - **Usage**  
   在当前会话中新建一条对话，并自动切换为该对话。
 - **Arguments**  
@@ -1256,6 +1283,7 @@ class Conversation:
   `str` – 新生成的 UUID 对话 ID
 
 ##### `switch_conversation`
+
 - **Usage**  
   将会话切换到指定的对话。
 - **Arguments**  
@@ -1265,6 +1293,7 @@ class Conversation:
   `None`
 
 ##### `delete_conversation`
+
 - **Usage**  
   删除会话中的某条对话；若 `conversation_id` 为 `None`，则删除当前对话。
 - **Arguments**  
@@ -1274,6 +1303,7 @@ class Conversation:
   `None`
 
 ##### `get_curr_conversation_id`
+
 - **Usage**  
   获取当前会话正在使用的对话 ID。
 - **Arguments**  
@@ -1282,6 +1312,7 @@ class Conversation:
   `str | None` – 当前对话 ID，不存在时返回 `None`
 
 ##### `get_conversation`
+
 - **Usage**  
   获取指定对话的完整对象；若不存在且 `create_if_not_exists=True` 则自动创建。
 - **Arguments**  
@@ -1292,6 +1323,7 @@ class Conversation:
   `Conversation | None`
 
 ##### `get_conversations`
+
 - **Usage**  
   拉取用户或平台下的全部对话列表。
 - **Arguments**  
@@ -1301,6 +1333,7 @@ class Conversation:
   `List[Conversation]`
 
 ##### `get_filtered_conversations`
+
 - **Usage**  
   分页 + 关键词搜索对话。
 - **Arguments**  
@@ -1313,6 +1346,7 @@ class Conversation:
   `tuple[list[Conversation], int]` – 对话列表与总数
 
 ##### `update_conversation`
+
 - **Usage**  
   更新对话的标题、历史记录或 persona_id。
 - **Arguments**  
@@ -1325,6 +1359,7 @@ class Conversation:
   `None`
 
 ##### `get_human_readable_context`
+
 - **Usage**  
   生成分页后的人类可读对话上下文，方便展示或调试。
 - **Arguments**  
@@ -1361,14 +1396,12 @@ persona_mgr = self.context.persona_manager
 - **Raises**
   `ValueError` – 当不存在时抛出
 
-
 ##### `get_all_personas`
 
 - **Usage**  
   一次性获取数据库中所有人格。
 - **Returns**  
   `list[Persona]` – 人格列表，可能为空
-
 
 ##### `create_persona`
 
@@ -1384,7 +1417,6 @@ persona_mgr = self.context.persona_manager
 - **Raises**  
   `ValueError` – 若 `persona_id` 已存在
 
-
 ##### `update_persona`
 
 - **Usage**  
@@ -1399,7 +1431,6 @@ persona_mgr = self.context.persona_manager
 - **Raises**  
   `ValueError` – 若 `persona_id` 不存在
 
-
 ##### `delete_persona`
 
 - **Usage**  
@@ -1408,7 +1439,6 @@ persona_mgr = self.context.persona_manager
   - `persona_id: str` – 待删除的人格 ID
 - **Raises**  
   `Valueable` – 若 `persona_id` 不存在
-
 
 ##### `get_default_persona_v3`
 
@@ -1419,7 +1449,6 @@ persona_mgr = self.context.persona_manager
   - `umo: str | MessageSession | None` – 会话标识，用于读取用户级配置
 - **Returns**  
   `Personality` – v3 格式的默认人格对象
-
 
 ::: details Persona / Personality 类型定义
 
@@ -1470,7 +1499,6 @@ class Personality(TypedDict):
 ```
 
 :::
-
 
 ### 其他
 
@@ -1527,18 +1555,15 @@ async def helloworld(self, event: AstrMessageEvent):
 
 关于 CQHTTP API，请参考如下文档：
 
-Napcat API 文档：https://napcat.apifox.cn/
+Napcat API 文档：<https://napcat.apifox.cn/>
 
-Lagrange API 文档：https://lagrange-onebot.apifox.cn/
-
-
+Lagrange API 文档：<https://lagrange-onebot.apifox.cn/>
 
 #### 载入的所有插件
 
 ```py
 plugins = self.context.get_all_stars() # 返回 StarMetadata 包含了插件类实例、配置等等
 ```
-
 
 #### 注册一个异步任务
 
@@ -1557,7 +1582,6 @@ class TaskPlugin(Star):
         await asyncio.sleep(1)
         print("Hello")
 ```
-
 
 #### 获取加载的所有平台
 

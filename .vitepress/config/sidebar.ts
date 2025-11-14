@@ -163,6 +163,7 @@ function config(): DefaultTheme.SidebarItem[] {
       collapsed: true,
       items: [
         { text: "PPIO 派欧云", link: "/ppio" },
+        { text: "硅基流动", link: "/siliconflow" },
         { text: "小马算力", link: "/tokenpony" },
         { text: "302.AI", link: "/302ai" },
         {

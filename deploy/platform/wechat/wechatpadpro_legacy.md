@@ -10,6 +10,7 @@
 ## 部署 WeChatPadPro
 
 > [!TIP]
+>
 > 1. 微信限制，需要手动扫码登录
 > 2. 微信限制一个微信号必须**有一台手机在线**才能登录其他端。因此，你需要有一台手机登录该微信，才能使用该接入方式。请尽量保证手机和部署地设备处于同一城市。
 
@@ -70,9 +71,8 @@ updateApiVersion success
 如果你发现出现了报错：
 
 ![failed to connect MySQL: dial tcp xxx:3306: connect: connection refused](../../../source/images/wechatpadpro/image-2.png)
- 
-这是因为 MySQL 容器还没有启动成功。
 
+这是因为 MySQL 容器还没有启动成功。
 
 请执行 `docker ps` 查看另外两个容器 `wx_redis` 和 `wx_mysql` 是否 healthy。
 
@@ -88,7 +88,7 @@ docker restart wechatpadpro
 
 成功部署后，进入 AstrBot WebUI:
 
-打开消息平台 -> 新增适配器 -> wechatpadpro(微信)。
+打开机器人 -> `+ 创建机器人` -> wechatpadpro(微信)。
 
 ![](../../../source/images/wechatpadpro/image-4.png)
 
@@ -112,12 +112,13 @@ docker restart wechatpadpro
 
 > [!WARNING]
 > **在第一次掉线之后请务必执行以下工作流程，否则将会严重提高风控风险。**
+>
 > 1. 进入 WechatPadPro 的 API 接口界面，将你刚刚扫码登录的账号的 token 填入 “TOKEN_KEY”，在 ADMIN_KEY 处输入自己设置的密钥。然后点击“连接”。
 > 2. 然后往下翻找到“登录”——>”唤醒登录（只限扫码登陆）“，点击 ”Try it out“，再点击 ”Execute“。此时，您扫码的那台机器会弹出登录界面。这个时候就能实现老设备登录不会触发风控。
 >
 > Token Key 即授权码，获取方式如下：
 >
-> 打开 AstrBot 数据目录（AstrBot/data 目录），找到 `wechatpadpro_credentials.json` 文件，打开之后，其中的 `auth_key` 即为对应 `wxid` 的授权码。 
+> 打开 AstrBot 数据目录（AstrBot/data 目录），找到 `wechatpadpro_credentials.json` 文件，打开之后，其中的 `auth_key` 即为对应 `wxid` 的授权码。
 >
 > 如果有任何疑问，请在 [#1586](https://github.com/AstrBotDevs/AstrBot/issues/1586#issuecomment-2889426078) 下提问和得到解答。
 
@@ -129,7 +130,7 @@ docker restart wechatpadpro
 
 ## 常见问题
 
-### 接收不到消息！！！
+### 接收不到消息
 
 1. 检查 WeChatPadPro 是否正常启动
 2. 检查 AstrBot WebUI 控制台日志，是否有与 WeChatPadPro 相关的报错

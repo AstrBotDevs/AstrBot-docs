@@ -21,12 +21,11 @@
 
 ![](./../../../source/images/satori/2025-09-07_17-14-55.png)
 
-
 ## 在 AstrBot 中配置 Satori 适配器
 
 1. 进入 AstrBot 的管理面板
-2. 点击左边栏 `消息平台`
-3. 然后在右边的界面中，点击 `+ 新增适配器` 
+2. 点击左边栏 `机器人`
+3. 然后在右边的界面中，点击 `+ 创建机器人`
 4. 选择 `satori`
 
 弹出的配置项填写：
@@ -38,17 +37,18 @@
 - Satori Token (satori_token)：通常留空（除非在 Koishi 中特别配置了 Token）
 
 > [!NOTE]
+>
 > - Koishi 默认运行在 5140 端口
 > - server-satori 插件默认在 `/satori` 路径下提供服务
 > - 因此完整的 URL 路径为 `http://localhost:5140/satori/v1`
-> 
+>
 > 如果你的 koishi 运行在其他端口或路由下，**请根据实际情况修改对应的配置！**
 
 ![](./../../../source/images/satori/2025-10-10_16-16-25.png)
 
 点击右下角 `保存` 完成配置。
 
-## 🎉 大功告成！
+## 🎉 大功告成
 
 此时，你的 AstrBot 应该已经通过 Satori 协议成功连接到了 Koishi 的 server-satori 插件。
 
@@ -61,6 +61,7 @@
 ## 常见问题
 
 如果遇到连接问题，请检查：
+
 1. Koishi 是否正常运行
 2. server-satori 插件是否已正确安装并启用
 3. 端口和路径配置是否正确

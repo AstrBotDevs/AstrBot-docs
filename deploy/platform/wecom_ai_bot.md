@@ -24,7 +24,7 @@ AstrBot 在 v4.3.5 版本开始支持接入企业微信智能机器人平台。
 
 2. 在弹出的配置项中将 `企业微信智能机器人的名字`、`token`、`encoding_aes_key` 从上一步创建智能机器人时填写的值复制粘贴到对应的输入框中。ID 可以随意填写，用于区分不同的消息平台实例。`port` 默认为 `6198`，可以根据需要修改，但请确保该端口未被占用。点击 `保存`。
 
-3. 回到企业微信智能机器人创建页面，填写 `URL` 为 `http://IP:port/wecom_ai_bot`，其中 `IP` 替换为你的 AstrBot 服务器的公网 IP 地址，`port` 替换为上一步填写的端口号。
+3. 回到企业微信智能机器人创建页面，填写 `URL` 为 `http://IP:port/webhook/wecom-ai-bot`，其中 `IP` 替换为你的 AstrBot 服务器的公网 IP 地址，`port` 替换为上一步填写的端口号。
 
 > 建议有能力的用户自行配置域名和反向代理，并使用 HTTPS 协议。如果没有域名，也可以使用 [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/)。
 

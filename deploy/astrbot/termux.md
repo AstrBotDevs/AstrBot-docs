@@ -145,7 +145,9 @@ uv run main.py
 
 ## 报错解决方案
 
->如果出现了 `[WARN] uv sync 失败，重试 2/3
+> 如果出现了 
+```log
+[WARN] uv sync 失败，重试 2/3
   × Failed to build astrbot @ file:///root/
   ├─▶ Failed to install requirements from build-system.requires
   ├─▶ Failed to install build dependencies
@@ -156,6 +158,7 @@ uv run main.py
       to
       /root/.cache/uv/builds-v0/.tmp2lFVJx/lib/python3.10/site-packages/trove_classifiers/.l2s.__init__.py0001:
       Operation not permitted (os error 1)
+```
 
 可以先运行以下命令，然后再重新启动
 

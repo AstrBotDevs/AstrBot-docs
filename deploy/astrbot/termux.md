@@ -161,8 +161,6 @@ uv run main.py
 
 >```bash
 >echo 'export UV_LINK_MODE=copy' >> ~/.bashrc 
->```
->```bash
 >source ~/.bashrc
 >```
 

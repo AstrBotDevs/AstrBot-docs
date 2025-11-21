@@ -1,7 +1,7 @@
 /*.vitepress/theme/styles/font.scss*/
 
 :root {
-    --vp-font-family-base: "Ubuntu", sans-serif;
+    --vp-font-family-base: "Outfit", sans-serif;
     --vp-font-family-mono: "JetBrains Mono", monospace; /* code font */
 }
 

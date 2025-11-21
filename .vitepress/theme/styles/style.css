@@ -137,3 +137,14 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
+#app > div > header > div > div.wrapper > div > div.title > div > a > img {
+  width: 40px;
+  height: 40px;
+}
+#app > div > header > div > div.wrapper > div > div.title > div > a > span {
+  font-size: 26px;
+  color: var(--vp-c-neutral);
+}
+#app > div > header > div > div.wrapper > div > div.title > div > a {
+  border-bottom: none;
+}

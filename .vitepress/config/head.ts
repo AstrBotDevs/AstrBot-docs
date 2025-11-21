@@ -6,7 +6,7 @@ export const head: HeadConfig[] = [
     ["link", { rel: "dns-prefetch", href: "https://fonts.googleapis.cn" }],
     ["link", { rel: "preconnect", href: "https://fonts.gstatic.cn", crossorigin: "" }],
     ["link", { rel: "dns-prefetch", href: "https://fonts.gstatic.cn" }],
-    ["link", { rel: "stylesheet", href: "https://fonts.googleapis.cn/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" }],
+    ["link", { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" }],
 
     // --- 基础和SEO元数据 ---
     ["link", { rel: "icon", href: "/logo.png" }],
@@ -42,4 +42,6 @@ export const head: HeadConfig[] = [
     ["meta", { name: "twitter:card", content: "summary_large_image" }],
     ["meta", { name: "twitter:site", content: "@AstrBot" }],*/
 
+    // --- Umami Analytics ---
+    ["script", { defer: "", src: "https://cloud.umami.is/script.js", "data-website-id": "9c3f777e-9f4a-4b79-a5c3-ff94f5dca8f9" }],
 ];

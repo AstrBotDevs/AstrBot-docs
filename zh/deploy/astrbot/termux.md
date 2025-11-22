@@ -83,35 +83,26 @@ proot-distro login ubuntu
 
 此时便进入了`Ubuntu环境`，我们需使用`apt`命令安装软件包了
 
-## 添加第三方PPA
+## 安装python环境
 
->[!TIP]
->`Python 3.10`并不在官方的软件源中，而`uv`所要求的Python版本为3.10 ，所以进行此步为必须
+全部复制以下语句中运行，即可自动安装python3.10
 
-### 使用`apt`安装`software-properties-common` (添加PPA前置)
-
-<!--这里不直接放termux基础环境里运行是因为他会报错，而且proot-distro也不大，性能损耗也很小-->
-
-<!--这里如果安装 miniconda 或者 anaconda 都会有报错，不知道为什么-->
-
+<!-- 这里优化了大陆网络环境，修复了miniconda报错问题 -->
 ```bash
-apt update && apt install software-properties-common
-```
-
-### 添加`deadsnakes`PPA(Python官方维护)
-
-```bash
-add-apt-repository ppa:deadsnakes/ppa && apt update
-```
-
-添加时你可能会看到:`Press [ENTER] to continue or Ctrl-c to cancel.` ，此时按下回车(换行)即可
-
-## 安装 `Python`
-
-在进行完以上步骤后，即可安装`Python 3.10`
-
-```bash
-apt install python3.10
+cat > install-py310.sh << EOF
+echo -e "\e[32m 开始安装python3.10 \e[0m - ASTRBOT"
+apt update
+apt install wget -y
+export SHELL=/bin/bash
+export miniconda_version="Miniconda3-py310_25.9.1-3-Linux-aarch64.sh"
+wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/${miniconda_version}
+chmod +x $miniconda_version
+./$miniconda_version -bcu
+source ~/.bashrc
+echo -e "\e[32m 成功安装： \e[0m"
+python --version
+EOF
+chmod +x install-py310.sh&&./install-py310.sh
 ```
 
 ## 克隆 `AstrBot` 仓库

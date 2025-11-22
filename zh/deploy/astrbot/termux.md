@@ -95,7 +95,7 @@ proot-distro login ubuntu
 脚本默认使用清华源下载，如不可用则可以尝试官方源：
 > `https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/`替换为`https://repo.anaconda.com/miniconda/`
 
-全部复制以下语句中运行
+全部复制以下语句后运行
 
 <!-- 这里优化了大陆网络环境，修复了miniconda报错问题 -->
 ```bash

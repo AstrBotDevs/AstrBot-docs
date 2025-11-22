@@ -66,6 +66,12 @@ pkg install uv git proot-distro
 
 >[!TIP]
 >中国大陆概率访问`GitHub`，故建议使用加速器或代理
+>
+>或者也可以执行这两条指令来使用镜像
+>```bash
+>export PD_OVERRIDE_TARBALL_URL=https://ghfast.top/github.com/termux/proot-distro/releases/download/v4.30.1/ubuntu-questing-aarch64-pd-v4.30.1.tar.xz
+>export PD_OVERRIDE_TARBALL_SHA256=5ab35b90cd9a9f180656261ba400a135c4c01c2da4b74522118342f985c2d328
+>```
 
 ```bash
 proot-distro install ubuntu

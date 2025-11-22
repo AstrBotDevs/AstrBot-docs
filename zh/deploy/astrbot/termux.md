@@ -97,7 +97,7 @@ proot-distro login ubuntu
 
 全部复制以下语句后运行
 
-<!-- 这里优化了大陆网络环境，修复了miniconda报错问题 -->
+<!-- 这里优化了大陆网络环境，修复了 Miniconda 报错问题 -->
 ```bash
 cat > install-py310.sh << EOF
 echo -e "\e[32m 开始安装python3.10 \e[0m - ASTRBOT"

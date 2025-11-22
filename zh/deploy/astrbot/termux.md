@@ -85,7 +85,11 @@ proot-distro login ubuntu
 
 ## 安装python环境
 
-全部复制以下语句中运行，即可自动安装python3.10
+
+脚本默认使用清华源下载，如不可用则可以尝试官方源：
+> `https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/`替换为`https://repo.anaconda.com/miniconda/`
+
+全部复制以下语句中运行
 
 <!-- 这里优化了大陆网络环境，修复了miniconda报错问题 -->
 ```bash
@@ -94,7 +98,7 @@ echo -e "\e[32m 开始安装python3.10 \e[0m - ASTRBOT"
 apt update
 apt install wget -y
 export SHELL=/bin/bash
-export miniconda_version="Miniconda3-py310_25.9.1-3-Linux-aarch64.sh"
+export miniconda_version="Miniconda3-py310_25.9.1-3-Linux-$(uname -m).sh"
 wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/${miniconda_version}
 chmod +x $miniconda_version
 ./$miniconda_version -bcu
@@ -104,6 +108,8 @@ python --version
 EOF
 chmod +x install-py310.sh&&./install-py310.sh
 ```
+
+如果安装成功，则可以在终端中看到`Python 3.10.19`
 
 ## 克隆 `AstrBot` 仓库
 

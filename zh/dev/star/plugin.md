@@ -1,5 +1,10 @@
 ---
 outline: deep
+search: false
+head:
+  - - meta
+    - name: robots
+      content: noindex
 ---
 
 # 插件开发指南（旧）

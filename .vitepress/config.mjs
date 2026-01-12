@@ -131,7 +131,6 @@ export default defineConfig({
                   { text: "302.AI", link: "/302ai" },
                   { text: "Ollama", link: "/provider-ollama" },
                   { text: "LMStudio", link: "/provider-lmstudio" },
-                  { text: "ModelStack (Deprecated)", link: "/modelstack" },
                 ],
               },
               {
@@ -348,7 +347,6 @@ export default defineConfig({
                   { text: "302.AI", link: "/302ai" },
                   { text: "Ollama", link: "/provider-ollama" },
                   { text: "LMStudio", link: "/provider-lmstudio" },
-                  { text: "ModelStack (Deprecated)", link: "/modelstack" },
                 ],
               },
               {

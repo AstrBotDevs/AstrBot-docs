@@ -26,7 +26,7 @@ features:
     details: 支持多种方式部署，无需复杂的配置，配备高度可视化的管理面板
   - icon: 🧩
     title: 高扩展性
-    details: 灵活易用的插件系统，周活 10w+（人）的活跃社区生态
+    details: 灵活易用的插件系统。
   - icon: 🌟
     title: AI
     details: 支持 OpenAI、Anthropic、Gemini 等多种大模型接入，内置知识库和 Agent 智能体

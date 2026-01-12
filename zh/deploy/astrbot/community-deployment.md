@@ -19,7 +19,7 @@ bash -c "$(curl -L https://gitee.com/nasyt/nasyt-linux-tool/raw/master/nasyt.sh)
 使用 `curl` 去下载脚本并且使用 `bash` 执行脚本：
 
 ```bash
-bash <(curl -sSL https://raw.githubusercontent.com/zhende1113/Antlia/refs/heads/main/Script/AstrBot/Antlia.sh)
+bash -c "$(curl -L https://raw.gitcode.com/nasyt/nasyt-linux-tool/raw/master/nasyt_install.sh)"
 ```
 
 如果你的系统没有 `curl`，你可以使用 `wget`：

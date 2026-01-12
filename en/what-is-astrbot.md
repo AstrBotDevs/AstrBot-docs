@@ -14,15 +14,16 @@ AstrBot is an open-source, all-in-one agentic chatbot platform and development f
 - **Plugin Extensions**. Deeply optimized plugin mechanism for extending functionality, with a thriving community plugin ecosystem.
 - **WebUI**. Feature-rich visual configuration and management interface.
 
+## Notice
+
+1. AstrBot is a non-profit project under the AstrBotDevs organization, maintained by passionate open-source contributors worldwide, and protected by the [AGPL-v3](https://www.chinasona.org/gnu/agpl-3.0-cn.html) open-source license. If you modify AstrBot and use it to provide commercial network services, you must open-source your modifications. Failure to do so constitutes a license violation, and we reserve the right to pursue legal action against such violations. For details, contact [community@astrbot.app](mailto:community@astrbot.app).
+2. Before using this project, please make sure to read the End User License Agreement (EULA): [End User License Agreement](https://github.com/AstrBotDevs/AstrBot/blob/master/EULA.md). If you do not agree to any terms of the agreement, do not use this project.
+
 ## How Does It Work?
 
 The topology diagram below provides an overview of AstrBot's architecture.
 
 ![Architecture](/source/images/what-is-astrbot/image.png)
-
-## Notice
-
-AstrBot is currently a non-profit project under the AstrBotDevs non-profit organization, maintained by passionate open-source contributors worldwide, and protected by the [AGPL-v3](https://www.chinasona.org/gnu/agpl-3.0-cn.html) open-source license. If you modify AstrBot and use it to provide commercial network services, you must open-source your modifications. Failure to do so constitutes a license violation, and we reserve the right to pursue legal action against such violations. For details, contact [community@astrbot.app](mailto:community@astrbot.app).
 
 ## Visual Identity
 

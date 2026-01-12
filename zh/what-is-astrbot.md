@@ -13,15 +13,16 @@ AstrBot 致力于成为一个开源、一站式的 Agentic 聊天机器人平台
 - 广泛平台支持： 一键部署至 QQ、企业微信、微信公众号、飞书、Telegram、钉钉、Discord 等主流平台，提供安全与稳定保障。
 - 插件与 WebUI： 深度优化插件扩展机制，以及可视化 WebUI 进行配置和管理。
 
+## 说明
+
+1. AstrBot 是一个非盈利项目，由全世界热心开源贡献者维护，并受 [AGPL-v3](https://www.chinasona.org/gnu/agpl-3.0-cn.html) 开源许可证保护。如果您对 AstrBot 进行了修改并将其用于提供具有商业盈利性质的网络服务，您必须开源所做的修改。详细联系 [community@astrbot.app](mailto:community@astrbot.app)。
+2. 使用此项目前，请务必阅读本项目的最终用户许可协议（EULA）：[最终用户许可协议](https://github.com/AstrBotDevs/AstrBot/blob/master/EULA.md)。如果您不同意该协议的任何条款，请勿使用本项目。
+
 ## 它是如何实现的？
 
 下面的拓扑图基本简述了 AstrBot 的架构。
 
 ![Architecture](/source/images/what-is-astrbot/image.png)
-
-## 说明
-
-AstrBot 目前是一个非盈利项目，位于 AstrBotDevs 非盈利组织下，由全世界热心开源贡献者维护，并受 [AGPL-v3](https://www.chinasona.org/gnu/agpl-3.0-cn.html) 开源许可证保护。如果您对 AstrBot 进行了修改并将其用于提供具有商业盈利性质的网络服务，您必须开源所做的修改，否则将构成对许可证的违反，我们将保留对违反许可证条款的行为追究法律责任的权利。详细联系 [community@astrbot.app](mailto:community@astrbot.app) 。
 
 ## 视觉形象
 

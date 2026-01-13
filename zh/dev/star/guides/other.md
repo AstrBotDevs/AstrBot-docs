@@ -65,7 +65,7 @@ class Context:
 
     def __init__(...):
         ...
-        """模型提供商管理器"""
+        """模型供应商管理器"""
         self.provider_manager = provider_manager
         """平台适配器管理器"""
         self.platform_manager = platform_manager
@@ -189,8 +189,8 @@ kb_helper = await self.context.kb_manager.create_kb(
 | `kb_name` | `str` | - | 是 | 知识库名称 |
 | `description` | `str \| None` | `None` | 否 | 知识库描述信息 |
 | `emoji` | `str \| None` | `None` | 否 | 知识库的表情符号标识，默认使用 "📚" |
-| `embedding_provider_id` | `str \| None` | `None` | 否 | 嵌入模型提供商的 ID |
-| `rerank_provider_id` | `str \| None` | `None` | 否 | 重排序模型提供商的 ID |
+| `embedding_provider_id` | `str \| None` | `None` | 否 | 嵌入模型供应商的 ID |
+| `rerank_provider_id` | `str \| None` | `None` | 否 | 重排序模型供应商的 ID |
 | `chunk_size` | `int \| None` | `None` | 否 | 文本分块大小（字符数），默认为 512 |
 | `chunk_overlap` | `int \| None` | `None` | 否 | 分块重叠大小（字符数），默认为 50 |
 | `top_k_dense` | `int \| None` | `None` | 否 | 密集检索返回的 top-k 结果数，默认为 50 |
@@ -211,7 +211,7 @@ kb_helper = await self.context.kb_manager.create_kb(
 ```python
 kb_helper = await self.context.kb_manager.get_kb_by_name(kb_name)
 if not kb_helper:
-    loger.info(f"kb:{kb_name} 不存在")
+    print(f"kb:{kb_name} 不存在")
     return
 kb_id = kb_helper.kb.kb_id
 await kb_helper.delete_vec_db()
@@ -219,7 +219,7 @@ async with self.context.kb_manager.kb_db.get_db() as session:
     await session.delete(kb_helper.kb)
     await session.commit()
 self.context.kb_manager.kb_insts.pop(kb_id, None)
-loger.info(f"kb:{kb_name} 成功删除")
+print(f"kb:{kb_name} 成功删除")
 ```
 
 ## 重新加载所有数据库
@@ -276,11 +276,11 @@ data = await self.context.kb_manager.retrieve(
 ---
 ---
 
-# 模型提供商管理器
+# 模型供应商管理器
 
 `ProviderManager` 位于 `astrbot.core.provider.manager` 模块下，在插件中可以通过 `self.context.provider_manager` 访问。
 
-- 注:目前没有提供直接在webui添加自定义提供商的代码,如果需要可以通过修改`astrbot.core.config.default` 下的 `CONFIG_METADATA_2`来修改webui(该方法并不正式,可能会在未来被修复),并且需要在代码注册对应的提供商
+- 注:目前没有提供直接在webui添加自定义供应商的代码,如果需要可以通过修改`astrbot.core.config.default` 下的 `CONFIG_METADATA_2`来修改webui(该方法并不正式,可能会在未来被修复),并且需要在代码注册对应的供应商
 
 ## 获取供应商实例
 
@@ -556,9 +556,9 @@ for provider_id, provider in self.context.provider_manager.inst_map.items():
 
 ## 关于平台适配器管理器
 
-它为 `astrbot.core.platform.manager` 下的`KnowledgeBaseManager`类别在插件中可以通过`self.context.platform_manager`对这个类别进行访问
+它为 `astrbot.core.platform.manager` 下的`PlatformManager`类别在插件中可以通过`self.context.platform_manager`对这个类别进行访问
 
-- 注:目前没有提供直接在webui添加自定义平台适配器的代码,如果需要可以通过修改`astrbot.core.config.default` 下的 `CONFIG_METADATA_2`来修改webui(该方法并不正式,可能会在未来被修复),并且需要在代码注册对应的提供商
+- 注:目前没有提供直接在webui添加自定义平台适配器的代码,如果需要可以通过修改`astrbot.core.config.default` 下的 `CONFIG_METADATA_2`来修改webui(该方法并不正式,可能会在未来被修复),并且需要在代码注册对应的供应商
 
 ---
 
@@ -679,11 +679,11 @@ for provider_id, provider in self.context.provider_manager.inst_map.items():
 }
 ```
 
-## 注意项
+## 注意事项
 
 以上代码都是和前端代码高度绑定的,直接在代码进行操作是不明智的
 
-- 注:可以通过`astrbot.core.platform.register`下的`register_platform_adapter`进行平台适配器进行注册自定义平台,然后通过修改`astrbot.core.config.default` 下的 `CONFIG_METADATA_2`来修改前端配置,并且重构`terminate_platform`函数并替换掉类方法,通过这样的方法就可以完成一个自定义平台提供商(这个行为是危险并且具有一定时效性的,不建议这样操作,这个操作是非官方的所以这里不给出示例代码)
+- 注:可以通过`astrbot.core.platform.register`下的`register_platform_adapter`进行平台适配器进行注册自定义平台,然后通过修改`astrbot.core.config.default` 下的 `CONFIG_METADATA_2`来修改前端配置,并且重构`terminate_platform`函数并替换掉类方法,通过这样的方法就可以完成一个自定义平台供应商(这个行为是危险并且具有一定时效性的,不建议这样操作,这个操作是非官方的所以这里不给出示例代码)
 
 ---
 ---
@@ -994,7 +994,7 @@ message_content = {
     }
 }
 
-history_record = await history_manager.insert(
+history_record = await self.context.message_history_manager.insert(
     platform_id="wechat",
     user_id="wechat:group:123456789",
     content=message_content,
@@ -1014,7 +1014,7 @@ platform_id = "wechat"
 user_id = "wechat:group:123456789"
 
 # 获取第一页，每页200条
-history_list = await history_manager.get(
+history_list = await self.context.message_history_manager.get(
     platform_id=platform_id,
     user_id=user_id,
     page=1,
@@ -1048,7 +1048,7 @@ platform_id = "wechat"
 user_id = "wechat:group:123456789"
 
 # 删除24小时前的记录（默认86400秒 = 24小时）
-await history_manager.delete(
+await self.context.message_history_manager.delete(
     platform_id=platform_id,
     user_id=user_id,
     offset_sec=86400,

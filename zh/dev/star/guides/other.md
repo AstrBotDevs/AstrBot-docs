@@ -346,6 +346,8 @@ for provider_id, provider in self.context.provider_manager.inst_map.items():
 
 ## 五大供应商类型
 
+- 注:因为不同供应商之间存在具体实现方法的差异,所以这里只讲解其统一父类要求必须实现的方法
+
 ### 1. Provider - LLM供应商
 
 #### 核心方法

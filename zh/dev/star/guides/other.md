@@ -704,7 +704,7 @@ for provider_id, provider in self.context.provider_manager.inst_map.items():
 
 ```python
 for unified_msg_origin, conversation_id in self.context.conversation_manager.session_conversations.items():
-    print(f"会话ID({unified_msg_origin})\n对话ID({conversation_id})")
+    print(f"UMO:({unified_msg_origin})\n对话ID:({conversation_id})")
 ```
 
 ## 获取对话
@@ -959,7 +959,7 @@ class Conversation:
 
 ## 注意事项
 
-1. **会话ID格式**：必须遵循 `platform_name:message_type:session_id` 格式
+1. **UMO格式**：必须遵循 `platform_name:message_type:session_id` 格式
 2. **对话ID**：由系统自动生成的UUID，确保全局唯一性
 3. **回调函数**：会话删除回调必须是异步函数，且需自行处理异常
 4. **性能**：大量对话时建议使用分页查询，避免内存溢出

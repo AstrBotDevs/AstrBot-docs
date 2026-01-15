@@ -167,7 +167,8 @@ export default defineConfig({
               { text: "Agent 执行器", link: "/agent-runner" },
               { text: "统一 Webhook 模式", link: "/unified-webhook" },
               { text: "自动上下文压缩", link: "/context-compress" },
-              { text: "沙箱化代码执行器(beta)", link: "/code-interpreter" },
+              { text: "Agent 沙箱环境", link: "/astrbot-agent-sandbox" },
+              { text: "(旧) 沙箱化代码执行器", link: "/code-interpreter" },
             ],
           },
           {
@@ -384,7 +385,8 @@ export default defineConfig({
               { text: "Agent Runner", link: "/agent-runner" },
               { text: "Unified Webhook Mode", link: "/unified-webhook" },
               { text: "Auto Context Compression", link: "/context-compress" },
-              { text: "Sandboxed Code Interpreter (beta)", link: "/code-interpreter" },
+              { text: "Agent Sandbox", link: "/astrbot-agent-sandbox" },
+              { text: "(Legacy) Sandboxed Code Interpreter", link: "/code-interpreter" },
             ],
           },
           {

@@ -58,7 +58,7 @@
 
 ## 报错1：Python is not installed
 
-如果提示 Python is not installed，并且已经安装 Python，并且**也已经重启并仍报这个错误**，说明环境变量不对，有两个方法解决：
+如果提示 Python is not installed，并且已经安装 Python，并且**重启电脑仍报这个错误**，说明环境变量不对，有两个方法解决：
 
 **方法 1:**
 
@@ -84,7 +84,7 @@ windows 搜索 Python，打开文件位置：
 
 ## 报错2：You require CPython 3.14 (`cp314`)
 
-如果出现如下内容的报错，这是由于 Python 版本过高导致的，AstrBot 目前只**支持 Python3.13.x ~ 3.10**
+如果出现如下内容的报错，这是由于 Python 版本过高导致的，AstrBot 目前只**支持 Python 3.10–3.13**
 
 ```
   x No solution found when resolving dependencies:
@@ -99,4 +99,4 @@ windows 搜索 Python，打开文件位置：
 
 **解决办法：**
 
-卸载3.14.x版本的 Python ，安装 *Python 3.13.x ~ 3.10* 之间的任意版本，并且在安装时**勾选 Add Python to PATH**，然后重启电脑。
+卸载3.14+版本的 Python ，安装 *Python 3.10–3.13* 之间的任一版本，并且在安装时 **勾选 Add Python to PATH** ，然后重启电脑。

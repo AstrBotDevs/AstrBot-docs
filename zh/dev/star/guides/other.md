@@ -1415,3 +1415,96 @@ except ValueError as e:
 ```
 
 ---
+---
+
+## 插件管理器
+
+这个管理器并非官方暴露的接口,可以通过 \
+`from astrbot.core.star.star_handler import star_handlers_registry` \
+来导入,他在项目里面是一个公共变量
+
+## 如何获取插件
+
+```python
+from astrbot.core.star.star_handler import star_handlers_registry, EventType
+
+# 通过以下方法可以获取所有的插件方法(注意是方法,不是插件类)
+for handler in star_handlers_registry.get_handlers_by_event_type(
+        event_type=EventType.AdapterMessageEvent,
+        plugins_name=None,  
+):
+```
+
+## 通过名称过滤
+
+```python
+# 其中plugins_name是一个过滤列表,可以设置只从选定的插件获取,按照以下方法访问就只会访问astrbot_plugin_util插件下面的方法
+plugins_name = [
+    "astrbot_plugin_util"
+]
+
+for handler in star_handlers_registry.get_handlers_by_event_type(
+        event_type=EventType.AdapterMessageEvent,
+        plugins_name=plugins_name,  
+):
+```
+
+## 通过响应类型过滤
+
+```python
+# 其中对于event_type,EventType拥有以下属性,对应属性可以进行对应过滤
+"""
+OnAstrBotLoadedEvent = enum.auto()  # AstrBot 加载完成
+OnPlatformLoadedEvent = enum.auto()  # 平台加载完成
+
+AdapterMessageEvent = enum.auto()  # 收到适配器发来的消息
+OnWaitingLLMRequestEvent = enum.auto()  # 等待调用 LLM（在获取锁之前，仅通知）
+OnLLMRequestEvent = enum.auto()  # 收到 LLM 请求（可以是用户也可以是插件）
+OnLLMResponseEvent = enum.auto()  # LLM 响应后
+OnDecoratingResultEvent = enum.auto()  # 发送消息前
+OnCallingFuncToolEvent = enum.auto()  # 调用函数工具
+OnAfterMessageSentEvent = enum.auto()  # 发送消息后
+"""
+
+# 以下是过滤所有在LLM响应后进行操作的函数
+event_type = EventType.OnLLMResponseEvent
+
+for handler in star_handlers_registry.get_handlers_by_event_type(
+        event_type=EventType.AdapterMessageEvent,
+        plugins_name=plugins_name,  
+):
+
+```
+
+## 获取完全函数名称和插件路径
+
+```python
+from astrbot.core.star.star_handler import star_handlers_registry, EventType
+
+# 通过以下方法可以获取所有的插件方法(注意是方法,不是插件类)
+for handler in star_handlers_registry.get_handlers_by_event_type(
+        event_type=EventType.AdapterMessageEvent,
+        plugins_name=None,  
+):
+    handler_full_name = getattr(handler, "handler_full_name", None)
+    handler_module_path = getattr(handler, "handler_module_path", None)
+```
+
+## 根据插件路径获取插件元数据
+
+```python
+from astrbot.core.star.star import star_map
+plugin = star_map[handler_module_path]
+```
+
+## 根据完全函数名称获取插件元数据
+
+```python
+handler = star_handlers_registry.get_handler_by_full_name(full_name)
+handler_module_path = getattr(handler, "handler_module_path", None)
+if handler_module_path is None:
+    return
+plugin_info = {}
+if handler_module_path in star_map:
+    plugin = star_map[handler_module_path]
+```

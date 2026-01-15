@@ -20,6 +20,7 @@ git clone https://github.com/AstrBotDevs/AstrBot
 cd AstrBot
 # 修改 compose-with-shipyard.yml 文件中的环境变量配置，例如 Shipyard 的 access token 等
 docker compose -f compose-with-shipyard.yml up -d
+docker pull soulter/shipyard-ship:latest
 ```
 
 这会启动一个包含 AstrBot 主程序和沙盒环境的 Docker Compose 服务。
@@ -35,6 +36,7 @@ mkdir astrbot-shipyard
 wget https://raw.githubusercontent.com/AstrBotDevs/shipyard/refs/heads/main/pkgs/bay/docker-compose.yml -O docker-compose.yml
 # 修改 compose-with-shipyard.yml 文件中的环境变量配置，例如 Shipyard 的 access token 等
 docker compose -f docker-compose.yml up -d
+docker pull soulter/shipyard-ship:latest
 ```
 
 部署成功后，上述命令会启动一个 Shipyard 服务，默认监听在 `http://<your-host>:8156`。

@@ -20,6 +20,7 @@ git clone https://github.com/AstrBotDevs/AstrBot
 cd AstrBot
 # Modify the environment variable configuration in the compose-with-shipyard.yml file, such as Shipyard's access token, etc.
 docker compose -f compose-with-shipyard.yml up -d
+docker pull soulter/shipyard-ship:latest
 ```
 
 This will start a Docker Compose service that includes AstrBot main program and the sandbox environment.
@@ -35,6 +36,8 @@ mkdir astrbot-shipyard
 wget https://raw.githubusercontent.com/AstrBotDevs/shipyard/refs/heads/main/pkgs/bay/docker-compose.yml -O docker-compose.yml
 # Modify the environment variable configuration in the compose-with-shipyard.yml file, such as Shipyard's access token, etc.
 docker compose -f docker-compose.yml up -d
+# pull the latest Shipyard ship image
+docker pull soulter/shipyard-ship:latest
 ```
 
 After successful deployment, the above command will start a Shipyard service that listens on `http://<your-host>:8156` by default.

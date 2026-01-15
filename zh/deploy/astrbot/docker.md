@@ -50,6 +50,7 @@ git clone https://github.com/AstrBotDevs/AstrBot
 cd AstrBot
 # 修改 compose-with-shipyard.yml 文件中的环境变量配置，例如 Shipyard 的 access token 等
 docker compose -f compose-with-shipyard.yml up -d
+docker pull soulter/shipyard-ship:latest
 ```
 
 配置和使用详见 [Agent 沙盒环境](/zh/use/astrbot-agent-sandbox.md) 文档。

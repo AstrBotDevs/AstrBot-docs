@@ -50,6 +50,7 @@ git clone https://github.com/AstrBotDevs/AstrBot
 cd AstrBot
 # Modify the environment variable configuration in the compose-with-shipyard.yml file, such as Shipyard's access token, etc.
 docker compose -f compose-with-shipyard.yml up -d
+docker pull soulter/shipyard-ship:latest
 ```
 
 For configuration and usage details, see the [Agent Sandbox Environment](/en/use/astrbot-agent-sandbox.md) documentation.

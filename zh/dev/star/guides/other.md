@@ -1270,16 +1270,16 @@ session = MessageSession(
 )
 
 # 获取该会话的配置
-config = config_manager.get_conf(session)
+config = self.context.astrbot_config_mgr.get_conf(session)
 print(f"会话配置: {config}")
 
 # 或者使用 UMO 字符串
 umo_str = "wechat:group:123456789"
-config = config_manager.get_conf(umo_str)
+config = self.context.astrbot_config_mgr.get_conf(umo_str)
 print(f"UMO字符串配置: {config}")
 
 # 获取默认配置
-default_config = config_manager.default_conf
+default_config = self.context.astrbot_config_mgr.default_conf
 print(f"默认配置: {default_config}")
 ```
 
@@ -1290,19 +1290,19 @@ print(f"默认配置: {default_config}")
 umo = "wechat:group:123456789"
 
 # 获取 provider_settings
-provider_settings = config_manager.g(umo, "provider_settings")
+provider_settings = self.context.astrbot_config_mgr.g(umo, "provider_settings")
 print(f"Provider设置: {provider_settings}")
 
 # 获取特定键值，带默认值
-api_key = config_manager.g(umo, "api_key", "default_api_key")
+api_key = self.context.astrbot_config_mgr.g(umo, "api_key", "default_api_key")
 print(f"API Key: {api_key}")
 
 # 如果键不存在，返回默认值
-non_existent = config_manager.g(umo, "non_existent_key", "fallback_value")
+non_existent = self.context.astrbot_config_mgr.g(umo, "non_existent_key", "fallback_value")
 print(f"不存在的键: {non_existent}")
 
 # 获取默认配置的键值
-default_value = config_manager.g(None, "default_setting", "fallback")
+default_value = self.context.astrbot_config_mgr.g(None, "default_setting", "fallback")
 print(f"默认配置值: {default_value}")
 ```
 
@@ -1316,13 +1316,13 @@ session = MessageSession(
     session_id="987654321"
 )
 
-conf_info = config_manager.get_conf_info(session)
+conf_info = self.context.astrbot_config_mgr.get_conf_info(session)
 print(f"配置ID: {conf_info['id']}")
 print(f"配置名称: {conf_info['name']}")
 print(f"配置文件路径: {conf_info['path']}")
 
 # 获取所有配置列表
-conf_list = config_manager.get_conf_list()
+conf_list = self.context.astrbot_config_mgr.get_conf_list()
 print(f"\n系统中所有配置 ({len(conf_list)} 个):")
 for info in conf_list:
     print(f"  - {info['name']} (ID: {info['id']})")
@@ -1348,18 +1348,18 @@ custom_config = {
 }
 
 # 创建配置（带名称）
-conf_id = config_manager.create_conf(
+conf_id = self.context.astrbot_config_mgr.create_conf(
     config=custom_config,
     name="高级助手配置"
 )
 print(f"新配置创建成功，ID: {conf_id}")
 
 # 创建使用完全默认值的配置
-simple_conf_id = config_manager.create_conf(name="简单配置")
+simple_conf_id = self.context.astrbot_config_mgr.create_conf(name="简单配置")
 print(f"简单配置创建成功，ID: {simple_conf_id}")
 
 # 验证配置已加载
-if simple_conf_id in config_manager.confs:
+if simple_conf_id in self.context.astrbot_config_mgr.confs:
     print(f"配置 {simple_conf_id} 已成功加载到内存")
 ```
 
@@ -1370,7 +1370,7 @@ if simple_conf_id in config_manager.confs:
 conf_id = "550e8400-e29b-41d4-a716-446655440000"  # 假设这是已有的配置ID
 
 try:
-    success = config_manager.update_conf_info(
+    success = self.context.astrbot_config_mgr.update_conf_info(
         conf_id=conf_id,
         name="更新后的配置名称"
     )
@@ -1378,7 +1378,7 @@ try:
         print(f"配置 {conf_id} 名称更新成功")
         
         # 验证更新
-        conf_list = config_manager.get_conf_list()
+        conf_list = self.context.astrbot_config_mgr.get_conf_list()
         for info in conf_list:
             if info['id'] == conf_id:
                 print(f"新名称: {info['name']}")
@@ -1393,12 +1393,12 @@ except ValueError as e:
 conf_id = "550e8400-e29b-41d4-a716-446655440000"  # 要删除的配置ID
 
 try:
-    success = config_manager.delete_conf(conf_id)
+    success = self.context.astrbot_config_mgr.delete_conf(conf_id)
     if success:
         print(f"配置 {conf_id} 删除成功")
         
         # 验证删除
-        conf_list = config_manager.get_conf_list()
+        conf_list = self.context.astrbot_config_mgr.get_conf_list()
         ids = [info['id'] for info in conf_list]
         if conf_id not in ids:
             print("配置已从列表中移除")
@@ -1409,7 +1409,7 @@ except ValueError as e:
 
 # 尝试删除默认配置（会失败）
 try:
-    config_manager.delete_conf("default")
+    self.context.astrbot_config_mgr.delete_conf("default")
 except ValueError as e:
     print(f"预期错误: {e}")
 ```

@@ -1508,3 +1508,114 @@ plugin_info = {}
 if handler_module_path in star_map:
     plugin = star_map[handler_module_path]
 ```
+
+## 获取插件类
+
+```python
+if plugin.activated:
+   plugin_cls = star_cls
+```
+
+## 获取自己这个插件
+
+```python
+from astrbot.core.star.star import star_map
+plugin = star_map[cls.__module__]
+```
+
+## 插件方法类别
+
+上文中`handler`为此类别
+
+```python
+@dataclass
+class StarHandlerMetadata(Generic[H]):
+    """描述一个 Star 所注册的某一个 Handler。"""
+
+    event_type: EventType
+    """Handler 的事件类型"""
+
+    handler_full_name: str
+    '''格式为 f"{handler.__module__}_{handler.__name__}"'''
+
+    handler_name: str
+    """Handler 的名字，也就是方法名"""
+
+    handler_module_path: str
+    """Handler 所在的模块路径。"""
+
+    handler: H
+    """Handler 的函数对象，应当是一个异步函数"""
+
+    event_filters: list[HandlerFilter]
+    """一个适配器消息事件过滤器，用于描述这个 Handler 能够处理、应该处理的适配器消息事件"""
+
+    desc: str = ""
+    """Handler 的描述信息"""
+
+    extras_configs: dict = field(default_factory=dict)
+    """插件注册的一些其他的信息, 如 priority 等"""
+
+    enabled: bool = True
+
+    def __lt__(self, other: StarHandlerMetadata):
+        """定义小于运算符以支持优先队列"""
+        return self.extras_configs.get("priority", 0) < other.extras_configs.get(
+            "priority",
+            0,
+        )
+
+```
+
+## 插件元数据类别
+
+上文中`plugin`为此类别
+
+```python
+@dataclass
+class StarMetadata:
+    """插件的元数据。
+
+    当 activated 为 False 时，star_cls 可能为 None，请不要在插件未激活时调用 star_cls 的方法。
+    """
+
+    name: str | None = None
+    """插件名"""
+    author: str | None = None
+    """插件作者"""
+    desc: str | None = None
+    """插件简介"""
+    version: str | None = None
+    """插件版本"""
+    repo: str | None = None
+    """插件仓库地址"""
+
+    star_cls_type: type[Star] | None = None
+    """插件的类对象的类型"""
+    module_path: str | None = None
+    """插件的模块路径"""
+
+    star_cls: Star | None = None
+    """插件的类对象"""
+    module: ModuleType | None = None
+    """插件的模块对象"""
+    root_dir_name: str | None = None
+    """插件的目录名称"""
+    reserved: bool = False
+    """是否是 AstrBot 的保留插件"""
+
+    activated: bool = True
+    """是否被激活"""
+
+    config: AstrBotConfig | None = None
+    """插件配置"""
+
+    star_handler_full_names: list[str] = field(default_factory=list)
+    """注册的 Handler 的全名列表"""
+
+    display_name: str | None = None
+    """用于展示的插件名称"""
+
+    logo_path: str | None = None
+    """插件 Logo 的路径"""
+```

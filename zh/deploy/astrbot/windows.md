@@ -56,7 +56,7 @@
 > 如果部署不了，请参阅其他两个部署方式：Docker 部署和 手动部署。
 
 
-## 报错：Python is not installed
+## 报错1：Python is not installed
 
 如果提示 Python is not installed，并且已经安装 Python，并且**也已经重启并仍报这个错误**，说明环境变量不对，有两个方法解决：
 
@@ -70,12 +70,33 @@ windows 搜索 Python，打开文件位置：
 
 ![alt text](/source/images/windows/image-1.png)
 
-复制文件地址：
+复制 `python.exe` 文件地址：
 
 ![image](/source/images/windows/image-2.png)
 
 回到 `launcher_astrbot_en.bat` 文件，右键点击 `在记事本中编辑`，找到 `set PYTHON_CMD=python` 这一行，将 `python` 改为你的 Python 解释器路径或指令，路径两端的双引号不要删。
 
+> Windows11 以下版本不能复制文件地址的，可以先复制文件夹地址再添加 /python.exe 和英文双引号
+
 **方法 2:**
 
 重装 python，并且在安装时勾选 `Add Python to PATH`，然后重启电脑。
+
+## 报错2：You require CPython 3.14 (`cp314`)
+
+如果出现如下内容的报错，这是由于 Python 版本过高导致的，AstrBot 目前只**支持 Python3.13.x ~ 3.10**
+
+```
+  x No solution found when resolving dependencies:
+  `-> Because faiss-cpu==1.10.0 has no wheels with a matching Python ABI tag (e.g., `cp314`) and you require
+      faiss-cpu==1.10.0, we can conclude that your requirements are unsatisfiable.
+
+      hint: You require CPython 3.14 (`cp314`), but we only found wheels for `faiss-cpu` (v1.10.0) with the following
+      Python ABI tags: `cp39`, `cp310`, `cp311`, `cp312`, `cp313`
+```
+
+<img width="1756" height="874" alt="image" src="https://github.com/user-attachments/assets/a41df66e-d0f4-4033-b633-046daafc272f" />
+
+**解决办法：**
+
+卸载3.14.x版本的 Python ，安装 *Python 3.13.x ~ 3.10* 之间的任意版本，并且在安装时**勾选 Add Python to PATH**，然后重启电脑。

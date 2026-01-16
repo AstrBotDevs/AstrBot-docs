@@ -11,6 +11,12 @@
 
 目前，沙盒环境仅支持通过 Docker 来运行。我们目前使用了 [Shipyard](https://github.com/AstrBotDevs/shipyard) 项目作为 AstrBot 的沙盒环境驱动器。未来，我们会支持更多类型的沙盒环境驱动器，如 e2b。
 
+## 性能要求
+
+AstrBot 给每个沙盒环境限制最高 1 CPU 和 512 MB 内存。
+
+我们建议您的宿主机至少有 2 个 CPU 和 4 GB 内存，并开启 Swap，以保证多个沙盒环境实例可以稳定运行。
+
 ### 使用 Docker Compose 部署 AstrBot 和 Shipyard
 
 如果您还没有部署 AstrBot，或者想更换为我们推荐的带沙盒环境的部署方式，推荐使用 Docker Compose 来部署 AstrBot，代码如下：

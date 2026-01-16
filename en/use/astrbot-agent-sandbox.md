@@ -33,6 +33,7 @@ Code as follows:
 
 ```bash
 mkdir astrbot-shipyard
+cd astrbot-shipyard
 wget https://raw.githubusercontent.com/AstrBotDevs/shipyard/refs/heads/main/pkgs/bay/docker-compose.yml -O docker-compose.yml
 # Modify the environment variable configuration in the compose-with-shipyard.yml file, such as Shipyard's access token, etc.
 docker compose -f docker-compose.yml up -d

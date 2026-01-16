@@ -33,6 +33,7 @@ docker pull soulter/shipyard-ship:latest
 
 ```bash
 mkdir astrbot-shipyard
+cd astrbot-shipyard
 wget https://raw.githubusercontent.com/AstrBotDevs/shipyard/refs/heads/main/pkgs/bay/docker-compose.yml -O docker-compose.yml
 # 修改 compose-with-shipyard.yml 文件中的环境变量配置，例如 Shipyard 的 access token 等
 docker compose -f docker-compose.yml up -d

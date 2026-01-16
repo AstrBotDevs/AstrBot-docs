@@ -56,6 +56,8 @@ platforms = self.context.platform_manager.get_insts() # List[Platform]
 
 ## 关于 astrbot.core.star.Context 类
 
+### 免责声明:以下文档为非astrbot官方人员书写,可能存在一定偏差和问题,如果遇到问题请进群询问,如果可以请一同修复文档
+
 `astrbot.core.star.Context`类别是astrbot提供给插件的上下文接口
 其拥有7个主要的管理器属性
 
@@ -1417,9 +1419,12 @@ except ValueError as e:
 ---
 ---
 
-## 插件管理器
+## 插件管理器(不完整)
 
 这个管理器并非官方暴露的接口,可以通过 \
+`self.context._star_manager` \
+来访问,它是context的一个私有变量 \
+插件的注册表可以通过 \
 `from astrbot.core.star.star_handler import star_handlers_registry` \
 来导入,他在项目里面是一个公共变量
 
@@ -1428,7 +1433,7 @@ except ValueError as e:
 ```python
 from astrbot.core.star.star_handler import star_handlers_registry, EventType
 
-# 通过以下方法可以获取所有的插件方法(注意是方法,不是插件类)
+# 通过以下方法可以获取部分插件方法(注意是方法,不是插件类)
 for handler in star_handlers_registry.get_handlers_by_event_type(
         event_type=EventType.AdapterMessageEvent,
         plugins_name=None,  
@@ -1445,6 +1450,7 @@ plugins_name = [
 
 for handler in star_handlers_registry.get_handlers_by_event_type(
         event_type=EventType.AdapterMessageEvent,
+        only_activated=False,
         plugins_name=plugins_name,  
 ):
 ```
@@ -1470,20 +1476,35 @@ OnAfterMessageSentEvent = enum.auto()  # 发送消息后
 event_type = EventType.OnLLMResponseEvent
 
 for handler in star_handlers_registry.get_handlers_by_event_type(
-        event_type=EventType.AdapterMessageEvent,
+        event_type=event_type,
+        only_activated=False,
         plugins_name=plugins_name,  
 ):
 
 ```
 
-## 获取完全函数名称和插件路径
+## 通过激活状态过滤
+
+```python
+# 只获取激活的插件
+only_activated = True
+
+for handler in star_handlers_registry.get_handlers_by_event_type(
+        event_type=EventType.AdapterMessageEvent,
+        only_activated=only_activated,
+        plugins_name=None,  
+):
+```
+
+## 获取完全函数路径和插件路径
 
 ```python
 from astrbot.core.star.star_handler import star_handlers_registry, EventType
 
-# 通过以下方法可以获取所有的插件方法(注意是方法,不是插件类)
+# 通过以下方法可以获取插件方法的插件路径和完全函数路径
 for handler in star_handlers_registry.get_handlers_by_event_type(
         event_type=EventType.AdapterMessageEvent,
+        only_activated=False,
         plugins_name=None,  
 ):
     handler_full_name = getattr(handler, "handler_full_name", None)
@@ -1497,7 +1518,7 @@ from astrbot.core.star.star import star_map
 plugin = star_map[handler_module_path]
 ```
 
-## 根据完全函数名称获取插件元数据
+## 根据完全函数路径获取插件元数据
 
 ```python
 handler = star_handlers_registry.get_handler_by_full_name(full_name)
@@ -1509,18 +1530,53 @@ if handler_module_path in star_map:
     plugin = star_map[handler_module_path]
 ```
 
-## 获取插件类
-
-```python
-if plugin.activated:
-   plugin_cls = star_cls
-```
-
-## 获取自己这个插件
+## 获取自己这个插件的插件元数据
 
 ```python
 from astrbot.core.star.star import star_map
 plugin = star_map[cls.__module__]
+```
+
+## 直接根据插件名称获取插件元数据
+
+```python
+plugin = self.context.get_registered_star(plugin_name)
+```
+
+## 获取插件类
+
+```python
+if plugin.activated:
+   plugin_cls = plugin.star_cls
+```
+
+## 如何管理插件(插件的禁用,卸载,重载,安装接口并没有暴露出来,无法调用)
+
+插件的禁用,卸载,重载,安装接口通过`astrbot.core.star`下的`PluginManager`类别管理,这个类别并没有暴露出来 \
+插件的管理器为`context`下的一个私有属性(危险操作)
+
+```python
+if self.context._star_manager:
+    star_mgr: PluginManager = self.context._star_manager
+```
+
+## 获取所有已经安装的插件
+
+```python
+"""获取已经安装的插件列表。"""
+parts = ["已加载的插件：\n"]
+for plugin in self.context.get_all_stars():
+    line = f"- `{plugin.name}` By {plugin.author}: {plugin.desc}"
+    if not plugin.activated:
+        line += " (未启用)"
+    parts.append(line + "\n")
+
+if len(parts) == 1:
+    plugin_list_info = "没有加载任何插件。"
+else:
+    plugin_list_info = "".join(parts)
+
+plugin_list_info += "\n使用 /plugin help <插件名> 查看插件帮助和加载的指令。\n使用 /plugin on/off <插件名> 启用或者禁用插件。"
 ```
 
 ## 插件方法类别

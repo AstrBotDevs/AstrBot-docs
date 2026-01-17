@@ -106,7 +106,7 @@ await StarTools.send_message_by_id(
     type="PrivateMessage",
     id="123456789",                 # QQ号
     message_chain=message_chain,
-    platform="aiocqhttp"            # 目前只支持这个
+    platform="aiocqhttp"            # 目前只支持aiocqhttp
 )
 
 # 发送群聊消息
@@ -114,7 +114,7 @@ await StarTools.send_message_by_id(
     type="GroupMessage",
     id="987654321",                 # 群号
     message_chain=message_chain,
-    platform="aiocqhttp"            # 目前只支持这个
+    platform="aiocqhttp"            # 目前只支持aiocqhttp
 )
 ...
 ```

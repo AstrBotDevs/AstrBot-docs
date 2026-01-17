@@ -54,6 +54,184 @@ platforms = self.context.platform_manager.get_insts() # List[Platform]
 ---
 ---
 
+## 关于 astrbot.api.star.StarTools 类
+
+提供给插件使用的便捷工具函数集合
+
+## 根据 unified_msg_origin 主动发送消息
+
+```python
+from astrbot.api.star import StarTools
+import astrbot.api.message_components as Comp
+
+...
+async def on_message(self, event):
+    session = event.unified_msg_origin
+    message_chain = [
+        Comp.Plain("你好这里是测试")
+    ]
+    await StarTools.send_message(session, message_chain)
+...
+```
+
+## 根据 MessageSesion 类主动发送消息
+
+```python
+from astrbot.api.star import StarTools
+import astrbot.api.message_components as Comp
+
+...
+async def on_message(self, event):
+    session = event.session
+    message_chain = [
+        Comp.Plain("你好这里是测试")
+    ]
+    await StarTools.send_message(session, message_chain)
+...
+```
+
+## 通过ID直接发送消息
+
+```python
+from astrbot.api.star import StarTools
+import astrbot.api.message_components as Comp
+
+...
+message_chain = [
+    Comp.Plain("你好这里是测试")
+]
+
+# 发送私聊消息
+await StarTools.send_message_by_id(
+    type="PrivateMessage",
+    id="123456789",                 # QQ号
+    message_chain=message_chain,
+    platform="aiocqhttp"            # 目前只支持这个
+)
+
+# 发送群聊消息
+await StarTools.send_message_by_id(
+    type="GroupMessage",
+    id="987654321",                 # 群号
+    message_chain=message_chain,
+    platform="aiocqhttp"            # 目前只支持这个
+)
+...
+```
+
+## 通过ID直接发送消息
+
+```python
+from astrbot.api.star import StarTools
+import astrbot.api.message_components as Comp
+
+...
+message_chain = [
+    Comp.Plain("你好这里是测试")
+]
+
+# 发送私聊消息
+await StarTools.send_message_by_id(
+    type="PrivateMessage",
+    id="123456789",                 # QQ号
+    message_chain=message_chain,
+    platform="aiocqhttp"            # 目前只支持这个
+)
+
+# 发送群聊消息
+await StarTools.send_message_by_id(
+    type="GroupMessage",
+    id="987654321",                 # 群号
+    message_chain=message_chain,
+    platform="aiocqhttp"            # 目前只支持这个
+)
+...
+```
+
+## 构造消息(返回为AstrBotMessage)
+
+```python
+from astrbot.api.platform import AstrBotMessage, MessageMember, MessageType
+from astrbot.api.star import StarTools
+import astrbot.api.message_components as Comp
+
+...
+# 用户消息
+member1 = MessageMember(
+    user_id="123456789",
+    nickname="小明"
+)
+
+message_content = [
+    Comp.Plain("你好，这是文本消息！"),
+    Comp.Plain("\n"),
+    Comp.Plain("这是一条测试消息。"),
+]
+
+# 与消息链保持一置(这个是文本用于给ai的)
+message_text = "你好，这是文本消息！\n这是一条测试消息。"
+
+# 私聊消息
+abm = await StarTools.create_message(
+    type="PrivateMessage",      # 私聊消息
+    self_id="1000000",          # 机器人自己的QQ号
+    session_id="123456789",     # 会话ID（用户QQ号）
+    sender=member1,             # 发送人
+    message=message_content,    # 消息链
+    message_str=message_text,   # 纯文本消息
+    message_id="msg_001",       # 可选：自定义消息ID
+    raw_message=None,           # 可选：原始消息对象
+    group_id="",                # 私聊消息，群组ID为空
+)
+
+# 群聊消息
+abm = await StarTools.create_message(
+    type="GroupMessage",        # 私聊消息
+    self_id="1000000",          # 机器人自己的QQ号
+    session_id="123456789",     # 会话ID
+    sender=member1,             # 发送人
+    message=message_content,    # 消息链
+    message_str=message_text,   # 纯文本消息
+    message_id=None,            # 可选：自定义消息ID
+    raw_message=None,           # 可选：原始消息对象
+    group_id="12345678",        # 群聊消息，群组ID必填
+)
+
+```
+
+## 激活/停用/删除一个已经注册的函数调用工具
+
+```python
+from astrbot.api.star import StarTools
+
+name = "工具名称"
+
+# 激活一个已经注册的函数调用工具
+StarTools.activate_llm_tool(name)
+
+# 停用一个已经注册的函数调用工具
+StarTools.deactivate_llm_tool(name)
+
+# 删除一个已经注册的函数调用工具
+StarTools.unregister_llm_tool(name)
+```
+
+## 获取插件数据目录的绝对路径(用于长久化存储)
+
+```python
+from astrbot.api.star import StarTools
+
+# 自动根据调用栈获取
+data_dir = StarTools.get_data_dir()
+
+# 根据名称获取
+plugin_name = "MY_plugin"
+data_dir = StarTools.get_data_dir(plugin_name=plugin_name)
+```
+
+---
+---
+
 ## 关于 astrbot.core.star.Context 类
 
 ### 免责声明:以下文档为非astrbot官方人员书写,可能存在一定偏差和问题,如果遇到问题请进群询问,如果可以请一同修复文档

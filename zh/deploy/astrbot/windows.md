@@ -84,7 +84,7 @@ windows 搜索 Python，打开文件位置：
 
 ## 报错2：You require CPython 3.14 (`cp314`)
 
-如果出现如下内容的报错，这是由于 Python 版本过高导致的，AstrBot 目前只**支持 Python 3.10–3.13**
+如果出现如下内容的报错，这是由于 Python 3.14 非常新，faiss-cpu 官方还没有编译出适配 3.14 的版本。因此，安装程序找不到对应的库，你可以安装 **Python 3.10–3.13**  来规避此问题。
 
 ```
   x No solution found when resolving dependencies:
@@ -93,10 +93,19 @@ windows 搜索 Python，打开文件位置：
 
       hint: You require CPython 3.14 (`cp314`), but we only found wheels for `faiss-cpu` (v1.10.0) with the following
       Python ABI tags: `cp39`, `cp310`, `cp311`, `cp312`, `cp313`
+...
 ```
 
 <img width="1756" height="874" alt="image" src="https://github.com/user-attachments/assets/a41df66e-d0f4-4033-b633-046daafc272f" />
 
-**解决办法：**
+**解决办法1：**
 
-卸载3.14+版本的 Python ，安装 *Python 3.10–3.13* 之间的任一版本，并且在安装时 **勾选 Add Python to PATH** ，然后重启电脑。
+卸载3.14+版本的 Python ，安装 *Python 3.10–3.13* 之间的任一版本，并且在安装时 **勾选 Add Python to PATH** ，删除生成的 AstrBot 文件夹，然后重启电脑，重新运行安装脚本。
+
+> 华为云镜像站：[Python3.12.5](https://mirrors.huaweicloud.com/python/3.12.5/python-3.12.5-amd64.exe) 或 [其他版本](https://mirrors.huaweicloud.com/python/)
+
+**解决办法2：**
+
+保留 Python 3.14 ，安装 *Python 3.10–3.13* 之间的任一版本，参照 **报错1：Python is not installed** 的 **方法1** 进行操作。
+
+> PS：既然官方没有给 Python 3.14 提供预编译好的二进制包（Wheel），你可以尝试本地编译，但是极大概率会遇到各种复杂的编译错误，非常耗时且容易折腾崩，这里并不推荐。

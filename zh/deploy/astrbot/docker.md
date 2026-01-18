@@ -53,7 +53,7 @@ docker compose -f compose-with-shipyard.yml up -d
 docker pull soulter/shipyard-ship:latest
 ```
 
-配置和使用详见 [Agent 沙盒环境](/zh/use/astrbot-agent-sandbox.md) 文档。
+配置和使用详见 [Agent 沙盒环境](/use/astrbot-agent-sandbox.md) 文档。
 :::
 
 

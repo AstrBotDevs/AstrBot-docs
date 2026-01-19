@@ -119,35 +119,6 @@ await StarTools.send_message_by_id(
 ...
 ```
 
-## 通过ID直接发送消息
-
-```python
-from astrbot.api.star import StarTools
-import astrbot.api.message_components as Comp
-
-...
-message_chain = [
-    Comp.Plain("你好这里是测试")
-]
-
-# 发送私聊消息
-await StarTools.send_message_by_id(
-    type="PrivateMessage",
-    id="123456789",                 # QQ号
-    message_chain=message_chain,
-    platform="aiocqhttp"            # 目前只支持这个
-)
-
-# 发送群聊消息
-await StarTools.send_message_by_id(
-    type="GroupMessage",
-    id="987654321",                 # 群号
-    message_chain=message_chain,
-    platform="aiocqhttp"            # 目前只支持这个
-)
-...
-```
-
 ## 构造消息(返回为AstrBotMessage)
 
 ```python
@@ -221,7 +192,7 @@ StarTools.unregister_llm_tool(name)
 ```python
 from astrbot.api.star import StarTools
 
-# 自动根据调用栈获取
+# 自动根据调用栈获取(当前插件的)
 data_dir = StarTools.get_data_dir()
 
 # 根据名称获取
@@ -626,7 +597,7 @@ for provider_id, provider in self.context.provider_manager.inst_map.items():
 
 ---
 
-## 使用示例
+## **使用示例**
 
 ---
 
@@ -876,7 +847,7 @@ for provider_id, provider in self.context.provider_manager.inst_map.items():
 
 ---
 
-## 使用示例
+## **使用示例**
 
 ---
 
@@ -1154,7 +1125,7 @@ class Conversation:
 
 ---
 
-## 使用示例
+## **使用示例**
 
 ---
 
@@ -1246,7 +1217,7 @@ await self.context.message_history_manager.delete(
 
 ---
 
-## 使用示例
+## **使用示例**
 
 ---
 
@@ -1431,7 +1402,7 @@ for persona_v3 in personas_v3[:2]:  # 只显示前2个
 
 ---
 
-## 使用示例
+## **使用示例**
 
 ---
 

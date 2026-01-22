@@ -56,7 +56,7 @@
 > 如果部署不了，请参阅其他两个部署方式：Docker 部署和 手动部署。
 
 
-## 报错1：Python is not installed
+## 常见报错 1：Python is not installed
 
 如果提示 Python is not installed，并且已经安装 Python，并且**重启电脑仍报这个错误**，说明环境变量不对，有两个方法解决：
 
@@ -82,7 +82,7 @@ windows 搜索 Python，打开文件位置：
 
 重装 python，并且在安装时勾选 `Add Python to PATH`，然后重启电脑。
 
-## 报错2：You require CPython 3.14 (`cp314`)
+## 常见报错 2：You require CPython 3.14 (`cp314`)
 
 如果出现如下内容的报错，这是由于 Python 3.14 非常新，faiss-cpu 官方还没有编译出适配 3.14 的版本。因此，安装程序找不到对应的库，你可以安装 **Python 3.10–3.13**  来规避此问题。
 

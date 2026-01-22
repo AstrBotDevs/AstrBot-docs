@@ -82,3 +82,9 @@ docker pull soulter/shipyard-ship:latest
 Shipyard 会给每个会话分配一个工作目录，在 `/home/<会话唯一 ID>` 目录下。
 
 Shipyard 会自动将沙盒环境中的 /home 目录挂载到宿主机的 `${PWD}/data/shipyard/ship_mnt_data` 目录下，当沙盒环境实例被销毁后，如果某个会话继续请求调用沙箱，Shipyard 会重新创建一个新的沙盒环境实例，并将之前持久化的数据重新挂载进去，保证数据的连续性。
+
+## 其他同类社区插件
+
+### luosheng520qaq/astrobot_plugin_code_executor
+
+如果您资源有限，不希望使用沙盒环境来执行代码，可以尝试 luosheng520qaq 开发的 [astrobot_plugin_code_executor](https://github.com/luosheng520qaq/astrobot_plugin_code_executor) 插件。该插件会直接在宿主机上执行代码。插件已经尽力提升安全性，但仍需留意代码安全性问题。

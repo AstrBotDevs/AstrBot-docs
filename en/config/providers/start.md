@@ -18,3 +18,9 @@ Using DeepSeek as an example, assuming you have registered and logged in to a De
 5. Open the AstrBot Console -> Service Providers page, click Add Provider, find and click `OpenAI` (if the provider type you want to connect is listed, prefer clicking that type; for some providers like DeepSeek we provide optimized adapter support). Paste the API Key into the `API Key` field of the form and paste the API Base URL into the `API Base URL` field.
 6. Click Get Model List, find the model you want to use, click the + button on the right, then toggle the switch that appears on the right to enable it.
 7. Go to the Configuration page, find the conversational model, click the selection button on the right, choose the provider and model you just added, then click the Save Configuration button at the bottom-right of the screen.
+
+## Using Environment Variables to Load Keys
+
+> v4.13.0 之后引入
+
+Supports using environment variables to load the API Key of model service providers. On the provider configuration page, fill in the API Key field with the name `$ENV_VARIABLE_NAME`, for example, `$DEESEEK_API_KEY`.

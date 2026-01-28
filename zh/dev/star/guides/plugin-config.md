@@ -66,6 +66,21 @@ AstrBot 提供了”强大“的配置解析和可视化功能。能够让用户
 
 ![image](/source/images/plugin/image-select-provider.png)
 
+### file 类型的 schema
+
+在 v4.13.0 之后引入，允许插件定义文件上传配置项，引导用户上传插件所需的文件。
+
+```json
+{
+  "demo_files": {
+    "type": "file",
+    "description": "Uploaded files for demo",
+    "default": [], // 支持多文件上传，默认值为一个空列表
+    "file_types": ["pdf", "docx"] // 允许上传的文件类型列表
+  }
+}
+```
+
 ### dict 类型的 schema
 
 用于可视化编辑一个 Python 的 dict 类型的配置。如 AstrBot Core 中的自定义请求体参数配置项：

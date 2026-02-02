@@ -47,7 +47,9 @@ export default defineConfig({
                 text: "部署 AstrBot",
                 base: "/deploy/astrbot",
                 collapsed: false,
+                link: "/index",
                 items: [
+                  { text: "🚀 部署概览", link: "/index" },
                   { text: "🦈 Docker 部署", link: "/docker" },
                   { text: "☸️ Kubernetes 部署", link: "/kubernetes" },
                   { text: "☁️ 雨云一键云部署(NEW)", link: "/rainyun" },
@@ -271,7 +273,9 @@ export default defineConfig({
                 text: "Deploy AstrBot",
                 base: "/en/deploy/astrbot",
                 collapsed: true,
+                link: "/index",
                 items: [
+                  { text: "🚀 Deployment Overview", link: "/index" },
                   { text: "🦈 Docker Deployment", link: "/docker" },
                   { text: "☸️ Kubernetes Deployment", link: "/kubernetes" },
                   { text: "👍 Manual Deployment", link: "/cli" },

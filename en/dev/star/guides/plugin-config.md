@@ -43,7 +43,7 @@ The file content is a `Schema` that represents the configuration. The Schema is 
 }
 ```
 
-- `type`: **Required**. The type of the configuration. Supports `string`, `text`, `int`, `float`, `bool`, `object`, `list`, `dict`, `template_list`, `file`. When the type is `text`, it will be visualized as a larger resizable textarea component to accommodate large text.
+- `type`: **Required**. The type of the configuration. Supports `string`, `text`, `int`, `float`, `bool`, `object`, `list`, `dict`, `template_list`, `file`, `palette`, `palette_rgb`, `palette_hsv`. When the type is `text`, it will be visualized as a larger resizable textarea component to accommodate large text.
 - `description`: Optional. Description of the configuration. A one-sentence description of the configuration's behavior is recommended.
 - `hint`: Optional. Hint information for the configuration, displayed in the question mark button on the right in the image above, shown when hovering over it.
 - `obvious_hint`: Optional. Whether the configuration hint should be prominently displayed, like `token` in the image above.
@@ -80,6 +80,16 @@ Introduced in v4.13.0, this allows plugins to define file-upload configuration i
   }
 }
 ```
+
+### Palette Type
+
+Used for color selection. Supports three types:
+
+- `palette`: HEX format (e.g., `#FFFFFF`).
+- `palette_rgb`: RGB format (e.g., `rgb(255, 255, 255)`).
+- `palette_hsv`: HSV format (e.g., `hsv(0, 0%, 100%)`).
+
+In the WebUI, it will be presented as a color preview block and an input field. Clicking the preview block opens a color picker.
 
 ### `dict` type schema
 

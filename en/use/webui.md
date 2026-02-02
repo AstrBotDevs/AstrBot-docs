@@ -49,6 +49,15 @@ Filter by plugin, type (command / command group / subcommand), permission, and s
 
 You can enable/disable and rename each command.
 
+## Trace
+
+In the `Trace` page of the admin panel, you can view the real-time execution trace of AstrBot. This is useful for debugging model call paths, tool invocation processes, etc.
+
+You can enable or disable trace recording using the switch at the top of the page.
+
+> [!NOTE]
+> Currently only recording partial model call paths from AstrBot main Agent. More coverage will be added.
+
 ## Updating the Admin Panel
 
 When AstrBot starts, it automatically checks if the admin panel needs updating. If it does, the first log entry (in yellow) will prompt you.

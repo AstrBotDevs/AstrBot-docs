@@ -106,6 +106,7 @@ export default defineConfig({
                       { text: "使用 server-satori", link: "/server-satori" },
                     ],
                   },
+                  { text: "CLI 测试器", link: "/cli-tester" },
                 ],
               },
               {
@@ -191,6 +192,7 @@ export default defineConfig({
                   { text: "存储", link: "/guides/storage" },
                   { text: "文转图", link: "/guides/html-to-pic" },
                   { text: "会话控制器", link: "/guides/session-control" },
+                  { text: "使用 CLI Tester 调试", link: "/guides/test-with-cli" },
                   { text: "杂项", link: "/guides/other" },
                   { text: "发布插件", link: "/plugin-publish" },
                   { text: "插件指南（旧）", link: "/plugin" },
@@ -325,6 +327,7 @@ export default defineConfig({
                       { text: "Using server-satori", link: "/server-satori" },
                     ],
                   },
+                  { text: "CLI Tester", link: "/cli-tester" },
                 ],
               },
               {
@@ -410,6 +413,7 @@ export default defineConfig({
                   { text: "Storage", link: "/guides/storage" },
                   { text: "HTML to Image", link: "/guides/html-to-pic" },
                   { text: "Session Control", link: "/guides/session-control" },
+                  { text: "Debugging with CLI Tester", link: "/guides/test-with-cli" },
                   { text: "Publish Plugin", link: "/plugin-publish" },
                 ],
               },

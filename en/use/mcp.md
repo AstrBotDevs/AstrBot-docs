@@ -78,6 +78,10 @@ Configure it in the AstrBot WebUI:
 
 That's it.
 
+::: tip Note
+MCP tools are not affected by plugin filtering logic. Even if you have set "Only enable specific plugins" (plugin whitelist) for a session or group, MCP tools can still be called by the AI normally.
+:::
+
 Reference links:
 
 1. Learn how to use MCP here: [Model Context Protocol](https://modelcontextprotocol.io/introduction)

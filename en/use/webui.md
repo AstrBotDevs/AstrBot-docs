@@ -49,6 +49,21 @@ Filter by plugin, type (command / command group / subcommand), permission, and s
 
 You can enable/disable and rename each command.
 
+## Chat and Persona Management
+
+In the `Chat` page of the admin panel, you can interact directly with AstrBot.
+
+### Persona Switching and Editing
+
+At the top or sidebar of the chat page (depending on the UI version), you can use the persona selector to switch the persona for the current conversation.
+
+- **Switch Persona**: Click on a persona in the list to switch to it.
+- **Create Persona**: Click the `Create Persona` button at the bottom of the selector.
+- **Edit Persona**: In the persona selector list, click the **Edit icon (pencil)** next to a persona to modify its configuration (such as system prompt, name, etc.) directly without leaving the chat interface.
+
+> [!NOTE]
+> The default persona usually cannot be edited directly.
+
 ## Updating the Admin Panel
 
 When AstrBot starts, it automatically checks if the admin panel needs updating. If it does, the first log entry (in yellow) will prompt you.

@@ -162,7 +162,7 @@ export default defineConfig({
               { text: "工具使用 Tools", link: "/function-calling" },
               { text: "技能 Skills", link: "/skills" },
               { text: "SubAgent 编排", link: "/subagent" },
-              { text: "主动任务 (FutureTask)", link: "/proactive-agent" },
+              { text: "主动型 Agent 能力", link: "/proactive-agent" },
               { text: "MCP", link: "/mcp" },
               { text: "网页搜索", link: "/websearch" },
               { text: "知识库", link: "/knowledge-base" },

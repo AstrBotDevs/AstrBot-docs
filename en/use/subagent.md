@@ -1,6 +1,10 @@
-# SubAgent Orchestration
+# Agent Handoff and SubAgent
 
 SubAgent Orchestration is an advanced agent organization method provided by AstrBot. It allows you to decompose complex tasks into multiple specialized SubAgents, reducing the Main Agent's prompt length and improving task execution success rates.
+
+v4.14.0 introduced this feature, which is currently an **experimental feature** and not yet stable.
+
+![](/source/images/subagent/image.png)
 
 ## Motivation
 
@@ -23,13 +27,16 @@ With SubAgent Orchestration, the Main Agent is only responsible for user interac
 In the AstrBot WebUI, click **SubAgents** in the left navigation bar.
 
 ### 1. Enable SubAgent Mode
-Toggle "Enable SubAgent Delegation Mode" at the top of the page. Once enabled, the Main Agent enters "Router" mode, focusing on task distribution.
+
+Toggle "Enable SubAgent Orchestration" at the top of the page.
 
 ### 2. Create a SubAgent
+
 Click the "Add SubAgent" button:
+
 - **Agent Name**: Used to generate the delegation tool name (e.g., `transfer_to_weather`). Use lowercase and underscores.
+- **Select Persona**: Choose a preset Persona, which defines the SubAgent's basic character, behavioral guidance, and the Tools collection it can use. You can create and manage Personas on the "Persona Settings" page.
 - **Description for Main LLM**: This description tells the Main Agent what this SubAgent is good at, ensuring accurate delegation.
-- **SubAgent System Prompt**: The SubAgent's own instructions, guiding how it should perform tasks.
 - **Assign Tools**: Select the tools this SubAgent can invoke.
 - **Provider Override (Optional)**: You can specify different model providers for specific SubAgents. For example, the Main Agent could use GPT-4o, while a simple query SubAgent uses GPT-4o-mini to save costs.
 
@@ -38,3 +45,10 @@ Click the "Add SubAgent" button:
 - **Single Responsibility**: Each SubAgent should handle one category of related tasks (e.g., search, file processing, smart home control).
 - **Clear Descriptions**: Descriptions for the Main Agent should be concise and highlight the SubAgent's core capabilities.
 - **Layered Management**: For extremely complex tasks, consider multi-level delegation if necessary.
+
+## Known Issues
+
+SubAgent orchestration is currently an **experimental feature** and not yet stable.
+
+1. Skills of personas cannot be isolated at this time.
+2. SubAgent conversation histories are not currently saved.

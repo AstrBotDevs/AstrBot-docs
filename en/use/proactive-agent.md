@@ -1,17 +1,26 @@
-# Proactive Tasks and Multimedia Delivery
+# Proactive Capabilities
 
-AstrBot introduces a Proactive Agent system, enabling the bot to not only respond passively but also manage scheduled tasks and send multimedia content proactively.
+AstrBot introduces a Proactive Agent system, enabling AstrBot to not only respond passively to users but also schedule future tasks and proactively execute them at specified times, delivering results (text, images, files, etc.) to users.
 
-## Scheduled Tasks (FutureTask)
+![](/source/images/proactive-agent/image.png)
 
-The Main Agent can now manage a global **Cron Job List**, assigning tasks to its future self.
+Introduced in v4.14.0, this is currently an **experimental feature** and not yet stable.
+
+## Future Tasks (FutureTask)
+
+The Main Agent can now manage a global **Cron Job List**, setting tasks for its future self.
 
 ### Features
+
 - **Self-Wakeup**: AstrBot automatically wakes up at the scheduled time to execute tasks.
 - **Task Feedback**: After execution, AstrBot reports the results back to the task creator.
-- **WebUI Management**: You can view, edit, or delete scheduled tasks in the "Cron Jobs" page of the WebUI.
+- **WebUI Management**: You can view, edit, or delete scheduled tasks in the "Future Tasks" page of the WebUI.
 
 ### How to Use
+
+> [!TIP]
+> First, ensure that "Proactive Capabilities" is enabled in the configuration.
+
 The Main Agent has the ability to manage scheduled tasks. You can tell it:
 - "Remind me to have a meeting at 8 AM tomorrow."
 - "Summarize this week's work log every Friday at 5 PM."
@@ -19,8 +28,13 @@ The Main Agent has the ability to manage scheduled tasks. You can tell it:
 
 The Main Agent will call built-in scheduling tools to arrange these plans.
 
+You can view and manage all future tasks by clicking **Future Tasks** in the left navigation bar of the AstrBot WebUI.
+
+![](/source/images/proactive-agent/image-1.png)
+
 ### Supported Platforms
-Scheduled tasks are currently supported on:
+
+Scheduling tasks is supported on all platforms. However, due to some platforms not providing APIs for proactive message pushing, only the following platforms support AstrBot proactively pushing results to users:
 - Telegram
 - OneBot (QQ)
 - Slack
@@ -29,17 +43,10 @@ Scheduled tasks are currently supported on:
 - Misskey
 - Satori
 
-## Multimedia Message Delivery
+## Sending Multimedia Messages
 
-To facilitate the direct delivery of images, audio, video, and other files to users, AstrBot provides a default `send_message_to_user` tool.
+To make it easier for Agents to send images, audio, video, and other files directly to users, AstrBot provides a `send_message_to_user` tool by default.
 
 ### Features
-- **Direct Delivery**: Agents can send generated or retrieved multimedia files directly to users without complex text conversions.
+- **Direct Sending**: Agents can send generated or retrieved multimedia files directly to users without complex text conversions.
 - **Multiple Formats**: Supports images, files, audio, video, etc.
-
-### Use Cases
-When an Agent needs to show you a chart, send a PDF report, or play an audio clip, it will automatically call this tool.
-
-## Notes
-- **Platform Limitations**: Multimedia delivery and proactive notifications are subject to the API limits of each messaging platform.
-- **ChatUI Support**: ChatUI currently does not support proactive wakeup feedback; this feature will be added in a future version.

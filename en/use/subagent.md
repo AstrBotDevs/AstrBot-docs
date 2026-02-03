@@ -22,6 +22,8 @@ With SubAgent Orchestration, the Main Agent is only responsible for user interac
 3. **SubAgent Execution**: The SubAgent receives the task, performs operations using its assigned tools, and returns the organized results to the Main Agent.
 4. **Feedback**: The Main Agent receives the results and continues the conversation with the user.
 
+![](/source/images/subagent/1.png)
+
 ## Configuration
 
 In the AstrBot WebUI, click **SubAgents** in the left navigation bar.

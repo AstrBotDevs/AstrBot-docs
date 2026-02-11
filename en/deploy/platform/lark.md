@@ -1,5 +1,19 @@
 # Connecting to Lark
 
+## Supported Message Types
+
+> Version v4.15.0.
+
+| Message Type | Receive Support | Send Support | Notes |
+| --- | --- | --- | --- |
+| Text | Yes | Yes | |
+| Image | Yes | Yes | |
+| Voice | No | Yes | |
+| Video | No | Yes | |
+| File | No | Yes | |
+
+Proactive message push: Supported.
+
 ## Creating a Bot
 
 Navigate to the [Developer Console](https://open.feishu.cn/app) and create a custom enterprise application.

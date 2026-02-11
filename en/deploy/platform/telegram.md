@@ -1,6 +1,20 @@
 
 # Connecting to Telegram
 
+## Supported Message Types
+
+> Version v4.15.0.
+
+| Message Type | Receive Support | Send Support | Notes |
+| --- | --- | --- | --- |
+| Text | Yes | Yes | |
+| Image | Yes | Yes | |
+| Voice | Yes | Yes | |
+| Video | Yes | Yes | |
+| File | Yes | Yes | |
+
+Proactive message push: Supported.
+
 ## 1. Create a Telegram Bot
 
 First, open Telegram and search for `BotFather`. Click `Start`, then send `/newbot` and follow the prompts to enter your bot's name and username.

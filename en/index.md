@@ -4,8 +4,8 @@ layout: home
 
 hero:
   name: "AstrBot"
-  text: "Agentic IM ChatBot Infrastructure"
-  tagline: Multi-Platform Integration / Flexible Plugin System / Multiple LLM Support / Agent Capabilities
+  text: "Agentic AI assistant for personal and group chats"
+  tagline: Connect any IM / 1000+ plugins / General Agent Orchestration
   image:
     src: https://cf.s3.soulter.top/astrbot-logo.svg
     alt: AstrBot Logo

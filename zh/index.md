@@ -4,8 +4,8 @@ layout: home
 
 hero:
   name: "AstrBot"
-  text: "聊天智能体基础设施"
-  tagline: 你的 AI 伴侣 / 你的智能客服 / 你的企业知识库
+  text: "Agentic AI 助手，服务个人与群聊"
+  tagline: 连接 IM / 1000+ 插件扩展 / 通用 Agent 能力编排
   image:
     src: https://cf.s3.soulter.top/astrbot-logo.svg
     alt: AstrBot Logo

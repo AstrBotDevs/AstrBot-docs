@@ -63,13 +63,18 @@ pkg install uv git proot-distro
 ```
 
 ### 使用 `proot-distro` 安装 `ubuntu环境`
-
->[!TIP]
->中国大陆概率访问`GitHub`，故建议使用加速器或代理
-
 ```bash
 proot-distro install ubuntu
 ```
+
+>[!TIP]
+>中国大陆概率访问`GitHub`，故建议使用加速器或代理
+>
+>或者也可以执行这两条指令来使用镜像
+>```bash
+>export PD_OVERRIDE_TARBALL_URL=https://ghfast.top/github.com/termux/proot-distro/releases/download/v4.30.1/ubuntu-questing-aarch64-pd-v4.30.1.tar.xz
+>export PD_OVERRIDE_TARBALL_SHA256=5ab35b90cd9a9f180656261ba400a135c4c01c2da4b74522118342f985c2d328
+>```
 
 ### 登录 `Ubuntu环境`
 
@@ -83,36 +88,33 @@ proot-distro login ubuntu
 
 此时便进入了`Ubuntu环境`，我们需使用`apt`命令安装软件包了
 
-## 添加第三方PPA
+## 安装python环境
 
->[!TIP]
->`Python 3.10`并不在官方的软件源中，而`uv`所要求的Python版本为3.10 ，所以进行此步为必须
 
-### 使用`apt`安装`software-properties-common` (添加PPA前置)
+脚本默认使用清华源下载，如不可用则可以尝试官方源：
+> `https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/`替换为`https://repo.anaconda.com/miniconda/`
 
-<!--这里不直接放termux基础环境里运行是因为他会报错，而且proot-distro也不大，性能损耗也很小-->
+全部复制以下语句后运行
 
-<!--这里如果安装 miniconda 或者 anaconda 都会有报错，不知道为什么-->
-
+<!-- 这里优化了大陆网络环境，修复了 Miniconda 报错问题 -->
 ```bash
-apt update && apt install software-properties-common
+cat > install-py310.sh << EOF
+echo -e "\e[32m 开始安装python3.10 \e[0m - ASTRBOT"
+apt update
+apt install wget -y
+export SHELL=/bin/bash
+export miniconda_version="Miniconda3-py310_25.9.1-3-Linux-$(uname -m).sh"
+wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/${miniconda_version}
+chmod +x $miniconda_version
+./$miniconda_version -bcu
+source ~/.bashrc
+echo -e "\e[32m 成功安装： \e[0m"
+python --version
+EOF
+chmod +x install-py310.sh&&./install-py310.sh
 ```
 
-### 添加`deadsnakes`PPA(Python官方维护)
-
-```bash
-add-apt-repository ppa:deadsnakes/ppa && apt update
-```
-
-添加时你可能会看到:`Press [ENTER] to continue or Ctrl-c to cancel.` ，此时按下回车(换行)即可
-
-## 安装 `Python`
-
-在进行完以上步骤后，即可安装`Python 3.10`
-
-```bash
-apt install python3.10
-```
+如果安装成功，则可以在终端中看到`Python 3.10.19`
 
 ## 克隆 `AstrBot` 仓库
 

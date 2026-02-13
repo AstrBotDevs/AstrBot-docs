@@ -41,6 +41,10 @@ You can also click the + button in the bottom right corner to manually install p
 
 > Due to the plugin update mechanism, the AstrBot Team cannot fully guarantee the security of plugins in the plugin market. Please carefully verify them. The AstrBot Team is not responsible for any losses caused by plugins.
 
+### Handling Plugin Load Failures
+
+If a plugin fails to load, the admin panel will display the error message and provide a **"Try one-click reload fix"** button. This allows you to quickly reload the plugin after fixing the environment (e.g., installing missing dependencies) or modifying the code, without having to restart the entire application.
+
 ## Command Management
 
 Use the `Command Management` menu on the left to centrally manage all registered commands; system plugins are hidden by default.

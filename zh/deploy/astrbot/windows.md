@@ -1,4 +1,24 @@
-# 使用 Windows 一键安装器部署 AstrBot
+# 使用 AstrBot 启动器部署 AstrBot
+
+## AstrBot 一键启动器
+
+AstrBot 一键启动器支持 Windows、MacOS、Linux 等多端部署。
+
+首先，打开 [astrbot-launcher](https://github.com/Raven95676/astrbot-launcher)，然后找到右边的 Releases，点击最新版本的 Release，在新的页面的 Assets 中下载对应你系统的安装器。
+
+如，Windows X86 的用户应该下载 `AstrBot.Launcher_0.2.1_x64-setup.exe`，Windows on Arm 的用户应该下载 `AstrBot.Launcher_0.2.1_arm64-setup.exe`，MacOS M 芯片的用户下载 `AstrBot.Launcher_0.2.1_aarch64.dmg`。
+
+MacOS 用户下载安装好后，可能会遇到 "已损坏，无法打开" 的提示。这是因为 MacOS 的安全机制阻止了未认证的应用运行。解决方法如下：
+
+1. 打开终端
+2. 输入以下命令并回车：
+   `xattr -dr com.apple.quarantine /Applications/AstrBot\ Launcher.app`
+3. 重新尝试打开 AstrBot Launcher 应用
+
+
+## 旧版本 Windows 安装器
+
+推荐使用上面提到的 AstrBot 一键启动器来部署 AstrBot，因为它更简单、更自动化、更现代化，适合大多数用户。
 
 安装器是一个使用 `Powershell` 编写的脚本，体积小巧，<20KB。需要您的电脑上安装有 `Powershell`，一般 `Windows 10` 及以上版本的设备都会自带这个工具。
 

@@ -36,6 +36,15 @@
 - Windows: `C:\Users\你的用户名\.astrbot`
 - MacOS / Linux: `/Users/你的用户名/.astrbot` 或者 `/home/你的用户名/.astrbot`
 
+### 通过 AstrBot Launcher 安装的 AstrBot，data 目录在哪？
+
+如果是旧版本的 AstrBot Launcher（Powershell），data 目录就在 Launcher bat 脚本的同级目录下。
+
+如果是新版本的 AstrBot Launcher（可视化），data 目录在家目录下的 `.astrbot_launcher` 目录下。
+
+- Windows: `C:\Users\你的用户名\.astrbot_launcher`
+- MacOS / Linux: `/Users/你的用户名/.astrbot_launcher` 或者 `/home/你的用户名/.astrbot_launcher`
+
 ### 机器人在群聊无法聊天
 
 1. 群聊情况下，由于防止消息泛滥，不会对每条监听到的消息都回复，请尝试 @ 机器人或者使用唤醒词来聊天，比如默认的 `/`，输入 `/你好`。

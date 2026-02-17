@@ -20,6 +20,15 @@ To modify your account credentials, follow these steps:
 
 ## Bot Core Related
 
+### How to Let AstrBot Control My Mac / Windows / Linux Computer?
+
+1. In AstrBot WebUI's `Config -> General Config`, find `Use Computer Capabilities`, and select `local` for the runtime environment.
+2. In `Config -> Other Config`, find `Admin ID List`, and add your user ID (you can get it through the `/sid` command).
+
+> [!TIP]
+> For security reasons, when runtime environment is set to `local`, AstrBot only allows AstrBot administrators to use computer capabilities by default.
+> You can select `sandbox` for the runtime environment, which allows all users to use computer capabilities (in an isolated sandbox). For more details, see [AstrBot Sandbox Environment](/en/use/astrbot-agent-sandbox.md)
+
 ### Bot Cannot Chat in Group Conversations
 
 1. In group chats, to prevent message flooding, the bot will not respond to every monitored message. Please try mentioning (@) the bot or using a wake word to chat, such as the default `/`, for example: `/hello`.

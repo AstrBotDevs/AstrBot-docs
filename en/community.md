@@ -25,12 +25,13 @@ Welcome to submit Issues or Pull Requests:
 > 1. All groups are available to join. If you find that the group size is below the limit, please feel free to join~
 > 2. We don't restrict you to joining only one group. You may join multiple groups as needed, but we will periodically remove inactive members.
 
-- Group 1: 322154837 (2000-member group, full)
-- Group 2: 945041621 (for bot testing)
-- Group 3: 630166526 (2000-member group, full)
-- Group 4: 775869627 (1000-member group, full)
-- Group 5: 822130018 (2000-member group, full)
-- Group 6: 753075035 (2000-member group)
+- Group 1: 322154837  (2000-member group)
+- Group 3: 630166526  (2000-member group)
+- Group 4: 1077826412 (1000-member group)
+- Group 5: 822130018  (2000-member group)
+- Group 6: 753075035  (2000-member group)
+- Group 7: 743746109  (500-member  group)
+- Group 8: 1030353265 (500-member  group)
 - **AstrBot Core Development Group: 975206796** (AstrBot development members are usually active here. Welcome to anyone interested in programming/AI technology~)
 
 ## Become an AstrBot Organization Member

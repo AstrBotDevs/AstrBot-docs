@@ -1,26 +1,5 @@
 # FAQ
 
-## 安装相关
-
-## OneBot v11 实现端 NapCat 连接相关
-
-### 我明明按照文档的步骤做了，为什么 NapCat 连不上 Astrbot？
-
-1. 如果你两个**全都**是使用 Docker 部署，请尝试在终端运行：
-
-```bash
-sudo docker network create newnet           # 创建新网络 
-sudo docker network connect newnet astrbot  
-sudo docker network connect newnet napcat   # 让两个容器连到一起
-sudo docker restart astrbot
-sudo docker restart napcat                  # 重启容器
-```
-
-运行无报错则回到 NapCat 的 WebUI，网络配置中，将你之前填写的 `ws://127.0.0.1:6199/ws` 修改为 `ws://astrbot:6199/ws`。
-
-2. 如果只有 NapCat 是 Docker 部署，请将 NapCat 的 WebUI 网络配置中的 `ws://127.0.0.1:6199/ws` 修改为 `ws://宿主机IP:6199/ws`（宿主机 IP 请自行搜索如何查看）。
-3. 如果都不是 Docker 部署，则请将 NapCat 的 WebUI 网络配置中的 `ws://127.0.0.1:6199/ws` 修改为 `ws://localhost:6199/ws` 或 `ws://127.0.0.1:6199/ws`。
-
 ## 管理面板相关
 
 ### 当管理面板打开时遇到 404 错误
@@ -49,6 +28,13 @@ sudo docker restart napcat                  # 重启容器
 > [!TIP]
 > AstrBot 为了安全起见，运行环境选择 `local` 时，默认仅允许 AstrBot 管理员使用电脑能力。
 > 运行环境可以选择 `sandbox`，此时所有用户都可以使用电脑能力（在一个隔离的沙箱中）。详情请看 [AstrBot 沙箱环境](/use/astrbot-agent-sandbox.md)
+
+### 通过 AstrBot 桌面客户端安装的 AstrBot，data 目录在哪？
+
+在家目录下的 `.astrbot` 目录下。
+
+- Windows: `C:\Users\你的用户名\.astrbot`
+- MacOS / Linux: `/Users/你的用户名/.astrbot` 或者 `/home/你的用户名/.astrbot`
 
 ### 机器人在群聊无法聊天
 
@@ -98,3 +84,23 @@ sudo docker restart napcat                  # 重启容器
 ![image](/source/images/faq/image-1.png)
 
 如果发现插件作者没有填写 `requirements.txt` 文件，请在插件仓库提交 Issue，提醒作者补充。
+
+
+## OneBot v11 实现端 NapCat 连接相关
+
+### 我明明按照文档的步骤做了，为什么 NapCat 连不上 Astrbot？
+
+1. 如果你两个**全都**是使用 Docker 部署，请尝试在终端运行：
+
+```bash
+sudo docker network create newnet           # 创建新网络 
+sudo docker network connect newnet astrbot  
+sudo docker network connect newnet napcat   # 让两个容器连到一起
+sudo docker restart astrbot
+sudo docker restart napcat                  # 重启容器
+```
+
+运行无报错则回到 NapCat 的 WebUI，网络配置中，将你之前填写的 `ws://127.0.0.1:6199/ws` 修改为 `ws://astrbot:6199/ws`。
+
+2. 如果只有 NapCat 是 Docker 部署，请将 NapCat 的 WebUI 网络配置中的 `ws://127.0.0.1:6199/ws` 修改为 `ws://宿主机IP:6199/ws`（宿主机 IP 请自行搜索如何查看）。
+3. 如果都不是 Docker 部署，则请将 NapCat 的 WebUI 网络配置中的 `ws://127.0.0.1:6199/ws` 修改为 `ws://localhost:6199/ws` 或 `ws://127.0.0.1:6199/ws`。

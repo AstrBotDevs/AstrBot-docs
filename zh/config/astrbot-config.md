@@ -131,6 +131,7 @@ AstrBot 默认配置如下：
     },
     "wake_prefix": ["/"],
     "log_level": "INFO",
+    "trace_enable": False,
     "pip_install_arg": "",
     "pypi_index_url": "https://mirrors.aliyun.com/pypi/simple/",
     "persona": [],  # deprecated
@@ -520,6 +521,10 @@ AstrBot WebUI 配置。
 ### `log_level`
 
 日志级别。默认为 `INFO`。可以设置为 `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`。
+
+### `trace_enable`
+
+是否启用追踪记录。默认为 `false`。启用后，AstrBot 会记录运行追踪信息，可以在管理面板的 Trace 页面查看。
 
 ### `pip_install_arg`
 

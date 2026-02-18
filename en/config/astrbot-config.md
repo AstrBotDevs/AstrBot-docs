@@ -2,15 +2,15 @@
 outline: deep
 ---
 
-# AstrBot 配置文件
+# AstrBot Configuration File
 
 ## data/cmd_config.json
 
-AstrBot 的配置文件是一个 JSON 格式的文件。AstrBot 会在启动时读取这个文件，并根据文件中的配置来初始化 AstrBot，其路径位于 `data/cmd_config.json`。
+AstrBot's configuration file is a JSON format file. AstrBot reads this file at startup and initializes based on the settings within. Its path is `data/cmd_config.json`.
 
-> 在 AstrBot v4.0.0 版本及之后，我们引入了[多配置文件](https://blog.astrbot.app/posts/what-is-changed-in-4.0.0/#%E5%A4%9A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)的概念。`data/cmd_config.json` 作为默认配置文件 `default`。其他您在 WebUI 新建的配置文件会存储在 `data/config/` 目录下，以 `abconf_` 开头。
+> Since AstrBot v4.0.0, we introduced the concept of [multiple configuration files](https://blog.astrbot.app/posts/what-is-changed-in-4.0.0/#%E5%A4%9A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6). `data/cmd_config.json` serves as the default configuration `default`. Other configuration files you create in the WebUI are stored in the `data/config/` directory, starting with `abconf_`.
 
-AstrBot 默认配置如下：
+The default AstrBot configuration is as follows:
 
 ```jsonc
 {
@@ -55,7 +55,7 @@ AstrBot 默认配置如下：
         "default_provider_id": "",
         "default_image_caption_provider_id": "",
         "image_caption_prompt": "Please describe the image using Chinese.",
-        "provider_pool": ["*"],  # "*" 表示使用所有可用的提供者
+        "provider_pool": ["*"],  # "*" means use all available providers
         "wake_prefix": "",
         "web_search": False,
         "websearch_provider": "default",
@@ -121,7 +121,7 @@ AstrBot 默认配置如下：
     },
     "platform": [],
     "platform_specific": {
-        # 平台特异配置：按平台分类，平台下按功能分组
+        # Platform-specific settings: categorized by platform, then by feature group
         "lark": {
             "pre_ack_emoji": {"enable": False, "emojis": ["Typing"]},
         },
@@ -131,422 +131,427 @@ AstrBot 默认配置如下：
     },
     "wake_prefix": ["/"],
     "log_level": "INFO",
+    "trace_enable": False,
     "pip_install_arg": "",
     "pypi_index_url": "https://mirrors.aliyun.com/pypi/simple/",
     "persona": [],  # deprecated
     "timezone": "Asia/Shanghai",
     "callback_api_base": "",
-    "default_kb_collection": "",  # 默认知识库名称
-    "plugin_set": ["*"],  # "*" 表示使用所有可用的插件, 空列表表示不使用任何插件
+    "default_kb_collection": "",  # Default knowledge base name
+    "plugin_set": ["*"],  # "*" means use all available plugins, empty list means none
 }
 ```
 
-## 字段详解
+## Field Details
 
 ### `config_version`
 
-配置文件版本，请勿修改。
+Configuration version, do not modify.
 
 ### `platform_settings`
 
-消息平台适配器的通用设置。
+General settings for message platform adapters.
 
 #### `platform_settings.unique_session`
 
-是否启用会话隔离。默认为 `false`。启用后，在群组或者频道中，每个人的对话的上下文都是独立的。
+Whether to enable session isolation. Default is `false`. When enabled, each person's conversation context in groups or channels is independent.
 
 #### `platform_settings.rate_limit`
 
-当消息速率超过限制时的处理策略。`time` 为时间窗口，`count` 为消息数量，`strategy` 为限制策略。`stall` 为等待，`discard` 为丢弃。
+Strategy when message rate exceeds limits. `time` is the window, `count` is the number of messages, and `strategy` is the limit strategy. `stall` means wait, `discard` means drop.
 
 #### `platform_settings.reply_prefix`
 
-回复消息时的固定前缀字符串。默认为空。
+Fixed prefix string when replying to messages. Default is empty.
 
 #### `platform_settings.forward_threshold`
 
-> 目前仅 QQ 平台适配器适用。
+> Currently only applicable to the QQ platform adapter.
 
-消息转发阈值。当回复内容超过一定字数后，机器人会将消息折叠成 QQ 群聊的 “转发消息”，以防止刷屏。
+Message forwarding threshold. When the reply content exceeds a certain number of characters, the bot will fold the message into a QQ group "forwarded message" to prevent spamming.
 
 #### `platform_settings.enable_id_white_list`
 
-是否启用 ID 白名单。默认为 `true`。启用后，只有在白名单中的 ID 发来的消息才会被处理。
+Whether to enable the ID whitelist. Default is `true`. When enabled, only messages from IDs in the whitelist will be processed.
 
 #### `platform_settings.id_whitelist`
 
-ID 白名单。填写后，将只处理所填写的 ID 发来的消息事件。为空时表示不启用白名单过滤。可以使用 `/sid` 指令获取在某个平台上的会话 ID。
+ID whitelist. If filled, only message events from the specified IDs will be processed. Empty means the whitelist filter is not enabled. You can use the `/sid` command to get the session ID on a platform.
 
-也可在 AstrBot 日志内获取会话 ID，当一条消息没通过白名单时，会输出 INFO 级别的日志，格式类似 `aiocqhttp:GroupMessage:547540978`
+Session IDs can also be found in AstrBot logs; when a message fails the whitelist, an INFO level log is output, e.g., `aiocqhttp:GroupMessage:547540978`.
 
 #### `platform_settings.id_whitelist_log`
 
-是否打印未通过 ID 白名单的消息日志。默认为 `true`。
+Whether to print logs for messages that fail the ID whitelist. Default is `true`.
 
 #### `platform_settings.wl_ignore_admin_on_group` & `platform_settings.wl_ignore_admin_on_friend`
 
-- `wl_ignore_admin_on_group`: 是否管理员发送的群组消息无视 ID 白名单。默认为 `true`。
+- `wl_ignore_admin_on_group`: Whether group messages from admins bypass the ID whitelist. Default is `true`.
 
-- `wl_ignore_admin_on_friend`: 是否管理员发送的私聊消息无视 ID 白名单。默认为 `true`。
+- `wl_ignore_admin_on_friend`: Whether private messages from admins bypass the ID whitelist. Default is `true`.
 
 #### `platform_settings.reply_with_mention`
 
-是否在回复消息时 @ 提到用户。默认为 `false`。
+Whether to @ mention the user when replying. Default is `false`.
 
 #### `platform_settings.reply_with_quote`
 
-是否在回复消息时引用用户的消息。默认为 `false`。
+Whether to quote the user's message when replying. Default is `false`.
 
 #### `platform_settings.path_mapping`
 
-*该配置项已经在 v4.0.0 版本之后被废弃。*
+*This configuration item has been deprecated since v4.0.0.*
 
-路径映射列表。用于将消息中的文件路径进行替换。每个映射项包含 `from` 和 `to` 两个字段，表示将消息中的 `from` 路径替换为 `to` 路径。
+List of path mappings. Used to replace file paths in messages. Each mapping item contains `from` and `to` fields, indicating that `from` in the message path is replaced with `to`.
 
 #### `platform_settings.segmented_reply`
 
-分段回复设置。
+Segmented reply settings.
 
-- `enable`: 是否启用分段回复。默认为 `false`。
-- `only_llm_result`: 是否仅对 LLM 生成的回复进行分段。默认为 `true`。
-- `interval_method`: 分段间隔方法。可选值为 `random` 和 `log`。默认为 `random`。
-- `interval`: 分段间隔时间。对于 `random` 方法，填写两个逗号分隔的数字，表示最小和最大间隔时间（单位：秒）。对于 `log` 方法，填写一个数字，表示对数基底。默认为 `"1.5,3.5"`。
-- `log_base`: 对数基底，仅在 `interval_method` 为 `log` 时适用。默认为 `2.6`。
-- `words_count_threshold`: 触发分段回复的最小字数阈值。默认为 `150`。
-- `regex`: 用于分隔一段消息。默认情况下会根据句号、问号等标点符号分隔。`re.findall(r'<regex>', text)`。默认值为 `".*?[。？！~…]+|.+$"`。
-- `content_cleanup_rule`: 移除分段后的内容中的指定的内容。支持正则表达式。如填写 `[。？！]` 将移除所有的句号、问号、感叹号。`re.sub(r'<regex>', '', text)`。
+- `enable`: Whether to enable segmented replies. Default is `false`.
+- `only_llm_result`: Whether to only segment replies generated by the LLM. Default is `true`.
+- `interval_method`: Method for segmentation intervals. Options are `random` and `log`. Default is `random`.
+- `interval`: Interval time for segmentation. For `random`, fill in two comma-separated numbers representing min and max intervals (seconds). For `log`, fill in one number representing the log base. Default is `"1.5,3.5"`.
+- `log_base`: Log base, only applicable when `interval_method` is `log`. Default is `2.6`.
+- `words_count_threshold`: Character limit for segmented replies. Only messages shorter than this value will be segmented; longer messages will be sent directly (unsegmented). Default is `150`.
+- `regex`: Used to split a message. By default, it splits based on punctuation like periods and question marks. `re.findall(r'<regex>', text)`. Default is `".*?[。？！~…]+|.+$"`.
+- `content_cleanup_rule`: Removes specified content from segments. Supports regex. For example, `[。？！]` will remove all periods, question marks, and exclamation points. `re.sub(r'<regex>', '', text)`.
 
 #### `platform_settings.no_permission_reply`
 
-是否在用户没有权限时回复无权限的提示消息。默认为 `true`。
+Whether to reply with a "no permission" prompt when a user lacks authority. Default is `true`.
 
 #### `platform_settings.empty_mention_waiting`
 
-是否启用空 @ 等待机制。默认为 `true`。启用后，当用户发送一条仅包含 @ 机器人的消息时，机器人会等待用户在 60 秒内发送下一条消息，并将两条消息合并后进行处理。这在某些平台不支持 @ 和语音/图片等消息同时发送时特别有用。
+Whether to enable the empty @ waiting mechanism. Default is `true`. When enabled, if a user sends a message containing only an @ mention of the bot, the bot waits for the user to send the next message within 60 seconds and merges the two for processing. This is particularly useful on platforms that don't support sending @ and voice/images simultaneously.
 
 #### `platform_settings.empty_mention_waiting_need_reply`
 
-在上面一个配置项(`empty_mention_waiting`)中，如果启用了触发等待，启用此项后，机器人会立即使用 LLM 生成一条回复。否则，将不回复而只是等待。默认为 `true`。
+In the above item (`empty_mention_waiting`), if waiting is triggered, enabling this will make the bot immediately generate an LLM reply. Otherwise, it just waits without replying. Default is `true`.
 
 #### `platform_settings.friend_message_needs_wake_prefix`
 
-是否在消息平台的私聊消息中需要唤醒前缀。默认为 `false`。启用后，在私聊消息中，用户需要使用唤醒前缀才能触发机器人的响应。
+Whether private messages on platforms require a wake prefix. Default is `false`. When enabled, users must use a wake prefix to trigger a bot response in private chats.
 
 #### `platform_settings.ignore_bot_self_message`
 
-是否忽略机器人自己发送的消息。默认为 `false`。启用后，机器人将不会处理自己发送的消息，在某些平台可以防止死循环。
+Whether to ignore messages sent by the bot itself. Default is `false`. When enabled, the bot won't process its own messages, preventing infinite loops on some platforms.
 
 #### `platform_settings.ignore_at_all`
 
-是否忽略 @ 全体成员的消息。默认为 `false`。启用后，机器人将不会响应包含 @ 全体成员的消息。
+Whether to ignore @all messages. Default is `false`. When enabled, the bot won't respond to messages containing @all.
 
 ### `provider`
 
-> 此配置项仅在 `data/cmd_config.json` 中生效，AstrBot 不会读取 `data/config/` 目录下的配置文件中的此项。
+> This item only takes effect in `data/cmd_config.json`; AstrBot does not read this from configuration files in the `data/config/` directory.
 
-已配置的模型服务提供商的配置列表。
+List of configured model service provider settings.
 
 ### `provider_settings`
 
-大语言模型提供商的通用设置。
+General settings for LLM providers.
 
 #### `provider_settings.enable`
 
-是否启用大语言模型聊天。默认为 `true`。
+Whether to enable LLM chat. Default is `true`.
 
 #### `provider_settings.default_provider_id`
 
-默认的对话模型提供商 ID。必须是 `provider` 列表中已配置的提供商 ID。如果为空，则使用配置列表中的第一个对话模型提供商。
+Default conversation model provider ID. Must be a provider ID already configured in the `provider` list. If empty, the first provider in the list is used.
 
 #### `provider_settings.default_image_caption_provider_id`
 
-默认的图像描述模型提供商 ID。必须是 `provider` 列表中已配置的提供商 ID。如果为空，则代表不使用图像描述功能。
+Default image captioning model provider ID. Must be a provider ID already configured in the `provider` list. If empty, image captioning is disabled.
 
-此配置项的意思是，当用户发送一张图片时，AstrBot 会使用此提供商来生成对图片的描述文本，并将描述文本作为对话的上下文之一。这在对话模型不支持多模态输入时特别有用。
+This means when a user sends an image, AstrBot uses this provider to generate a text description, which is then used as part of the conversation context. This is useful when the conversation model doesn't support multimodal input.
 
 #### `provider_settings.image_caption_prompt`
 
-图像描述的提示词模板。默认为 `"Please describe the image using Chinese."`。
+Prompt template for image captioning. Default is `"Please describe the image using Chinese."`.
 
 #### `provider_settings.provider_pool`
 
-*此配置项尚未实际使用*
+*This configuration item is not yet in actual use.*
 
 #### `provider_settings.wake_prefix`
 
-使用 LLM 聊天额外的触发条件。如填写 `chat`，则需要发送消息时要以 `/chat` 才能触发 LLM 聊天。其中 `/` 是机器人的唤醒前缀。是一个防止滥用的手段。
+Extra trigger condition for LLM chat. For example, if `chat` is filled, messages must start with `/chat` to trigger LLM chat, where `/` is the bot's wake prefix. This is a measure to prevent abuse.
 
 #### `provider_settings.web_search`
 
-是否启用 AstrBot 自带的网页搜索能力。默认为 `false`。启用后，LLM 可能会自动搜索网页并根据内容回答。
+Whether to enable AstrBot's built-in web search capability. Default is `false`. When enabled, the LLM may automatically search the web and answer based on the content.
 
 #### `provider_settings.websearch_provider`
 
-网页搜索提供商类型。默认为 `default`。目前支持 `default` 和 `tavily`。
+Web search provider type. Default is `default`. Currently supports `default` and `tavily`.
 
-- `default`：能访问 Google 时效果最佳。如果 Google 访问失败，程序会依次访问 Bing, Sogo 搜索引擎。
+- `default`: Works best when Google is accessible. If Google fails, it tries Bing and Sogou in order.
 
-- `tavily`：使用 Tavily 搜索引擎。
+- `tavily`: Uses the Tavily search engine.
 
 #### `provider_settings.websearch_tavily_key`
 
-Tavily 搜索引擎的 API Key 列表。使用 `tavily` 作为网页搜索提供商时需要填写。
+API Key list for the Tavily search engine. Required when using `tavily` as the web search provider.
 
 #### `provider_settings.web_search_link`
 
-是否在回复中提示模型附上搜索结果的链接。默认为 `false`。
+Whether to prompt the model to include links to search results in the reply. Default is `false`.
 
 #### `provider_settings.display_reasoning_text`
 
-是否在回复中显示模型的推理过程。默认为 `false`。
+Whether to display the model's reasoning process in the reply. Default is `false`.
 
 #### `provider_settings.identifier`
 
-是否在 Prompt 前加上群成员的名字以让模型更好地了解群聊状态。默认为 `false`。启用将略微增加 token 开销。
+Whether to prepend the group member's name to the prompt so the model better understands the group chat state. Default is `false`. Enabling this slightly increases token usage.
 
 #### `provider_settings.group_name_display`
 
-是否在提示模型了解所在群的名称。默认为 `false`。此配置项目前仅在 QQ 平台适配器中生效。
+Whether to let the model know the name of the group it's in. Default is `false`. This currently only takes effect in the QQ platform adapter.
 
 #### `provider_settings.datetime_system_prompt`
 
-是否在系统提示词中加上当前机器的日期时间。默认为 `true`。
+Whether to include the current machine date and time in the system prompt. Default is `true`.
 
 #### `provider_settings.default_personality`
 
-默认使用的人格的 ID。请在 WebUI 配置人格。
+ID of the default personality to use. Configure personalities in the WebUI.
 
 #### `provider_settings.persona_pool`
 
-*此配置项尚未实际使用*
+*This configuration item is not yet in actual use.*
 
 #### `provider_settings.prompt_prefix`
 
-用户提示词。可使用 `{{prompt}}` 作为用户输入的占位符。如果不输入占位符则代表添加在用户输入的前面。
+User prompt. You can use `{{prompt}}` as a placeholder for user input. If no placeholder is provided, it's prepended to the user input.
 
 #### `provider_settings.max_context_length`
 
-当对话上下文超出这个数量时丢弃最旧的部分，一轮聊天记为 1 条。-1 为不限制。
+When the conversation context exceeds this number, the oldest parts are discarded. One round of chat counts as 1. -1 means no limit.
 
 #### `provider_settings.dequeue_context_length`
 
-当触发上面提到的 `max_context_length` 限制时，每次丢弃的对话轮数。
+The number of conversation rounds to discard each time the `max_context_length` limit is triggered.
 
 #### `provider_settings.streaming_response`
 
-是否启用流式响应。默认为 `false`。启用后，模型的回复会实时类似打字机的效果发送给用户。此配置项仅在 WebChat、Telegram、飞书平台生效。
+Whether to enable streaming responses. Default is `false`. When enabled, the model's reply is sent to the user in real-time with a typewriter effect. This only takes effect on WebChat, Telegram, and Lark platforms.
 
 #### `provider_settings.show_tool_use_status`
 
-是否显示工具使用状态。默认为 `false`。启用后，模型在使用工具时会显示工具的名称和输入参数。
+Whether to show tool usage status. Default is `false`. When enabled, the model displays the tool name and input parameters when using a tool.
 
 #### `provider_settings.streaming_segmented`
 
-不支持流式响应的消息平台是否降级为使用分段回复。默认为 `false`。意思是，如果启用了流式响应，但当前消息平台不支持流式响应，那么是否使用分段多次回复来代替。
+Whether platforms that don't support streaming responses should fall back to segmented replies. Default is `false`. This means if streaming is enabled but the platform doesn't support it, segmented multiple replies are used instead.
 
 #### `provider_settings.max_agent_step`
 
-Agent 最大步骤数限制。默认为 `30`。模型的每次工具调用算作一步。
+Limit on the maximum number of Agent steps. Default is `30`. Each tool call by the model counts as one step.
 
 #### `provider_settings.tool_call_timeout`
 
 Added in `v4.3.5`
 
-工具调用的最大超时时间（秒），默认为 `60` 秒。
+Maximum timeout for tool calls (seconds), default is `60` seconds.
 
 #### `provider_stt_settings`
 
-语音转文本服务提供商的通用设置。
+General settings for Speech-to-Text (STT) providers.
 
 #### `provider_stt_settings.enable`
 
-是否启用语音转文本服务。默认为 `false`。
+Whether to enable STT services. Default is `false`.
 
 #### `provider_stt_settings.provider_id`
 
-语音转文本服务提供商 ID。必须是 `provider` 列表中已配置的 STT 提供商 ID。
+STT provider ID. Must be an STT provider ID already configured in the `provider` list.
 
 #### `provider_tts_settings`
 
-文本转语音服务提供商的通用设置。
+General settings for Text-to-Speech (TTS) providers.
 
 #### `provider_tts_settings.enable`
 
-是否启用文本转语音服务。默认为 `false`。
+Whether to enable TTS services. Default is `false`.
 
 #### `provider_tts_settings.provider_id`
 
-文本转语音服务提供商 ID。必须是 `provider` 列表中已配置的 TTS 提供商 ID。
+TTS provider ID. Must be a TTS provider ID already configured in the `provider` list.
 
 #### `provider_tts_settings.dual_output`
 
-是否启用双输出。默认为 `false`。启用后，机器人会同时发送文本和语音消息。
+Whether to enable dual output. Default is `false`. When enabled, the bot sends both text and voice messages.
 
 #### `provider_tts_settings.use_file_service`
 
-是否启用文件服务。默认为 `false`。启用后，机器人会将输出的语音文件以 HTTP 文件外链的形式提供给消息平台。此配置项依赖于 `callback_api_base` 的配置。
+Whether to enable the file service. Default is `false`. When enabled, the bot provides the output voice file as an external HTTP link to the message platform. This depends on the `callback_api_base` configuration.
 
 #### `provider_ltm_settings`
 
-群聊上下文感知服务提供商的通用设置。
+General settings for group chat context awareness providers.
 
 #### `provider_ltm_settings.group_icl_enable`
 
-是否启用群聊上下文感知。默认为 `false`。启用后，机器人会记录群聊中的对话内容，以便更好地理解群聊的上下文。
+Whether to enable group chat context awareness. Default is `false`. When enabled, the bot records group chat conversations to better understand context.
 
-上下文的内容会被放在对话的系统提示词中。
+The context content is placed in the conversation's system prompt.
 
 #### `provider_ltm_settings.group_message_max_cnt`
 
-群聊消息的最大记录数量。默认为 `100`。超过此数量的消息将被丢弃。
+Maximum number of group chat messages to record. Default is `100`. Messages exceeding this count are discarded.
 
 #### `provider_ltm_settings.image_caption`
 
-是否记录群聊中的图片，并自动使用图像描述模型生成图片的描述文本。默认为 `false`。此配置项依赖于 `provider_settings.default_image_caption_provider_id` 的配置。请谨慎使用，因为这可能会增加大量的 API 调用和 token 开销。
+Whether to record images in group chats and automatically generate text descriptions using an image captioning model. Default is `false`. This depends on the `provider_settings.default_image_caption_provider_id` configuration. Use with caution as it can significantly increase API calls and token usage.
 
 #### `provider_ltm_settings.active_reply`
 
-- `enable`: 是否启用主动回复。默认为 `false`。
-- `method`: 主动回复的方法。可选值为 `possibility_reply`。
-- `possibility_reply`: 主动回复的概率。默认为 `0.1`。仅在 `method` 为 `possibility_reply` 时适用。
-- `whitelist`: 主动回复的 ID 白名单。仅在此列表中的 ID 才会触发主动回复。为空时表示不启用白名单过滤。可以使用 `/sid` 指令获取在某个平台上的会话 ID。
+- `enable`: Whether to enable active replies. Default is `false`.
+- `method`: Method for active replies. Option is `possibility_reply`.
+- `possibility_reply`: Probability of an active reply. Default is `0.1`. Only applicable when `method` is `possibility_reply`.
+- `whitelist`: ID whitelist for active replies. Only IDs in this list will trigger active replies. Empty means no whitelist filter. You can use the `/sid` command to get the session ID on a platform.
 
 ### `content_safety`
 
-内容安全设置。
+Content safety settings.
 
 #### `content_safety.also_use_in_response`
 
-是否在 LLM 回复中也进行内容安全检查。默认为 `false`。启用后，机器人生成的回复也会经过内容安全检查，以防止生成不当内容。
+Whether to also perform content safety checks on LLM replies. Default is `false`. When enabled, bot-generated replies also undergo safety checks to prevent inappropriate content.
 
 #### `content_safety.internal_keywords`
 
-内部关键词检测设置。
+Internal keyword detection settings.
 
-- `enable`: 是否启用内部关键词检测。默认为 `true`。
-- `extra_keywords`: 额外的关键词列表，支持正则表达式。默认为空。
+- `enable`: Whether to enable internal keyword detection. Default is `true`.
+- `extra_keywords`: List of extra keywords, supports regex. Default is empty.
 
 #### `content_safety.baidu_aip`
 
-百度 AI 内容审核设置。
+Baidu AI content moderation settings.
 
-- `enable`: 是否启用百度 AI 内容审核。默认为 `false`。
-- `app_id`: 百度 AI 内容审核的 App ID。
-- `api_key`: 百度 AI 内容审核的 API Key。
-- `secret_key`: 百度 AI 内容审核的 Secret Key。
+- `enable`: Whether to enable Baidu AI content moderation. Default is `false`.
+- `app_id`: App ID for Baidu AI content moderation.
+- `api_key`: API Key for Baidu AI content moderation.
+- `secret_key`: Secret Key for Baidu AI content moderation.
 
 > [!TIP]
-> 如果要启用百度 AI 内容审核，请先 `pip install baidu-aip`。
+> To enable Baidu AI content moderation, please `pip install baidu-aip` first.
 
 ### `admins_id`
 
-管理员 ID 列表。此外，还可以使用 `/op`, `/deop` 指令来添加或删除管理员。
+List of administrator IDs. Additionally, you can use `/op` and `/deop` commands to add or remove admins.
 
 ### `t2i`
 
-是否启用文本转图像功能。默认为 `false`。启用后，当用户发送的消息超过一定字数时，机器人会将消息渲染成图片发送给用户，以提高可读性并防止刷屏。支持 Markdown 渲染。
+Whether to enable Text-to-Image (T2I) functionality. Default is `false`. When enabled, if a user's message exceeds a certain character count, the bot renders the message as an image to improve readability and prevent spamming. Supports Markdown rendering.
 
 ### `t2i_word_threshold`
 
-文本转图像的字数阈值。默认为 `150`。当用户发送的消息超过此字数时，机器人会将消息渲染成图片发送给用户。
+Character threshold for T2I. Default is `150`. When a message exceeds this count, the bot renders it as an image.
 
 ### `t2i_strategy`
 
-文本转图像的渲染策略。可选值为 `local` 和 `remote`。默认为 `remote`。
+Rendering strategy for T2I. Options are `local` and `remote`. Default is `remote`.
 
-- `local`: 使用 AstrBot 本地的文本转图像服务进行渲染。效果较差，但不依赖外部服务。
-- `remote`: 使用远程的文本转图像服务进行渲染。默认使用 AstrBot 官方提供的服务，效果较好。
+- `local`: Uses AstrBot's local T2I service for rendering. Lower quality but doesn't depend on external services.
+- `remote`: Uses a remote T2I service for rendering. Uses the official AstrBot service by default, which offers better quality.
 
 ### `t2i_endpoint`
 
-AstrBot API 的地址。用于渲染 Markdown 图片。当 `t2i_strategy` 为 `remote` 时生效。默认为空，表示使用 AstrBot 官方提供的服务。
+AstrBot API address. Used for rendering Markdown images. Effective when `t2i_strategy` is `remote`. Default is empty, meaning the official AstrBot service is used.
 
 ### `t2i_use_file_service`
 
-是否启用文件服务。默认为 `false`。启用后，机器人会将渲染的图片以 HTTP 文件外链的形式提供给消息平台。此配置项依赖于 `callback_api_base` 的配置。
+Whether to enable the file service. Default is `false`. When enabled, the bot provides the rendered image as an external HTTP link to the message platform. This depends on the `callback_api_base` configuration.
 
 ### `http_proxy`
 
-HTTP 代理。如 `http://localhost:7890`。
+HTTP proxy. E.g., `http://localhost:7890`.
 
 ### `no_proxy`
 
-不使用代理的地址列表。如 `["localhost", "127.0.0.1"]`。
+List of addresses that bypass the proxy. E.g., `["localhost", "127.0.0.1"]`.
 
 ### `dashboard`
 
-AstrBot WebUI 配置。
+AstrBot WebUI configuration.
 
-请不要随意修改 `password` 的值。它是一个经过 `md5` 编码的密码。请在控制面板修改密码。
+Please do not change the `password` value arbitrarily. It is an `md5` encoded password. Change the password in the control panel.
 
-- `enable`: 是否启用 AstrBot WebUI。默认为 `true`。
-- `username`: AstrBot WebUI 的用户名。默认为 `astrbot`。
-- `password`: AstrBot WebUI 的密码。默认为 `astrbot` 的 `md5` 编码值。请勿直接修改，除非您知道自己在做什么。
-- `jwt_secret`: JWT 的密钥。AstrBot 会在初始化时随机生成。请勿修改，除非您知道自己在做什么。
-- `host`: AstrBot WebUI 监听的地址。默认为 `0.0.0.0`。
-- `port`: AstrBot WebUI 监听的端口。默认为 `6185`。
+- `enable`: Whether to enable the AstrBot WebUI. Default is `true`.
+- `username`: Username for the AstrBot WebUI. Default is `astrbot`.
+- `password`: Password for the AstrBot WebUI. Default is the `md5` encoded value of `astrbot`. Do not modify directly unless you know what you are doing.
+- `jwt_secret`: JWT secret key. AstrBot generates this randomly at initialization. Do not modify unless you know what you are doing.
+- `host`: Address the AstrBot WebUI listens on. Default is `0.0.0.0`.
+- `port`: Port the AstrBot WebUI listens on. Default is `6185`.
 
 ### `platform`
 
-> 此配置项仅在 `data/cmd_config.json` 中生效，AstrBot 不会读取 `data/config/` 目录下的配置文件中的此项。
+> This item only takes effect in `data/cmd_config.json`; AstrBot does not read this from configuration files in the `data/config/` directory.
 
-已配置的 AstrBot 消息平台适配器的配置列表。
+List of configured AstrBot message platform adapter settings.
 
 ### `platform_specific`
 
-平台特异配置。按平台分类，平台下按功能分组。
+Platform-specific settings. Categorized by platform, then by feature group.
 
 #### `platform_specific.<platform>.pre_ack_emoji`
 
-启用后，当请求 LLM 前，AstrBot 会先发送一个预回复的表情以告知用户正在处理请求。此功能目前仅在飞书平台适配器和 Telegram 中生效。
+When enabled, AstrBot sends a pre-reply emoji before requesting the LLM to inform the user that the request is being processed. This currently only takes effect in the Lark and Telegram platform adapters.
 
-##### lark (飞书)
+##### lark
 
-- `enable`: 是否启用飞书消息预回复表情。默认为 `false`。
-- `emojis`: 预回复的表情列表。默认为 `["Typing"]`。表情枚举名参考：[表情文案说明](https://open.feishu.cn/document/server-docs/im-v1/message-reaction/emojis-introduce)
+- `enable`: Whether to enable pre-reply emojis for Lark messages. Default is `false`.
+- `emojis`: List of pre-reply emojis. Default is `["Typing"]`. Refer to [Emoji Documentation](https://open.feishu.cn/document/server-docs/im-v1/message-reaction/emojis-introduce) for emoji names.
 
-#### telegram
+##### telegram
 
-- `enable`: 是否启用 Telegram 消息预回复表情。默认为 `false`。
-- `emojis`: 预回复的表情列表。默认为 `["✍️"]`。Telegram 仅支持固定反应集合，参考：[reactions.txt](https://gist.github.com/Soulter/3f22c8e5f9c7e152e967e8bc28c97fc9)
+- `enable`: Whether to enable pre-reply emojis for Telegram messages. Default is `false`.
+- `emojis`: List of pre-reply emojis. Default is `["✍️"]`. Telegram only supports a fixed set of reactions; refer to [reactions.txt](https://gist.github.com/Soulter/3f22c8e5f9c7e152e967e8bc28c97fc9).
 
 ### `wake_prefix`
 
-唤醒前缀。默认为 `/`。当消息以 `/` 开头时，AstrBot 会被唤醒。
+Wake prefix. Default is `/`. When a message starts with `/`, AstrBot is awakened.
 
 > [!TIP]
-> 如果唤醒的会话不在 ID 白名单中，AstrBot 将不会响应。
+> If the awakened session is not in the ID whitelist, AstrBot will not respond.
 
 ### `log_level`
 
-日志级别。默认为 `INFO`。可以设置为 `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`。
+Log level. Default is `INFO`. Can be set to `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`.
+
+### `trace_enable`
+
+Whether to enable trace recording. Default is `false`. When enabled, AstrBot records execution traces, which can be viewed on the Trace page of the admin panel.
 
 ### `pip_install_arg`
 
-`pip install` 的参数。如 `-i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple`。
+Arguments for `pip install`. E.g., `-i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple`.
 
 ### `pypi_index_url`
 
-PyPI 镜像源地址。默认为 `https://mirrors.aliyun.com/pypi/simple/`。
+PyPI index URL. Default is `https://mirrors.aliyun.com/pypi/simple/`.
 
 ### `persona`
 
-*此配置项已经在 v4.0.0 版本之后被废弃。请使用 WebUI 来配置人格。*
+*This configuration item has been deprecated since v4.0.0. Please use the WebUI to configure personalities.*
 
-已配置的人格列表。每个人格包含 `id`, `name`, `description`, `system_prompt` 四个字段。
+List of configured personalities. Each personality contains `id`, `name`, `description`, and `system_prompt` fields.
 
 ### `timezone`
 
-时区设置。请填写 IANA 时区名称, 如 Asia/Shanghai, 为空时使用系统默认时区。所有时区请查看: [IANA Time Zone Database](https://data.iana.org/time-zones/tzdb-2021a/zone1970.tab)。
+Timezone setting. Please fill in an IANA timezone name, such as Asia/Shanghai. If empty, the system default timezone is used. See all timezones at: [IANA Time Zone Database](https://data.iana.org/time-zones/tzdb-2021a/zone1970.tab).
 
 ### `callback_api_base`
 
-AstrBot API 的基础地址。用于文件服务和插件回调等功能。如 `http://example.com:6185`。默认为空，表示不启用文件服务和插件回调功能。
+Base address for the AstrBot API. Used for file services, plugin callbacks, etc. E.g., `http://example.com:6185`. Default is empty, meaning file services and plugin callbacks are disabled.
 
 ### `default_kb_collection`
 
-默认知识库名称。用于 RAG 功能。如果为空，则不使用知识库。
+Default knowledge base name. Used for RAG. If empty, no knowledge base is used.
 
 ### `plugin_set`
 
-已启用的插件列表。`*` 表示启用所有可用的插件。默认为 `["*"]`。
+List of enabled plugins. `*` means all available plugins are enabled. Default is `["*"]`.

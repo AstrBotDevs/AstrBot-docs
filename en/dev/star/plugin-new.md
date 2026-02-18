@@ -59,6 +59,8 @@ AstrBot uses a runtime plugin injection mechanism. Therefore, when debugging plu
 
 You can use AstrBot's hot reload feature to streamline the development process.
 
+Additionally, AstrBot provides the **CLI Tester** tool, allowing you to quickly test plugin logic from the command line without connecting to a real IM platform. See [Debugging Plugins with CLI Tester](/en/dev/star/guides/test-with-cli) for details.
+
 After modifying the plugin code, you can find your plugin in the AstrBot WebUI's plugin management section, click the `...` button in the upper right corner, and select `Reload Plugin`.
 
 If the plugin fails to load due to code errors or other reasons, you can also click **"Try one-click reload fix"** in the error prompt on the admin panel to reload it.

@@ -11,7 +11,7 @@
 
 astrbot分类在 `基础工具/bot安装/astrbot` 里
 ```bash
-bash -c "$(curl -L https://gitee.com/nasyt/nasyt-linux-tool/raw/master/nasyt.sh)"
+bash -c "$(curl -L https://raw.gitcode.com/nasyt/nasyt-linux-tool/raw/master/nasyt_install.sh)"
 ```
 
 ## Linux 一键部署脚本

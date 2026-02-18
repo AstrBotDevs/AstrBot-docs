@@ -21,7 +21,7 @@ If you don't have `git` installed, please download and install it first.
 
 Alternatively, download the source code directly from GitHub and extract it:
 
-![image](https://files.astrbot.app/docs/docs/source/images/cli/image.png)
+![image](https://files.astrbot.app/docs/source/images/cli/image.png)
 
 ## Install Dependencies and Run
 
@@ -47,7 +47,7 @@ uv run --no-sync main.py
 In the AstrBot source code directory, run the following command in the terminal:
 
 > If on Windows and you downloaded and extracted the source code directly, please open the extracted folder and enter in the address bar:
-> ![image](https://files.astrbot.app/docs/docs/source/images/cli/image-1.png)
+> ![image](https://files.astrbot.app/docs/source/images/cli/image-1.png)
 
 ```bash
 python3 -m venv ./venv

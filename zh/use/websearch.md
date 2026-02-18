@@ -17,7 +17,7 @@ AstrBot 支持 3 种网页搜索源接入方式：`默认`、`Tavily`、`百度 
 
 前者使用 AstrBot 内置的网页搜索请求器请求 Google、Bing、搜狗搜索引擎，在能够使用 Google 的网络环境下表现最佳。**我们推荐使用 Tavily**。
 
-![image](https://files.astrbot.app/docs/docs/source/images/websearch/image.png)
+![image](https://files.astrbot.app/docs/source/images/websearch/image.png)
 
 进入 `配置`，下拉找到网页搜索，您可选择 `default`（默认，不推荐） 或 `Tavily`。
 
@@ -31,4 +31,4 @@ AstrBot 支持 3 种网页搜索源接入方式：`默认`、`Tavily`、`百度 
 
 如果您使用 Tavily 作为网页搜索源，在 AstrBot ChatUI 上将会获得更好的体验优化，包括引用来源展示等：
 
-![](https://files.astrbot.app/docs/docs/source/images/websearch/image1.png)
+![](https://files.astrbot.app/docs/source/images/websearch/image1.png)

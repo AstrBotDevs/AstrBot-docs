@@ -13,7 +13,7 @@ from astrbot.api.event import filter, AstrMessageEvent
 
 AstrBot 接收消息平台下发的消息，并将其封装为 `AstrMessageEvent` 对象，传递给插件进行处理。
 
-![message-event](https://files.astrbot.app/docs/docs/zh/dev/star/guides/message-event.svg)
+![message-event](https://files.astrbot.app/docs/zh/dev/star/guides/message-event.svg)
 
 ### 消息事件
 
@@ -42,7 +42,7 @@ class AstrBotMessage:
 
 ### 消息链
 
-![message-chain](https://files.astrbot.app/docs/docs/zh/dev/star/guides/message-chain.svg)
+![message-chain](https://files.astrbot.app/docs/zh/dev/star/guides/message-chain.svg)
 
 `消息链`描述一个消息的结构，是一个有序列表，列表中每一个元素称为`消息段`。
 
@@ -68,7 +68,7 @@ class AstrBotMessage:
 
 ## 指令
 
-![message-event-simple-command](https://files.astrbot.app/docs/docs/zh/dev/star/guides/message-event-simple-command.svg)
+![message-event-simple-command](https://files.astrbot.app/docs/zh/dev/star/guides/message-event-simple-command.svg)
 
 ```python
 from astrbot.api.event import filter, AstrMessageEvent
@@ -92,7 +92,7 @@ class MyPlugin(Star):
 
 ## 带参指令
 
-![command-with-param](https://files.astrbot.app/docs/docs/zh/dev/star/guides/command-with-param.svg)
+![command-with-param](https://files.astrbot.app/docs/zh/dev/star/guides/command-with-param.svg)
 
 AstrBot 会自动帮你解析指令的参数。
 
@@ -127,11 +127,11 @@ async def sub(self, event: AstrMessageEvent, a: int, b: int):
 
 当用户没有输入子指令时，会报错并，并渲染出该指令组的树形结构。
 
-![image](https://files.astrbot.app/docs/docs/source/images/plugin/image-1.png)
+![image](https://files.astrbot.app/docs/source/images/plugin/image-1.png)
 
-![image](https://files.astrbot.app/docs/docs/source/images/plugin/898a169ae7ed0478f41c0a7d14cb4d64.png)
+![image](https://files.astrbot.app/docs/source/images/plugin/898a169ae7ed0478f41c0a7d14cb4d64.png)
 
-![image](https://files.astrbot.app/docs/docs/source/images/plugin/image-2.png)
+![image](https://files.astrbot.app/docs/source/images/plugin/image-2.png)
 
 理论上，指令组可以无限嵌套！
 

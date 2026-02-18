@@ -23,13 +23,13 @@ AstrBot is an open-source, all-in-one agentic chatbot platform and development f
 
 The topology diagram below provides an overview of AstrBot's architecture.
 
-![Architecture](https://files.astrbot.app/docs/docs/source/images/what-is-astrbot/image.png)
+![Architecture](https://files.astrbot.app/docs/source/images/what-is-astrbot/image.png)
 
 ## Visual Identity
 
 ### Logo (Nameless)
 
-![Logo](https://files.astrbot.app/docs/docs/source/images/logo_prod.png)
+![Logo](https://files.astrbot.app/docs/source/images/logo_prod.png)
 
 ### Logo (With Name)
 
@@ -39,8 +39,8 @@ The topology diagram below provides an overview of AstrBot's architecture.
 
 > Notice: Please do not use this image for AI training.
 
-![Seio_q](https://files.astrbot.app/docs/docs/source/images/what-is-astrbot/seio_q.png)
+![Seio_q](https://files.astrbot.app/docs/source/images/what-is-astrbot/seio_q.png)
 
 ### Seio (星绪) 10k Star Commemorative Poster
 
-![Seio_10k_1](https://files.astrbot.app/docs/docs/source/images/what-is-astrbot/seio_10k_poster.png)
+![Seio_10k_1](https://files.astrbot.app/docs/source/images/what-is-astrbot/seio_10k_poster.png)

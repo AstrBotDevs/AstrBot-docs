@@ -13,16 +13,16 @@
 你可以试试192.168.1.1
 
 如图所示：
-![image](https://files.astrbot.app/docs/docs/source/images/ipv6/index.png)
+![image](https://files.astrbot.app/docs/source/images/ipv6/index.png)
 这里超级管理员密码是随机生成的，需要用到一点社会工程学手段搞到这个超级密码
 当然你也可以用漏洞搞到
 如果你可以联系到当时给你家安装宽带的师傅，给他打个电话就可以要到
 
 进入后菜单如下
-![image](https://files.astrbot.app/docs/docs/source/images/ipv6/index.png)
+![image](https://files.astrbot.app/docs/source/images/ipv6/index.png)
 
 依此点击：安全-防火墙
-![image](https://files.astrbot.app/docs/docs/source/images/ipv6/firewall.png)
+![image](https://files.astrbot.app/docs/source/images/ipv6/firewall.png)
 将防火墙等级设置为低
 同时将启用IPV6 SESSEION关闭（此选项开启后将无法从外部访问）
 

@@ -42,7 +42,7 @@ AstrBot 支持接入企业微信应用和微信客服。
 
 4. **回调服务器验证。** 如果您之前没有使用过微信客服机器人，那么请在 `开发配置` 中点击企业内部接入右侧的 `开始使用` 按钮，您应该会看到回调配置的页面。
 
-![image](https://files.astrbot.app/docs/docs/source/images/wecom/8287fd9fec5823847e6b590dc3f0f545.png)
+![image](https://files.astrbot.app/docs/source/images/wecom/8287fd9fec5823847e6b590dc3f0f545.png)
 
 如果您之前使用过微信客服机器人，那么在 `开发配置` 中直接找到 `回调配置`，点击修改。
 
@@ -52,7 +52,7 @@ AstrBot 支持接入企业微信应用和微信客服。
 
 - 如果开启了 `统一 Webhook 模式`，点击保存之后，AstrBot 将会自动为你生成唯一的 Webhook 回调链接，你可以在日志中或者 WebUI 的机器人页的卡片上找到，将该链接填入回调 URL 处。
 
-![unified_webhook](https://files.astrbot.app/docs/docs/source/images/use/unified-webhook.png)
+![unified_webhook](https://files.astrbot.app/docs/source/images/use/unified-webhook.png)
 
 - 如果没有开启 `统一 Webhook 模式`，填写 `http://你的带公网地址的服务器ip:6195/callback/command`。
 
@@ -71,7 +71,7 @@ AstrBot 支持接入企业微信应用和微信客服。
 请打开以下链接，在微信扫码以获取客服微信 ...
 ```
 
-![image](https://files.astrbot.app/docs/docs/source/images/wecom/image-13.png)
+![image](https://files.astrbot.app/docs/source/images/wecom/image-13.png)
 
 打开链接，用微信扫码，然后即可打开微信客服聊天页，输入 `help` 测试是否正常连通。
 
@@ -84,19 +84,19 @@ AstrBot 支持接入企业微信应用和微信客服。
 > [!TIP]
 > 根据 [#571](https://github.com/Soulter/AstrBot/issues/571) 的反馈，对于新注册的企业，`corp_id` 可能要注册一段时间后才生效（前后大概过了半个小时）。
 
-![image](https://files.astrbot.app/docs/docs/source/images/wecom/image-5.png)
+![image](https://files.astrbot.app/docs/source/images/wecom/image-5.png)
 
 点击下面的 `自建应用`，然后点击 `创建应用`，填写好应用名称、头像、应用可见范围等信息。
 
 进入应用，查看并得到机器人的 `Secret`，复制到 AstrBot 配置的 `secret` 处。
 
-![image](https://files.astrbot.app/docs/docs/source/images/wecom/image-4.png)
+![image](https://files.astrbot.app/docs/source/images/wecom/image-4.png)
 
 在下方，找到 `接收消息`，点击 `设置 API 接收`，进入 API 接收页面。
 
-![image](https://files.astrbot.app/docs/docs/source/images/wecom/image-6.png)
+![image](https://files.astrbot.app/docs/source/images/wecom/image-6.png)
 
-![image](https://files.astrbot.app/docs/docs/source/images/wecom/image-9.png)
+![image](https://files.astrbot.app/docs/source/images/wecom/image-9.png)
 
 并且点击下方的两个随机获取，得到 `Token` 和 `EncodingAESKey`，复制到 AstrBot 配置的 `token` 和 `encoding_aes_key` 处。建议保持 `统一 Webhook 模式 (unified_webhook_mode)` 为开启状态。
 
@@ -106,7 +106,7 @@ AstrBot 支持接入企业微信应用和微信客服。
 
 - 如果开启了 `统一 Webhook 模式`，点击保存之后，AstrBot 将会自动为你生成唯一的 Webhook 回调链接，你可以在日志中或者 WebUI 的机器人页的卡片上找到，将该链接填入 URL 处。
 
-![unified_webhook](https://files.astrbot.app/docs/docs/source/images/use/unified-webhook.png)
+![unified_webhook](https://files.astrbot.app/docs/source/images/use/unified-webhook.png)
 
 - 如果没有开启 `统一 Webhook 模式`，填入 `http://你的带公网地址的服务器ip:6195/callback/command`。
 
@@ -114,7 +114,7 @@ AstrBot 支持接入企业微信应用和微信客服。
 
 接下来配置企业可信 IP。
 
-![image](https://files.astrbot.app/docs/docs/source/images/wecom/image-10.png)
+![image](https://files.astrbot.app/docs/source/images/wecom/image-10.png)
 
 将你的 公网 IP 地址填写到此处，点击确定。
 
@@ -127,7 +127,7 @@ AstrBot 支持接入企业微信应用和微信客服。
 
 在企业微信-工作台中，找到刚刚创建的应用，发送 `/help`，看看 AstrBot 是否能够回复。
 
-![image](https://files.astrbot.app/docs/docs/source/images/wecom/3dc9fa61145ab0dd8f56a10295affec8_720.png)
+![image](https://files.astrbot.app/docs/source/images/wecom/3dc9fa61145ab0dd8f56a10295affec8_720.png)
 
 ## 反向代理(自定义 API BASE)
 

@@ -2,7 +2,7 @@
 
 如果发现升级 AstrBot、安装/更新插件时总是因为网络问题安装失败，您可以通过自建 GitHub 加速服务来实现高速访问。
 
-![image](https://files.astrbot.app/docs/docs/source/images/github-proxy/image.png)
+![image](https://files.astrbot.app/docs/source/images/github-proxy/image.png)
 
 ## 使用 `lxfight/astrbot2github` 自建加速服务
 

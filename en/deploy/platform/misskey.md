@@ -9,7 +9,7 @@
 
 Navigate to the messaging platform, click to add a new adapter, find Misskey and click to enter the Misskey configuration page.
 
-![Create Misskey Platform Adapter](https://files.astrbot.app/docs/docs/source/images/misskey/create.png)
+![Create Misskey Platform Adapter](https://files.astrbot.app/docs/source/images/misskey/create.png)
 
 ## Configure Platform Adapter Settings
 
@@ -21,7 +21,7 @@ Don't forget to click `Enable` before saving to activate the Misskey platform ad
 
 How to obtain the Misskey connection information is described below.
 
-![Misskey Platform Adapter Configuration](https://files.astrbot.app/docs/docs/source/images/misskey/config.png)
+![Misskey Platform Adapter Configuration](https://files.astrbot.app/docs/source/images/misskey/config.png)
 
 ## Misskey Instance URL
 
@@ -31,11 +31,11 @@ This is the frontend address of the Misskey instance where your bot account is l
 
 1. First, open the Misskey Web frontend page, find and open the `Settings > Connected Services` page in the frontend sidebar.
 
-![Open Misskey Connected Services Page](https://files.astrbot.app/docs/docs/source/images/misskey/pat-1.png)
+![Open Misskey Connected Services Page](https://files.astrbot.app/docs/source/images/misskey/pat-1.png)
 
 2. Click "Generate Access Token" to generate an account access token.
 
-![Generate Misskey Account Token](https://files.astrbot.app/docs/docs/source/images/misskey/pat-2.png)
+![Generate Misskey Account Token](https://files.astrbot.app/docs/source/images/misskey/pat-2.png)
 
 3. On the access token configuration page that appears, give the token a name, such as `AstrBot`.
 
@@ -45,7 +45,7 @@ This is the frontend address of the Misskey instance where your bot account is l
 If third-party AstrBot plugins you use require additional permissions, please refer to their documentation to add the corresponding permissions. If you fully trust the bot's deployment environment, you can temporarily enable all permissions to simplify debugging, but we still recommend limiting the bot's permissions in production environments.
 :::
 
-![Configure Access Token Permissions](https://files.astrbot.app/docs/docs/source/images/misskey/pat-3.png)
+![Configure Access Token Permissions](https://files.astrbot.app/docs/source/images/misskey/pat-3.png)
 
 **Permissions Required by Default**
 
@@ -60,7 +60,7 @@ If third-party AstrBot plugins you use require additional permissions, please re
 
 5. After completing the permission configuration, click "Done" to view the account access token. Copy the obtained token and paste it into the Access Token input box on the AstrBot configuration page.
 
-![View Account Token](https://files.astrbot.app/docs/docs/source/images/misskey/pat-4.png)
+![View Account Token](https://files.astrbot.app/docs/source/images/misskey/pat-4.png)
 
 ## Default Post Visibility
 
@@ -94,13 +94,13 @@ Conversation history for individual users in chat and posts will be recorded in 
 It can be found on the user's personal page in the `Raw` section. UserID is the unique key identifier for Misskey users within a single instance.
 :::
 
-![UserID](https://files.astrbot.app/docs/docs/source/images/misskey/userid.png)
+![UserID](https://files.astrbot.app/docs/source/images/misskey/userid.png)
 
 ## Test the Connection
 
 After completing the configuration and enabling it, go to Misskey to create a new post and mention the bot (@mention) to test. If the bot account successfully triggers a reply, the configuration is successful.
 
-![Demo Example](https://files.astrbot.app/docs/docs/source/images/misskey/demo.png)
+![Demo Example](https://files.astrbot.app/docs/source/images/misskey/demo.png)
 
 ## Additional Notes
 
@@ -110,4 +110,4 @@ We recommend enabling the Misskey `Bot` identifier for bot accounts to respect t
 
 Enable "This is a bot account" in the advanced settings of the bot account's profile page.
 
-![This is a bot account](https://files.astrbot.app/docs/docs/source/images/misskey/botset.png)
+![This is a bot account](https://files.astrbot.app/docs/source/images/misskey/botset.png)

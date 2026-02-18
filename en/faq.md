@@ -62,7 +62,7 @@ This is because the provider's API returned empty text. Try the following steps:
 
 ### Error `No module named 'xxx'` After Installing Plugin
 
-![image](https://files.astrbot.app/docs/docs/source/images/faq/image.png)
+![image](https://files.astrbot.app/docs/source/images/faq/image.png)
 
 This is because the plugin's dependencies were not installed properly. Normally, AstrBot automatically installs plugin dependencies after installing the plugin, but installation may fail in the following situations:
 
@@ -74,6 +74,6 @@ Solution:
 
 Based on the error message, refer to the plugin's README to manually install dependencies. You can install dependencies in the AstrBot WebUI under `Console` -> `Install Pip Package`.
 
-![image](https://files.astrbot.app/docs/docs/source/images/faq/image-1.png)
+![image](https://files.astrbot.app/docs/source/images/faq/image-1.png)
 
 If you find that the plugin author did not include a `requirements.txt` file, please submit an issue in the plugin repository to remind the author to add it.

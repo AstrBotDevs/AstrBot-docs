@@ -17,7 +17,7 @@ async def on_aiocqhttp(self, event: AstrMessageEvent, text: str):
 
 ```
 
-![image](https://files.astrbot.app/docs/docs/source/images/plugin/image-3.png)
+![image](https://files.astrbot.app/docs/source/images/plugin/image-3.png)
 
 ## Customization (HTML-Based)
 
@@ -47,7 +47,7 @@ async def custom_t2i_tmpl(self, event: AstrMessageEvent):
 
 The result:
 
-![image](https://files.astrbot.app/docs/docs/source/images/plugin/fcc2dcb472a91b12899f617477adc5c7.png)
+![image](https://files.astrbot.app/docs/source/images/plugin/fcc2dcb472a91b12899f617477adc5c7.png)
 
 This is just a simple example. Thanks to the powerful capabilities of HTML and DOM renderers, you can create more complex and visually appealing designs. Additionally, Jinja2 supports syntax for loops, conditionals, and more to accommodate data structures like lists and dictionaries. You can learn more about Jinja2 online.
 

@@ -79,7 +79,7 @@
 
 ### 安装插件后报错 `No module named 'xxx'`
 
-![image](https://files.astrbot.app/docs/docs/source/images/faq/image.png)
+![image](https://files.astrbot.app/docs/source/images/faq/image.png)
 
 这个是因为插件依赖的库没有被正常安装。一般情况下，AstrBot 会在安装好插件后自动为插件安装依赖库，如果出现了以下情况可能造成安装失败：
 
@@ -91,7 +91,7 @@
 
 结合报错信息，参考插件的 README 手动安装依赖库。你可以在 AstrBot WebUI 的 `控制台` -> `安装 Pip 库` 中安装依赖库。
 
-![image](https://files.astrbot.app/docs/docs/source/images/faq/image-1.png)
+![image](https://files.astrbot.app/docs/source/images/faq/image-1.png)
 
 如果发现插件作者没有填写 `requirements.txt` 文件，请在插件仓库提交 Issue，提醒作者补充。
 

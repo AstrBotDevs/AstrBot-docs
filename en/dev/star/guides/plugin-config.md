@@ -58,13 +58,13 @@ The file content is a `Schema` that represents the configuration. The Schema is 
 
 When the code editor is enabled, it looks like this:
 
-![editor_mode](https://files.astrbot.app/docs/docs/source/images/plugin/image-6.png)
+![editor_mode](https://files.astrbot.app/docs/source/images/plugin/image-6.png)
 
-![editor_mode_fullscreen](https://files.astrbot.app/docs/docs/source/images/plugin/image-7.png)
+![editor_mode_fullscreen](https://files.astrbot.app/docs/source/images/plugin/image-7.png)
 
 The **_special** field is only available after v4.0.0. Currently supports `select_provider`, `select_provider_tts`, `select_provider_stt`, `select_persona`, allowing users to quickly select model providers, personas, and other data already configured in the WebUI. Results are all strings. Using select_provider as an example, it will present the following effect:
 
-![image](https://files.astrbot.app/docs/docs/source/images/plugin/image-select-provider.png)
+![image](https://files.astrbot.app/docs/source/images/plugin/image-select-provider.png)
 
 ### `file` type schema
 

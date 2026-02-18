@@ -2,7 +2,7 @@
 
 在 v4.11.0 之后，AstrBot 引入了自动上下文压缩功能。
 
-![alt text](https://files.astrbot.app/docs/docs/source/images/context-compress/image.png)
+![alt text](https://files.astrbot.app/docs/source/images/context-compress/image.png)
 
 AstrBot 会在对话上下文达到**使用的对话模型上下文窗口的最大长度的 82% 时**，自动对上下文进行压缩，以确保在不丢失关键信息的情况下，尽可能多地保留对话内容。 
 
@@ -32,7 +32,7 @@ Based on our full conversation history, produce a concise summary of key takeawa
 
 您可以手动在模型配置中设置模型的上下文窗口大小，参考下图：
 
-![alt text](https://files.astrbot.app/docs/docs/source/images/context-compress/image1.png)
+![alt text](https://files.astrbot.app/docs/source/images/context-compress/image1.png)
 
 > [!NOTE]
 > 如果没有看到上图中的配置项，请您删除该模型，然后重新添加模型即可。

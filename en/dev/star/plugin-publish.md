@@ -6,4 +6,4 @@ AstrBot uses GitHub to host plugins, so you'll need to push your plugin code to 
 
 You can submit your plugin by visiting the [AstrBot Plugin Marketplace](https://plugins.astrbot.app). Once on the website, click the `+` button in the bottom-right corner, fill in the basic information, author details, repository information, and other required fields. Then click the `Submit to GITHUB` button. You will be redirected to the AstrBot repository's Issue submission page. Please verify that all information is correct, then click the `Create` button to complete the plugin publication process.
 
-![fill out the form](https://files.astrbot.app/docs/docs/source/images/plugin-publish/image.png)
+![fill out the form](https://files.astrbot.app/docs/source/images/plugin-publish/image.png)

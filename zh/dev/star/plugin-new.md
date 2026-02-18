@@ -47,7 +47,7 @@ git clone 插件仓库地址
 
 可以在插件目录下添加 `logo.png` 文件作为插件的 Logo。请保持长宽比为 1:1，推荐尺寸为 256x256。
 
-![插件 logo 示例](https://files.astrbot.app/docs/docs/source/images/plugin/plugin_logo.png)
+![插件 logo 示例](https://files.astrbot.app/docs/source/images/plugin/plugin_logo.png)
 
 ### 插件展示名（可选）
 

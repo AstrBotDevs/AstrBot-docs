@@ -35,7 +35,7 @@ How to get them:
 2. Get `Channel secret` from `Basic settings`
 3. Issue a `Channel access token` on the `Messaging API` page
 
-![](https://files.astrbot.app/docs/docs/source/images/line/7ecee0a9102f191245330f8408eb0493.png)
+![](https://files.astrbot.app/docs/source/images/line/7ecee0a9102f191245330f8408eb0493.png)
 
 ## Configure AstrBot
 

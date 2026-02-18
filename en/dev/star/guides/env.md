@@ -13,7 +13,7 @@
    - 尽量简短。
 5. 点击右下角的 `Create repository`。
 
-![New repo](https://files.astrbot.app/docs/docs/source/images/plugin/image.png)
+![New repo](https://files.astrbot.app/docs/source/images/plugin/image.png)
 
 ## Clone 插件和 AstrBot 项目
 

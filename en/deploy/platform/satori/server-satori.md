@@ -19,7 +19,7 @@
 
 安装并启用插件后，server-satori 会自动在 Koishi 的 `/satori` 路径下提供 Satori 协议服务。
 
-![image](https://files.astrbot.app/docs/docs/source/images/satori/2025-09-07_17-14-55.png)
+![image](https://files.astrbot.app/docs/source/images/satori/2025-09-07_17-14-55.png)
 
 ## 在 AstrBot 中配置 Satori 适配器
 
@@ -44,7 +44,7 @@
 >
 > 如果你的 koishi 运行在其他端口或路由下，**请根据实际情况修改对应的配置！**
 
-![image](https://files.astrbot.app/docs/docs/source/images/satori/2025-10-10_16-16-25.png)
+![image](https://files.astrbot.app/docs/source/images/satori/2025-10-10_16-16-25.png)
 
 点击右下角 `保存` 完成配置。
 
@@ -56,7 +56,7 @@
 
 如果成功回复，则配置成功。
 
-![image](https://files.astrbot.app/docs/docs/source/images/satori/2025-09-07_17-19-04.png)
+![image](https://files.astrbot.app/docs/source/images/satori/2025-09-07_17-19-04.png)
 
 ## 常见问题
 

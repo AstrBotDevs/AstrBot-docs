@@ -5,7 +5,7 @@
 
 在 `v4.12.0` 版本及之后，AstrBot 引入了 Agent 沙盒环境，以替代之前的代码执行器功能。沙盒环境给 Agent 提供了更安全、更灵活的代码执行和自动化操作能力。
 
-![](https://files.astrbot.app/docs/docs/source/images/astrbot-agent-sandbox/image.png)
+![](https://files.astrbot.app/docs/source/images/astrbot-agent-sandbox/image.png)
 
 ## 启用沙盒环境
 

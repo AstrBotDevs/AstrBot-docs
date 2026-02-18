@@ -6,7 +6,7 @@ AstrBot v3.5.16 and later supports connecting to the [Slack](https://slack.com/)
 
 Navigate to the `Bots` page, click `+ Create Bot`, find Slack and click to enter the Slack configuration page.
 
-![image](https://files.astrbot.app/docs/docs/source/images/slack/image-1.png)
+![image](https://files.astrbot.app/docs/source/images/slack/image-1.png)
 
 In the configuration dialog that appears, click `Enable`.
 
@@ -18,11 +18,11 @@ Slack supports two connection methods: `Webhook` and `Socket`. If you don't have
 2. Go to [Apps Management](https://api.slack.com/apps), click "Create New App" -> "From Scratch", enter the `App Name` and the workspace to add it to, then click "Create App".
 3. (Webhook only) Obtain the `Signing Secret`. In the Basic Information page on the left sidebar, find `Signing Secret` under App Credentials, click Show and copy it to the signing_secret field in the platform adapter configuration.
 
-![image](https://files.astrbot.app/docs/docs/source/images/slack/image.png)
+![image](https://files.astrbot.app/docs/source/images/slack/image.png)
 
 4. In the Basic Information page on the left sidebar, find App-Level Tokens and click "Generate Token and Scopes". Enter any Token Name, click Add Scope, select `connections:write`, then click "Generate". Click Copy and paste the result into the app_token field on the AstrBot configuration page.
 
-![image](https://files.astrbot.app/docs/docs/source/images/slack/image-2.png)
+![image](https://files.astrbot.app/docs/source/images/slack/image-2.png)
 
 5. In the OAuth & Permissions page on the left sidebar, add the following permissions under Bot Token Scopes:
    - channels:history
@@ -47,7 +47,7 @@ Slack supports two connection methods: `Webhook` and `Socket`. If you don't have
 
 7. (Socket only) In the Socket Mode page on the left sidebar, enable Socket Mode.
 
-![image](https://files.astrbot.app/docs/docs/source/images/slack/image-3.png)
+![image](https://files.astrbot.app/docs/source/images/slack/image-3.png)
 
 ## Start the Platform Adapter
 
@@ -68,7 +68,7 @@ If you're using Webhook mode:
 
 - If `Unified Webhook Mode` is enabled, after clicking save, AstrBot will automatically generate a unique Webhook callback URL for you. You can find it in the logs or on the bot card in the WebUI's Bots page. Enter this URL in the `Request URL` field.
 
-![unified_webhook](https://files.astrbot.app/docs/docs/source/images/use/unified-webhook.png)
+![unified_webhook](https://files.astrbot.app/docs/source/images/use/unified-webhook.png)
 
 - If `Unified Webhook Mode` is not enabled, enter `https://your-domain/astrbot-slack-webhook/callback` in the `Request URL` field.
 

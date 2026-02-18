@@ -134,7 +134,7 @@ Multi-Agent（多智能体）系统将复杂应用分解为多个专业化智能
 
 在下面的例子中，我们定义了一个主智能体（Main Agent），它负责根据用户查询将任务分配给不同的子智能体（Sub-Agents）。每个子智能体专注于特定任务，例如获取天气信息。
 
-![multi-agent-example-1](https://files.astrbot.app/docs/docs/zh/dev/star/guides/multi-agent-example-1.svg)
+![multi-agent-example-1](https://files.astrbot.app/docs/zh/dev/star/guides/multi-agent-example-1.svg)
 
 定义 Tools:
 

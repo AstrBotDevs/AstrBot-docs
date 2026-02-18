@@ -17,7 +17,7 @@ AstrBot 已经上架至雨云的预装软件列表，支持**一键安装** Astr
 3. 在下面的 `系统和软件安装` 一节，选中 `AstrBot`，然后点击 `立即购买`。
 4. 如果您的余额不足，将会跳转至充值页面。充值完成后再返回点击 `立即购买` 即可。
 
-![AstrBot - 系统和软件安装](https://files.astrbot.app/docs/docs/source/images/rainyun/image.png)
+![AstrBot - 系统和软件安装](https://files.astrbot.app/docs/source/images/rainyun/image.png)
 
 接下来，雨云会自动帮您安装好系统和 `AstrBot` 软件。
 
@@ -41,10 +41,10 @@ AstrBot 已经上架至雨云的预装软件列表，支持**一键安装** Astr
 
 通过 `我的云服务器` 进入 `云服务器` 页面，可以看到 `NAT端口映射管理` 卡片，如下图所示：
 
-![NAT端口映射管理](https://files.astrbot.app/docs/docs/source/images/rainyun/image-1.png)
+![NAT端口映射管理](https://files.astrbot.app/docs/source/images/rainyun/image-1.png)
 
 点击 `+端口设置` -> `新建规则`，如下图所示：
 
-![创建NAT端口映射规则](https://files.astrbot.app/docs/docs/source/images/rainyun/image-2.png)
+![创建NAT端口映射规则](https://files.astrbot.app/docs/source/images/rainyun/image-2.png)
 
 然后，内网端口填写 `6185`，点击 `创建映射规则`，这样就可以通过 `http://IP:上面设置好的外网端口` 访问 AstrBot 的管理面板了。

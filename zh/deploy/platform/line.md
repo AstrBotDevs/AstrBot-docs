@@ -35,7 +35,7 @@
 2. 在 `Basic settings` 获取 `Channel secret`
 3. 在 `Messaging API` 页面签发 `Channel access token`
 
-![](https://files.astrbot.app/docs/docs/source/images/line/7ecee0a9102f191245330f8408eb0493.png)
+![](https://files.astrbot.app/docs/source/images/line/7ecee0a9102f191245330f8408eb0493.png)
 
 ## 配置 AstrBot
 

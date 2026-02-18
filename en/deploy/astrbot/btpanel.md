@@ -12,13 +12,13 @@ If you haven't installed BT Panel yet, please refer to [Install BT Products](htt
 
 After entering the BT Panel page, click `Docker` on the left sidebar, click Settings, and modify the `Acceleration URL`.
 
-![alt text](https://files.astrbot.app/docs/docs/source/images/btpanel/image-1.png)
+![alt text](https://files.astrbot.app/docs/source/images/btpanel/image-1.png)
 
 ## Install AstrBot
 
 Go to Docker's App Store and search for `AstrBot`, as shown below.
 
-![image](https://files.astrbot.app/docs/docs/source/images/btpanel/image.png)
+![image](https://files.astrbot.app/docs/source/images/btpanel/image.png)
 
 Click Install and wait for the installation to complete.
 
@@ -33,7 +33,7 @@ Visit `http://IP:6185` to access the AstrBot dashboard.
 > [!TIP]
 > By default, the above method only opens port 6185. If you need to deploy messaging platforms, you need to additionally open the corresponding ports. Click `Container` in the top bar, find the AstrBot container, click `Manage`, click `Edit Container`, and add the corresponding ports.
 >
-> ![image](https://files.astrbot.app/docs/docs/source/images/btpanel/image-2.png)
+> ![image](https://files.astrbot.app/docs/source/images/btpanel/image-2.png)
 >
 > For specific messaging platform port mappings, refer to the table below:
 >

@@ -25,7 +25,7 @@ sudo docker run -itd -p 6180-6200:6180-6200 -p 11451:11451 -v $PWD/data:/AstrBot
 
 例子：
 
-![image](https://files.astrbot.app/docs/docs/source/images/code-interpreter/image-4.png)
+![image](https://files.astrbot.app/docs/source/images/code-interpreter/image-4.png)
 
 ## Linux 手动源码 启动 AstrBot
 
@@ -73,7 +73,7 @@ sudo —E python3 main.py
 > 如果一开始没有正常启动此功能，在启动成功之后，需要执行 `/tool on python_interpreter` 来开启此功能。
 > 您可以通过 `/tool ls` 查看所有的工具以及它们的启用状态。
 
-![image](https://files.astrbot.app/docs/docs/source/images/code-interpreter/image-3.png)
+![image](https://files.astrbot.app/docs/source/images/code-interpreter/image-3.png)
 
 ## 图片和文件的输入
 
@@ -87,10 +87,10 @@ v3.4.34 后，使用 `/pi file` 指令开始上传文件。上传文件后，您
 
 ## Demo
 
-![image](https://files.astrbot.app/docs/docs/source/images/code-interpreter/a3cd3a0e-aca5-41b2-aa52-66b568bd955b.png)
+![image](https://files.astrbot.app/docs/source/images/code-interpreter/a3cd3a0e-aca5-41b2-aa52-66b568bd955b.png)
 
-![alt text](https://files.astrbot.app/docs/docs/source/images/code-interpreter/image.png)
+![alt text](https://files.astrbot.app/docs/source/images/code-interpreter/image.png)
 
-![image](https://files.astrbot.app/docs/docs/source/images/code-interpreter/image-1.png)
+![image](https://files.astrbot.app/docs/source/images/code-interpreter/image-1.png)
 
-![image](https://files.astrbot.app/docs/docs/source/images/code-interpreter/image-2.png)
+![image](https://files.astrbot.app/docs/source/images/code-interpreter/image-2.png)

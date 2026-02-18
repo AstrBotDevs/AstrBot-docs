@@ -47,7 +47,7 @@ Update the `metadata.yaml` file with your plugin's metadata information.
 
 You can add a `logo.png` file in the plugin directory as the plugin's logo. Please maintain an aspect ratio of 1:1, with a recommended size of 256x256.
 
-![Plugin logo example](https://files.astrbot.app/docs/docs/source/images/plugin/plugin_logo.png)
+![Plugin logo example](https://files.astrbot.app/docs/source/images/plugin/plugin_logo.png)
 
 ### Plugin Display Name (Optional)
 

@@ -38,7 +38,7 @@ Refer to this article: [NapCat.Installer - Linux One-Click Script (Supports Ubun
 
 1. Download or copy the content of [astrbot.yml](https://github.com/NapNeko/NapCat-Docker/blob/main/compose/astrbot.yml)
 2. Rename the downloaded file to `astrbot.yml`
-3. modify `astrbot.yml`, change "#- "6199:6199"  to "- "6199:6199", remove the flag of "#"
+3. Modify `astrbot.yml`, change `#- "6199:6199` to `- "6199:6199"`, remove the flag of "#"
 4. Execute in the directory where the `astrbot.yml` file is located:
 
 ```bash

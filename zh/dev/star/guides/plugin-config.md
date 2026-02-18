@@ -58,13 +58,13 @@ AstrBot 提供了”强大“的配置解析和可视化功能。能够让用户
 
 其中，如果启用了代码编辑器，效果如下图所示:
 
-![editor_mode](/source/images/plugin/image-6.png)
+![editor_mode](https://files.astrbot.app/docs/docs/source/images/plugin/image-6.png)
 
-![editor_mode_fullscreen](/source/images/plugin/image-7.png)
+![editor_mode_fullscreen](https://files.astrbot.app/docs/docs/source/images/plugin/image-7.png)
 
 **_special** 字段仅 v4.0.0 之后可用。目前支持填写 `select_provider`, `select_provider_tts`, `select_provider_stt`, `select_persona`，用于让用户快速选择用户在 WebUI 上已经配置好的模型提供商、人设等数据。结果均为字符串。以 select_provider 为例，将呈现以下效果:
 
-![image](/source/images/plugin/image-select-provider.png)
+![image](https://files.astrbot.app/docs/docs/source/images/plugin/image-select-provider.png)
 
 ### file 类型的 schema
 

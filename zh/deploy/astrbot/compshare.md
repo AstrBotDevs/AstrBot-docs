@@ -52,7 +52,7 @@ Both services started in the background.
 3. 通过 `ollama pull 模型名` 拉取模型，等待拉取成功。
 4. 在 AstrBot 面板的 服务提供商页面找到 `ollama_deepseek-r1`，点击编辑，更新模型名称，点击保存。
 
-![image](/source/images/compshare/image-1.png)
+![image](https://files.astrbot.app/docs/docs/source/images/compshare/image-1.png)
 
 ### 使用优云智算提供的模型 API
 
@@ -67,7 +67,7 @@ AstrBot 支持接入优云智算提供的模型 API。
 
 您可以直接聊天来测试模型是否正常。
 
-![image](/source/images/compshare/image-2.png)
+![image](https://files.astrbot.app/docs/docs/source/images/compshare/image-2.png)
 
 
 ## 接入到消息平台

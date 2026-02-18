@@ -8,11 +8,11 @@ On the [Alibaba Cloud Bailian Application](https://bailian.console.aliyun.com/ap
 
 Record the Application ID:
 
-![image](/source/images/dashscope/image-1.png)
+![image](https://files.astrbot.app/docs/docs/source/images/dashscope/image-1.png)
 
 Click to enter the application, click Publishing Channel -> API Call -> API KEY, create and copy the API KEY:
 
-![alt text](/source/images/dashscope/image-2.png)
+![alt text](https://files.astrbot.app/docs/docs/source/images/dashscope/image-2.png)
 
 In the WebUI, click "Model Provider" -> "Add Provider", select "Agent Runner", select "Alibaba Cloud Bailian Application", and enter the Alibaba Cloud Bailian Application configuration page.
 
@@ -42,7 +42,7 @@ For the two workflow applications, you can dynamically set input variables in th
 
 Use the `/set` command to dynamically set input variables, as shown in the figure below:
 
-![alt text](/source/images/dify/image-5.png)
+![alt text](https://files.astrbot.app/docs/docs/source/images/dify/image-5.png)
 
 After setting variables, AstrBot will attach the variables you set in the next request to Alibaba Cloud Bailian Application, flexibly adapting to your Workflow.
 

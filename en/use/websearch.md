@@ -18,7 +18,7 @@ AstrBot supports 3 types of web search source integration: `default`, `Tavily`, 
 
 The former uses AstrBot's built-in web search requester to query Google, Bing, and Sogou search engines, performing best in network environments with Google access. **We recommend using Tavily**.
 
-![image](/source/images/websearch/image.png)
+![image](https://files.astrbot.app/docs/docs/source/images/websearch/image.png)
 
 Go to `Configuration`, scroll down to find Web Search, where you can select `default` (default, not recommended) or `Tavily`.
 
@@ -32,4 +32,4 @@ Go to [Tavily](https://app.tavily.com/home) to get an API Key, then fill it in t
 
 If you use Tavily as your web search source, you will get a better experience optimization on AstrBot ChatUI, including citation source display and more:
 
-![](/source/images/websearch/image1.png)
+![](https://files.astrbot.app/docs/docs/source/images/websearch/image1.png)

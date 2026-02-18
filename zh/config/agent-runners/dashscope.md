@@ -8,11 +8,11 @@
 
 记录应用ID：
 
-![image](/source/images/dashscope/image-1.png)
+![image](https://files.astrbot.app/docs/docs/source/images/dashscope/image-1.png)
 
 点击进入应用，点击发布渠道->API 调用->API KEY，创建并且复制 API KEY：
 
-![alt text](/source/images/dashscope/image-2.png)
+![alt text](https://files.astrbot.app/docs/docs/source/images/dashscope/image-2.png)
 
 在 WebUI 中，点击「模型提供商」->「新增提供商」，选择「Agent 执行器」，选择「阿里云百炼应用」，进入阿里云百炼应用的配置页面。
 
@@ -42,7 +42,7 @@
 
 使用 `/set` 指令可以动态设置输入变量，如下图所示：
 
-![alt text](/source/images/dify/image-5.png)
+![alt text](https://files.astrbot.app/docs/docs/source/images/dify/image-5.png)
 
 当设置变量后，AstrBot 会在下次向阿里云百炼应用请求时附上您设置的变量，以灵活适配您的 Workflow。
 

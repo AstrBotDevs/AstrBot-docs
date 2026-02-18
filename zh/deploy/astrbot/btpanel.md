@@ -12,13 +12,13 @@ AstrBot 已经上架至宝塔的 Docker 应用商店，支持一键安装。
 
 进入宝塔面板页面后，点击左侧的 `Docker`，点击设置，修改`加速 URL`。
 
-![alt text](/source/images/btpanel/image-1.png)
+![alt text](https://files.astrbot.app/docs/docs/source/images/btpanel/image-1.png)
 
 ## 安装 AstrBot
 
 进入 Docker 的应用商店，搜索 `AstrBot`，如下图所示。
 
-![image](/source/images/btpanel/image.png)
+![image](https://files.astrbot.app/docs/docs/source/images/btpanel/image.png)
 
 点击安装，等待安装成功。
 
@@ -33,7 +33,7 @@ AstrBot 已经上架至宝塔的 Docker 应用商店，支持一键安装。
 > [!TIP]
 > 默认情况下，上述方法只会放行一个 6185 端口。如果需要部署消息平台，需要额外放行对应的端口。点击上栏 `容器`，找到 AstrBot 容器，点击 `管理`，点击 `编辑容器`，添加对应的端口即可。
 >
-> ![image](/source/images/btpanel/image-2.png)
+> ![image](https://files.astrbot.app/docs/docs/source/images/btpanel/image-2.png)
 >
 > 具体的消息平台对应端口可以参考下表：
 >

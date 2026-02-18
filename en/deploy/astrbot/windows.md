@@ -22,7 +22,7 @@ After extracting, open the folder.
 
 Type `PowerShell` in the address bar and press Enter to open it:
 
-![image](/source/images/windows/image-4.png)
+![image](https://files.astrbot.app/docs/docs/source/images/windows/image-4.png)
 
 Drag the `launcher_astrbot_en.bat` batch file into the PowerShell window and press Enter to run it.
 
@@ -60,15 +60,15 @@ If the script says "Python is not installed" even though you have installed Pyth
 
 Search for Python in Windows, and open its file location:
 
-![image](/source/images/windows/image.png)
+![image](https://files.astrbot.app/docs/docs/source/images/windows/image.png)
 
 Right-click the shortcut below and open its file location:
 
-![alt text](/source/images/windows/image-1.png)
+![alt text](https://files.astrbot.app/docs/docs/source/images/windows/image-1.png)
 
 Copy the file path:
 
-![image](/source/images/windows/image-2.png)
+![image](https://files.astrbot.app/docs/docs/source/images/windows/image-2.png)
 
 Go back to the `launcher_astrbot_en.bat` file, right-click and select `Edit in Notepad`. Find the line `set PYTHON_CMD=python` and change `python` to your Python interpreter path or command. Do not delete the double quotes around the path if you use them.
 

@@ -4,7 +4,7 @@ SubAgent Orchestration is an advanced agent organization method provided by Astr
 
 v4.14.0 introduced this feature, which is currently an **experimental feature** and not yet stable.
 
-![](/source/images/subagent/image.png)
+![](https://files.astrbot.app/docs/docs/source/images/subagent/image.png)
 
 ## Motivation
 
@@ -22,7 +22,7 @@ With SubAgent Orchestration, the Main Agent is only responsible for user interac
 3. **SubAgent Execution**: The SubAgent receives the task, performs operations using its assigned tools, and returns the organized results to the Main Agent.
 4. **Feedback**: The Main Agent receives the results and continues the conversation with the user.
 
-![](/source/images/subagent/1.png)
+![](https://files.astrbot.app/docs/docs/source/images/subagent/1.png)
 
 ## Configuration
 

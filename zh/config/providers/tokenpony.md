@@ -10,7 +10,7 @@
 
 进入 AstrBot WebUI，点击左栏 `服务提供商` -> `新增提供商` -> 选择 `小马算力` (需要版本 >= 4.3.3)
 
-![配置对话模型_1](/source/images/tokenpony/image.png)
+![配置对话模型_1](https://files.astrbot.app/docs/docs/source/images/tokenpony/image.png)
 
 > 如果没有看到 `小马算力` 选项，您也可以直接点击图中的 `接入 OpenAI`，并将 `API Base URL` 修改为 `https://api.tokenpony.cn/v1`。
 
@@ -20,4 +20,4 @@
 
 在 AstrBot WebUI，点击左栏 `配置文件`，找到 AI 配置中的 `默认聊天模型`，选择刚刚创建的 `tokenpony`(小马算力) 提供商，点击保存。
 
-![配置对话模型_2](/source/images/tokenpony/image_1.png)
+![配置对话模型_2](https://files.astrbot.app/docs/docs/source/images/tokenpony/image_1.png)

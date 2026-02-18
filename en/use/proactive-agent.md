@@ -2,7 +2,7 @@
 
 AstrBot introduces a Proactive Agent system, enabling AstrBot to not only respond passively to users but also schedule future tasks and proactively execute them at specified times, delivering results (text, images, files, etc.) to users.
 
-![](/source/images/proactive-agent/image.png)
+![](https://files.astrbot.app/docs/docs/source/images/proactive-agent/image.png)
 
 Introduced in v4.14.0, this is currently an **experimental feature** and not yet stable.
 
@@ -30,7 +30,7 @@ The Main Agent will call built-in scheduling tools to arrange these plans.
 
 You can view and manage all future tasks by clicking **Future Tasks** in the left navigation bar of the AstrBot WebUI.
 
-![](/source/images/proactive-agent/image-1.png)
+![](https://files.astrbot.app/docs/docs/source/images/proactive-agent/image-1.png)
 
 ### Supported Platforms
 

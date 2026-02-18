@@ -41,9 +41,9 @@ Some models may not support function calling and will return errors such as `too
 
 Below are some common tool calling demos:
 
-![image](/source/images/function-calling/image.png)
+![image](https://files.astrbot.app/docs/docs/source/images/function-calling/image.png)
 
-![image](/source/images/function-calling/image-1.png)
+![image](https://files.astrbot.app/docs/docs/source/images/function-calling/image-1.png)
 
 
 ## MCP

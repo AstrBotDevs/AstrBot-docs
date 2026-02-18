@@ -23,7 +23,7 @@ model_name 格式：`<model_name>:<model_version>`。如 `deepseek-r1:8b`。
 ## 配置 AstrBot
 
 打开 AstrBot 控制台 -> 服务提供商页面，点击新增模型提供商，找到并点击 `Ollama`。
-![image](/source/images/ollama/image.png)
+![image](https://files.astrbot.app/docs/docs/source/images/ollama/image.png)
 
 保存配置即可。
 

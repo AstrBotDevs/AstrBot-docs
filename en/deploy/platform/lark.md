@@ -18,15 +18,15 @@ Proactive message push: Supported.
 
 Navigate to the [Developer Console](https://open.feishu.cn/app) and create a custom enterprise application.
 
-![Create Custom Enterprise Application](/source/images/lark/image.png)
+![Create Custom Enterprise Application](https://files.astrbot.app/docs/docs/source/images/lark/image.png)
 
 Add the Bot capability to your application.
 
-![Add Bot Capability](/source/images/lark/image-1.png)
+![Add Bot Capability](https://files.astrbot.app/docs/docs/source/images/lark/image-1.png)
 
 Click on "Credentials & Basic Info" to obtain your app_id and app_secret.
 
-![Get app_id and app_secret](/source/images/lark/image-4.png)
+![Get app_id and app_secret](https://files.astrbot.app/docs/docs/source/images/lark/image-4.png)
 
 ## Configuring AstrBot
 
@@ -59,7 +59,7 @@ The following steps vary depending on the subscription method you selected above
 
 Next, click on "Events & Callbacks," select "Receive events using long connection," and click Save. **If the previous step didn't start successfully, you won't be able to save here.**
 
-![Configure Events & Callbacks](/source/images/lark/image-6.png)
+![Configure Events & Callbacks](https://files.astrbot.app/docs/docs/source/images/lark/image-6.png)
 
 ### `webhook` Send Events to Developer Server Method
 
@@ -68,7 +68,7 @@ Next, click on "Events & Callbacks," select "Receive events using long connectio
 
 After clicking `Save`, the bot card will display "View Webhook URL." Click to view and copy the callback URL.
 
-![](/source/images/lark/webhook.png)
+![](https://files.astrbot.app/docs/docs/source/images/lark/webhook.png)
 
 Next, return to Lark's Events & Callbacks page, click "Event Configuration," select "Send events to developer server," enter the callback URL you just copied as the "Request URL," and click Save. If everything is correct, no errors will appear.
 
@@ -76,11 +76,11 @@ Next, return to Lark's Events & Callbacks page, click "Event Configuration," sel
 
 After completing the event configuration in the previous step, click "Add Event," navigate to "Messages & Groups," scroll down to find `Receive Message`, and add it.
 
-![Add Event](/source/images/lark/image-7.png)
+![Add Event](https://files.astrbot.app/docs/docs/source/images/lark/image-7.png)
 
 Click to enable the following permissions.
 
-![Enable Permissions](/source/images/lark/image-8.png)
+![Enable Permissions](https://files.astrbot.app/docs/docs/source/images/lark/image-8.png)
 
 Then click the `Save` button at the top.
 
@@ -90,13 +90,13 @@ Enter `im:resource:upload,im:resource` again to enable image upload permissions.
 
 The final set of permissions should look like this:
 
-![Final Permissions](/source/images/lark/image-11.png)
+![Final Permissions](https://files.astrbot.app/docs/docs/source/images/lark/image-11.png)
 
 ## Creating a Version
 
 Create a new version.
 
-![Create Version](/source/images/lark/image-2.png)
+![Create Version](https://files.astrbot.app/docs/docs/source/images/lark/image-2.png)
 
 Fill in the version number, update notes, and visibility scope, then click Save and confirm the release.
 
@@ -106,10 +106,10 @@ Open the Lark app (the web version doesn't support adding bots), enter a group c
 
 Search for the bot you just created. For example, if you created the `AstrBot` bot as shown in this tutorial:
 
-![Add Bot](/source/images/lark/image-9.png)
+![Add Bot](https://files.astrbot.app/docs/docs/source/images/lark/image-9.png)
 
 ## 🎉 All Done!
 
 Send a `/help` command in the group, and the bot will respond.
 
-![Success](/source/images/lark/image-13.png)
+![Success](https://files.astrbot.app/docs/docs/source/images/lark/image-13.png)

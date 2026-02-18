@@ -3,11 +3,11 @@
 
 MCP (Model Context Protocol) is a new open standard protocol for establishing secure bidirectional connections between large language models and data sources. Simply put, it extracts function tools as independent services, allowing AstrBot to remotely invoke these function tools via the MCP protocol, which then return results to AstrBot.
 
-![image](/source/images/function-calling/image3.png)
+![image](https://files.astrbot.app/docs/docs/source/images/function-calling/image3.png)
 
 AstrBot v3.5.0 supports the MCP protocol, enabling you to add multiple MCP servers and use function tools from MCP servers.
 
-![image](/source/images/function-calling/image2.png)
+![image](https://files.astrbot.app/docs/docs/source/images/function-calling/image2.png)
 
 ## Initial Configuration
 
@@ -15,7 +15,7 @@ MCP servers are typically launched using `uv` or `npm`, so you need to install t
 
 For `uv`, you can install it directly via pip. Quick installation via AstrBot WebUI:
 
-![image](image.png)
+![image](https://files.astrbot.app/docs/docs/en/use/image.png)
 
 Just enter `uv`.
 
@@ -74,7 +74,7 @@ We extract the necessary information:
 
 Configure it in the AstrBot WebUI:
 
-![image](image-2.png)
+![image](https://files.astrbot.app/docs/docs/en/use/image-2.png)
 
 That's it.
 

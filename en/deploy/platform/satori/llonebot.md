@@ -32,7 +32,7 @@
 3. 如有必要，可填写【Satori Token】
 4. 点击右下角的【保存配置】
 
-![image](/source/images/satori/2025-10-10_15-52-32.png)
+![image](https://files.astrbot.app/docs/docs/source/images/satori/2025-10-10_15-52-32.png)
 
 ## 在 AstrBot 中配置 Satori 适配器
 
@@ -56,7 +56,7 @@
 >
 > 如果你的 satori协议运行在其他端口，请根据实际情况修改对应的配置！
 
-![image](/source/images/satori/2025-10-10_16-10-54.png)
+![image](https://files.astrbot.app/docs/docs/source/images/satori/2025-10-10_16-10-54.png)
 
 点击右下角 `保存` 完成配置。
 

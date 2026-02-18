@@ -103,7 +103,7 @@ async def test(self, event: AstrMessageEvent):
     yield event.chain_result([music])
 ```
 
-![发送视频消息](/source/images/plugin/db93a2bb-671c-4332-b8ba-9a91c35623c2.png)
+![发送视频消息](https://files.astrbot.app/docs/docs/source/images/plugin/db93a2bb-671c-4332-b8ba-9a91c35623c2.png)
 
 ## 发送群合并转发消息
 
@@ -128,4 +128,4 @@ async def test(self, event: AstrMessageEvent):
     yield event.chain_result([node])
 ```
 
-![发送群合并转发消息](/source/images/plugin/image-4.png)
+![发送群合并转发消息](https://files.astrbot.app/docs/docs/source/images/plugin/image-4.png)

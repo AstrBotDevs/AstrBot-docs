@@ -8,7 +8,7 @@ curl -fsSL https://get.casaos.io | sudo bash
 
 ## Add CasaOS-AppStore-Play App Store Source
 
-![image](/source/images/casaos/image.png)
+![image](https://files.astrbot.app/docs/docs/source/images/casaos/image.png)
 
 Click `More Apps`, then enter:
 
@@ -20,19 +20,19 @@ And add it, wait for the addition to complete.
 
 If your network environment is in mainland China, please search for and add `dkTurbo` first, otherwise you may not be able to pull the AstrBot image.
 
-![image](/source/images/casaos/image-1.png)
+![image](https://files.astrbot.app/docs/docs/source/images/casaos/image-1.png)
 
 Enter `Astrbot` to find AstrBot.
 
-![image](/source/images/casaos/image-2.png)
+![image](https://files.astrbot.app/docs/docs/source/images/casaos/image-2.png)
 
 Click the icon (not the install button), then hover over the `Install` button and click Custom Install.
 
-![image](/source/images/casaos/image-3.png)
+![image](https://files.astrbot.app/docs/docs/source/images/casaos/image-3.png)
 
 In the Network section, select `host`.
 
-![image](/source/images/casaos/image-4.png)
+![image](https://files.astrbot.app/docs/docs/source/images/casaos/image-4.png)
 
 Then click `Install` to start the installation.
 

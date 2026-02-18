@@ -8,7 +8,7 @@ If you haven't installed Dify yet, please refer to the [Dify Installation Docume
 
 In the WebUI, click "Model Provider" -> "Add Provider", select "Agent Runner", select "Dify", and enter the Dify configuration page.
 
-![image](/source/images/dify/image.png)
+![image](https://files.astrbot.app/docs/docs/source/images/dify/image.png)
 
 In Dify, one `API Key` uniquely corresponds to one Dify application. Therefore, you can create multiple Providers to adapt to multiple Dify applications.
 
@@ -20,16 +20,16 @@ According to the current Dify project, there are three types:
 
 >[!TIP]
 >Please ensure that the APP type you set in AstrBot matches the application type created in Dify.
->![image](/source/images/dify/image-3.png)
+>![image](https://files.astrbot.app/docs/docs/source/images/dify/image-3.png)
 
 
 ### Chat and Agent Applications
 
 Create your Dify Chat and Agent application keys as shown in the figure below:
 
-![image](/source/images/dify/chat-agent-api-key.png)
+![image](https://files.astrbot.app/docs/docs/source/images/dify/chat-agent-api-key.png)
 
-![image](/source/images/dify/chat-agent-api-key-2.png)
+![image](https://files.astrbot.app/docs/docs/source/images/dify/chat-agent-api-key-2.png)
 
 Copy the key and paste it into the `API Key` field in the configuration, then click "Save".
 
@@ -39,7 +39,7 @@ Copy the key and paste it into the `API Key` field in the configuration, then cl
 
 Workflow applications receive input variables, execute the workflow, and output the results.
 
-![image](/source/images/dify/workflow-io-key.png)
+![image](https://files.astrbot.app/docs/docs/source/images/dify/workflow-io-key.png)
 
 For Workflow applications, AstrBot will attach two variables with each request:
 
@@ -58,7 +58,7 @@ Create your Dify Workflow application's API Key as shown in the figure below:
 
 Click the Publish button in the upper right corner -> Access API -> click API Key in the upper right corner -> Create Key, then copy the API Key.
 
-![image](/source/images/dify/workflow-api-key.png)
+![image](https://files.astrbot.app/docs/docs/source/images/dify/workflow-api-key.png)
 
 Copy the key and paste it into the `API Key` field in the configuration, then click "Save".
 
@@ -70,11 +70,11 @@ Go to the Configuration page in the left sidebar, click "Agent Execution Method"
 
 You can use the `/set` command to dynamically set input variables, as shown in the figure below:
 
-![alt text](/source/images/dify/image-5.png)
+![alt text](https://files.astrbot.app/docs/docs/source/images/dify/image-5.png)
 
 After setting variables, AstrBot will attach the variables you set in the next request to Dify, flexibly adapting to your Workflow.
 
-![alt text](/source/images/dify/image-4.png)
+![alt text](https://files.astrbot.app/docs/docs/source/images/dify/image-4.png)
 
 Of course, you can use the `/unset` command to cancel the variables you set.
 

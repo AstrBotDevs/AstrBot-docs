@@ -171,15 +171,15 @@ class MyPlugin(Star):
 
 搞好后，运行 AstrBot：
 
-![image](/source/images/plugin-platform-adapter/QQ_1738155926221.png)
+![image](https://files.astrbot.app/docs/docs/source/images/plugin-platform-adapter/QQ_1738155926221.png)
 
 这里出现了我们创建的 fake。
 
-![image](/source/images/plugin-platform-adapter/QQ_1738155982211.png)
+![image](https://files.astrbot.app/docs/docs/source/images/plugin-platform-adapter/QQ_1738155982211.png)
 
 启动后，可以看到正常工作：
 
-![image](/source/images/plugin-platform-adapter/QQ_1738156166893.png)
+![image](https://files.astrbot.app/docs/docs/source/images/plugin-platform-adapter/QQ_1738156166893.png)
 
 
 有任何疑问欢迎加群询问~

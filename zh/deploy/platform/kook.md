@@ -8,7 +8,7 @@
 
 进入 AstrBot 仪表盘的插件市场，搜索 `astrbot_plugin_kook_adapter`，点击安装。
 
-![image](/source/images/kook/image.png)
+![image](https://files.astrbot.app/docs/docs/source/images/kook/image.png)
 
 安装完成后，前往 消息平台 → 新增适配器 → 选择 Kook（若选项缺失，尝试重启 AstrBot 或检查插件安装状态）。
 
@@ -22,7 +22,7 @@
   3. 进入应用后台，选择「机器人」模块，开启 **WebSocket 连接模式**；  
   4. 复制生成的 **Token**，填入 AstrBot 适配器的对应字段，并点击 `启用`。
 
-![image](/source/images/kook/image-1.png)
+![image](https://files.astrbot.app/docs/docs/source/images/kook/image-1.png)
 
 2. 点击右下角 `保存` 以新建适配器。
 3. 在左边栏「机器人」页面下点击「邀请链接」，设置角色权限（建议赋予全权限，确保功能完整）。

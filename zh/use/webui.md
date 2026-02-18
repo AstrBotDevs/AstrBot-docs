@@ -2,7 +2,7 @@
 
 AstrBot 管理面板具有管理插件、查看日志、可视化配置、查看统计信息等功能。
 
-![image](/source/images/webui/image-4.png)
+![image](https://files.astrbot.app/docs/docs/source/images/webui/image-4.png)
 
 ## 管理面板的访问
 
@@ -19,7 +19,7 @@ AstrBot 管理面板具有管理插件、查看日志、可视化配置、查看
 
 在管理面板中，你可以通过可视化配置来配置 AstrBot 的插件。点击左栏 `配置` 即可进入配置页面。
 
-![image](/source/images/webui/image-3.png)
+![image](https://files.astrbot.app/docs/docs/source/images/webui/image-3.png)
 
 当修改完配置后，你需要点击右下角 `保存` 按钮才能成功保存配置。
 
@@ -27,7 +27,7 @@ AstrBot 管理面板具有管理插件、查看日志、可视化配置、查看
 
 编辑完后首先点击`应用此配置`，此时配置将应用到可视化配置中，然后再点击右下角`保存`按钮来保存配置。如果你不点击`应用此配置`，那么你的修改将不会生效。
 
-![alt text](/source/images/webui/image-5.png)
+![alt text](https://files.astrbot.app/docs/docs/source/images/webui/image-5.png)
 
 ## 插件
 
@@ -35,7 +35,7 @@ AstrBot 管理面板具有管理插件、查看日志、可视化配置、查看
 
 点击插件市场标签栏，你可以浏览由 AstrBot 官方上架的插件。
 
-![image](/source/images/webui/image-1.png)
+![image](https://files.astrbot.app/docs/docs/source/images/webui/image-1.png)
 
 你也可以点击右下角 + 按钮，以 URL / 文件上传的方式手动安装插件。
 

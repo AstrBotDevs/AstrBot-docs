@@ -25,8 +25,8 @@
 > [!TIP]
 > 如果您正在尝试更新 v4.8.0 之前配置的机器人适配器，你可能无法看到 `统一 Webhook 模式 (unified_webhook_mode)` 选项。请重新创建一个新的适配器实例，即可看到该选项。
 
-![unified_webhook](/source/images/use/unified-webhook-config.png)
+![unified_webhook](https://files.astrbot.app/docs/docs/source/images/use/unified-webhook-config.png)
 
 开启该模式后，AstrBot 会为你生成一个唯一的 Webhook 回调链接，你只需要将该链接填写到各个平台的回调地址处即可。
 
-![unified_webhook](/source/images/use/unified-webhook.png)
+![unified_webhook](https://files.astrbot.app/docs/docs/source/images/use/unified-webhook.png)

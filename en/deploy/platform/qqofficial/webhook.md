@@ -30,7 +30,7 @@
 
 点击创建好的机器人，然后你将会被导航到机器人的管理页面。如下图所示：
 
-![image](/source/images/qqofficial/image.png)
+![image](https://files.astrbot.app/docs/docs/source/images/qqofficial/image.png)
 
 ## 允许机器人加入频道/群/私聊
 
@@ -38,7 +38,7 @@
 
 然后你将会看到 QQ 群配置、消息列表配置和 QQ 频道配置。根据你的需求来选择QQ群、允许私聊的QQ号、QQ频道。
 
-![image](/source/images/qqofficial/image-1.png)
+![image](https://files.astrbot.app/docs/docs/source/images/qqofficial/image-1.png)
 
 ## 获取 appid、secret
 
@@ -50,7 +50,7 @@
 
 点击 `开发->开发设置`，找到 IP 白名单。添加你的服务器 IP 地址。
 
-![image](/source/images/qqofficial/image-3.png)
+![image](https://files.astrbot.app/docs/docs/source/images/qqofficial/image-3.png)
 
 ## 在 AstrBot 配置
 
@@ -78,7 +78,7 @@
 
 填写好之后，添加事件，四个事件类型都全选：单聊事件、群事件、频道事件等，如下图。
 
-![image](/source/images/webhook/image.png)
+![image](https://files.astrbot.app/docs/docs/source/images/webhook/image.png)
 
 输入完成后，将光标挪出输入框，将会发送一次验证请求。如果没问题，右边的确定配置按钮将可点击，点击即可。
 

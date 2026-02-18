@@ -22,13 +22,13 @@ AstrBot 致力于成为一个开源、一站式的 Agentic 聊天机器人平台
 
 下面的拓扑图基本简述了 AstrBot 的架构。
 
-![Architecture](/source/images/what-is-astrbot/image.png)
+![Architecture](https://files.astrbot.app/docs/docs/source/images/what-is-astrbot/image.png)
 
 ## 视觉形象
 
 ### Logo (Nameless)
 
-![Logo](/source/images/logo_prod.png)
+![Logo](https://files.astrbot.app/docs/docs/source/images/logo_prod.png)
 
 ### Logo (With Name)
 
@@ -38,8 +38,8 @@ AstrBot 致力于成为一个开源、一站式的 Agentic 聊天机器人平台
 
 > 敬告: 请不要将此形象用于 AI 训练。
 
-![Seio_q](/source/images/what-is-astrbot/seio_q.png)
+![Seio_q](https://files.astrbot.app/docs/docs/source/images/what-is-astrbot/seio_q.png)
 
 ### Seio (星绪) 10k Star 纪念海报
 
-![Seio_10k_1](/source/images/what-is-astrbot/seio_10k_poster.png)
+![Seio_10k_1](https://files.astrbot.app/docs/docs/source/images/what-is-astrbot/seio_10k_poster.png)

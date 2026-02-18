@@ -25,7 +25,7 @@ sudo docker run -itd -p 6180-6200:6180-6200 -p 11451:11451 -v $PWD/data:/AstrBot
 
 Example:
 
-![image](/source/images/code-interpreter/image-4.png)
+![image](https://files.astrbot.app/docs/docs/source/images/code-interpreter/image-4.png)
 
 ## Running AstrBot from Source on Linux
 
@@ -73,7 +73,7 @@ The image may be updated periodically to provide more features, so check for upd
 > If the feature doesn't start properly initially, after successful startup, execute `/tool on python_interpreter` to enable this feature.
 > You can use `/tool ls` to view all tools and their enabled status.
 
-![image](/source/images/code-interpreter/image-3.png)
+![image](https://files.astrbot.app/docs/docs/source/images/code-interpreter/image-3.png)
 
 ## Image and File Input
 
@@ -87,10 +87,10 @@ For example, if you want to add rounded corners to an image, you can upload the 
 
 ## Demo
 
-![image](/source/images/code-interpreter/a3cd3a0e-aca5-41b2-aa52-66b568bd955b.png)
+![image](https://files.astrbot.app/docs/docs/source/images/code-interpreter/a3cd3a0e-aca5-41b2-aa52-66b568bd955b.png)
 
-![alt text](/source/images/code-interpreter/image.png)
+![alt text](https://files.astrbot.app/docs/docs/source/images/code-interpreter/image.png)
 
-![image](/source/images/code-interpreter/image-1.png)
+![image](https://files.astrbot.app/docs/docs/source/images/code-interpreter/image-1.png)
 
-![image](/source/images/code-interpreter/image-2.png)
+![image](https://files.astrbot.app/docs/docs/source/images/code-interpreter/image-2.png)

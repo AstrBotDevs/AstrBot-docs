@@ -5,9 +5,9 @@
 > [!TIP]
 > 如果没有你希望接入的模型服务，你可以试着查看您希望接入的服务提供商处是否支持 兼容 OpenAI API，如果支持，那么你可以选择上面截图中的第一项 `OpenAI` 然后通过修改 API Base URL 的方式接入。
 
-![image](/source/images/llm/image.png)
+![image](https://files.astrbot.app/docs/docs/source/images/llm/image.png)
 
-![image](/source/images/llm/image-1.png)
+![image](https://files.astrbot.app/docs/docs/source/images/llm/image-1.png)
 
 
 > 相应的配置保存在 `data/cmd_config.json` 的 `provider` 字段中。

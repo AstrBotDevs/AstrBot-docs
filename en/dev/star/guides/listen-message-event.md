@@ -13,7 +13,7 @@ from astrbot.api.event import filter, AstrMessageEvent
 
 AstrBot receives messages delivered by messaging platforms and encapsulates them as `AstrMessageEvent` objects, which are then passed to plugins for processing.
 
-![message-event](message-event.svg)
+![message-event](https://files.astrbot.app/docs/docs/en/dev/star/guides/message-event.svg)
 
 ### Message Events
 
@@ -42,7 +42,7 @@ Here, `raw_message` is the **raw message object** from the messaging platform ad
 
 ### Message Chain
 
-![message-chain](message-chain.svg)
+![message-chain](https://files.astrbot.app/docs/docs/en/dev/star/guides/message-chain.svg)
 
 A `message chain` describes the structure of a message. It's an ordered list where each element is called a `message segment`.
 
@@ -68,7 +68,7 @@ In AstrBot, message chains are represented as lists of type `List[BaseMessageCom
 
 ## Commands
 
-![message-event-simple-command](message-event-simple-command.svg)
+![message-event-simple-command](https://files.astrbot.app/docs/docs/en/dev/star/guides/message-event-simple-command.svg)
 
 ```python
 from astrbot.api.event import filter, AstrMessageEvent
@@ -92,7 +92,7 @@ class MyPlugin(Star):
 
 ## Commands with Parameters
 
-![command-with-param](command-with-param.svg)
+![command-with-param](https://files.astrbot.app/docs/docs/en/dev/star/guides/command-with-param.svg)
 
 AstrBot will automatically parse command parameters for you.
 
@@ -127,11 +127,11 @@ The command group function doesn't need to implement any logic; just use `pass` 
 
 When a user doesn't input a subcommand, an error will be reported and the tree structure of the command group will be rendered.
 
-![image](/source/images/plugin/image-1.png)
+![image](https://files.astrbot.app/docs/docs/source/images/plugin/image-1.png)
 
-![image](/source/images/plugin/898a169ae7ed0478f41c0a7d14cb4d64.png)
+![image](https://files.astrbot.app/docs/docs/source/images/plugin/898a169ae7ed0478f41c0a7d14cb4d64.png)
 
-![image](/source/images/plugin/image-2.png)
+![image](https://files.astrbot.app/docs/docs/source/images/plugin/image-2.png)
 
 Theoretically, command groups can be nested infinitely!
 

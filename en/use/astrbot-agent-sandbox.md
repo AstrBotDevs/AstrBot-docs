@@ -5,7 +5,7 @@
 
 Starting from version `v4.12.0`, AstrBot introduced the Agent sandbox environment to replace the previous code executor functionality. The sandbox environment provides Agents with safer and more flexible code execution and automation capabilities.
 
-![](/source/images/astrbot-agent-sandbox/image.png)
+![](https://files.astrbot.app/docs/docs/source/images/astrbot-agent-sandbox/image.png)
 
 ## Enabling the Sandbox Environment
 

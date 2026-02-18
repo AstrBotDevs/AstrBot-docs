@@ -24,7 +24,7 @@ outline: deep
    - 保持全部字母小写；
    - 尽量简短。
 
-![image](/source/images/plugin/image.png)
+![image](https://files.astrbot.app/docs/docs/source/images/plugin/image.png)
 
 5. 点击右下角的 `Create repository`。
 
@@ -220,7 +220,7 @@ async def on_message(self, event: AstrMessageEvent):
 
 你可以在插件目录下添加一个 `logo.png` 文件，作为插件的 Logo 显示在插件市场中。请保持长宽比为 1:1，推荐尺寸为 256x256。
 
-![插件 logo 示例](/source/images/plugin/plugin_logo.png)
+![插件 logo 示例](https://files.astrbot.app/docs/docs/source/images/plugin/plugin_logo.png)
 
 ### 插件展示名
 
@@ -299,11 +299,11 @@ async def sub(self, event: AstrMessageEvent, a: int, b: int):
 
 当用户没有输入子指令时，会报错并，并渲染出该指令组的树形结构。
 
-![image](/source/images/plugin/image-1.png)
+![image](https://files.astrbot.app/docs/docs/source/images/plugin/image-1.png)
 
-![image](/source/images/plugin/898a169ae7ed0478f41c0a7d14cb4d64.png)
+![image](https://files.astrbot.app/docs/docs/source/images/plugin/898a169ae7ed0478f41c0a7d14cb4d64.png)
 
-![image](/source/images/plugin/image-2.png)
+![image](https://files.astrbot.app/docs/docs/source/images/plugin/image-2.png)
 
 理论上，指令组可以无限嵌套！
 
@@ -612,7 +612,7 @@ async def test(self, event: AstrMessageEvent):
     yield event.chain_result([node])
 ```
 
-![发送群合并转发消息](/source/images/plugin/image-4.png)
+![发送群合并转发消息](https://files.astrbot.app/docs/docs/source/images/plugin/image-4.png)
 
 #### 发送视频消息
 
@@ -635,7 +635,7 @@ async def test(self, event: AstrMessageEvent):
     yield event.chain_result([music])
 ```
 
-![发送视频消息](/source/images/plugin/db93a2bb-671c-4332-b8ba-9a91c35623c2.png)
+![发送视频消息](https://files.astrbot.app/docs/docs/source/images/plugin/db93a2bb-671c-4332-b8ba-9a91c35623c2.png)
 
 #### 发送 QQ 表情
 
@@ -652,7 +652,7 @@ async def test(self, event: AstrMessageEvent):
     yield event.chain_result([Face(id=21), Plain("你好呀")])
 ```
 
-![发送 QQ 表情](/source/images/plugin/image-5.png)
+![发送 QQ 表情](https://files.astrbot.app/docs/docs/source/images/plugin/image-5.png)
 
 ### 控制事件传播
 
@@ -677,7 +677,7 @@ async def check_ok(self, event: AstrMessageEvent):
 
 AstrBot 提供了”强大“的配置解析和可视化功能。能够让用户在管理面板上直接配置插件，而不需要修改代码。
 
-![image](/source/images/plugin/QQ_1738149538737.png)
+![image](https://files.astrbot.app/docs/docs/source/images/plugin/QQ_1738149538737.png)
 
 **Schema 介绍**
 
@@ -734,13 +734,13 @@ AstrBot 提供了”强大“的配置解析和可视化功能。能够让用户
 
 其中，如果启用了代码编辑器，效果如下图所示:
 
-![editor_mode](/source/images/plugin/image-6.png)
+![editor_mode](https://files.astrbot.app/docs/docs/source/images/plugin/image-6.png)
 
-![editor_mode_fullscreen](/source/images/plugin/image-7.png)
+![editor_mode_fullscreen](https://files.astrbot.app/docs/docs/source/images/plugin/image-7.png)
 
 **_special** 字段仅 v4.0.0 之后可用。目前支持填写 `select_provider`, `select_provider_tts`, `select_provider_stt`, `select_persona`，用于让用户快速选择用户在 WebUI 上已经配置好的模型提供商、人设等数据。结果均为字符串。以 select_provider 为例，将呈现以下效果:
 
-![image](/source/images/plugin/image.png)
+![image](https://files.astrbot.app/docs/docs/source/images/plugin/image.png)
 
 **使用配置**
 
@@ -779,7 +779,7 @@ async def on_aiocqhttp(self, event: AstrMessageEvent, text: str):
 
 ```
 
-![image](/source/images/plugin/image-3.png)
+![image](https://files.astrbot.app/docs/docs/source/images/plugin/image-3.png)
 
 #### 自定义(基于 HTML)
 
@@ -809,7 +809,7 @@ async def custom_t2i_tmpl(self, event: AstrMessageEvent):
 
 返回的结果:
 
-![image](/source/images/plugin/fcc2dcb472a91b12899f617477adc5c7.png)
+![image](https://files.astrbot.app/docs/docs/source/images/plugin/fcc2dcb472a91b12899f617477adc5c7.png)
 
 这只是一个简单的例子。得益于 HTML 和 DOM 渲染器的强大性，你可以进行更复杂和更美观的的设计。除此之外，Jinja2 支持循环、条件等语法以适应列表、字典等数据结构。你可以从网上了解更多关于 Jinja2 的知识。
 

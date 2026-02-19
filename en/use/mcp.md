@@ -72,7 +72,7 @@ We extract the necessary information:
 }
 ```
 
-If the MCP server you need requires environment variables to configure something (e.g. access token), you could use commandline tool `env`:
+If the MCP server you need requires environment variables to configure something (e.g. access token), you could use the command-line tool `env`:
 
 ```json
 {

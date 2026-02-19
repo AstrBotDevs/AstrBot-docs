@@ -129,3 +129,48 @@ async def test(self, event: AstrMessageEvent):
 ```
 
 ![发送群合并转发消息](https://files.astrbot.app/docs/source/images/plugin/image-4.png)
+
+## 其他消息类型
+
+> 部分平台可能不支持以下所有消息类型。
+
+**JSON 卡片**
+
+```python
+Comp.Json(data={...})
+```
+
+**分享 Share**
+
+```python
+Comp.Share(url="...", title="...", content="...", image="...")
+```
+
+**音乐分享 Music**
+
+```python
+# 方式 1：指定平台和 ID
+Comp.Music(type="qq", id="...") 
+# 方式 2：自定义
+Comp.Music(type="custom", url="...", audio="...", title="...", content="...", image="...")
+```
+
+**位置 Location**
+
+```python
+Comp.Location(lat=..., lon=..., title="...", content="...")
+```
+
+**推荐好友/群 Contact**
+
+```python
+Comp.Contact(type="qq", id="...")
+```
+
+**魔法表情/动作**
+
+```python
+Comp.Shake() # 窗口抖动/戳一戳
+Comp.Dice() # 掷骰子
+Comp.RPS() # 猜拳
+```

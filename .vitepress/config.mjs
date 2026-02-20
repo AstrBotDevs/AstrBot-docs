@@ -127,6 +127,7 @@ export default defineConfig({
                 items: [
                   { text: "✨ 接入模型服务", link: "/start" },
                   { text: "NewAPI", link: "/newapi" },
+                  { text: "AIHubMix", link: "/aihubmix" },
                   { text: "PPIO 派欧云", link: "/ppio" },
                   { text: "硅基流动", link: "/siliconflow" },
                   { text: "小马算力", link: "/tokenpony" },
@@ -349,6 +350,7 @@ export default defineConfig({
                 items: [
                   { text: "✨ Connecting LLM Services", link: "/start" },
                   { text: "NewAPI", link: "/newapi" },
+                  { text: "AIHubMix", link: "/aihubmix" },
                   { text: "PPIO Cloud", link: "/ppio" },
                   { text: "SiliconFlow", link: "/siliconflow" },
                   { text: "TokenPony", link: "/tokenpony" },

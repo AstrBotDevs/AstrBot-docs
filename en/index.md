@@ -3,12 +3,10 @@
 layout: home
 
 hero:
-  name: "AstrBot"
+  name: >-
+    <a href="https://trendshift.io/repositories/12875" target="_blank"><img src="https://trendshift.io/api/badge/repositories/12875" alt="Soulter%2FAstrBot | Trendshift" style="width: 250px; height: 55px; margin-bottom: 16px;" width="250" height="55"/></a>
   text: "Agentic AI assistant for personal and group chats"
   tagline: Connect any IM / 1000+ plugins / General Agent Orchestration
-  image:
-    src: https://cf.s3.soulter.top/astrbot-logo.svg
-    alt: AstrBot Logo
   actions:
     - theme: brand
       text: Quick Start

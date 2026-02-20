@@ -148,3 +148,21 @@
 #app > div > header > div > div.wrapper > div > div.title > div > a {
   border-bottom: none;
 }
+
+.VPHomeHero:not(.has-image) .container {
+  text-align: center;
+}
+
+.VPHomeHero:not(.has-image) .heading {
+  align-items: center;
+}
+
+.VPHomeHero:not(.has-image) .name,
+.VPHomeHero:not(.has-image) .text,
+.VPHomeHero:not(.has-image) .tagline {
+  margin: 0 auto;
+}
+
+.VPHomeHero:not(.has-image) .actions {
+  justify-content: center;
+}

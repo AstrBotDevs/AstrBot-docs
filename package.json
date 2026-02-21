@@ -5,7 +5,8 @@
     "docs:preview": "vitepress preview"
   },
   "devDependencies": {
-    "vitepress": "^1.6.4"
+    "vitepress": "^1.6.4",
+    "vitepress-openapi": "^0.1.14"
   },
   "dependencies": {
     "vue": "^3.5.17"

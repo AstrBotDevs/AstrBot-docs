@@ -14,10 +14,6 @@
     {
       "name": "Open API",
       "description": "Developer APIs authenticated by API Key"
-    },
-    {
-      "name": "API Key Management",
-      "description": "Dashboard APIs (JWT required) for API key lifecycle"
     }
   ],
   "paths": {
@@ -110,7 +106,7 @@
           "Open API"
         ],
         "summary": "Send chat message (SSE)",
-        "description": "Send message to AstrBot chat pipeline and receive streaming SSE response. Reuses /api/chat/send behavior.",
+        "description": "Send message to AstrBot chat pipeline and receive streaming SSE response. Reuses /api/chat/send behavior. If session_id/conversation_id is omitted, server will create a new UUID session_id.",
         "security": [
           {
             "ApiKeyHeader": []
@@ -127,6 +123,7 @@
                 "plain": {
                   "value": {
                     "message": "Hello",
+                    "username": "alice",
                     "session_id": "my_session_001",
                     "enable_streaming": true
                   }
@@ -143,6 +140,7 @@
                         "attachment_id": "9a2f8c72-e7af-4c0e-b352-111111111111"
                       }
                     ],
+                    "username": "alice",
                     "session_id": "my_session_001",
                     "selected_provider": "openai_chat_completion",
                     "selected_model": "gpt-4.1-mini",
@@ -152,8 +150,16 @@
                 "withConfig": {
                   "value": {
                     "message": "Use a specific config for this session",
+                    "username": "alice",
                     "session_id": "my_session_001",
                     "config_id": "default",
+                    "enable_streaming": true
+                  }
+                },
+                "autoSessionWithUsername": {
+                  "value": {
+                    "message": "hello",
+                    "username": "alice",
                     "enable_streaming": true
                   }
                 }
@@ -187,7 +193,7 @@
           "Open API"
         ],
         "summary": "List chat sessions with pagination",
-        "description": "List chat sessions created under the current API key identity.",
+        "description": "List chat sessions for the specified username.",
         "security": [
           {
             "ApiKeyHeader": []
@@ -220,6 +226,15 @@
               "type": "string"
             },
             "description": "Optional platform filter"
+          },
+          {
+            "name": "username",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Target username."
           }
         ],
         "responses": {
@@ -307,153 +322,6 @@
         }
       }
     },
-    "/api/apikey/list": {
-      "get": {
-        "tags": [
-          "API Key Management"
-        ],
-        "summary": "List API keys",
-        "description": "Dashboard endpoint. Requires dashboard JWT token.",
-        "security": [
-          {
-            "DashboardBearer": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          }
-        }
-      }
-    },
-    "/api/apikey/create": {
-      "post": {
-        "tags": [
-          "API Key Management"
-        ],
-        "summary": "Create API key",
-        "description": "Dashboard endpoint. The plaintext key is returned only once.",
-        "security": [
-          {
-            "DashboardBearer": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "scopes": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "enum": [
-                        "chat",
-                        "file",
-                        "send_message",
-                        "bot"
-                      ]
-                    }
-                  },
-                  "expires_in_days": {
-                    "type": "integer",
-                    "minimum": 1
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          }
-        }
-      }
-    },
-    "/api/apikey/revoke": {
-      "post": {
-        "tags": [
-          "API Key Management"
-        ],
-        "summary": "Revoke API key",
-        "security": [
-          {
-            "DashboardBearer": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "key_id"
-                ],
-                "properties": {
-                  "key_id": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/apikey/delete": {
-      "post": {
-        "tags": [
-          "API Key Management"
-        ],
-        "summary": "Delete API key",
-        "security": [
-          {
-            "DashboardBearer": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "key_id"
-                ],
-                "properties": {
-                  "key_id": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/open/v1/configs": {
       "get": {
         "tags": [
@@ -494,11 +362,6 @@
         "in": "header",
         "name": "X-API-Key",
         "description": "Open API key. Authorization: Bearer <api_key> is also accepted."
-      },
-      "DashboardBearer": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
       }
     },
     "responses": {
@@ -694,7 +557,7 @@
         "type": "object",
         "required": [
           "message",
-          "session_id"
+          "username"
         ],
         "properties": {
           "message": {
@@ -711,7 +574,16 @@
             ]
           },
           "session_id": {
-            "type": "string"
+            "type": "string",
+            "description": "Optional chat session ID. If omitted (and conversation_id is also omitted), server creates a UUID automatically."
+          },
+          "conversation_id": {
+            "type": "string",
+            "description": "Alias of session_id."
+          },
+          "username": {
+            "type": "string",
+            "description": "Target username."
           },
           "selected_provider": {
             "type": "string"

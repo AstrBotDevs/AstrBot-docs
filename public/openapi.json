@@ -3,7 +3,7 @@
   "info": {
     "title": "AstrBot Open API",
     "version": "1.0.0",
-    "description": "Developer HTTP APIs for AstrBot. Use API Key authentication for /api/open/v1/* endpoints."
+    "description": "Developer HTTP APIs for AstrBot. Use API Key authentication for /api/v1/* endpoints."
   },
   "servers": [
     {
@@ -17,7 +17,7 @@
     }
   ],
   "paths": {
-    "/api/open/v1/bots": {
+    "/api/v1/im/bots": {
       "get": {
         "tags": [
           "Open API"
@@ -49,7 +49,7 @@
         }
       }
     },
-    "/api/open/v1/file/upload": {
+    "/api/v1/file": {
       "post": {
         "tags": [
           "Open API"
@@ -100,7 +100,7 @@
         }
       }
     },
-    "/api/open/v1/chat/send": {
+    "/api/v1/chat": {
       "post": {
         "tags": [
           "Open API"
@@ -187,7 +187,7 @@
         }
       }
     },
-    "/api/open/v1/chat/sessions": {
+    "/api/v1/chat/sessions": {
       "get": {
         "tags": [
           "Open API"
@@ -257,7 +257,7 @@
         }
       }
     },
-    "/api/open/v1/message/send": {
+    "/api/v1/im/message": {
       "post": {
         "tags": [
           "Open API"
@@ -322,7 +322,7 @@
         }
       }
     },
-    "/api/open/v1/configs": {
+    "/api/v1/configs": {
       "get": {
         "tags": [
           "Open API"

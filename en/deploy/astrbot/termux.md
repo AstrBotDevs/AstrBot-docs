@@ -41,7 +41,7 @@ bash xxx.sh
 
 You can download Termux from the [official website](https://termux.dev/en) via [GitHub](https://github.com/termux/termux-app/releases) or [F-Droid](https://f-droid.org/en/packages/com.termux/).
 
-<!--都英文版了还用啥换源啊-->
+<!--都英文版了还用啥换源啊，sourcery-ai你倒是想想啊-->
 
 # Deployment
 
@@ -162,9 +162,9 @@ uv run --no-sync main.py # Prevents uv from automatically syncing libraries, whi
 >  ├─▶ Failed to install: trove_classifiers-2025.9.11.17-py3-none-any.whl
 >  │   (trove-classifiers==2025.9.11.17)
 >  ╰─▶ failed to hardlink file from
->      /root/.cache/uv/archive-v0/10gPuxc61Audvy1Eg6SFz/trove_classifiers/.>l2s.__init__.py0001
+>      /root/.cache/uv/archive-v0/10gPuxc61Audvy1Eg6SFz/trove_classifiers/.l2s.__init__.py0001
 >      to
->      /root/.cache/uv/builds-v0/.tmp2lFVJx/lib/python3.10/site-packages/>trove_classifiers/.l2s.__init__.py0001:
+>      /root/.cache/uv/builds-v0/.tmp2lFVJx/lib/python3.10/site-packages/trove_classifiers/.l2s.__init__.py0001:
 >      Operation not permitted (os error 1)```
 
 You can try running the following commands first, then restart AstrBot:
@@ -206,7 +206,7 @@ exit
 
 Each time you reopen `Termux`, you need to restart the `proot` environment and launch `AstrBot`.
 
-You can use the following commands:
+You can use the following commands(also recommend adding `--no-sync` when using):
 
 ```bash
 proot-distro login ubuntu

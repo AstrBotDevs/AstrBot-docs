@@ -28,7 +28,6 @@ export default defineConfig({
           { text: "开始", link: "/what-is-astrbot" },
           { text: "博客", link: "https://blog.astrbot.app" },
           { text: "路线图", link: "https://astrbot.featurebase.app/roadmap" },
-          { text: "HTTP API", link: "https://docs.astrbot.app/scalar.html" },
         ],
         sidebar: [
           {
@@ -205,10 +204,6 @@ export default defineConfig({
                 text: "接入平台适配器",
                 link: "/plugin-platform-adapter",
               },
-              {
-                text: "AstrBot HTTP API",
-                link: "/openapi",
-              },
             ],
           },
           {
@@ -261,7 +256,6 @@ export default defineConfig({
         nav: [
           { text: "Home", link: "/en/" },
           { text: "Get Started", link: "/en/what-is-astrbot" },
-          { text: "HTTP API", link: "https://docs.astrbot.app/scalar.html" },
         ],
         sidebar: [
           {
@@ -430,10 +424,6 @@ export default defineConfig({
               {
                 text: "Platform Adapter Integration",
                 link: "/plugin-platform-adapter",
-              },
-              {
-                text: "AstrBot HTTP API",
-                link: "/openapi",
               },
             ],
           },

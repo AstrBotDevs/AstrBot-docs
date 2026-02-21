@@ -6,14 +6,17 @@
 >[!TIP]
 >本教程中若未说明，`Do you want to continue?[Y/n]`(或类似)一律填`Y`或`y`
 >
+
 # 准备步骤
 
-## Bash 基础
+<details>
+<summary>Bash 基础</summary>
 
 ### 进入目录
 
 ```bash
 cd /path/to/dir
+cd ../ # 返回上级目录
 ```
 
 ### 列举目录
@@ -25,7 +28,7 @@ ls
 ### 删除文件或目录
 
 ```bash
-rm -r /path/to/dir/or/file
+rm -r /path/to/dir/or/file # 此处可以加 -f 强制删除
 ```
 
 ### 运行 `.sh` (`Shell`) 文件
@@ -33,10 +36,11 @@ rm -r /path/to/dir/or/file
 ```bash
 bash xxx.sh
 ```
+</details>
 
 ## 安装 `Termux`
 
-在[Termux 官网](https://termux.dev/cn) 可选择在[GitHub](https://github.com/termux/termux-app/releases)或[F-Droid](https://f-droid.org/en/packages/com.termux/)下载Termux
+在 [Termux 官网](https://termux.dev/cn) 可选择在 [GitHub](https://github.com/termux/termux-app/releases) 或 [F-Droid](https://f-droid.org/en/packages/com.termux/) 下载Termux
 
 ## 换源 (可选)
 
@@ -98,13 +102,23 @@ proot-distro login ubuntu
 apt update && apt install software-properties-common
 ```
 
-### 添加`deadsnakes`PPA(Python官方维护)
+<details>
+<summary>报错了？</summary>
+
+如果有类似以下的报错：
+
+`Error: The repository 'https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu questing Release' does not have a Release file.`
+说明你使用的是新版本的Ubuntu，目前PPA还未支持，请降级后重试
+
+</details>
+
+### 添加 `deadsnakes` PPA
 
 ```bash
 add-apt-repository ppa:deadsnakes/ppa && apt update
 ```
 
-添加时你可能会看到:`Press [ENTER] to continue or Ctrl-c to cancel.` ，此时按下回车(换行)即可
+添加时你可能会看到:`Press [ENTER] to continue or Ctrl-C to cancel.` ，此时按下回车(换行)即可
 
 ## 安装 `Python`
 
@@ -121,8 +135,19 @@ apt install python3.10
 ```bash
 git clone https://github.com/AstrBotDevs/AstrBot.git && cd AstrBot
 ```
+<details>
+<summary>下载出现了问题？</summary>
 
-如果一切顺利的话，您应该进入到了 `~/AstrBot#` 下，可以进入到下一步了
+>[!TIP]
+>此处建议使用 `gh-proxy` 作为加速站, 即：
+>```bash
+>git clone https://gh-proxy.org/https://github.com/AstrBotDevs/AstrBot.git
+>```
+>或
+>```bash
+>git clone https://hk.gh-proxy.org/https://github.com/AstrBotDevs/AstrBot.git
+>```
+>具体视情况而定
 
 >[!NOTE]
 >如果 `git clone` 失败，那么其后的 `cd` 命令也不会生效，故在运行命令时请注意路径是否正确
@@ -134,11 +159,21 @@ git clone https://github.com/AstrBotDevs/AstrBot.git && cd AstrBot
 >```
 >
 >之后再运行上述命令
+</details>
+<br>
+
+如果一切顺利的话，您应该进入到了 `~/AstrBot#` 下，可以进入到下一步了
 
 ## 运行 `AstrBot`
 
 ```bash
+uv sync
 uv run main.py
+```
+或者
+```bash
+uv sync
+uv run --no-sync main.py # 防止uv自动同步库使插件不可用
 ```
 
 >[!TIP]
@@ -150,17 +185,19 @@ uv run main.py
 
 ## 报错解决方案
 
->如果出现了 `[WARN] uv sync 失败，重试 2/3
-  × Failed to build astrbot @ file:///root/
-  ├─▶ Failed to install requirements from build-system.requires
-  ├─▶ Failed to install build dependencies
-  ├─▶ Failed to install: trove_classifiers-2025.9.11.17-py3-none-any.whl
-  │   (trove-classifiers==2025.9.11.17)
-  ╰─▶ failed to hardlink file from
-      /root/.cache/uv/archive-v0/10gPuxc61Audvy1Eg6SFz/trove_classifiers/.l2s.__init__.py0001
-      to
-      /root/.cache/uv/builds-v0/.tmp2lFVJx/lib/python3.10/site-packages/trove_classifiers/.l2s.__init__.py0001:
-      Operation not permitted (os error 1)
+>如果出现了 
+>```
+>[WARN] uv sync 失败，重试 2/3
+>  × Failed to build astrbot @ file:///root/
+>  ├─▶ Failed to install requirements from build-system.requires
+>  ├─▶ Failed to install build dependencies
+>  ├─▶ Failed to install: trove_classifiers-2025.9.11.17-py3-none-any.whl
+>  │   (trove-classifiers==2025.9.11.17)
+>  ╰─▶ failed to hardlink file from
+>      /root/.cache/uv/archive-v0/10gPuxc61Audvy1Eg6SFz/trove_classifiers/.>l2s.__init__.py0001
+>      to
+>      /root/.cache/uv/builds-v0/.tmp2lFVJx/lib/python3.10/site-packages/>trove_classifiers/.l2s.__init__.py0001:
+>      Operation not permitted (os error 1)```
 
 可以先运行以下命令，然后再重新启动
 
@@ -178,7 +215,9 @@ uv run main.py
 
 如果有，那么恭喜你，你已经部署好了`AstrBot`并且运行了
 
-接下来你可以尝试访问[localhost:6185](http://localhost:6185)验证可用性
+你可以尝试访问[localhost:6185](http://localhost:6185)验证可用性
+
+接下来，你需要部署任何一个消息平台，才能够实现在消息平台上使用 AstrBot。
 
 >[!TIP]
 >`Termux`与主机共享一个网络，即：`Termux`的IP地址就是主机的IP地址，你也可使用`ifconfig`查看主机IP地址
@@ -234,7 +273,7 @@ pkill -9  -f "uv run main.py"
 <!--↑这东西不咋靠谱捏-->
 
 >[!TIP]
->也可以使用`screen`命令，较`&`更易操控
+>但建议使用`screen`命令，较`&`更易操控
 >
 >```bash
 >apt install screen         #安装screen
@@ -251,29 +290,3 @@ pkill -9  -f "uv run main.py"
 ## 后台存活
 
 如需让服务端在后台存活，可以在`设置`->`应用和服务`->`应用启动管理`->`Termux`改为`手动管理`并`允许后台活动`(或类似选项)
-
-接下来，你需要部署任何一个消息平台，才能够实现在消息平台上使用 AstrBot。
-
-## Termux 部署报错解决方案
-
-如果出现了 `[WARN] uv sync 失败，重试 2/3
-
-```bash
-× Failed to build astrbot @ file:///root/
-├─▶ Failed to install requirements from build-system.requires
-├─▶ Failed to install build dependencies
-├─▶ Failed to install: trove_classifiers-2025.9.11.17-py3-none-any.whl
-│   (trove-classifiers==2025.9.11.17)
-╰─▶ failed to hardlink file from
-    /root/.cache/uv/archive-v0/10gPuxc61Audvy1Eg6SFz/trove_classifiers/.l2s.__init__.py0001
-    to
-    /root/.cache/uv/builds-v0/.tmp2lFVJx/lib/python3.10/site-packages/trove_classifiers/.l2s.__init__.py0001:
-    Operation not permitted (os error 1)
-```
-
-可以先运行以下命令，然后再重新启动
-
-```bash
-echo 'export UV_LINK_MODE=copy' >> ~/.bashrc 
-source ~/.bashrc
-```

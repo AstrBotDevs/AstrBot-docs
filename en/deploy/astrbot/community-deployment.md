@@ -3,6 +3,16 @@
 > [!WARNING]
 > AstrBot official does not guarantee the security and stability of these deployment methods.
 
+## Desktop Application (Tauri)
+
+Desktop repository: [AstrBot-desktop](https://github.com/AstrBotDevs/AstrBot-desktop).
+
+Supports multiple system architectures, direct installation, out-of-the-box experience. Ideal for beginners. Not recommended for server scenarios.
+
+## AstrBot Launcher
+
+Quick deployment and multi-instance solution with environment isolation. Visit the [AstrBot Launcher](https://github.com/AstrBotDevs/astrbot-launcher) repository and find the latest release for your system.
+
 # Linux Comprehensive Installation Script
 
 Integrates almost all installation methods found in the documentation.

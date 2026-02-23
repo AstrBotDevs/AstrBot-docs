@@ -3,6 +3,16 @@
 > [!WARNING]
 > AstrBot 官方不保证这些部署方式的安全性和稳定性。
 
+## 桌面应用部署（Tauri）
+
+桌面应用仓库：[AstrBot-desktop](https://github.com/AstrBotDevs/AstrBot-desktop)
+
+支持多系统架构，安装包直接安装，开箱即用，最适合新手和懒人的一键桌面部署方案，不推荐服务器场景。
+
+## 启动器一键部署（AstrBot Launcher）
+
+快速部署和多开方案，实现环境隔离。进入 [AstrBot Launcher](https://github.com/AstrBotDevs/astrbot-launcher) 仓库，在 Releases 页最新版本下找到对应的系统安装包安装即可。
+
 # linux综合性安装脚本
 
 综合了文档里的几乎全部安装方式

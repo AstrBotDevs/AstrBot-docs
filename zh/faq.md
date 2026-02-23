@@ -46,6 +46,13 @@
 - Windows: `C:\Users\你的用户名\.astrbot_launcher`
 - MacOS / Linux: `/Users/你的用户名/.astrbot_launcher` 或者 `/home/你的用户名/.astrbot_launcher`
 
+### WebChat 聊天记录中的图片/文件存储在哪里？
+
+WebChat 的附件（图片、音频、文件）统一存储在 `data/attachments/` 目录下。
+
+> [!NOTE]
+> 在较早版本中，WebChat 附件存储在 `data/webchat/imgs/` 目录。新版本已迁移至统一的 `data/attachments/` 目录，并保持对旧目录的向后兼容读取。
+
 ### 机器人在群聊无法聊天
 
 1. 群聊情况下，由于防止消息泛滥，不会对每条监听到的消息都回复，请尝试 @ 机器人或者使用唤醒词来聊天，比如默认的 `/`，输入 `/你好`。

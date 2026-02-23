@@ -42,6 +42,30 @@ Click the "Add SubAgent" button:
 - **Assign Tools**: Select the tools this SubAgent can invoke.
 - **Provider Override (Optional)**: You can specify different model providers for specific SubAgents. For example, the Main Agent could use GPT-4o, while a simple query SubAgent uses GPT-4o-mini to save costs.
 
+## Delegation Tool Parameters
+
+When the Main Agent calls a delegation tool (`transfer_to_<subagent_name>`), it can pass the following parameters:
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `input` | string | Yes | The task description to be handed off to the SubAgent. Should be clear and concise. |
+| `image_urls` | array | No | An array of image sources (public HTTP URLs or local file paths) used as references in multimodal tasks such as video generation. |
+| `background_task` | boolean | No | Whether to execute as a background task. Background tasks run in the background and notify the Main Agent upon completion. |
+
+### Image Parameter Example
+
+The Main Agent can pass images when delegating tasks, useful for multimodal tasks requiring visual input:
+
+```json
+{
+  "input": "Generate a description based on this image",
+  "image_urls": [
+    "https://example.com/image.jpg",
+    "/path/to/local/image.png"
+  ]
+}
+```
+
 ## Best Practices
 
 - **Single Responsibility**: Each SubAgent should handle one category of related tasks (e.g., search, file processing, smart home control).

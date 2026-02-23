@@ -252,6 +252,32 @@ async def on_astrbot_loaded(self):
 
 ```
 
+#### 插件加载完成时
+
+当有插件加载完成时触发，可以获取到该插件的元数据。
+
+```python
+from astrbot.api.event import filter
+from astrbot.api.star import StarMetadata
+
+@filter.on_plugin_loaded()
+async def on_plugin_loaded(self, metadata: StarMetadata):
+    print(f"插件 {metadata.name} 已加载")
+```
+
+#### 插件卸载完成时
+
+当有插件卸载完成时触发，可以获取到该插件的元数据。
+
+```python
+from astrbot.api.event import filter
+from astrbot.api.star import StarMetadata
+
+@filter.on_plugin_unloaded()
+async def on_plugin_unloaded(self, metadata: StarMetadata):
+    print(f"插件 {metadata.name} 已卸载")
+```
+
 #### 等待 LLM 请求时
 
 在 AstrBot 准备调用 LLM 但还未获取会话锁时，会触发 `on_waiting_llm_request` 钩子。

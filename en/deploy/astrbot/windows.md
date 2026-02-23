@@ -1,4 +1,25 @@
-# Deploy AstrBot using Windows One-Click Installer
+# Deploy AstrBot using AstrBot Launcher
+
+## 【Recommended】Method 1: AstrBot One-Click Launcher
+
+AstrBot One-Click Launcher supports Windows, MacOS, Linux and other multi-platform deployment.
+
+0. Open [AstrBotDevs/astrbot-launcher](https://github.com/AstrBotDevs/astrbot-launcher)
+1. **(Optional but Recommended)** Give this project a [**Star ⭐**](https://github.com/AstrBotDevs/astrbot-launcher), your support is the motivation for the author to update and maintain!
+2. Find Releases on the right side, click the latest Release, and download the installer for your system from the Assets section on the new page.
+
+For example, Windows X86 users should download `AstrBot.Launcher_0.2.1_x64-setup.exe`, Windows on Arm users should download `AstrBot.Launcher_0.2.1_arm64-setup.exe`, MacOS M chip users should download `AstrBot.Launcher_0.2.1_aarch64.dmg`.
+
+After downloading and installing on MacOS, you may encounter a "damaged, cannot be opened" prompt. This is because MacOS's security mechanism prevents unverified applications from running. The solution is as follows:
+
+1. Open Terminal
+2. Enter the following command and press Enter:
+   `xattr -dr com.apple.quarantine /Applications/AstrBot\ Launcher.app`
+3. Try to open the AstrBot Launcher application again
+
+## Method 2: Legacy Windows Installer
+
+We recommend using the AstrBot One-Click Launcher mentioned above to deploy AstrBot, as it is simpler, more automated, and more modern, suitable for most users.
 
 The installer is a script written in `PowerShell`, compact in size (<20KB). It requires `PowerShell` to be installed on your computer, which is usually built into `Windows 10` and later versions.
 

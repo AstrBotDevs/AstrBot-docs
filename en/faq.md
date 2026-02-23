@@ -54,6 +54,19 @@ This is because the provider's API returned empty text. Try the following steps:
 5. Lower the maximum conversation count setting
 6. Switch to another model from the same provider / a different provider
 
+### Startup Error: `JSONDecodeError: Unexpected UTF-8 BOM`
+
+On Windows, some text editors (like Notepad) automatically add a UTF-8 BOM (Byte Order Mark) when saving JSON files, causing AstrBot to fail to start.
+
+**Solutions:**
+
+1. Use an editor that supports UTF-8 without BOM (such as VS Code, Notepad++) to open the configuration file
+2. When saving, select "UTF-8" encoding (without BOM)
+3. Or modify configurations directly in the AstrBot WebUI to avoid manually editing JSON files
+
+> [!NOTE]
+> AstrBot has added compatibility handling for UTF-8 BOM in newer versions. It is recommended to update to the latest version to avoid this issue.
+
 ## Plugin Related
 
 ### Cannot Install Plugin

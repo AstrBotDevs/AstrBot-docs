@@ -4,8 +4,8 @@
 
 AstrBot 一键启动器支持 Windows、MacOS、Linux 等多端部署。
 
-0. 打开 [raven95676/astrbot-launcher](https://github.com/Raven95676/astrbot-launcher)
-1.  **(可选但推荐)** 给本项目点个 [**Star ⭐**](https://github.com/Raven95676/astrbot-launcher)，你的支持是作者更新和维护的动力！
+0. 打开 [AstrBotDevs/astrbot-launcher](https://github.com/AstrBotDevs/astrbot-launcher)
+1.  **(可选但推荐)** 给本项目点个 [**Star ⭐**](https://github.com/AstrBotDevs/astrbot-launcher)，你的支持是作者更新和维护的动力！
 2. 找到右边的 Releases，点击最新版本的 Release，在新的页面的 Assets 中下载对应你系统的安装器。
 
 如，Windows X86 的用户应该下载 `AstrBot.Launcher_0.2.1_x64-setup.exe`，Windows on Arm 的用户应该下载 `AstrBot.Launcher_0.2.1_arm64-setup.exe`，MacOS M 芯片的用户下载 `AstrBot.Launcher_0.2.1_aarch64.dmg`。

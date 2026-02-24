@@ -194,9 +194,9 @@ uv run --no-sync main.py # 防止uv自动同步库使插件不可用
 >  ├─▶ Failed to install: trove_classifiers-2025.9.11.17-py3-none-any.whl
 >  │   (trove-classifiers==2025.9.11.17)
 >  ╰─▶ failed to hardlink file from
->      /root/.cache/uv/archive-v0/10gPuxc61Audvy1Eg6SFz/trove_classifiers/.>l2s.__init__.py0001
+>      /root/.cache/uv/archive-v0/10gPuxc61Audvy1Eg6SFz/trove_classifiers/.l2s.__init__.py0001
 >      to
->      /root/.cache/uv/builds-v0/.tmp2lFVJx/lib/python3.10/site-packages/>trove_classifiers/.l2s.__init__.py0001:
+>      /root/.cache/uv/builds-v0/.tmp2lFVJx/lib/python3.10/site-packages/trove_classifiers/.l2s.__init__.py0001:
 >      Operation not permitted (os error 1)```
 
 可以先运行以下命令，然后再重新启动
@@ -238,7 +238,7 @@ exit
 
 每次重新进入`Termux`时需重新打开 `proot` 环境并启动 `AstrBot`
 
-可以使用命令如下：
+可以使用命令如下（或添加`--no-sync`，按个人需求）：
 
 ```bash
 proot-distro login ubuntu

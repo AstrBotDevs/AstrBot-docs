@@ -69,6 +69,11 @@ async def helloworld(self, event: AstrMessageEvent):
 Comp.File(file="path/to/file.txt", name="file.txt") # 部分平台不支持
 ```
 
+> [!NOTE]
+> - `file` 参数支持本地绝对路径、`file:///` URI 格式以及 HTTP/HTTPS URL。
+> - 在 OneBot v11 (aiocqhttp) 适配器中，本地绝对路径会自动转换为 `file://` URI 格式以符合协议要求。
+> - 跨平台兼容性：使用 `pathlib.Path.as_uri()` 生成标准 URI，确保在 Linux 和 Windows 系统下均能正常工作。
+
 **语音 Record**
 
 ```py

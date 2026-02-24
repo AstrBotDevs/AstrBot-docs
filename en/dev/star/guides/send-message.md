@@ -69,6 +69,11 @@ Similarly,
 Comp.File(file="path/to/file.txt", name="file.txt") # Not supported by some platforms
 ```
 
+> [!NOTE]
+> - The `file` parameter supports local absolute paths, `file:///` URI format, and HTTP/HTTPS URLs.
+> - In the OneBot v11 (aiocqhttp) adapter, local absolute paths are automatically converted to `file://` URI format to comply with the protocol requirements.
+> - Cross-platform compatibility: Uses `pathlib.Path.as_uri()` to generate standard URIs, ensuring proper functionality on both Linux and Windows systems.
+
 **Audio Record**
 
 ```py

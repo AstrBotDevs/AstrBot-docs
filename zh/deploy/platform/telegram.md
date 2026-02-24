@@ -38,3 +38,7 @@
 - Bot Token: 你的 Telegram 机器人的 `token`。
 
 请确保你的网络环境可以访问 Telegram。你可能需要使用 `配置页->其他配置->HTTP 代理` 来设置代理。
+
+## 3. 语音消息说明
+
+Telegram 的语音消息默认使用 OGG 格式。AstrBot 会自动将接收到的语音消息转换为 WAV 格式，以确保与语音识别服务（如 OpenAI STT API）的兼容性。

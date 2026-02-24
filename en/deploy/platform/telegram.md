@@ -37,3 +37,7 @@ Fill in the configuration fields that appear:
 - Bot Token: Your Telegram bot's `token`.
 
 Please ensure your network environment can access Telegram. You may need to configure a proxy using `Configuration -> Other Settings -> HTTP Proxy`.
+
+## 3. Voice Message Notes
+
+Telegram voice messages use OGG format by default. AstrBot automatically converts received voice messages to WAV format to ensure compatibility with speech recognition services (such as OpenAI STT API).

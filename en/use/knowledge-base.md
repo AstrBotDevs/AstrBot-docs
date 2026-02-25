@@ -1,4 +1,3 @@
-
 # AstrBot Knowledge Base
 
 > [!TIP]
@@ -14,7 +13,22 @@ Currently, AstrBot supports embedding vector services compatible with OpenAI API
 
 Click on the provider card above to enter the configuration page and fill in the configuration.
 
+> [!NOTE]
+> **OpenAI Embedding API Base URL**
+> - OpenAI Embedding automatically appends `/v1` at request time. For example, if you enter `https://api.example.com`, the actual request URL will be `https://api.example.com/v1`.
+> - If your API Base URL already contains `/v1`, there's no need to add it again; the system handles this automatically.
+>
+> **Gemini Embedding API Base URL**
+> - Use `https://generativelanguage.googleapis.com` without manually adding `/v1beta`.
+
 After completing the configuration, click Save.
+
+### Automatic Vector Dimension Detection
+
+When creating an embedding model provider, AstrBot automatically detects the model's vector dimension. The system probes the dimension through actual API requests, so you don't need to fill it in manually.
+
+> [!TIP]
+> If automatic detection fails, please check that your API Key and API Base URL are correctly configured, and that your network is accessible.
 
 ## Configuring Reranker Model (Optional)
 
@@ -54,6 +68,6 @@ In the configuration file, you can specify different knowledge bases for differe
 3. Click on BAAI:BGE-M3 (as of 2025-06-02, this model is free on this platform).
 4. Find the API integration guide and apply for a Key.
 5. Fill in the AstrBot OpenAI Embedding model provider configuration:
-   1. API Key is the PPIO API Key you just applied for
-   2. embedding api base: enter `https://api.ppinfra.com/v3/openai`
-   3. model: enter the model you selected, in this example `baai/bge-m3`.
+ 1. API Key is the PPIO API Key you just applied for
+ 2. embedding api base: enter `https://api.ppinfra.com/v3/openai`
+ 3. model: enter the model you selected, in this example `baai/bge-m3`.

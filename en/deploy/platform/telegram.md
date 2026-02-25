@@ -1,4 +1,3 @@
-
 # Connecting to Telegram
 
 ## Supported Message Types
@@ -14,6 +13,10 @@
 | File | Yes | Yes | |
 
 Proactive message push: Supported.
+
+## Changelog
+
+- **v4.15.0+**: Fixed an issue where video messages failed to send without obvious error logs. Also fixed video message handling in streaming replies and thread (Topic) message reply metadata issues.
 
 ## 1. Create a Telegram Bot
 

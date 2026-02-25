@@ -1,4 +1,3 @@
-
 # 接入 Telegram
 
 ## 支持的基本消息类型
@@ -16,13 +15,17 @@
 
 主动消息推送：支持。
 
+## 更新日志
+
+- **v4.15.0+**: 修复了视频消息发送失败但无明显报错的问题，同时修复了流式回复中视频消息的处理以及话题（Topic）消息回复的元数据问题。
+
 ## 1. 创建 Telegram Bot
 
 首先，打开 Telegram，搜索 `BotFather`，点击 `Start`，然后发送 `/newbot`，按照提示输入你的机器人名字和用户名。
 
 创建成功后，`BotFather` 会给你一个 `token`，请妥善保存。
 
-如果需要在群聊中使用，需要关闭Bot的 [Privacy mode](https://core.telegram.org/bots/features#privacy-mode)，对 `BotFather` 发送  `/setprivacy` 命令，然后选择bot， 再选择 `Disable`。
+如果需要在群聊中使用，需要关闭Bot的 [Privacy mode](https://core.telegram.org/bots/features#privacy-mode)，对 `BotFather` 发送 `/setprivacy` 命令，然后选择bot， 再选择 `Disable`。
 
 ## 2. 配置 AstrBot
 

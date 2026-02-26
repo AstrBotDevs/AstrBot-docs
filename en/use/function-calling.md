@@ -46,6 +46,16 @@ Below are some common tool calling demos:
 ![image](https://files.astrbot.app/docs/source/images/function-calling/image-1.png)
 
 
+## Follow-up Messages During Tool Execution
+
+When the Agent is executing tool calls, new messages you send are automatically captured and queued. These follow-up messages are injected into the context when the next tool result is returned, allowing the LLM to prioritize them.
+
+For example, while the Agent is performing a web search, you can continue to send "also search for XXX", and the Agent will respond to your follow-up request immediately after processing the current search.
+
+:::tip
+This feature is only available when using the AstrBot built-in Agent Runner.
+:::
+
 ## MCP
 
 Please refer to this documentation: [AstrBot - MCP](/use/mcp).

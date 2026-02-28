@@ -2,7 +2,7 @@
 
 `AstrBot-desktop` 适合在本地电脑快速部署和使用 AstrBot，支持 Windows、macOS、Linux。
 
-在多种部署方式中，桌面客户端更适合个人本地快速使用；如果是服务器长期运行或生产环境，建议优先考虑 [Docker 部署](/deploy/astrbot/docker) 或 [Kubernetes 部署](/deploy/astrbot/kubernetes)。
+在多种部署方式中，桌面客户端更适合个人本地快速使用，不建议用于服务器长期运行或生产环境；如需生产部署，建议优先考虑 [Docker 部署](/deploy/astrbot/docker) 或 [Kubernetes 部署](/deploy/astrbot/kubernetes)。
 
 相比命令行或容器方案，桌面客户端更偏向「开箱即用」体验，适合希望少折腾环境、直接开始使用的用户。
 
@@ -18,7 +18,7 @@
 
 - 多平台安装包，下载后可直接安装使用。
 - 图形化界面配置，降低首次部署成本。
-- 适合作为本地常驻客户端，不推荐服务器生产部署场景。
+- 适合作为本地常驻客户端。
 
 ## 下载并安装
 
@@ -30,4 +30,4 @@
 
 - 桌面客户端：更偏向开箱即用的 GUI 体验。
 - 启动器部署：更偏向自动化脚本拉起，适合希望保持传统部署流程的用户。
-- 启动器部署文档：[/deploy/astrbot/launcher](/deploy/astrbot/launcher)。
+- 参考 [启动器部署](/deploy/astrbot/launcher)。

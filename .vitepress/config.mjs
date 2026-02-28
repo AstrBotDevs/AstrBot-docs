@@ -45,6 +45,7 @@ export default defineConfig({
             items: [
               { text: "包管理器部署", link: "/astrbot/package" },
               { text: "雨云一键云部署", link: "/astrbot/rainyun" },
+              { text: "桌面客户端部署", link: "/astrbot/desktop" },
               { text: "启动器一键部署", link: "/astrbot/launcher" },
               { text: "Docker 部署", link: "/astrbot/docker" },
               { text: "Kubernetes 部署", link: "/astrbot/kubernetes" },
@@ -56,7 +57,6 @@ export default defineConfig({
                 link: "/astrbot/other-deployments",
                 collapsed: true,
                 items: [
-                  { text: "桌面客户端部署", link: "/astrbot/desktop" },
                   { text: "CasaOS 部署", link: "/astrbot/casaos" },
                   { text: "优云智算 GPU 部署", link: "/astrbot/compshare" },
                   { text: "社区提供的部署方式", link: "/astrbot/community-deployment" },

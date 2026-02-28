@@ -2,45 +2,28 @@
 outline: deep
 ---
 
-# AstrBot
+# 👋 I'm AstrBot
 
-## What is AstrBot?
+## Introduction
 
-AstrBot is an open-source, all-in-one agentic chatbot platform and development framework. With it, you can deploy and develop LLM-powered chatbots across multiple messaging platforms.
+AstrBot is an open-source, all-in-one Agentic assistant for personal and group chats. It can be deployed across dozens of mainstream instant messaging platforms, such as QQ, Telegram, WeCom, Lark, DingTalk, and Slack. It also includes a lightweight built-in ChatUI (similar to OpenWebUI), providing reliable and extensible conversational AI infrastructure for individuals, developers, and teams. Whether you are building a personal AI companion, an intelligent customer service assistant, an automation bot, or an enterprise knowledge base, AstrBot helps you build AI applications directly inside your IM workflows.
 
-- **LLM Conversations**. Supports integration with various large language model services. Features include multimodal capabilities, tool calling, MCP, native knowledge base, and persona customization.
-- **Multi-Platform Support**. Connects to QQ, WeCom, WeChat Official Accounts, Lark, Telegram, DingTalk, Discord, KOOK, and more. Includes rate limiting, whitelisting, and Baidu content moderation.
-- **Agent Capabilities**. Comprehensive agentic features with multi-turn tool calling, built-in sandboxed code interpreter, web search, and more.
-- **Plugin Extensions**. Deeply optimized plugin mechanism for extending functionality, with a thriving community plugin ecosystem.
-- **WebUI**. Feature-rich visual configuration and management interface.
+## Documentation Overview
+
+This documentation is divided into the following sections:
+
+- **Deployment**: multiple ways to quickly deploy AstrBot on local machines or cloud servers.
+- **Messaging Platform Integration**: integration guides for 18+ mainstream instant messaging platforms.
+- **AI Provider Integration**: connect to model providers, use AstrBot's built-in Agent Runner, or integrate third-party Agent Runner services such as Dify, Coze, and Alibaba Bailian.
+- **Usage Guides**: practical guides for features such as plugins, tool calling, knowledge base, MCP, Skills, and Agent sandbox.
+
+## Quick Start
+
+- Deploy AstrBot: Read the Deployment Guide to quickly deploy AstrBot on your local machine or cloud server.
+- Connect to IM platforms: Follow the instructions to connect AstrBot to your preferred IM platforms such as Discord, Telegram, Slack, etc.
+- Configure AI models: AstrBot supports various AI models. See [Connecting Model Services](/en/providers/start)
 
 ## Notice
 
-1. AstrBot is a non-profit project under the AstrBotDevs organization, maintained by passionate open-source contributors worldwide, and protected by the [AGPL-v3](https://www.chinasona.org/gnu/agpl-3.0-cn.html) open-source license. If you modify AstrBot and use it to provide commercial network services, you must open-source your modifications. Failure to do so constitutes a license violation, and we reserve the right to pursue legal action against such violations. For details, contact [community@astrbot.app](mailto:community@astrbot.app).
-2. Before using this project, please make sure to read the End User License Agreement (EULA): [End User License Agreement](https://github.com/AstrBotDevs/AstrBot/blob/master/EULA.md). If you do not agree to any terms of the agreement, do not use this project.
-
-## How Does It Work?
-
-The topology diagram below provides an overview of AstrBot's architecture.
-
-![Architecture](https://files.astrbot.app/docs/source/images/what-is-astrbot/image.png)
-
-## Visual Identity
-
-### Logo (Nameless)
-
-![Logo](https://files.astrbot.app/docs/source/images/logo_prod.png)
-
-### Logo (With Name)
-
-![LogoWithName](https://astrbot.app/assets/logo.svg)
-
-### Seio (星绪) Chibi Avatar
-
-> Notice: Please do not use this image for AI training.
-
-![Seio_q](https://files.astrbot.app/docs/source/images/what-is-astrbot/seio_q.png)
-
-### Seio (星绪) 10k Star Commemorative Poster
-
-![Seio_10k_1](https://files.astrbot.app/docs/source/images/what-is-astrbot/seio_10k_poster.png)
+1. AstrBot is a non-profit project under the AstrBotDevs organization, maintained by open-source contributors worldwide, and protected by the [AGPL-v3](https://www.chinasona.org/gnu/agpl-3.0-cn.html) license. If you modify AstrBot and use it to provide commercial network services, you must open-source your modifications. For details, contact [community@astrbot.app](mailto:community@astrbot.app).
+2. Before using this project, please read the End User License Agreement (EULA): [End User License Agreement](https://github.com/AstrBotDevs/AstrBot/blob/master/EULA.md). If you do not agree to any terms of the agreement, do not use this project.

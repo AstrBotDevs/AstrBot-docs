@@ -74,17 +74,17 @@ Then send a normal message to test whether the model works.
 ## Connect to Messaging Platforms
 
 You can follow the latest platform integration guides in the [AstrBot Documentation](https://docs.astrbot.app/en/what-is-astrbot.html).
-Open the docs and check the left sidebar under Deployment -> Connect to Messaging Platforms.
+Open the docs and check the left sidebar under Messaging Platforms.
 
-- Lark: [Connect to Lark](https://docs.astrbot.app/en/deploy/platform/lark.html)
-- LINE: [Connect to LINE](https://docs.astrbot.app/en/deploy/platform/line.html)
-- DingTalk: [Connect to DingTalk](https://docs.astrbot.app/en/deploy/platform/dingtalk.html)
-- WeCom: [Connect to WeCom](https://docs.astrbot.app/en/deploy/platform/wecom.html)
-- WeChat Official Account: [Connect to WeChat Official Account](https://docs.astrbot.app/en/deploy/platform/weixin-official-account.html)
-- QQ Official Bot: [Connect to QQ Official API](https://docs.astrbot.app/en/deploy/platform/qqofficial/webhook.html)
-- KOOK: [Connect to KOOK](https://docs.astrbot.app/en/deploy/platform/kook.html)
-- Slack: [Connect to Slack](https://docs.astrbot.app/en/deploy/platform/slack.html)
-- Discord: [Connect to Discord](https://docs.astrbot.app/en/deploy/platform/discord.html)
+- Lark: [Connect to Lark](https://docs.astrbot.app/en/platform/lark.html)
+- LINE: [Connect to LINE](https://docs.astrbot.app/en/platform/line.html)
+- DingTalk: [Connect to DingTalk](https://docs.astrbot.app/en/platform/dingtalk.html)
+- WeCom: [Connect to WeCom](https://docs.astrbot.app/en/platform/wecom.html)
+- WeChat Official Account: [Connect to WeChat Official Account](https://docs.astrbot.app/en/platform/weixin-official-account.html)
+- QQ Official Bot: [Connect to QQ Official API](https://docs.astrbot.app/en/platform/qqofficial/webhook.html)
+- KOOK: [Connect to KOOK](https://docs.astrbot.app/en/platform/kook.html)
+- Slack: [Connect to Slack](https://docs.astrbot.app/en/platform/slack.html)
+- Discord: [Connect to Discord](https://docs.astrbot.app/en/platform/discord.html)
 - More methods: [AstrBot Documentation](https://docs.astrbot.app/en/what-is-astrbot.html)
 
 ## More Features

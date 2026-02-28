@@ -8,10 +8,6 @@ This documentation may not cover all features comprehensively. If you have any q
 
 <https://discord.gg/PxgzhmxJ>
 
-### Telegram
-
-<https://t.me/+hAsD2Ebl5as3NmY1>
-
 ### GitHub
 
 Welcome to submit Issues or Pull Requests:
@@ -20,10 +16,9 @@ Welcome to submit Issues or Pull Requests:
 
 - [AstrBotDevs/AstrBot-Docs](https://github.com/AstrBotDevs/AstrBot-docs)
 
-### QQ Groups
+### Tencent QQ Groups
 
-> 1. All groups are available to join. If you find that the group size is below the limit, please feel free to join~
-> 2. We don't restrict you to joining only one group. You may join multiple groups as needed, but we will periodically remove inactive members.
+> - All groups are available to join. If you find that the group size is below the limit, please feel free to join.
 
 - Group 1: 322154837  (2000-member group)
 - Group 3: 630166526  (2000-member group)

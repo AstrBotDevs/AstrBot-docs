@@ -24,8 +24,7 @@ export default defineConfig({
       lang: "zh-Hans",
       themeConfig: {
         nav: [
-          { text: "主页", link: "/" },
-          { text: "开始", link: "/what-is-astrbot" },
+          { text: "主页", link: "https://astrbot.app" },
           { text: "博客", link: "https://blog.astrbot.app" },
           { text: "路线图", link: "https://astrbot.featurebase.app/roadmap" },
           { text: "HTTP API", link: "https://docs.astrbot.app/scalar.html" },
@@ -34,7 +33,7 @@ export default defineConfig({
           {
             text: "简介",
             items: [
-              { text: "什么是 AstrBot", link: "/what-is-astrbot" },
+              { text: "关于 AstrBot", link: "/what-is-astrbot" },
               { text: "社区", link: "/community" },
               { text: "常见问题", link: "/faq" },
             ],
@@ -44,83 +43,22 @@ export default defineConfig({
             base: "/deploy",
             collapsed: false,
             items: [
+              { text: "包管理器部署", link: "/astrbot/package" },
+              { text: "雨云一键云部署", link: "/astrbot/rainyun" },
+              { text: "启动器一键部署", link: "/astrbot/launcher" },
+              { text: "Docker 部署", link: "/astrbot/docker" },
+              { text: "Kubernetes 部署", link: "/astrbot/kubernetes" },
+              { text: "宝塔面板部署", link: "/astrbot/btpanel" },
+              { text: "1Panel 部署", link: "/astrbot/1panel" },
+              { text: "手动部署", link: "/astrbot/cli" },
               {
-                text: "部署 AstrBot",
-                base: "/deploy/astrbot",
-                collapsed: false,
+                text: "其他部署方式",
+                link: "/astrbot/other-deployments",
+                collapsed: true,
                 items: [
-                  { text: "包管理器部署", link: "/package" },
-                  { text: "雨云一键云部署", link: "/rainyun" },
-                  { text: "启动器一键部署", link: "/windows" },
-                  { text: "Docker 部署", link: "/docker" },
-                  { text: "Kubernetes 部署", link: "/kubernetes" },
-                  { text: "宝塔面板部署", link: "/btpanel" },
-                  { text: "1Panel 部署", link: "/1panel" },
-                  { text: "手动部署", link: "/cli" },
-                  {
-                    text: "其他部署方式",
-                    link: "/other-deployments",
-                    collapsed: true,
-                    items: [
-                      { text: "CasaOS 部署", link: "/casaos" },
-                      { text: "优云智算 GPU 部署", link: "/compshare" },
-                      { text: "社区提供的部署方式", link: "/community-deployment" },
-                    ],
-                  },
-                ],
-              },
-              {
-                text: "接入消息平台",
-                base: "/deploy/platform",
-                collapsed: false,
-                items: [
-                  {
-                    text: "QQ 官方机器人",
-                    base: "/deploy/platform/qqofficial",
-                    collapsed: true,
-                    items: [
-                      { text: "Webhook 方式", link: "/webhook" },
-                      { text: "Websockets 方式", link: "/websockets" },
-                    ],
-                  },
-                  { text: "企微应用", link: "/wecom" },
-                  { text: "企微智能机器人", link: "/wecom_ai_bot" },
-                  { text: "微信公众号", link: "/weixin-official-account" },
-                  { text: "飞书", link: "/lark" },
-                  { text: "钉钉", link: "/dingtalk" },
-                  { text: "Telegram", link: "/telegram" },
-                  { text: "LINE", link: "/line" },
-                  { text: "Slack", link: "/slack" },
-                  { text: "Misskey", link: "/misskey" },
-                  { text: "Discord", link: "/discord" },
-                  {
-                    text: "OneBot v11",
-                    base: "/deploy/platform/aiocqhttp",
-                    collapsed: true,
-                    items: [
-                      { text: "NapCat", link: "/napcat" },
-                      { text: "Lagrange", link: "/lagrange" },
-                      { text: "其他端", link: "/others" },
-                    ],
-                  },
-                  {
-                    text: "Satori",
-                    base: "/deploy/platform/satori",
-                    collapsed: true,
-                    items: [
-                      { text: "使用 LLOneBot", link: "/llonebot" },
-                      { text: "使用 server-satori", link: "/server-satori" },
-                    ],
-                  },
-                  {
-                    text: "社区提供",
-                    collapsed: false,
-                    items: [
-                      { text: "Matrix", link: "/matrix" },
-                      { text: "KOOK", link: "/kook" },
-                      { text: "VoceChat", link: "/vocechat" },
-                    ],
-                  },
+                  { text: "CasaOS 部署", link: "/astrbot/casaos" },
+                  { text: "优云智算 GPU 部署", link: "/astrbot/compshare" },
+                  { text: "社区提供的部署方式", link: "/astrbot/community-deployment" },
                 ],
               },
               {
@@ -130,16 +68,71 @@ export default defineConfig({
             ],
           },
           {
-            text: "配置",
-            base: "/config",
-            collapsed: false,
+            text: "接入消息平台",
+            base: "/platform",
             items: [
               {
-                text: "配置模型服务商",
-                base: "/config/providers",
+                text: "快速接入指南",
+                link: "/start",
+              },
+              {
+                text: "QQ 官方机器人",
+                link: "/qqofficial",
                 collapsed: true,
                 items: [
-                  { text: "✨ 接入模型服务", link: "/start" },
+                  { text: "Webhook 方式", link: "/qqofficial/webhook" },
+                  { text: "Websockets 方式", link: "/qqofficial/websockets" },
+                ],
+              },
+              { text: "企微应用", link: "/wecom" },
+              { text: "企微智能机器人", link: "/wecom_ai_bot" },
+              { text: "微信公众号", link: "/weixin-official-account" },
+              { text: "飞书", link: "/lark" },
+              { text: "钉钉", link: "/dingtalk" },
+              { text: "Telegram", link: "/telegram" },
+              { text: "LINE", link: "/line" },
+              { text: "Slack", link: "/slack" },
+              { text: "Misskey", link: "/misskey" },
+              { text: "Discord", link: "/discord" },
+              {
+                text: "OneBot v11",
+                base: "/platform/aiocqhttp",
+                collapsed: true,
+                items: [
+                  { text: "NapCat", link: "/napcat" },
+                  { text: "Lagrange", link: "/lagrange" },
+                  { text: "其他端", link: "/others" },
+                ],
+              },
+              {
+                text: "Satori",
+                base: "/platform/satori",
+                collapsed: true,
+                items: [
+                  { text: "使用 LLOneBot", link: "/llonebot" },
+                  { text: "使用 server-satori", link: "/server-satori" },
+                ],
+              },
+              {
+                text: "社区提供",
+                collapsed: false,
+                items: [
+                  { text: "Matrix", link: "/matrix" },
+                  { text: "KOOK", link: "/kook" },
+                  { text: "VoceChat", link: "/vocechat" },
+                ],
+              },
+            ],
+          },
+          {
+            text: "接入 AI",
+            base: "/providers",
+            items: [
+              {
+                text: "✨ 接入模型服务",
+                link: "/start",
+                collapsed: true,
+                items: [
                   { text: "NewAPI", link: "/newapi" },
                   { text: "AIHubMix", link: "/aihubmix" },
                   { text: "PPIO 派欧云", link: "/ppio" },
@@ -148,29 +141,24 @@ export default defineConfig({
                   { text: "302.AI", link: "/302ai" },
                   { text: "Ollama", link: "/provider-ollama" },
                   { text: "LMStudio", link: "/provider-lmstudio" },
-                ],
+                ]
               },
               {
-                text: "配置 Agent 执行器",
-                base: "/config/agent-runners",
-                collapsed: true,
+                text: "⚙️ Agent 执行器",
+                link: "/agent-runners",
+                collapsed: false,
                 items: [
-                  { text: "内置 Agent 执行器", link: "/astrbot-agent-runner" },
-                  { text: "Dify", link: "/dify" },
-                  { text: "扣子 Coze", link: "/coze" },
-                  { text: "阿里云百炼应用", link: "/dashscope" },
-                ],
-              },
-              {
-                text: "AstrBot 配置文件",
-                link: "/astrbot-config",
+                  { text: "内置 Agent 执行器", link: "/agent-runners/astrbot-agent-runner" },
+                  { text: "Dify", link: "/agent-runners/dify" },
+                  { text: "扣子 Coze", link: "/agent-runners/coze" },
+                  { text: "阿里云百炼应用", link: "/agent-runners/dashscope" },
+                ]
               },
             ],
           },
           {
             text: "使用",
             base: "/use",
-            collapsed: true,
             items: [
               { text: "WebUI", link: "/webui" },
               { text: "插件", link: "/plugin" },
@@ -187,7 +175,6 @@ export default defineConfig({
               { text: "统一 Webhook 模式", link: "/unified-webhook" },
               { text: "自动上下文压缩", link: "/context-compress" },
               { text: "Agent 沙箱环境", link: "/astrbot-agent-sandbox" },
-              { text: "(旧) 沙箱化代码执行器", link: "/code-interpreter" },
             ],
           },
           {
@@ -221,6 +208,10 @@ export default defineConfig({
               {
                 text: "AstrBot HTTP API",
                 link: "/openapi",
+              },
+              {
+                text: "AstrBot 配置文件",
+                link: "/astrbot-config",
               },
             ],
           },
@@ -272,8 +263,9 @@ export default defineConfig({
       lang: "en-US",
       themeConfig: {
         nav: [
-          { text: "Home", link: "/en/" },
-          { text: "Get Started", link: "/en/what-is-astrbot" },
+          { text: "Home", link: "https://astrbot.app" },
+          { text: "Blog", link: "https://blog.astrbot.app" },
+          { text: "Roadmap", link: "https://astrbot.featurebase.app/roadmap" },
           { text: "HTTP API", link: "https://docs.astrbot.app/scalar.html" },
         ],
         sidebar: [
@@ -290,98 +282,97 @@ export default defineConfig({
             base: "/en/deploy",
             collapsed: false,
             items: [
+              { text: "Package Manager", link: "/astrbot/package" },
+              { text: "One-click Launcher", link: "/astrbot/launcher" },
+              { text: "Docker", link: "/astrbot/docker" },
+              { text: "Kubernetes", link: "/astrbot/kubernetes" },
+              { text: "BT Panel", link: "/astrbot/btpanel" },
+              { text: "1Panel", link: "/astrbot/1panel" },
+              { text: "Manual", link: "/astrbot/cli" },
               {
-                text: "Installation",
-                base: "/en/deploy/astrbot",
-                collapsed: false,
+                text: "Other Deployments",
+                link: "/astrbot/other-deployments",
+                collapsed: true,
                 items: [
-                  { text: "Package Manager", link: "/package" },
-                  { text: "Docker", link: "/docker" },
-                  { text: "Kubernetes", link: "/kubernetes" },
-                  { text: "Manual", link: "/cli" },
-                  { text: "BT Panel", link: "/btpanel" },
-                  { text: "1Panel", link: "/1panel" },
-                  {
-                    text: "Other Deployments",
-                    link: "/other-deployments",
-                    collapsed: true,
-                    items: [
-                      { text: "CasaOS", link: "/casaos" },
-                    ],
-                  },
+                  { text: "CasaOS", link: "/astrbot/casaos" },
+                  { text: "Compshare GPU", link: "/astrbot/compshare" },
+                  { text: "Community-provided Deployment", link: "/astrbot/community-deployment" },
                 ],
               },
               {
-                text: "Configure Bots",
-                base: "/en/deploy/platform",
-                collapsed: false,
-                items: [
-                  {
-                    text: "QQ Official API",
-                    base: "/en/deploy/platform/qqofficial",
-                    collapsed: true,
-                    items: [
-                      { text: "Webhook Method", link: "/webhook" },
-                      { text: "Websockets Method", link: "/websockets" },
-                    ],
-                  },
-                  {
-                    text: "OneBot v11",
-                    base: "/en/deploy/platform/aiocqhttp",
-                    collapsed: true,
-                    items: [
-                      { text: "NapCat", link: "/napcat" },
-                      { text: "Lagrange", link: "/lagrange" },
-                      { text: "Other Clients", link: "/others" },
-                    ],
-                  },
-                  { text: "WeCom Application", link: "/wecom" },
-                  { text: "WeCom AI Bot", link: "/wecom_ai_bot" },
-                  { text: "WeChat Official Account", link: "/weixin-official-account" },
-                  { text: "Lark", link: "/lark" },
-                  { text: "LINE", link: "/line" },
-                  { text: "DingTalk", link: "/dingtalk" },
-                  { text: "Telegram", link: "/telegram" },
-                  { text: "Slack", link: "/slack" },
-                  { text: "Misskey", link: "/misskey" },
-                  { text: "Discord", link: "/discord" },
-                  {
-                    text: "Community-provided",
-                    collapsed: false,
-                    items: [
-                      { text: "Matrix", link: "/matrix" },
-                      { text: "KOOK", link: "/kook" },
-                      { text: "VoceChat", link: "/vocechat" },
-                    ],
-                  },
-                  {
-                    text: "Satori",
-                    base: "/en/deploy/platform/satori",
-                    collapsed: true,
-                    items: [
-                      { text: "Using LLOneBot", link: "/llonebot" },
-                      { text: "Using server-satori", link: "/server-satori" },
-                    ],
-                  },
-                ],
-              },
-              {
-                text: "After Deployment...",
+                text: "Support Us",
                 link: "/when-deployed",
               },
             ],
           },
           {
-            text: "Configuration",
-            base: "/en/config",
+            text: "Messaging Platforms",
+            base: "/en/platform",
             collapsed: false,
             items: [
               {
-                text: "Integrating LLM Services",
-                base: "/en/config/providers",
+                text: "Quick Start",
+                link: "/start",
+              },
+              {
+                text: "QQ Official Bot",
+                link: "/qqofficial",
                 collapsed: true,
                 items: [
-                  { text: "✨ Connecting LLM Services", link: "/start" },
+                  { text: "Webhook Method", link: "/qqofficial/webhook" },
+                  { text: "Websockets Method", link: "/qqofficial/websockets" },
+                ],
+              },
+              { text: "WeCom Application", link: "/wecom" },
+              { text: "WeCom AI Bot", link: "/wecom_ai_bot" },
+              { text: "WeChat Official Account", link: "/weixin-official-account" },
+              { text: "Lark", link: "/lark" },
+              { text: "DingTalk", link: "/dingtalk" },
+              { text: "Telegram", link: "/telegram" },
+              { text: "LINE", link: "/line" },
+              { text: "Slack", link: "/slack" },
+              { text: "Misskey", link: "/misskey" },
+              { text: "Discord", link: "/discord" },
+              {
+                text: "OneBot v11",
+                base: "/en/platform/aiocqhttp",
+                collapsed: true,
+                items: [
+                  { text: "NapCat", link: "/napcat" },
+                  { text: "Lagrange", link: "/lagrange" },
+                  { text: "Other Clients", link: "/others" },
+                ],
+              },
+              {
+                text: "Satori",
+                base: "/en/platform/satori",
+                collapsed: true,
+                items: [
+                  { text: "Using LLOneBot", link: "/llonebot" },
+                  { text: "Using server-satori", link: "/server-satori" },
+                ],
+              },
+              {
+                text: "Community-provided",
+                collapsed: false,
+                items: [
+                  { text: "Matrix", link: "/matrix" },
+                  { text: "KOOK", link: "/kook" },
+                  { text: "VoceChat", link: "/vocechat" },
+                ],
+              },
+            ],
+          },
+          {
+            text: "AI Integration",
+            base: "/en/providers",
+            collapsed: false,
+            items: [
+              {
+                text: "✨ Model Providers",
+                link: "/start",
+                collapsed: true,
+                items: [
                   { text: "NewAPI", link: "/newapi" },
                   { text: "AIHubMix", link: "/aihubmix" },
                   { text: "PPIO Cloud", link: "/ppio" },
@@ -393,19 +384,15 @@ export default defineConfig({
                 ],
               },
               {
-                text: "Integrating Agent Runners",
-                base: "/en/config/agent-runners",
-                collapsed: true,
+                text: "⚙️ Agent Runners",
+                link: "/agent-runners",
+                collapsed: false,
                 items: [
-                  { text: "Built-in Agent Runner", link: "/astrbot-agent-runner" },
-                  { text: "Dify", link: "/dify" },
-                  { text: "Coze", link: "/coze" },
-                  { text: "Alibaba Bailian", link: "/dashscope" },
+                  { text: "Built-in Agent Runner", link: "/agent-runners/astrbot-agent-runner" },
+                  { text: "Dify", link: "/agent-runners/dify" },
+                  { text: "Coze", link: "/agent-runners/coze" },
+                  { text: "Alibaba Bailian", link: "/agent-runners/dashscope" },
                 ],
-              },
-              {
-                text: "AstrBot Configuration File",
-                link: "/astrbot-config",
               },
             ],
           },
@@ -429,7 +416,6 @@ export default defineConfig({
               { text: "Unified Webhook Mode", link: "/unified-webhook" },
               { text: "Auto Context Compression", link: "/context-compress" },
               { text: "Agent Sandbox", link: "/astrbot-agent-sandbox" },
-              { text: "(Legacy) Sandboxed Code Interpreter", link: "/code-interpreter" },
             ],
           },
           {
@@ -461,6 +447,10 @@ export default defineConfig({
               {
                 text: "AstrBot HTTP API",
                 link: "/openapi",
+              },
+              {
+                text: "AstrBot Configuration File",
+                link: "/astrbot-config",
               },
             ],
           },

@@ -1,7 +1,5 @@
 # 接入 Discord
 
-AstrBot v3.5.16 及之后，支持接入 [Discord](https://discord.com/) 消息平台。
-
 ## 创建 AstrBot Discord 平台适配器
 
 进入消息平台，点击新增适配器，找到 Discord 并点击进入 Discord 配置页。

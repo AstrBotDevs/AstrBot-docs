@@ -17,7 +17,7 @@ export default defineConfig({
 
   lastUpdated: true,
   ignoreDeadLinks: true,
-  
+
   locales: {
     root: {
       label: "简体中文",
@@ -49,26 +49,33 @@ export default defineConfig({
                 base: "/deploy/astrbot",
                 collapsed: false,
                 items: [
-                  { text: "🦈 Docker 部署", link: "/docker" },
-                  { text: "☸️ Kubernetes 部署", link: "/kubernetes" },
-                  { text: "☁️ 雨云一键云部署(NEW)", link: "/rainyun" },
-                  { text: "💻 启动器一键部署", link: "/windows" },
-                  { text: "👍 手动部署", link: "/cli" },
-                  { text: "😁 宝塔面板部署", link: "/btpanel" },
-                  { text: "🥇 1Panel 部署", link: "/1panel" },
-                  { text: "😊 CasaOS 部署", link: "/casaos" },
-                  { text: "🤗 安卓 Termux 部署", link: "/termux" },
-                  { text: "🍉 优云智算 GPU 部署", link: "/compshare" },
-                  { text: "⭐️ 社区提供的部署方式", link: "/community-deployment" },
+                  { text: "包管理器部署", link: "/package" },
+                  { text: "雨云一键云部署", link: "/rainyun" },
+                  { text: "启动器一键部署", link: "/windows" },
+                  { text: "Docker 部署", link: "/docker" },
+                  { text: "Kubernetes 部署", link: "/kubernetes" },
+                  { text: "宝塔面板部署", link: "/btpanel" },
+                  { text: "1Panel 部署", link: "/1panel" },
+                  { text: "手动部署", link: "/cli" },
+                  {
+                    text: "其他部署方式",
+                    link: "/other-deployments",
+                    collapsed: true,
+                    items: [
+                      { text: "CasaOS 部署", link: "/casaos" },
+                      { text: "优云智算 GPU 部署", link: "/compshare" },
+                      { text: "社区提供的部署方式", link: "/community-deployment" },
+                    ],
+                  },
                 ],
               },
               {
-                text: "接入到消息平台",
+                text: "接入消息平台",
                 base: "/deploy/platform",
                 collapsed: false,
                 items: [
                   {
-                    text: "QQ 官方接口",
+                    text: "QQ 官方机器人",
                     base: "/deploy/platform/qqofficial",
                     collapsed: true,
                     items: [
@@ -76,6 +83,16 @@ export default defineConfig({
                       { text: "Websockets 方式", link: "/websockets" },
                     ],
                   },
+                  { text: "企微应用", link: "/wecom" },
+                  { text: "企微智能机器人", link: "/wecom_ai_bot" },
+                  { text: "微信公众号", link: "/weixin-official-account" },
+                  { text: "飞书", link: "/lark" },
+                  { text: "钉钉", link: "/dingtalk" },
+                  { text: "Telegram", link: "/telegram" },
+                  { text: "LINE", link: "/line" },
+                  { text: "Slack", link: "/slack" },
+                  { text: "Misskey", link: "/misskey" },
+                  { text: "Discord", link: "/discord" },
                   {
                     text: "OneBot v11",
                     base: "/deploy/platform/aiocqhttp",
@@ -86,19 +103,6 @@ export default defineConfig({
                       { text: "其他端", link: "/others" },
                     ],
                   },
-                  { text: "企微应用", link: "/wecom" },
-                  { text: "企微智能机器人", link: "/wecom_ai_bot" },
-                  { text: "微信公众平台", link: "/weixin-official-account" },
-                  { text: "飞书", link: "/lark" },
-                  { text: "钉钉", link: "/dingtalk" },
-                  { text: "Telegram", link: "/telegram" },
-                  { text: "LINE", link: "/line" },
-                  { text: "Slack", link: "/slack" },
-                  { text: "Misskey", link: "/misskey" },
-                  { text: "Discord", link: "/discord" },
-                  { text: "Matrix", link: "/matrix" },
-                  { text: "KOOK", link: "/kook" },
-                  { text: "VoceChat", link: "/vocechat" },
                   {
                     text: "Satori",
                     base: "/deploy/platform/satori",
@@ -106,6 +110,15 @@ export default defineConfig({
                     items: [
                       { text: "使用 LLOneBot", link: "/llonebot" },
                       { text: "使用 server-satori", link: "/server-satori" },
+                    ],
+                  },
+                  {
+                    text: "社区提供",
+                    collapsed: false,
+                    items: [
+                      { text: "Matrix", link: "/matrix" },
+                      { text: "KOOK", link: "/kook" },
+                      { text: "VoceChat", link: "/vocechat" },
                     ],
                   },
                 ],
@@ -282,12 +295,22 @@ export default defineConfig({
                 base: "/en/deploy/astrbot",
                 collapsed: true,
                 items: [
+                  { text: "📦 Package Manager Deployment", link: "/package" },
                   { text: "🦈 Docker Deployment", link: "/docker" },
                   { text: "☸️ Kubernetes Deployment", link: "/kubernetes" },
                   { text: "👍 Manual Deployment", link: "/cli" },
                   { text: "😁 BT Panel Deployment", link: "/btpanel" },
                   { text: "🥇 1Panel Deployment", link: "/1panel" },
-                  { text: "😊 CasaOS Deployment", link: "/casaos" },
+                  {
+                    text: "Other Deployments",
+                    link: "/other-deployments",
+                    collapsed: true,
+                    items: [
+                      { text: "CasaOS Deployment", link: "/casaos" },
+                      { text: "Compshare GPU Deployment", link: "/compshare" },
+                      { text: "Community Deployments", link: "/community-deployment" },
+                    ],
+                  },
                 ],
               },
               {
@@ -324,9 +347,15 @@ export default defineConfig({
                   { text: "Slack", link: "/slack" },
                   { text: "Misskey", link: "/misskey" },
                   { text: "Discord", link: "/discord" },
-                  { text: "Matrix", link: "/matrix" },
-                  { text: "KOOK", link: "/kook" },
-                  { text: "VoceChat", link: "/vocechat" },
+                  {
+                    text: "Community-provided",
+                    collapsed: false,
+                    items: [
+                      { text: "Matrix", link: "/matrix" },
+                      { text: "KOOK", link: "/kook" },
+                      { text: "VoceChat", link: "/vocechat" },
+                    ],
+                  },
                   {
                     text: "Satori",
                     base: "/en/deploy/platform/satori",

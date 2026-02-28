@@ -1,7 +1,5 @@
 # Connecting to Discord
 
-AstrBot v3.5.16 and later supports connecting to the [Discord](https://discord.com/) messaging platform.
-
 ## Create AstrBot Discord Platform Adapter
 
 Navigate to the messaging platform, click to add a new adapter, find Discord and click to enter the Discord configuration page.

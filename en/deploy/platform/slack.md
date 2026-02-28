@@ -1,7 +1,5 @@
 # Connecting to Slack
 
-AstrBot v3.5.16 and later supports connecting to the [Slack](https://slack.com/) messaging platform.
-
 ## Create AstrBot Slack Platform Adapter
 
 Navigate to the `Bots` page, click `+ Create Bot`, find Slack and click to enter the Slack configuration page.

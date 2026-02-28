@@ -1,7 +1,5 @@
 # 接入 Slack
 
-AstrBot v3.5.16 及之后，支持接入 [Slack](https://slack.com/) 消息平台。
-
 ## 创建 AstrBot Slack 平台适配器
 
 进入 `机器人` 页，点击 `+ 创建机器人`，找到 Slack 并点击进入 Slack 配置页。

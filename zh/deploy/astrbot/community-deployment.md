@@ -3,17 +3,6 @@
 > [!WARNING]
 > AstrBot 官方不保证这些部署方式的安全性和稳定性。
 
-# linux综合性安装脚本
-
-综合了文档里的几乎全部安装方式
-
-还包含许多实用的 Linux 工具
-
-astrbot分类在 `基础工具/bot安装/astrbot` 里
-```bash
-bash -c "$(curl -L https://raw.gitcode.com/nasyt/nasyt-linux-tool/raw/master/nasyt_install.sh)"
-```
-
 ## Linux 一键部署脚本
 
 使用 `curl` 去下载脚本并且使用 `bash` 执行脚本：

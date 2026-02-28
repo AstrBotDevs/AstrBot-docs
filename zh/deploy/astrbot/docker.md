@@ -7,19 +7,6 @@
 
 ## 通过 Docker Compose 部署
 
-::: details 和 NapCatQQ 一起部署
-
-如果您想使用 NapCat 将 AstrBot **部署到 QQ（个人号）**，使用这种方式会同时部署 AstrBot 和 NapCat，更快。
-
-```bash
-mkdir astrbot
-cd astrbot
-wget https://raw.githubusercontent.com/NapNeko/NapCat-Docker/main/compose/astrbot.yml
-sudo docker compose -f astrbot.yml up -d
-```
-
-:::
-
 ::: details 只部署 AstrBot（通用方式）
 
 首先，需要 Clone AstrBot 仓库到本地：
@@ -54,6 +41,19 @@ docker pull soulter/shipyard-ship:latest
 ```
 
 配置和使用详见 [Agent 沙盒环境](/use/astrbot-agent-sandbox.md) 文档。
+:::
+
+::: details 和 NapCat 一起部署
+
+如果您想对接 NapCat，使用这种方式可以同时部署 AstrBot 和 NapCat。
+
+```bash
+mkdir astrbot
+cd astrbot
+wget https://raw.githubusercontent.com/NapNeko/NapCat-Docker/main/compose/astrbot.yml
+sudo docker compose -f astrbot.yml up -d
+```
+
 :::
 
 

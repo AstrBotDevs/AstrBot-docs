@@ -291,30 +291,28 @@ export default defineConfig({
             collapsed: false,
             items: [
               {
-                text: "Deploy AstrBot",
+                text: "Installation",
                 base: "/en/deploy/astrbot",
                 collapsed: false,
                 items: [
-                  { text: "📦 Package Manager Deployment", link: "/package" },
-                  { text: "🦈 Docker Deployment", link: "/docker" },
-                  { text: "☸️ Kubernetes Deployment", link: "/kubernetes" },
-                  { text: "👍 Manual Deployment", link: "/cli" },
-                  { text: "😁 BT Panel Deployment", link: "/btpanel" },
-                  { text: "🥇 1Panel Deployment", link: "/1panel" },
+                  { text: "Package Manager", link: "/package" },
+                  { text: "Docker", link: "/docker" },
+                  { text: "Kubernetes", link: "/kubernetes" },
+                  { text: "Manual", link: "/cli" },
+                  { text: "BT Panel", link: "/btpanel" },
+                  { text: "1Panel", link: "/1panel" },
                   {
                     text: "Other Deployments",
                     link: "/other-deployments",
                     collapsed: true,
                     items: [
-                      { text: "CasaOS Deployment", link: "/casaos" },
-                      { text: "Compshare GPU Deployment", link: "/compshare" },
-                      { text: "Community Deployments", link: "/community-deployment" },
+                      { text: "CasaOS", link: "/casaos" },
                     ],
                   },
                 ],
               },
               {
-                text: "Connect to Messaging Platforms",
+                text: "Configure Bots",
                 base: "/en/deploy/platform",
                 collapsed: false,
                 items: [

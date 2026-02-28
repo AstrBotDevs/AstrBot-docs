@@ -293,7 +293,7 @@ export default defineConfig({
               {
                 text: "Deploy AstrBot",
                 base: "/en/deploy/astrbot",
-                collapsed: true,
+                collapsed: false,
                 items: [
                   { text: "📦 Package Manager Deployment", link: "/package" },
                   { text: "🦈 Docker Deployment", link: "/docker" },

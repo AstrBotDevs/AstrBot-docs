@@ -65,7 +65,7 @@ export default defineConfig({
               {
                 text: "接入到消息平台",
                 base: "/deploy/platform",
-                collapsed: true,
+                collapsed: false,
                 items: [
                   {
                     text: "QQ 官方接口",
@@ -293,7 +293,7 @@ export default defineConfig({
               {
                 text: "Connect to Messaging Platforms",
                 base: "/en/deploy/platform",
-                collapsed: true,
+                collapsed: false,
                 items: [
                   {
                     text: "QQ Official API",

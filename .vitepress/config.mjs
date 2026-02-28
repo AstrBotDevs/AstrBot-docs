@@ -56,6 +56,7 @@ export default defineConfig({
                 link: "/astrbot/other-deployments",
                 collapsed: true,
                 items: [
+                  { text: "桌面客户端部署", link: "/astrbot/desktop" },
                   { text: "CasaOS 部署", link: "/astrbot/casaos" },
                   { text: "优云智算 GPU 部署", link: "/astrbot/compshare" },
                   { text: "社区提供的部署方式", link: "/astrbot/community-deployment" },

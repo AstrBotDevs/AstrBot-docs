@@ -54,6 +54,7 @@ class AstrBotMessage:
 - `Record`：语音消息段
 - `Video`：视频消息段
 - `File`：文件消息段
+- `Music`：音乐分享消息段
 
 大多数消息平台都支持上面的消息段类型。
 
@@ -63,6 +64,13 @@ class AstrBotMessage:
 - `Node`：合并转发消息中的一个节点
 - `Nodes`：合并转发消息中的多个节点
 - `Poke`：戳一戳消息段
+- `Json`：JSON 卡片消息段
+- `Share`：分享消息段
+- `Location`：位置消息段
+- `Contact`：推荐好友/群消息段
+- `Shake`：窗口抖动/戳一戳消息段
+- `Dice`：掷骰子消息段
+- `RPS`：猜拳消息段
 
 在 AstrBot 中，消息链表示为 `List[BaseMessageComponent]` 类型的列表。
 

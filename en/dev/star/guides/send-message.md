@@ -129,3 +129,48 @@ async def test(self, event: AstrMessageEvent):
 ```
 
 ![Sending group forward messages](https://files.astrbot.app/docs/source/images/plugin/image-4.png)
+
+## Other Message Types
+
+> Some platforms may not support all of the following message types.
+
+**JSON Card**
+
+```python
+Comp.Json(data={...})
+```
+
+**Share**
+
+```python
+Comp.Share(url="...", title="...", content="...", image="...")
+```
+
+**Music Share**
+
+```python
+# Method 1: Specify platform and ID
+Comp.Music(type="qq", id="...") 
+# Method 2: Custom
+Comp.Music(type="custom", url="...", audio="...", title="...", content="...", image="...")
+```
+
+**Location**
+
+```python
+Comp.Location(lat=..., lon=..., title="...", content="...")
+```
+
+**Contact (Friend/Group)**
+
+```python
+Comp.Contact(type="qq", id="...")
+```
+
+**Magic Emoticons/Actions**
+
+```python
+Comp.Shake() # Window shake/Poke
+Comp.Dice() # Roll a dice
+Comp.RPS() # Rock-paper-scissors
+```

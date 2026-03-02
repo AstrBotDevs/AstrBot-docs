@@ -58,6 +58,15 @@ If you find this tedious, you can directly use administrator permissions, but it
 ![Bot online](https://files.astrbot.app/docs/source/images/discord/image-7.png)
 @ mention the bot you just created (or don't mention it), type `/help`. If it responds successfully, the test is successful.
 
+## Pre-acknowledgment Emoji
+
+Discord supports the pre-acknowledgment emoji feature. When enabled, the bot will add an emoji reaction when processing a message, letting users know the bot is working on their request.
+
+In the admin panel's "Configuration" page, find `Platform Specific -> Discord -> Pre-acknowledgment Emoji`:
+
+- **Enable Pre-acknowledgment Emoji**: When enabled, the bot will automatically add an emoji reaction upon receiving a message
+- **Emoji List**: Enter Unicode emoji symbols, e.g., 👍, 🤔, ⏳. You can add multiple emojis, and the bot will randomly select one to use
+
 # Troubleshooting
 
 - If you're stuck at the final step and the bot is not online, please ensure your server can directly connect to Discord

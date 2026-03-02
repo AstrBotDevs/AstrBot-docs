@@ -14,6 +14,7 @@
 - Bot Token：在 Discord 创建 App 后获取的 Token（见下文）
 - Discord 代理地址：如果你需要使用代理访问 Discord，可以在这里填写代理地址（可选）
 - 是否自动将插件指令注册为 Discord 斜杠指令：勾选后，AstrBot 会自动将已安装插件中的指令注册为 Discord 斜杠指令，方便用户使用。
+
 ## 在 Discord 创建 App
 
 1. 前往 [Discord](https://discord.com/developers/applications)，点击右上角蓝色按钮，输入应用名字，创建应用。
@@ -55,7 +56,17 @@
 ![机器人在线](https://files.astrbot.app/docs/source/images/discord/image-7.png)
 @ 刚刚创建的机器人（也可以不 @），输入 `/help`，如果成功返回，则测试成功。
 
+## 预回应表情
+
+Discord 支持预回应表情功能。启用后，机器人在处理消息时会先添加一个表情反应，让用户知道机器人正在处理消息。
+
+在管理面板的「配置」页面中，找到 `平台特定配置 -> Discord -> 预回应表情`：
+
+- **启用预回应表情**：开启后，机器人收到消息时会自动添加表情反应
+- **表情列表**：填写 Unicode 表情符号，例如：👍、🤔、⏳。可填写多个，机器人会随机选择一个使用
+
 # 故障排除
+
 - 如果卡在最后的步骤，机器人不在线请确定自己的服务器可以直接连接discord
 
 如果有疑问，请[提交 Issue](https://github.com/AstrBotDevs/AstrBot/issues)。

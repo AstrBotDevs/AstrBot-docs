@@ -196,7 +196,6 @@ When loading plugins, AstrBot will check if there's a `_conf_schema.json` file i
 ```py
 from astrbot.api import AstrBotConfig
 
-@register("config", "Soulter", "A configuration example", "1.0.0")
 class ConfigPlugin(Star):
     def __init__(self, context: Context, config: AstrBotConfig): # AstrBotConfig inherits from Dict and has all dictionary methods
         super().__init__(context)

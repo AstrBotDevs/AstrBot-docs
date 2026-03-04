@@ -77,6 +77,21 @@ npx -v
 
 即可。
 
+## 环境变量配置
+
+AstrBot 支持通过环境变量配置 MCP 的超时行为：
+
+| 环境变量 | 说明 | 默认值 |
+| --- | --- | --- |
+| `ASTRBOT_MCP_INIT_TIMEOUT` | MCP 服务器初始化超时时间（秒） | `60` |
+| `ASTRBOT_MCP_ENABLE_TIMEOUT` | MCP 工具动态启用超时时间（秒） | `30` |
+
+如果您的 MCP 服务器启动较慢，可以适当增加 `ASTRBOT_MCP_INIT_TIMEOUT` 的值。例如，设置为 120 秒：
+
+```bash
+export ASTRBOT_MCP_INIT_TIMEOUT=120
+```
+
 参考链接：
 
 1. 在这里了解如何使用 MCP: [Model Context Protocol](https://modelcontextprotocol.io/introduction)

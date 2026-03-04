@@ -37,3 +37,19 @@ Fill in the configuration fields that appear:
 - Bot Token: Your Telegram bot's `token`.
 
 Please ensure your network environment can access Telegram. You may need to configure a proxy using `Configuration -> Other Settings -> HTTP Proxy`.
+
+## Streaming Output
+
+The Telegram platform supports streaming output. Enable the "Streaming Output" switch in "AI Configuration" -> "Other Settings".
+
+### Private Chat Streaming
+
+In private chats, AstrBot uses the `sendMessageDraft` API (added in Telegram Bot API v9.3) for streaming output. This displays a "typing" draft preview animation in the chat interface, creating a more natural "typewriter" effect. It avoids issues with the traditional approach such as message flickering, push notification interference, and API edit frequency limits.
+
+### Group Chat Streaming
+
+In group chats, since the `sendMessageDraft` API only supports private chats, AstrBot automatically falls back to the traditional `send_message` + `edit_message_text` approach.
+
+:::warning
+`sendMessageDraft` requires `python-telegram-bot>=22.6`.
+:::

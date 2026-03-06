@@ -45,10 +45,6 @@ Fill in the configuration fields:
 1. Click `Save` after filling in the details.
 2. Finally, in a Kook server channel (create one first if you haven't), @ the bot and type `/sid`. If the bot responds, the configuration is successful.
 
-## Support
-
-If you have any questions, please submit an issue at the [AstrBot Repository](https://github.com/AstrBotDevs/AstrBot/issues/new?template=bug-report.yml).
-
 [Kook Developer Center]: https://developer.kookapp.cn/app
 [kmarkdown]: https://developer.kookapp.cn/doc/kmarkdown
 [Kook Docs - Card Messages]: https://developer.kookapp.cn/doc/cardmessage

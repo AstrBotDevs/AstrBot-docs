@@ -46,10 +46,6 @@
 5. 完成适配器配置填写后，点击 `保存`。
 6. 最后，在kook服务器频道（若没有属于自己的服务器频道,请先创建一个服务器频道）中，@ 刚刚创建的机器人，输入 `/sid`，如果机器人成功回复，则测试成功。
 
-## 问题提交
-
-如有疑问，请提交 issue 至 [AstrBot 仓库](https://github.com/AstrBotDevs/AstrBot/issues/new?template=bug-report.yml)。
-
 [Kook 开发者平台]: https://developer.kookapp.cn/app
 [kmarkdown]: https://developer.kookapp.cn/doc/kmarkdown
 [Kook文档-卡片消息]: https://developer.kookapp.cn/doc/cardmessage

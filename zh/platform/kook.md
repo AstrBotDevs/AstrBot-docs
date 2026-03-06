@@ -6,7 +6,7 @@
 
 | 消息类型     | 是否支持接收 | 是否支持发送 | 备注                                           |
 | ------------ | ------------ | ------------ | ---------------------------------------------- |
-| 文本         | 是           | 是           | 支持官方[kmarndown]语法                        |
+| 文本         | 是           | 是           | 支持官方[kmarkdown]语法                        |
 | 图片         | 是           | 是           | 支持外链，图片类型仅支持`jpeg`， `gif`， `png` |
 | 语音         | 是           | 是           | 支持外链                                       |
 | 视频         | 是           | 是           | 支持外链，视频仅支持`mp4`，`mov`               |
@@ -51,5 +51,5 @@
 如有疑问，请提交 issue 至 [AstrBot 仓库](https://github.com/AstrBotDevs/AstrBot/issues/new?template=bug-report.yml)。
 
 [Kook 开发者平台]: https://developer.kookapp.cn/app
-[kmarndown]: https://developer.kookapp.cn/doc/kmarkdown
+[kmarkdown]: https://developer.kookapp.cn/doc/kmarkdown
 [Kook文档-卡片消息]: https://developer.kookapp.cn/doc/cardmessage

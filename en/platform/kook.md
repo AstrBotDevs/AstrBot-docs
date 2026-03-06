@@ -35,15 +35,13 @@ Message receiving mode: WebSocket
 2. Click **Bots** in the left sidebar.
 3. Click `+ Create Bot` on the right side of the interface.
 4. Select the `kook` adapter.
+5. Fill in the configuration fields:
+   - ID (id): Any name to identify this specific instance.
+   - Enable (enable): Check the box.
+   - Bot Token: Paste the Token generated from the [Kook Developer Center].
 
-Fill in the configuration fields:
-
-- **ID (id):** Any name to identify this specific instance.
-- **Enable (enable):** Check the box.
-- **Bot Token:** Paste the Token generated from the [Kook Developer Center].
-
-1. Click `Save` after filling in the details.
-2. Finally, in a Kook server channel (create one first if you haven't), @ the bot and type `/sid`. If the bot responds, the configuration is successful.
+6. Click `Save` after filling in the details.
+7. Finally, in a Kook server channel (create one first if you haven't), @ the bot and type `/sid`. If the bot responds, the configuration is successful.
 
 [Kook Developer Center]: https://developer.kookapp.cn/app
 [kmarkdown]: https://developer.kookapp.cn/doc/kmarkdown

@@ -14,6 +14,20 @@
 
 Proactive message push: Not supported.
 
+## Quick Deployment Steps
+
+> Updated: `2026/03/06`. This method only supports `private chat`.
+
+1. Open [QQ Open Platform](https://q.qq.com/qqbot/openclaw/). Register an account if you don't have one.
+2. Click the `Create Bot` button on the right.
+3. Obtain your `AppID` and `AppSecret`.
+4. In AstrBot WebUI, click `Bots` in the left sidebar, then click `+ Create Bot`, select `QQ Official Bot (WebSocket)`, paste the `AppID` and `AppSecret` into the form, click `Enable`, then click `Save`.
+5. Back on the QQ Open Platform page, click `Scan QR Code to Chat` next to your bot, then scan with your mobile QQ to start chatting.
+
+To use the bot in group chats, refer to the `Allow Bot in Channel / Group / Private Chat` section below.
+
+---
+
 ## Apply for a Bot
 
 > [!WARNING]

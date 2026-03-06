@@ -81,8 +81,8 @@ export default defineConfig({
                 link: "/qqofficial",
                 collapsed: true,
                 items: [
+                  { text: "Websockets 方式(推荐)", link: "/qqofficial/websockets" },
                   { text: "Webhook 方式", link: "/qqofficial/webhook" },
-                  { text: "Websockets 方式", link: "/qqofficial/websockets" },
                 ],
               },
               {
@@ -320,8 +320,8 @@ export default defineConfig({
                 link: "/qqofficial",
                 collapsed: true,
                 items: [
-                  { text: "Webhook Method", link: "/qqofficial/webhook" },
-                  { text: "Websockets Method", link: "/qqofficial/websockets" },
+                  { text: "Websockets", link: "/qqofficial/websockets" },
+                  { text: "Webhook", link: "/qqofficial/webhook" },
                 ],
               },
               {

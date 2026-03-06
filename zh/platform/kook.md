@@ -7,7 +7,6 @@
 > [!Warning]
 > Kook适配器插件曾经是社区插件，插件市场中的`astrbot_plugin_kook_adapter`插件已经过时并存在诸多bug，请需要使用Kook适配器的用户尽快升级 Astrbot 版本至 v4.18.4 或以上，以便使用最新版本的Kook适配器，
 
-
 <!-- ## 安装 astrbot_plugin_kook_adapter 插件 -->
 <!-- ![image](https://files.astrbot.app/docs/source/images/kook/image.png) -->
 
@@ -41,8 +40,6 @@
 
   ![image](https://files.astrbot.app/docs/source/images/kook/image-1.png)
 
-
-
 ## 在 AstrBot 配置
 
 1. 进入 AstrBot 的管理面板
@@ -55,9 +52,9 @@
 - ID(id)：随意填写，用于区分不同的消息平台实例。
 - 启用(enable): 勾选。
 - 机器人 Token: 填写再 [Kook 开发者平台] 中创建机器人时生成的 Token。
-    
+
 5. 完成适配器配置填写后，点击 `保存`。
-6. 最后，在kook服务器频道（若没有属于自己的服务器频道,请先创建一个服务器频道）中，@ 刚刚创建的机器人，输入 `/help`，如果机器人成功回复，则测试成功。
+6. 最后，在kook服务器频道（若没有属于自己的服务器频道,请先创建一个服务器频道）中，@ 刚刚创建的机器人，输入 `/sid`，如果机器人成功回复，则测试成功。
 
 ## 问题提交
 

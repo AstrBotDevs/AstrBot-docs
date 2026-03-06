@@ -5,4 +5,4 @@ QQ Official Bot is Tencent's official bot platform. It lets you connect bots to 
 Currently, the main integration method is Webhook.
 
 - [Webhook Method](/en/platform/qqofficial/webhook)
-- [Websockets Method](/en/platform/qqofficial/websockets) (deprecated)
+- [Websockets Method](/en/platform/qqofficial/websockets)

@@ -11,7 +11,7 @@
 | Audio        | Yes     | Yes  | Supports external links                            |
 | Video        | Yes     | Yes  | Supports external links; `mp4`, `mov` only         |
 | File         | Yes     | Yes  | Supports external links                            |
-| Card (Json)  | Yes     | Yes  | See [Kook Docs - Card Messages]                    |
+| Card (JSON)  | Yes     | Yes  | See [Kook Docs - Card Messages]                    |
 
 Proactive message push: Supported  
 Message receiving mode: WebSocket

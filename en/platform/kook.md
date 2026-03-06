@@ -1,15 +1,54 @@
 # Connect to KOOK
 
-1. Go to `Messaging Platforms` → `Add Adapter` → Select `KOOK`.
-2. Click the link to open the [KOOK Developer Platform](https://developer.kookapp.cn/app) and complete the following steps:
-   1. Sign in and complete identity verification.
-   2. Click **New Application** and set a bot nickname.
-   3. In the app console, go to the **Bot** module and enable **WebSocket connection mode**.
-   4. Copy the generated **Token**, paste it into the corresponding field in the AstrBot adapter, and click `Enable`.
+## Supported Message Types
 
-![image](https://files.astrbot.app/docs/source/images/kook/image-1.png)
+> Version v4.19.2
 
-3. Click `Save` in the bottom-right corner to create the adapter.
-4. In AstrBot `Messaging Platforms` page, click **Invite Link**, set role permissions (full permissions recommended to ensure complete functionality).
-5. After setting permissions, copy the invite link and open it to add the bot to your target server.
-6. In a server channel, mention the bot and send `/sid`. If it replies successfully, the setup is complete.
+| Message Type | Receive | Send | Remarks                                            |
+| ------------ | ------- | ---- | -------------------------------------------------- |
+| Text         | Yes     | Yes  | Supports official [kmarkdown] syntax               |
+| Image        | Yes     | Yes  | Supports external links; `jpeg`, `gif`, `png` only |
+| Audio        | Yes     | Yes  | Supports external links                            |
+| Video        | Yes     | Yes  | Supports external links; `mp4`, `mov` only         |
+| File         | Yes     | Yes  | Supports external links                            |
+| Card (Json)  | Yes     | Yes  | See [Kook Docs - Card Messages]                    |
+
+Proactive message push: Supported  
+Message receiving mode: WebSocket
+
+## Create a Bot on Kook
+
+1. Go to the [Kook Developer Center] and follow these steps:
+2. Log in and complete identity verification.
+3. Click "Create Application" and customize your Bot's nickname.
+4. Enter the application dashboard, select the **Bot** module, and enable **WebSocket connection mode**.
+5. Copy the generated **Token**. You will need to paste this into the AstrBot adapter settings and click `Enable`.
+6. Click `Save` in the bottom-right corner to create the adapter.
+7. Under the "Bot" page in the left sidebar, click "Invite Link" and set the role permissions (full permissions are recommended to ensure all features work).
+8. Copy the invite link, open it in your browser, and add the bot to your desired server.
+
+   ![image](https://files.astrbot.app/docs/source/images/kook/image-1.png)
+
+## Configure in AstrBot
+
+1. Access the AstrBot management panel.
+2. Click **Bots** in the left sidebar.
+3. Click `+ Create Bot` on the right side of the interface.
+4. Select the `kook` adapter.
+
+Fill in the configuration fields:
+
+- **ID (id):** Any name to identify this specific instance.
+- **Enable (enable):** Check the box.
+- **Bot Token:** Paste the Token generated from the [Kook Developer Center].
+
+1. Click `Save` after filling in the details.
+2. Finally, in a Kook server channel (create one first if you haven't), @ the bot and type `/sid`. If the bot responds, the configuration is successful.
+
+## Support
+
+If you have any questions, please submit an issue at the [AstrBot Repository](https://github.com/AstrBotDevs/AstrBot/issues/new?template=bug-report.yml).
+
+[Kook Developer Center]: https://developer.kookapp.cn/app
+[kmarkdown]: https://developer.kookapp.cn/doc/kmarkdown
+[Kook Docs - Card Messages]: https://developer.kookapp.cn/doc/cardmessage

@@ -1,18 +1,8 @@
 # 接入 Kook
 
-> [!TIP]
-> 自 AstrBot v4.18.4 版本起，可直接使用此适配器。该插件曾由 [wuyan1003](https://github.com/wuyan1003) 开发 ❤️，现在插件已迁移到Astrbot仓库中，目前由 [shuiping233](https://github.com/shuiping233) 负责开发和维护工作。
-> **如果您觉得有帮助，请支持开发者。**
-
-> [!Warning]
-> Kook适配器插件曾经是社区插件，插件市场中的`astrbot_plugin_kook_adapter`插件已经过时并存在诸多bug，请需要使用Kook适配器的用户尽快升级 Astrbot 版本至 v4.18.4 或以上，以便使用最新版本的Kook适配器，
-
-<!-- ## 安装 astrbot_plugin_kook_adapter 插件 -->
-<!-- ![image](https://files.astrbot.app/docs/source/images/kook/image.png) -->
-
 ## 支持的基本消息类型
 
-> 版本 v4.18.4
+> 版本 v4.19.2
 
 | 消息类型     | 是否支持接收 | 是否支持发送 | 备注                                           |
 | ------------ | ------------ | ------------ | ---------------------------------------------- |
@@ -25,7 +15,7 @@
 
 主动消息推送：支持  
 
-消息接收模式：WebSocket，Webhook（尚未计划）
+消息接收模式：WebSocket
 
 ## 在 Kook 创建机器人
 

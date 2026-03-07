@@ -12,14 +12,14 @@ outline: deep
 
 目前，支持的模型包括但不限于
 
-- gpt-4 系列（效果最好）
-- gemini 2.0 系列（不包含 thinking 类的模型）（效果最好）
-- deepseek v3(deepseek-chat)
-- llama3 系列（本地部署参数量较小时效果不好）
+- gpt-5 系列
+- gemini 3.x 系列
+- deepseek v3.2(deepseek-chat)
+- qwen 3.x 系列
 
-等等。
+等等。2025年后推出的模型大多已支持函数调用。
 
-不支持的模型比较常见的有 deepseek-r1, gemini 2.0 的 thinking 类模型等。
+不支持的模型比较常见的有 deepseek-r1, gemini 2.0 的 thinking 类等较老模型。
 
 在 AstrBot 中，默认提供了网页搜索、待办提醒、代码执行器这些工具。很多插件，如:
 

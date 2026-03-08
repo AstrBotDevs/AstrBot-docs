@@ -136,15 +136,14 @@ def split_anchor(target: str) -> tuple[str, str]:
     return base, f"#{anchor}"
 
 
-def ensure_markdown_suffix(path: PurePosixPath) -> PurePosixPath:
-    if path.suffix:
-        return path
-    return path.with_suffix(".md")
+def prepare_candidate_path(path: PurePosixPath) -> PurePosixPath:
+    if not path.suffix:
+        path = path.with_suffix(".md")
 
-
-def normalize_posix_path(path: PurePosixPath) -> PurePosixPath:
-    normalized = posixpath.normpath(path.as_posix())
-    return PurePosixPath(normalized)
+    normalized = PurePosixPath(posixpath.normpath(path.as_posix()))
+    normalized_text = normalized.as_posix()
+    aliased = SOURCE_ALIASES.get(normalized_text, normalized_text)
+    return PurePosixPath(aliased)
 
 
 def language_for_source(source_path: str) -> str:
@@ -169,12 +168,6 @@ def is_doc_target(target: str) -> bool:
     return suffix == ".md"
 
 
-def apply_source_alias(candidate: PurePosixPath) -> PurePosixPath:
-    candidate_text = candidate.as_posix()
-    aliased = SOURCE_ALIASES.get(candidate_text, candidate_text)
-    return PurePosixPath(aliased)
-
-
 def resolve_absolute_target(base_target: str, source_path: str) -> PurePosixPath:
     source_language = language_for_source(source_path)
     target = base_target.lstrip("/")
@@ -184,29 +177,28 @@ def resolve_absolute_target(base_target: str, source_path: str) -> PurePosixPath
         return PurePosixPath("en") / "index.md"
     if target in {"zh", "zh/"}:
         return PurePosixPath("zh") / "index.md"
-    if target.startswith("en/"):
-        return apply_source_alias(
-            normalize_posix_path(ensure_markdown_suffix(PurePosixPath(target))),
-        )
-    if target.startswith("zh/"):
-        return apply_source_alias(
-            normalize_posix_path(ensure_markdown_suffix(PurePosixPath(target))),
-        )
+    if target.startswith(("en/", "zh/")):
+        return prepare_candidate_path(PurePosixPath(target))
     language_root = source_language if source_language == "en" else "zh"
-    return apply_source_alias(
-        normalize_posix_path(
-            ensure_markdown_suffix(PurePosixPath(language_root) / target)
-        ),
-    )
+    return prepare_candidate_path(PurePosixPath(language_root) / target)
 
 
 def resolve_relative_target(base_target: str, source_path: str) -> PurePosixPath:
     source = PurePosixPath(source_path)
-    return apply_source_alias(
-        normalize_posix_path(
-            ensure_markdown_suffix(source.parent / PurePosixPath(base_target))
-        ),
-    )
+    return prepare_candidate_path(source.parent / base_target)
+
+
+def find_candidates_by_suffix(
+    language: str, suffix: str, source_pages: tuple[str, ...]
+) -> list[str]:
+    prefix = f"{language}/"
+    full_suffix = f"{language}/{suffix}"
+    return [
+        page
+        for page in source_pages
+        if page.startswith(prefix)
+        and (page == full_suffix or page.endswith(f"/{suffix}"))
+    ]
 
 
 def find_existing_source_path(
@@ -227,12 +219,7 @@ def find_existing_source_path(
     if not suffix:
         return ResolutionResult(resolved_path=None)
 
-    matches = [
-        page
-        for page in source_pages
-        if page.startswith(f"{language}/")
-        and (page == f"{language}/{suffix}" or page.endswith(f"/{suffix}"))
-    ]
+    matches = find_candidates_by_suffix(language, suffix, source_pages)
     if len(matches) == 1:
         return ResolutionResult(resolved_path=matches[0])
     if len(matches) > 1:
@@ -260,7 +247,7 @@ class LinkResolver:
 
         return find_existing_source_path(candidate, self.source_root, self.source_pages)
 
-    def resolve_source_path(self, target: str, source_path: str) -> str | None:
+    def resolve_path(self, target: str, source_path: str) -> str | None:
         return self.resolve(target, source_path).resolved_path
 
 
@@ -269,7 +256,7 @@ def rewrite_link_target(target: str, source_path: str, resolver: LinkResolver) -
         return target
 
     base_target, anchor = split_anchor(target)
-    resolved = resolver.resolve_source_path(base_target, source_path)
+    resolved = resolver.resolve_path(base_target, source_path)
     if resolved is None:
         return target
 

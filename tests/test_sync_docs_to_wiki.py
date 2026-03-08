@@ -41,6 +41,12 @@ class SyncDocsHelpersTest(unittest.TestCase):
         self.assertFalse(hasattr(module, "resolve_source_path"))
         self.assertFalse(hasattr(module, "compute_managed_files"))
 
+    def test_module_exposes_consolidated_helper_names(self):
+        module = load_sync_module()
+
+        self.assertTrue(hasattr(module, "prepare_candidate_path"))
+        self.assertTrue(hasattr(module, "find_candidates_by_suffix"))
+
     def test_rewrite_links_handles_absolute_same_language_links(self):
         module = load_sync_module()
 
@@ -152,9 +158,36 @@ class SyncDocsHelpersTest(unittest.TestCase):
             resolver = module.LinkResolver(source_root)
 
             self.assertEqual(
-                resolver.resolve_source_path("/deploy/guide", "zh/index.md"),
+                resolver.resolve_path("/deploy/guide", "zh/index.md"),
                 "zh/deploy/guide.md",
             )
+
+    def test_prepare_candidate_path_normalizes_suffix_and_alias(self):
+        module = load_sync_module()
+
+        self.assertEqual(
+            module.prepare_candidate_path(
+                module.PurePosixPath("zh/config/providers/../providers/start")
+            ),
+            module.PurePosixPath("zh/providers/start.md"),
+        )
+
+    def test_find_candidates_by_suffix_matches_language_bounded_suffixes(self):
+        module = load_sync_module()
+
+        self.assertEqual(
+            module.find_candidates_by_suffix(
+                language="zh",
+                suffix="bar/guide.md",
+                source_pages=(
+                    "zh/bar/guide.md",
+                    "zh/foo/bar/guide.md",
+                    "zh/foobar/guide.md",
+                    "en/bar/guide.md",
+                ),
+            ),
+            ["zh/bar/guide.md", "zh/foo/bar/guide.md"],
+        )
 
     def test_build_page_info_returns_page_info_dataclass(self):
         module = load_sync_module()
@@ -285,7 +318,7 @@ class SyncDocsHelpersTest(unittest.TestCase):
             resolver = module.LinkResolver(source_root)
 
             self.assertIsNone(
-                resolver.resolve_source_path("/bar/guide", "zh/index.md"),
+                resolver.resolve_path("/bar/guide", "zh/index.md"),
             )
 
     def test_live_docs_have_no_unresolved_internal_doc_links(self):

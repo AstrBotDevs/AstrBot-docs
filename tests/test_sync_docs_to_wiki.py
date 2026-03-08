@@ -34,18 +34,33 @@ class SyncDocsHelpersTest(unittest.TestCase):
 
         self.assertEqual(module.strip_frontmatter(source), "# Title\n")
 
+    def test_module_does_not_expose_removed_wrapper_helpers(self):
+        module = load_sync_module()
+
+        self.assertFalse(hasattr(module, "get_link_resolver"))
+        self.assertFalse(hasattr(module, "resolve_source_path"))
+        self.assertFalse(hasattr(module, "compute_managed_files"))
+
     def test_rewrite_links_handles_absolute_same_language_links(self):
         module = load_sync_module()
+
+        resolver = module.LinkResolver(Path(__file__).resolve().parents[1])
 
         content = "See [Docker](/deploy/astrbot/docker).\n"
 
         self.assertEqual(
-            module.rewrite_links(content, source_path="zh/what-is-astrbot.md"),
+            module.rewrite_links(
+                content,
+                source_path="zh/what-is-astrbot.md",
+                resolver=resolver,
+            ),
             "See [Docker](zh-deploy-astrbot-docker).\n",
         )
 
     def test_rewrite_links_handles_relative_links(self):
         module = load_sync_module()
+
+        resolver = module.LinkResolver(Path(__file__).resolve().parents[1])
 
         content = "Use [Dify](../agent-runners/dify.md).\n"
 
@@ -53,6 +68,7 @@ class SyncDocsHelpersTest(unittest.TestCase):
             module.rewrite_links(
                 content,
                 source_path="zh/providers/dify.md",
+                resolver=resolver,
             ),
             "Use [Dify](zh-providers-agent-runners-dify).\n",
         )
@@ -60,10 +76,16 @@ class SyncDocsHelpersTest(unittest.TestCase):
     def test_rewrite_links_handles_rewritten_root_paths(self):
         module = load_sync_module()
 
+        resolver = module.LinkResolver(Path(__file__).resolve().parents[1])
+
         content = "See [Connecting Model Services](/config/providers/start).\n"
 
         self.assertEqual(
-            module.rewrite_links(content, source_path="zh/what-is-astrbot.md"),
+            module.rewrite_links(
+                content,
+                source_path="zh/what-is-astrbot.md",
+                resolver=resolver,
+            ),
             "See [Connecting Model Services](zh-providers-start).\n",
         )
 
@@ -81,12 +103,13 @@ class SyncDocsHelpersTest(unittest.TestCase):
                 "# Guide\n",
                 encoding="utf-8",
             )
+            resolver = module.LinkResolver(source_root)
 
             self.assertEqual(
                 module.rewrite_links(
                     "See [Guide](/guide(test)).\n",
                     source_path="zh/index.md",
-                    source_root=source_root,
+                    resolver=resolver,
                 ),
                 "See [Guide](zh-guide(test)).\n",
             )
@@ -102,6 +125,7 @@ class SyncDocsHelpersTest(unittest.TestCase):
                 "# Guide\n", encoding="utf-8"
             )
             (source_root / "zh" / "images" / "diagram.png").write_bytes(b"png")
+            resolver = module.LinkResolver(source_root)
 
             content = "![Diagram](../images/diagram.png)\n"
 
@@ -109,7 +133,7 @@ class SyncDocsHelpersTest(unittest.TestCase):
                 module.rewrite_links(
                     content,
                     source_path="zh/use/guide.md",
-                    source_root=source_root,
+                    resolver=resolver,
                 ),
                 content,
             )
@@ -151,14 +175,6 @@ class SyncDocsHelpersTest(unittest.TestCase):
 
             self.assertIsInstance(page_info, module.PageInfo)
             self.assertEqual(page_info.page_name, "zh-index")
-
-    def test_compute_managed_files_includes_static_entries(self):
-        module = load_sync_module()
-
-        self.assertEqual(
-            module.compute_managed_files({"zh-index.md"}),
-            {"zh-index.md", "Home.md", "Home-en.md", "_Sidebar.md"},
-        )
 
     def test_sync_writes_pages_and_sidebar(self):
         module = load_sync_module()

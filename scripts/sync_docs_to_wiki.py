@@ -264,29 +264,6 @@ class LinkResolver:
         return self.resolve(target, source_path).resolved_path
 
 
-def get_link_resolver(
-    source_root: Path | None = None,
-    resolver: LinkResolver | None = None,
-) -> LinkResolver:
-    if resolver is not None:
-        return resolver
-    return LinkResolver(source_root or repo_root())
-
-
-def resolve_source_path(
-    target: str,
-    source_path: str,
-    source_root: Path | None = None,
-    resolver: LinkResolver | None = None,
-) -> str | None:
-    return get_link_resolver(
-        source_root=source_root, resolver=resolver
-    ).resolve_source_path(
-        target,
-        source_path,
-    )
-
-
 def rewrite_link_target(target: str, source_path: str, resolver: LinkResolver) -> str:
     if not is_doc_target(target):
         return target
@@ -302,10 +279,8 @@ def rewrite_link_target(target: str, source_path: str, resolver: LinkResolver) -
 def rewrite_links(
     content: str,
     source_path: str,
-    source_root: Path | None = None,
-    resolver: LinkResolver | None = None,
+    resolver: LinkResolver,
 ) -> str:
-    active_resolver = get_link_resolver(source_root=source_root, resolver=resolver)
     links = iter_markdown_links(content)
     if not links:
         return content
@@ -315,7 +290,7 @@ def rewrite_links(
     for link in links:
         result.append(content[previous_end : link.start])
         result.append(
-            f"{link.prefix}{rewrite_link_target(link.target, source_path, active_resolver)}{link.suffix}",
+            f"{link.prefix}{rewrite_link_target(link.target, source_path, resolver)}{link.suffix}",
         )
         previous_end = link.end
     result.append(content[previous_end:])
@@ -533,10 +508,6 @@ def write_file(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8")
 
 
-def compute_managed_files(desired_files: set[str]) -> set[str]:
-    return desired_files | MANAGED_FILENAMES
-
-
 def sync_docs_to_wiki(source_root: Path, wiki_root: Path) -> None:
     source_root = Path(source_root)
     wiki_root = Path(wiki_root)
@@ -569,7 +540,8 @@ def sync_docs_to_wiki(source_root: Path, wiki_root: Path) -> None:
     for file_name, content in desired_files.items():
         write_file(wiki_root / file_name, content)
 
-    write_manifest(wiki_root, compute_managed_files(set(desired_files)))
+    managed_files = set(desired_files) | MANAGED_FILENAMES
+    write_manifest(wiki_root, managed_files)
 
 
 def main() -> int:

@@ -14,7 +14,7 @@ This documentation is divided into the following sections:
 
 - **Deployment**: multiple ways to quickly deploy AstrBot on local machines or cloud servers.
 - **Messaging Platform Integration**: integration guides for 18+ mainstream instant messaging platforms.
-- **AI Provider Integration**: connect to model providers, use AstrBot's built-in Agent Runner, or integrate third-party Agent Runner services such as Dify, Coze, and Alibaba Bailian.
+- **AI Provider Integration**: connect to model providers, use AstrBot's built-in Agent Runner, or integrate third-party Agent Runner services such as Dify, Coze, Alibaba Bailian, and DeerFlow.
 - **Usage Guides**: practical guides for features such as plugins, tool calling, knowledge base, MCP, Skills, and Agent sandbox.
 
 ## Quick Start

@@ -153,6 +153,7 @@ export default defineConfig({
                   { text: "Dify", link: "/agent-runners/dify" },
                   { text: "扣子 Coze", link: "/agent-runners/coze" },
                   { text: "阿里云百炼应用", link: "/agent-runners/dashscope" },
+                  { text: "DeerFlow", link: "/agent-runners/deerflow" },
                 ]
               },
             ],
@@ -393,6 +394,7 @@ export default defineConfig({
                   { text: "Dify", link: "/agent-runners/dify" },
                   { text: "Coze", link: "/agent-runners/coze" },
                   { text: "Alibaba Bailian", link: "/agent-runners/dashscope" },
+                  { text: "DeerFlow", link: "/agent-runners/deerflow" },
                 ],
               },
             ],

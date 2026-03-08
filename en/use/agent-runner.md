@@ -2,14 +2,15 @@
 
 The Agent Runner is a component in AstrBot used to execute Agents.
 
-Starting from version v4.7.0, we have migrated three providers—Dify, Coze, and Alibaba Cloud Bailian Application—to the Agent Runner layer, reducing some conflicts with AstrBot's existing features. Rest assured, if you upgrade from an older version to v4.7.0, you don't need to take any action as AstrBot will automatically migrate for you.
+Starting from version v4.7.0, we have migrated three providers—Dify, Coze, and Alibaba Cloud Bailian Application—to the Agent Runner layer, reducing some conflicts with AstrBot's existing features. Rest assured, if you upgrade from an older version to v4.7.0, you don't need to take any action as AstrBot will automatically migrate for you. Later versions also added DeerFlow support as an Agent Runner provider.
 
-AstrBot currently has four built-in Agent Runners:
+AstrBot currently supports five Agent Runners:
 
 - AstrBot Built-in Agent Runner
 - Dify Agent Runner
 - Coze Agent Runner
 - Alibaba Cloud Bailian Application Agent Runner
+- DeerFlow Agent Runner
 
 By default, the AstrBot Built-in Agent Runner is the default runner.
 
@@ -30,19 +31,19 @@ An Agent Runner is typically a `loop` that receives user intent, context, and en
 
 ![image](https://files.astrbot.app/docs/source/images/use/agent-runner/agent-arch.svg)
 
-LLMOps platforms like Dify, Coze, and Bailian Application have this loop built-in. If you treat them as regular Chat Providers, it will conflict with AstrBot's built-in Agent Runner functionality.
+Platforms like Dify, Coze, Bailian Application, and DeerFlow have this loop built-in. If you treat them as regular Chat Providers, it will conflict with AstrBot's built-in Agent Runner functionality.
 
 ## Usage
 
 By default, the AstrBot Built-in Agent Runner is the default runner. Using the default runner can already meet most needs, and you can use AstrBot's MCP, knowledge base, web search, and other features.
 
-If you need to use the capabilities of LLMOps platforms like Dify, Coze, or Bailian Application, you can create an Agent Runner and select the corresponding provider.
+If you need to use the capabilities of platforms like Dify, Coze, Bailian Application, or DeerFlow, you can create an Agent Runner and select the corresponding provider.
 
 ## Creating an Agent Runner
 
 ![image](https://files.astrbot.app/docs/source/images/use/agent-runner/image-1.png)
 
-In the WebUI, click "Model Provider" -> "Add Provider", select "Agent Runner", choose the LLMOps platform you want to connect to, and fill in the relevant information.
+In the WebUI, click "Model Provider" -> "Add Provider", select "Agent Runner", choose the platform or runner type you want to connect to, and fill in the relevant information.
 
 ## Changing the Default Agent Runner
 

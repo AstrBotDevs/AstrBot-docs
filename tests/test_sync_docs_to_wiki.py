@@ -47,6 +47,8 @@ class SyncDocsHelpersTest(unittest.TestCase):
 
         self.assertTrue(hasattr(module, "prepare_candidate_path"))
         self.assertTrue(hasattr(module, "find_candidates_by_suffix"))
+        self.assertTrue(hasattr(module, "resolve_link_path"))
+        self.assertTrue(hasattr(module, "LANG_CONFIG"))
 
     def test_parse_doc_target_returns_base_and_anchor(self):
         module = load_sync_module()
@@ -180,6 +182,42 @@ class SyncDocsHelpersTest(unittest.TestCase):
                 resolver.resolve_path("/deploy/guide", "zh/index.md"),
                 "zh/deploy/guide.md",
             )
+
+    def test_resolve_link_path_resolves_relative_target(self):
+        module = load_sync_module()
+
+        with TemporaryDirectory() as temp_dir:
+            source_root = Path(temp_dir) / "docs"
+            (source_root / "zh" / "providers").mkdir(parents=True)
+            (source_root / "zh" / "agent-runners").mkdir(parents=True)
+            (source_root / "zh" / "providers" / "dify.md").write_text(
+                "# Dify\n",
+                encoding="utf-8",
+            )
+            (source_root / "zh" / "agent-runners" / "dify.md").write_text(
+                "# Agent Runner\n",
+                encoding="utf-8",
+            )
+
+            self.assertEqual(
+                module.resolve_link_path(
+                    base_target="../agent-runners/dify.md",
+                    source_path="zh/providers/dify.md",
+                    source_root=source_root,
+                    source_pages=module.discover_source_pages(str(source_root)),
+                ).resolved_path,
+                "zh/agent-runners/dify.md",
+            )
+
+    def test_build_home_page_uses_language_config(self):
+        module = load_sync_module()
+
+        self.assertIn(
+            module.LANG_CONFIG["zh"]["home_intro"], module.build_home_page("zh")
+        )
+        self.assertIn(
+            module.LANG_CONFIG["en"]["home_intro"], module.build_home_page("en")
+        )
 
     def test_prepare_candidate_path_normalizes_suffix_and_alias(self):
         module = load_sync_module()

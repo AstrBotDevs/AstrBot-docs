@@ -13,6 +13,44 @@ SOURCE_ALIASES = {
     "zh/config/providers/start.md": "zh/providers/start.md",
     "en/config/providers/start.md": "en/providers/start.md",
 }
+LANG_CONFIG = {
+    "zh": {
+        "index_title": "# AstrBot 中文文档",
+        "index_intro": "该页面由 `AstrBot-docs` 自动同步到 GitHub Wiki。",
+        "index_links": [
+            ("关于 AstrBot", "zh-what-is-astrbot"),
+            ("社区", "zh-community"),
+            ("常见问题", "zh-faq"),
+        ],
+        "home_intro": "该 Wiki 由 `AstrBot-docs` 自动同步生成。",
+        "home_links": [
+            ("中文文档入口", "zh-index"),
+            ("English Docs", "Home-en"),
+        ],
+        "sidebar_language_label": "Chinese",
+        "sidebar_home_label": "首页",
+        "sidebar_home_target": "Home",
+        "sidebar_docs_entry_label": "文档入口",
+    },
+    "en": {
+        "index_title": "# AstrBot English Documentation",
+        "index_intro": "This page is synchronized automatically from `AstrBot-docs` to the GitHub wiki.",
+        "index_links": [
+            ("What is AstrBot", "en-what-is-astrbot"),
+            ("Community", "en-community"),
+            ("FAQ", "en-faq"),
+        ],
+        "home_intro": "This wiki is synchronized automatically from `AstrBot-docs`.",
+        "home_links": [
+            ("English docs entry", "en-index"),
+            ("中文文档入口", "Home"),
+        ],
+        "sidebar_language_label": "English",
+        "sidebar_home_label": "Home",
+        "sidebar_home_target": "Home-en",
+        "sidebar_docs_entry_label": "Docs Entry",
+    },
+}
 
 
 @dataclass
@@ -174,26 +212,6 @@ def parse_doc_target(target: str) -> tuple[str, str] | None:
     return base_target, anchor
 
 
-def resolve_absolute_target(base_target: str, source_path: str) -> PurePosixPath:
-    source_language = language_for_source(source_path)
-    target = base_target.lstrip("/")
-    if not target:
-        return PurePosixPath(source_language) / "index.md"
-    if target in {"en", "en/"}:
-        return PurePosixPath("en") / "index.md"
-    if target in {"zh", "zh/"}:
-        return PurePosixPath("zh") / "index.md"
-    if target.startswith(("en/", "zh/")):
-        return prepare_candidate_path(PurePosixPath(target))
-    language_root = source_language if source_language == "en" else "zh"
-    return prepare_candidate_path(PurePosixPath(language_root) / target)
-
-
-def resolve_relative_target(base_target: str, source_path: str) -> PurePosixPath:
-    source = PurePosixPath(source_path)
-    return prepare_candidate_path(source.parent / base_target)
-
-
 def find_candidates_by_suffix(
     language: str, suffix: str, source_pages: tuple[str, ...]
 ) -> list[str]:
@@ -236,6 +254,34 @@ def find_existing_source_path(
     return ResolutionResult(resolved_path=None)
 
 
+def resolve_link_path(
+    base_target: str,
+    source_path: str,
+    source_root: Path,
+    source_pages: tuple[str, ...],
+) -> ResolutionResult:
+    source_language = language_for_source(source_path)
+
+    if base_target.startswith("/"):
+        target = base_target.lstrip("/")
+        if not target:
+            candidate = PurePosixPath(source_language) / "index.md"
+        elif target in {"en", "en/"}:
+            candidate = PurePosixPath("en") / "index.md"
+        elif target in {"zh", "zh/"}:
+            candidate = PurePosixPath("zh") / "index.md"
+        elif target.startswith(("en/", "zh/")):
+            candidate = PurePosixPath(target)
+        else:
+            language_root = source_language if source_language == "en" else "zh"
+            candidate = PurePosixPath(language_root) / target
+    else:
+        candidate = PurePosixPath(source_path).parent / base_target
+
+    candidate = prepare_candidate_path(candidate)
+    return find_existing_source_path(candidate, source_root, source_pages)
+
+
 class LinkResolver:
     def __init__(self, source_root: Path):
         self.source_root = Path(source_root)
@@ -247,12 +293,12 @@ class LinkResolver:
             return ResolutionResult(resolved_path=None)
 
         base_target, _ = parsed_target
-        if base_target.startswith("/"):
-            candidate = resolve_absolute_target(base_target, source_path)
-        else:
-            candidate = resolve_relative_target(base_target, source_path)
-
-        return find_existing_source_path(candidate, self.source_root, self.source_pages)
+        return resolve_link_path(
+            base_target=base_target,
+            source_path=source_path,
+            source_root=self.source_root,
+            source_pages=self.source_pages,
+        )
 
     def resolve_path(self, target: str, source_path: str) -> str | None:
         return self.resolve(target, source_path).resolved_path
@@ -353,32 +399,10 @@ def extract_title(content: str, source_path: str) -> str:
 
 
 def build_language_index(language: str, page_names: set[str]) -> str:
-    if language == "zh":
-        lines = [
-            "# AstrBot 中文文档",
-            "",
-            "该页面由 `AstrBot-docs` 自动同步到 GitHub Wiki。",
-            "",
-        ]
-        links = [
-            ("关于 AstrBot", "zh-what-is-astrbot"),
-            ("社区", "zh-community"),
-            ("常见问题", "zh-faq"),
-        ]
-    else:
-        lines = [
-            "# AstrBot English Documentation",
-            "",
-            "This page is synchronized automatically from `AstrBot-docs` to the GitHub wiki.",
-            "",
-        ]
-        links = [
-            ("What is AstrBot", "en-what-is-astrbot"),
-            ("Community", "en-community"),
-            ("FAQ", "en-faq"),
-        ]
+    config = LANG_CONFIG[language]
+    lines = [config["index_title"], "", config["index_intro"], ""]
 
-    for label, page_name in links:
+    for label, page_name in config["index_links"]:
         if page_name in page_names:
             lines.append(f"- [{label}]({page_name})")
 
@@ -386,32 +410,11 @@ def build_language_index(language: str, page_names: set[str]) -> str:
 
 
 def build_home_page(language: str) -> str:
-    if language == "zh":
-        return normalize_content(
-            "\n".join(
-                [
-                    "# AstrBot Wiki",
-                    "",
-                    "该 Wiki 由 `AstrBot-docs` 自动同步生成。",
-                    "",
-                    "- [中文文档入口](zh-index)",
-                    "- [English Docs](Home-en)",
-                ],
-            ),
-        )
-
-    return normalize_content(
-        "\n".join(
-            [
-                "# AstrBot Wiki",
-                "",
-                "This wiki is synchronized automatically from `AstrBot-docs`.",
-                "",
-                "- [English docs entry](en-index)",
-                "- [中文文档入口](Home)",
-            ],
-        ),
-    )
+    config = LANG_CONFIG[language]
+    lines = ["# AstrBot Wiki", "", config["home_intro"], ""]
+    for label, target in config["home_links"]:
+        lines.append(f"- [{label}]({target})")
+    return normalize_content("\n".join(lines))
 
 
 def sidebar_group_name(group: str) -> str:
@@ -422,9 +425,9 @@ def sidebar_group_name(group: str) -> str:
 
 def build_sidebar(page_infos: list[PageInfo]) -> str:
     lines: list[str] = []
-    language_labels = {"zh": "Chinese", "en": "English"}
 
     for language in ("zh", "en"):
+        config = LANG_CONFIG[language]
         infos = [
             info
             for info in page_infos
@@ -432,13 +435,13 @@ def build_sidebar(page_infos: list[PageInfo]) -> str:
         ]
         infos.sort(key=lambda info: info.source_path)
 
-        lines.append(f"### {language_labels[language]}")
+        lines.append(f"### {config['sidebar_language_label']}")
         lines.append("")
         lines.append(
-            f"- [{'Home' if language == 'en' else '首页'}]({'Home-en' if language == 'en' else 'Home'})",
+            f"- [{config['sidebar_home_label']}]({config['sidebar_home_target']})",
         )
         lines.append(
-            f"- [{'Docs Entry' if language == 'en' else '文档入口'}]({language}-index)",
+            f"- [{config['sidebar_docs_entry_label']}]({language}-index)",
         )
 
         grouped: dict[str, list[PageInfo]] = {}

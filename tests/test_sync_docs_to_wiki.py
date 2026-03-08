@@ -165,6 +165,48 @@ class SyncDocsHelpersTest(unittest.TestCase):
                 content,
             )
 
+    def test_rewrite_links_skips_fenced_code_blocks(self):
+        module = load_sync_module()
+
+        with TemporaryDirectory() as temp_dir:
+            source_root = Path(temp_dir) / "docs"
+            (source_root / "zh").mkdir(parents=True)
+            (source_root / "zh" / "index.md").write_text("# Home\n", encoding="utf-8")
+            (source_root / "zh" / "guide.md").write_text("# Guide\n", encoding="utf-8")
+            resolver = module.LinkResolver(source_root)
+
+            content = "```md\n[Guide](/guide)\n```\n\nSee [Guide](/guide).\n"
+
+            self.assertEqual(
+                module.rewrite_links(
+                    content,
+                    source_path="zh/index.md",
+                    resolver=resolver,
+                ),
+                "```md\n[Guide](/guide)\n```\n\nSee [Guide](zh-guide).\n",
+            )
+
+    def test_rewrite_links_skips_inline_code(self):
+        module = load_sync_module()
+
+        with TemporaryDirectory() as temp_dir:
+            source_root = Path(temp_dir) / "docs"
+            (source_root / "zh").mkdir(parents=True)
+            (source_root / "zh" / "index.md").write_text("# Home\n", encoding="utf-8")
+            (source_root / "zh" / "guide.md").write_text("# Guide\n", encoding="utf-8")
+            resolver = module.LinkResolver(source_root)
+
+            content = "Use `[Guide](/guide)` literally, then See [Guide](/guide).\n"
+
+            self.assertEqual(
+                module.rewrite_links(
+                    content,
+                    source_path="zh/index.md",
+                    resolver=resolver,
+                ),
+                "Use `[Guide](/guide)` literally, then See [Guide](zh-guide).\n",
+            )
+
     def test_link_resolver_resolves_source_paths(self):
         module = load_sync_module()
 
@@ -265,6 +307,26 @@ class SyncDocsHelpersTest(unittest.TestCase):
 
             self.assertIsInstance(page_info, module.PageInfo)
             self.assertEqual(page_info.page_name, "zh-index")
+
+    def test_build_page_info_uses_display_ready_group(self):
+        module = load_sync_module()
+
+        with TemporaryDirectory() as temp_dir:
+            source_root = Path(temp_dir) / "docs"
+            (source_root / "zh" / "agent-runners").mkdir(parents=True)
+            (source_root / "zh" / "agent-runners" / "guide.md").write_text(
+                "# Guide\n",
+                encoding="utf-8",
+            )
+
+            resolver = module.LinkResolver(source_root)
+            page_info = module.build_page_info(
+                source_root=source_root,
+                source_path="zh/agent-runners/guide.md",
+                resolver=resolver,
+            )
+
+            self.assertEqual(page_info.group, "agent runners")
 
     def test_sync_writes_pages_and_sidebar(self):
         module = load_sync_module()
@@ -386,6 +448,20 @@ class SyncDocsHelpersTest(unittest.TestCase):
         )
 
         self.assertEqual(unresolved, [])
+
+    def test_check_unresolved_doc_links_raises_for_bad_docs(self):
+        module = load_sync_module()
+
+        with TemporaryDirectory() as temp_dir:
+            source_root = Path(temp_dir) / "docs"
+            (source_root / "zh").mkdir(parents=True)
+            (source_root / "zh" / "index.md").write_text(
+                "See [Missing](/missing).\n",
+                encoding="utf-8",
+            )
+
+            with self.assertRaises(ValueError):
+                module.check_unresolved_doc_links(source_root)
 
 
 if __name__ == "__main__":

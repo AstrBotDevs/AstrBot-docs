@@ -8,6 +8,11 @@ from pathlib import Path, PurePosixPath
 
 
 TITLE_RE = re.compile(r"^#\s+(.+)$", re.MULTILINE)
+FENCED_BLOCK_RE = re.compile(
+    r"(^```.*?$.*?^```$|^~~~.*?$.*?^~~~$)",
+    re.MULTILINE | re.DOTALL,
+)
+INLINE_CODE_RE = re.compile(r"(`[^`]*`)")
 MANIFEST_NAME = ".astrbot-wiki-sync-manifest"
 SOURCE_ALIASES = {
     "zh/config/providers/start.md": "zh/providers/start.md",
@@ -317,25 +322,78 @@ def rewrite_link_target(target: str, source_path: str, resolver: LinkResolver) -
     return f"{page_name_for_source(resolved)}{anchor}"
 
 
+def rewrite_links_in_segment(
+    segment: str,
+    source_path: str,
+    resolver: LinkResolver,
+) -> str:
+    links = list(iter_markdown_links(segment))
+    if not links:
+        return segment
+
+    result: list[str] = []
+    previous_end = 0
+    for link in links:
+        result.append(segment[previous_end : link.start])
+        result.append(
+            f"{link.prefix}{rewrite_link_target(link.target, source_path, resolver)}{link.suffix}",
+        )
+        previous_end = link.end
+    result.append(segment[previous_end:])
+    return "".join(result)
+
+
 def rewrite_links(
     content: str,
     source_path: str,
     resolver: LinkResolver,
 ) -> str:
-    links = list(iter_markdown_links(content))
-    if not links:
-        return content
+    parts: list[tuple[str, str]] = []
+    last_end = 0
 
-    result: list[str] = []
-    previous_end = 0
-    for link in links:
-        result.append(content[previous_end : link.start])
-        result.append(
-            f"{link.prefix}{rewrite_link_target(link.target, source_path, resolver)}{link.suffix}",
-        )
-        previous_end = link.end
-    result.append(content[previous_end:])
-    return "".join(result)
+    for fenced_match in FENCED_BLOCK_RE.finditer(content):
+        before = content[last_end : fenced_match.start()]
+        if before:
+            parts.append(("text", before))
+        parts.append(("code", fenced_match.group(0)))
+        last_end = fenced_match.end()
+
+    tail = content[last_end:]
+    if tail:
+        parts.append(("text", tail))
+
+    output: list[str] = []
+    for kind, chunk in parts:
+        if kind == "code":
+            output.append(chunk)
+            continue
+
+        last_inline_end = 0
+        for inline_match in INLINE_CODE_RE.finditer(chunk):
+            before_inline = chunk[last_inline_end : inline_match.start()]
+            if before_inline:
+                output.append(
+                    rewrite_links_in_segment(
+                        before_inline,
+                        source_path=source_path,
+                        resolver=resolver,
+                    )
+                )
+
+            output.append(inline_match.group(0))
+            last_inline_end = inline_match.end()
+
+        after_inline = chunk[last_inline_end:]
+        if after_inline:
+            output.append(
+                rewrite_links_in_segment(
+                    after_inline,
+                    source_path=source_path,
+                    resolver=resolver,
+                )
+            )
+
+    return "".join(output)
 
 
 def find_unresolved_doc_links(source_root: Path) -> list[str]:
@@ -360,6 +418,15 @@ def find_unresolved_doc_links(source_root: Path) -> list[str]:
             unresolved.append(f"{source_path} -> {link.target}")
 
     return unresolved
+
+
+def check_unresolved_doc_links(source_root: Path) -> None:
+    unresolved = find_unresolved_doc_links(source_root)
+    if not unresolved:
+        return
+
+    issues = "\n".join(f"- {item}" for item in unresolved)
+    raise ValueError(f"Unresolved internal doc links found:\n{issues}")
 
 
 def page_name_for_source(source_path: str) -> str:
@@ -417,12 +484,6 @@ def build_home_page(language: str) -> str:
     return normalize_content("\n".join(lines))
 
 
-def sidebar_group_name(group: str) -> str:
-    if group == "root":
-        return "Top Level"
-    return group.replace("-", " ")
-
-
 def build_sidebar(page_infos: list[PageInfo]) -> str:
     lines: list[str] = []
 
@@ -449,7 +510,7 @@ def build_sidebar(page_infos: list[PageInfo]) -> str:
             grouped.setdefault(info.group, []).append(info)
 
         for group_name in sorted(grouped):
-            lines.append(f"- {sidebar_group_name(group_name)}")
+            lines.append(f"- {group_name}")
             for info in grouped[group_name]:
                 lines.append(f"  - [{info.title}]({info.page_name})")
 
@@ -469,7 +530,7 @@ def build_page_info(
 
     relative = PurePosixPath(source_path)
     parts = relative.parts
-    group = "root" if len(parts) <= 2 else parts[1]
+    group = "Top Level" if len(parts) <= 2 else parts[1].replace("-", " ")
 
     return PageInfo(
         source_path=source_path,
@@ -553,10 +614,22 @@ def main() -> int:
     )
     parser.add_argument(
         "--wiki-root",
-        required=True,
         help="Path to the checked out wiki repository.",
     )
+    parser.add_argument(
+        "--check-links-only",
+        action="store_true",
+        help="Validate internal doc links without writing wiki files.",
+    )
     args = parser.parse_args()
+
+    if not args.check_links_only and not args.wiki_root:
+        parser.error("--wiki-root is required unless --check-links-only is set")
+
+    check_unresolved_doc_links(Path(args.source_root))
+
+    if args.check_links_only:
+        return 0
 
     sync_docs_to_wiki(
         source_root=Path(args.source_root), wiki_root=Path(args.wiki_root)

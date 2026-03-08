@@ -40,6 +40,9 @@ jobs:
       - name: Run sync unit tests
         run: python -m unittest discover -s tests -p 'test_sync_docs_to_wiki.py' -v
 
+      - name: Validate internal doc links
+        run: python scripts/sync_docs_to_wiki.py --source-root . --check-links-only
+
       - name: Clone AstrBot wiki
         env:
           WIKI_TOKEN: ${{ secrets.ASTRBOT_WIKI_TOKEN }}

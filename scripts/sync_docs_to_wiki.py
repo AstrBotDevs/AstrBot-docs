@@ -67,7 +67,10 @@ def find_label_end(content: str, label_start: int) -> int:
         if close > label_start and content[close - 1] == "\\":
             index = close + 1
             continue
-        if close + 1 < len(content) and content[close + 1] == "(":
+        lookahead = close + 1
+        while lookahead < len(content) and content[lookahead].isspace():
+            lookahead += 1
+        if lookahead < len(content) and content[lookahead] == "(":
             return close
         index = close + 1
     return -1
@@ -91,8 +94,13 @@ def find_target_end(content: str, target_start: int) -> int:
     return -1
 
 
-def iter_markdown_links(content: str) -> list[MarkdownLink]:
-    links: list[MarkdownLink] = []
+def iter_markdown_links(content: str):
+    """Yield inline Markdown links only.
+
+    This scanner intentionally handles inline `[]()` links used in the docs tree.
+    It does not parse reference-style links or arbitrary HTML.
+    """
+
     index = 0
     while index < len(content):
         label_start = content.find("[", index)
@@ -109,24 +117,26 @@ def iter_markdown_links(content: str) -> list[MarkdownLink]:
             index = label_start + 1
             continue
 
-        target_start = label_end + 2
+        target_start = label_end + 1
+        while target_start < len(content) and content[target_start].isspace():
+            target_start += 1
+        if target_start >= len(content) or content[target_start] != "(":
+            index = label_end + 1
+            continue
+        target_start += 1
         target_end = find_target_end(content, target_start)
         if target_end == -1:
             index = label_end + 1
             continue
 
-        links.append(
-            MarkdownLink(
-                start=link_start,
-                end=target_end + 1,
-                prefix=content[link_start:target_start],
-                target=content[target_start:target_end],
-                suffix=")",
-            ),
+        yield MarkdownLink(
+            start=link_start,
+            end=target_end + 1,
+            prefix=content[link_start:target_start],
+            target=content[target_start:target_end],
+            suffix=")",
         )
         index = target_end + 1
-
-    return links
 
 
 def split_anchor(target: str) -> tuple[str, str]:
@@ -150,22 +160,19 @@ def language_for_source(source_path: str) -> str:
     return PurePosixPath(source_path).parts[0]
 
 
-def is_external_target(target: str) -> bool:
-    return target.startswith(("http://", "https://", "mailto:", "#"))
+def parse_doc_target(target: str) -> tuple[str, str] | None:
+    if target.startswith(("http://", "https://", "mailto:", "#")):
+        return None
 
-
-def is_doc_target(target: str) -> bool:
-    if is_external_target(target):
-        return False
-
-    base_target, _ = split_anchor(target)
+    base_target, anchor = split_anchor(target)
     if not base_target:
-        return False
+        return None
 
     suffix = PurePosixPath(base_target).suffix.lower()
-    if not suffix:
-        return True
-    return suffix == ".md"
+    if suffix and suffix != ".md":
+        return None
+
+    return base_target, anchor
 
 
 def resolve_absolute_target(base_target: str, source_path: str) -> PurePosixPath:
@@ -236,10 +243,11 @@ class LinkResolver:
         self.source_pages = discover_source_pages(str(self.source_root))
 
     def resolve(self, target: str, source_path: str) -> ResolutionResult:
-        if not is_doc_target(target):
+        parsed_target = parse_doc_target(target)
+        if parsed_target is None:
             return ResolutionResult(resolved_path=None)
 
-        base_target, _ = split_anchor(target)
+        base_target, _ = parsed_target
         if base_target.startswith("/"):
             candidate = resolve_absolute_target(base_target, source_path)
         else:
@@ -252,10 +260,11 @@ class LinkResolver:
 
 
 def rewrite_link_target(target: str, source_path: str, resolver: LinkResolver) -> str:
-    if not is_doc_target(target):
+    parsed_target = parse_doc_target(target)
+    if parsed_target is None:
         return target
 
-    base_target, anchor = split_anchor(target)
+    base_target, anchor = parsed_target
     resolved = resolver.resolve_path(base_target, source_path)
     if resolved is None:
         return target
@@ -268,7 +277,7 @@ def rewrite_links(
     source_path: str,
     resolver: LinkResolver,
 ) -> str:
-    links = iter_markdown_links(content)
+    links = list(iter_markdown_links(content))
     if not links:
         return content
 
@@ -292,18 +301,18 @@ def find_unresolved_doc_links(source_root: Path) -> list[str]:
     for source_path in resolver.source_pages:
         content = (root / source_path).read_text(encoding="utf-8")
         for link in iter_markdown_links(content):
-            target = link.target
-            if not is_doc_target(target):
+            parsed_target = parse_doc_target(link.target)
+            if parsed_target is None:
                 continue
-            resolution = resolver.resolve(target, source_path)
+            resolution = resolver.resolve(link.target, source_path)
             if resolution.resolved_path is not None:
                 continue
             if resolution.ambiguous_matches:
                 unresolved.append(
-                    f"{source_path} -> {target} (ambiguous: {', '.join(resolution.ambiguous_matches)})",
+                    f"{source_path} -> {link.target} (ambiguous: {', '.join(resolution.ambiguous_matches)})",
                 )
                 continue
-            unresolved.append(f"{source_path} -> {target}")
+            unresolved.append(f"{source_path} -> {link.target}")
 
     return unresolved
 
@@ -527,7 +536,7 @@ def sync_docs_to_wiki(source_root: Path, wiki_root: Path) -> None:
     for file_name, content in desired_files.items():
         write_file(wiki_root / file_name, content)
 
-    managed_files = set(desired_files) | MANAGED_FILENAMES
+    managed_files = set(desired_files)
     write_manifest(wiki_root, managed_files)
 
 

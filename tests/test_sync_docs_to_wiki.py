@@ -47,6 +47,24 @@ class SyncDocsHelpersTest(unittest.TestCase):
         self.assertTrue(hasattr(module, "prepare_candidate_path"))
         self.assertTrue(hasattr(module, "find_candidates_by_suffix"))
 
+    def test_parse_doc_target_returns_base_and_anchor(self):
+        module = load_sync_module()
+
+        self.assertEqual(
+            module.parse_doc_target("/deploy/guide#intro"),
+            ("/deploy/guide", "#intro"),
+        )
+        self.assertIsNone(module.parse_doc_target("https://example.com/guide"))
+        self.assertIsNone(module.parse_doc_target("../images/diagram.png"))
+        self.assertIsNone(module.parse_doc_target("#intro"))
+
+    def test_iter_markdown_links_handles_whitespace_before_target(self):
+        module = load_sync_module()
+
+        links = list(module.iter_markdown_links("See [Guide]\n(guide.md).\n"))
+
+        self.assertEqual([link.target for link in links], ["guide.md"])
+
     def test_rewrite_links_handles_absolute_same_language_links(self):
         module = load_sync_module()
 

@@ -1,15 +1,19 @@
 from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
+import sys
 from tempfile import TemporaryDirectory
 import unittest
 
 
 def load_sync_module():
-    script_path = Path(__file__).resolve().parents[1] / "scripts" / "sync_docs_to_wiki.py"
+    script_path = (
+        Path(__file__).resolve().parents[1] / "scripts" / "sync_docs_to_wiki.py"
+    )
     spec = spec_from_file_location("sync_docs_to_wiki", script_path)
     if spec is None or spec.loader is None:
         raise ImportError(f"Unable to load module from {script_path}")
     module = module_from_spec(spec)
+    sys.modules[spec.name] = module
     spec.loader.exec_module(module)
     return module
 
@@ -63,6 +67,30 @@ class SyncDocsHelpersTest(unittest.TestCase):
             "See [Connecting Model Services](zh-providers-start).\n",
         )
 
+    def test_rewrite_links_handles_internal_links_with_parentheses(self):
+        module = load_sync_module()
+
+        with TemporaryDirectory() as temp_dir:
+            source_root = Path(temp_dir) / "docs"
+            (source_root / "zh").mkdir(parents=True)
+            (source_root / "zh" / "index.md").write_text(
+                "See [Guide](/guide(test)).\n",
+                encoding="utf-8",
+            )
+            (source_root / "zh" / "guide(test).md").write_text(
+                "# Guide\n",
+                encoding="utf-8",
+            )
+
+            self.assertEqual(
+                module.rewrite_links(
+                    "See [Guide](/guide(test)).\n",
+                    source_path="zh/index.md",
+                    source_root=source_root,
+                ),
+                "See [Guide](zh-guide(test)).\n",
+            )
+
     def test_rewrite_links_leaves_local_asset_links_unchanged(self):
         module = load_sync_module()
 
@@ -70,7 +98,9 @@ class SyncDocsHelpersTest(unittest.TestCase):
             source_root = Path(temp_dir) / "docs"
             (source_root / "zh" / "use").mkdir(parents=True)
             (source_root / "zh" / "images").mkdir(parents=True)
-            (source_root / "zh" / "use" / "guide.md").write_text("# Guide\n", encoding="utf-8")
+            (source_root / "zh" / "use" / "guide.md").write_text(
+                "# Guide\n", encoding="utf-8"
+            )
             (source_root / "zh" / "images" / "diagram.png").write_bytes(b"png")
 
             content = "![Diagram](../images/diagram.png)\n"
@@ -83,6 +113,52 @@ class SyncDocsHelpersTest(unittest.TestCase):
                 ),
                 content,
             )
+
+    def test_link_resolver_resolves_source_paths(self):
+        module = load_sync_module()
+
+        with TemporaryDirectory() as temp_dir:
+            source_root = Path(temp_dir) / "docs"
+            (source_root / "zh" / "deploy").mkdir(parents=True)
+            (source_root / "zh" / "index.md").write_text("# Home\n", encoding="utf-8")
+            (source_root / "zh" / "deploy" / "guide.md").write_text(
+                "# Guide\n", encoding="utf-8"
+            )
+
+            resolver = module.LinkResolver(source_root)
+
+            self.assertEqual(
+                resolver.resolve_source_path("/deploy/guide", "zh/index.md"),
+                "zh/deploy/guide.md",
+            )
+
+    def test_build_page_info_returns_page_info_dataclass(self):
+        module = load_sync_module()
+
+        with TemporaryDirectory() as temp_dir:
+            source_root = Path(temp_dir) / "docs"
+            (source_root / "zh").mkdir(parents=True)
+            (source_root / "zh" / "index.md").write_text(
+                "# 中文首页\n", encoding="utf-8"
+            )
+
+            resolver = module.LinkResolver(source_root)
+            page_info = module.build_page_info(
+                source_root=source_root,
+                source_path="zh/index.md",
+                resolver=resolver,
+            )
+
+            self.assertIsInstance(page_info, module.PageInfo)
+            self.assertEqual(page_info.page_name, "zh-index")
+
+    def test_compute_managed_files_includes_static_entries(self):
+        module = load_sync_module()
+
+        self.assertEqual(
+            module.compute_managed_files({"zh-index.md"}),
+            {"zh-index.md", "Home.md", "Home-en.md", "_Sidebar.md"},
+        )
 
     def test_sync_writes_pages_and_sidebar(self):
         module = load_sync_module()
@@ -133,8 +209,12 @@ class SyncDocsHelpersTest(unittest.TestCase):
             (source_root / "zh").mkdir(parents=True)
             (source_root / "en").mkdir(parents=True)
 
-            (source_root / "zh" / "index.md").write_text("# 中文首页\n", encoding="utf-8")
-            (source_root / "en" / "index.md").write_text("# English Home\n", encoding="utf-8")
+            (source_root / "zh" / "index.md").write_text(
+                "# 中文首页\n", encoding="utf-8"
+            )
+            (source_root / "en" / "index.md").write_text(
+                "# English Home\n", encoding="utf-8"
+            )
 
             wiki_root.mkdir(parents=True)
             handwritten = wiki_root / "zh-handwritten.md"
@@ -143,6 +223,54 @@ class SyncDocsHelpersTest(unittest.TestCase):
             module.sync_docs_to_wiki(source_root=source_root, wiki_root=wiki_root)
 
             self.assertTrue(handwritten.exists())
+
+    def test_find_unresolved_doc_links_reports_ambiguous_matches(self):
+        module = load_sync_module()
+
+        with TemporaryDirectory() as temp_dir:
+            source_root = Path(temp_dir) / "docs"
+            (source_root / "zh" / "foo").mkdir(parents=True)
+            (source_root / "zh" / "bar").mkdir(parents=True)
+            (source_root / "zh" / "index.md").write_text(
+                "See [Guide](/guide).\n",
+                encoding="utf-8",
+            )
+            (source_root / "zh" / "foo" / "guide.md").write_text(
+                "# Foo\n", encoding="utf-8"
+            )
+            (source_root / "zh" / "bar" / "guide.md").write_text(
+                "# Bar\n", encoding="utf-8"
+            )
+
+            unresolved = module.find_unresolved_doc_links(source_root)
+
+            self.assertEqual(
+                unresolved,
+                [
+                    "zh/index.md -> /guide (ambiguous: zh/bar/guide.md, zh/foo/guide.md)",
+                ],
+            )
+
+    def test_resolver_does_not_match_partial_path_segments(self):
+        module = load_sync_module()
+
+        with TemporaryDirectory() as temp_dir:
+            source_root = Path(temp_dir) / "docs"
+            (source_root / "zh" / "foobar").mkdir(parents=True)
+            (source_root / "zh" / "index.md").write_text(
+                "See [Guide](/bar/guide).\n",
+                encoding="utf-8",
+            )
+            (source_root / "zh" / "foobar" / "guide.md").write_text(
+                "# Guide\n",
+                encoding="utf-8",
+            )
+
+            resolver = module.LinkResolver(source_root)
+
+            self.assertIsNone(
+                resolver.resolve_source_path("/bar/guide", "zh/index.md"),
+            )
 
     def test_live_docs_have_no_unresolved_internal_doc_links(self):
         module = load_sync_module()

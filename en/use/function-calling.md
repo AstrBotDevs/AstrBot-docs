@@ -10,16 +10,19 @@ Function calling aims to provide large language models with **the ability to inv
 
 For example, when you ask the LLM: "Help me search for information about cats", the model will call external search tools, such as search engines, and return the search results.
 
+Here is the revised text, updated to reflect your new content while maintaining a formal documentation tone:
+
 Currently, supported models include but are not limited to:
 
-- GPT-4 series (best performance)
-- Gemini 2.0 series (excluding thinking-type models) (best performance)
-- DeepSeek v3 (deepseek-chat)
-- LLaMA 3 series (performance may be poor when deployed locally with smaller parameter counts)
+- GPT-5.x series
+- Gemini 3.x series
+- Claude 4.x series
+- DeepSeek v3.2 (deepseek-chat)
+- Qwen 3.x series
 
-And more.
+Mainstream models released after 2025 typically support function calling.
 
-Commonly unsupported models include DeepSeek-R1, Gemini 2.0 thinking-type models, etc.
+Commonly unsupported models include older models such as DeepSeek-R1 and Gemini 2.0 thinking-type models.
 
 In AstrBot, web search, todo reminders, and code interpreter tools are provided by default. Many plugins, such as:
 

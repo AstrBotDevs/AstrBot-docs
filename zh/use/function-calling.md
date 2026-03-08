@@ -10,16 +10,17 @@ outline: deep
 
 比如，问大模型：帮我搜索一下关于“猫”的信息，大模型会调用用于搜索的外部工具，比如搜索引擎，然后返回搜索结果。
 
-目前，支持的模型包括但不限于
+目前，支持的模型包括但远不限于
 
-- gpt-4 系列（效果最好）
-- gemini 2.0 系列（不包含 thinking 类的模型）（效果最好）
-- deepseek v3(deepseek-chat)
-- llama3 系列（本地部署参数量较小时效果不好）
+- GPT-5.x 系列
+- Gemini 3.x 系列
+- Claude 4.x 系列
+- Deepseek v3.2(deepseek-chat)
+- Qwen 3.x 系列
 
-等等。
+2025年后推出的主流模型通常已支持函数调用。
 
-不支持的模型比较常见的有 deepseek-r1, gemini 2.0 的 thinking 类模型等。
+不支持的模型比较常见的有 Deepseek-R1, Gemini 2.0 的 thinking 类等较老模型。
 
 在 AstrBot 中，默认提供了网页搜索、待办提醒、代码执行器这些工具。很多插件，如:
 

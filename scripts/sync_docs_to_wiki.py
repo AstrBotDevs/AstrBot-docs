@@ -84,6 +84,12 @@ class MarkdownLink:
     suffix: str
 
 
+@dataclass
+class Segment:
+    kind: str
+    text: str
+
+
 def repo_root() -> Path:
     return Path(__file__).resolve().parents[1]
 
@@ -217,19 +223,6 @@ def parse_doc_target(target: str) -> tuple[str, str] | None:
     return base_target, anchor
 
 
-def find_candidates_by_suffix(
-    language: str, suffix: str, source_pages: tuple[str, ...]
-) -> list[str]:
-    prefix = f"{language}/"
-    full_suffix = f"{language}/{suffix}"
-    return [
-        page
-        for page in source_pages
-        if page.startswith(prefix)
-        and (page == full_suffix or page.endswith(f"/{suffix}"))
-    ]
-
-
 def find_existing_source_path(
     candidate: PurePosixPath,
     source_root: Path,
@@ -248,7 +241,14 @@ def find_existing_source_path(
     if not suffix:
         return ResolutionResult(resolved_path=None)
 
-    matches = find_candidates_by_suffix(language, suffix, source_pages)
+    prefix = f"{language}/"
+    full_suffix = f"{language}/{suffix}"
+    matches = [
+        page
+        for page in source_pages
+        if page.startswith(prefix)
+        and (page == full_suffix or page.endswith(f"/{suffix}"))
+    ]
     if len(matches) == 1:
         return ResolutionResult(resolved_path=matches[0])
     if len(matches) > 1:
@@ -292,12 +292,9 @@ class LinkResolver:
         self.source_root = Path(source_root)
         self.source_pages = discover_source_pages(str(self.source_root))
 
-    def resolve(self, target: str, source_path: str) -> ResolutionResult:
-        parsed_target = parse_doc_target(target)
-        if parsed_target is None:
-            return ResolutionResult(resolved_path=None)
-
-        base_target, _ = parsed_target
+    def resolve_base_target(
+        self, base_target: str, source_path: str
+    ) -> ResolutionResult:
         return resolve_link_path(
             base_target=base_target,
             source_path=source_path,
@@ -305,17 +302,20 @@ class LinkResolver:
             source_pages=self.source_pages,
         )
 
-    def resolve_path(self, target: str, source_path: str) -> str | None:
-        return self.resolve(target, source_path).resolved_path
+    def resolve_markdown_target(
+        self, target: str, source_path: str
+    ) -> tuple[str | None, str]:
+        parsed_target = parse_doc_target(target)
+        if parsed_target is None:
+            return None, ""
+
+        base_target, anchor = parsed_target
+        result = self.resolve_base_target(base_target, source_path)
+        return result.resolved_path, anchor
 
 
 def rewrite_link_target(target: str, source_path: str, resolver: LinkResolver) -> str:
-    parsed_target = parse_doc_target(target)
-    if parsed_target is None:
-        return target
-
-    base_target, anchor = parsed_target
-    resolved = resolver.resolve_path(base_target, source_path)
+    resolved, anchor = resolver.resolve_markdown_target(target, source_path)
     if resolved is None:
         return target
 
@@ -343,55 +343,55 @@ def rewrite_links_in_segment(
     return "".join(result)
 
 
+def iter_segments(content: str):
+    last_end = 0
+    for fenced in FENCED_BLOCK_RE.finditer(content):
+        before = content[last_end : fenced.start()]
+        if before:
+            last_inline_end = 0
+            for inline in INLINE_CODE_RE.finditer(before):
+                if inline.start() > last_inline_end:
+                    yield Segment("text", before[last_inline_end : inline.start()])
+                yield Segment("inline_code", inline.group(0))
+                last_inline_end = inline.end()
+            if last_inline_end < len(before):
+                yield Segment("text", before[last_inline_end:])
+
+        yield Segment("code_block", fenced.group(0))
+        last_end = fenced.end()
+
+    tail = content[last_end:]
+    if not tail:
+        return
+
+    last_inline_end = 0
+    for inline in INLINE_CODE_RE.finditer(tail):
+        if inline.start() > last_inline_end:
+            yield Segment("text", tail[last_inline_end : inline.start()])
+        yield Segment("inline_code", inline.group(0))
+        last_inline_end = inline.end()
+    if last_inline_end < len(tail):
+        yield Segment("text", tail[last_inline_end:])
+
+
 def rewrite_links(
     content: str,
     source_path: str,
     resolver: LinkResolver,
 ) -> str:
-    parts: list[tuple[str, str]] = []
-    last_end = 0
-
-    for fenced_match in FENCED_BLOCK_RE.finditer(content):
-        before = content[last_end : fenced_match.start()]
-        if before:
-            parts.append(("text", before))
-        parts.append(("code", fenced_match.group(0)))
-        last_end = fenced_match.end()
-
-    tail = content[last_end:]
-    if tail:
-        parts.append(("text", tail))
-
     output: list[str] = []
-    for kind, chunk in parts:
-        if kind == "code":
-            output.append(chunk)
-            continue
-
-        last_inline_end = 0
-        for inline_match in INLINE_CODE_RE.finditer(chunk):
-            before_inline = chunk[last_inline_end : inline_match.start()]
-            if before_inline:
-                output.append(
-                    rewrite_links_in_segment(
-                        before_inline,
-                        source_path=source_path,
-                        resolver=resolver,
-                    )
-                )
-
-            output.append(inline_match.group(0))
-            last_inline_end = inline_match.end()
-
-        after_inline = chunk[last_inline_end:]
-        if after_inline:
+    for segment in iter_segments(content):
+        if segment.kind == "text":
             output.append(
                 rewrite_links_in_segment(
-                    after_inline,
+                    segment.text,
                     source_path=source_path,
                     resolver=resolver,
                 )
             )
+            continue
+
+        output.append(segment.text)
 
     return "".join(output)
 
@@ -404,12 +404,16 @@ def find_unresolved_doc_links(source_root: Path) -> list[str]:
     for source_path in resolver.source_pages:
         content = (root / source_path).read_text(encoding="utf-8")
         for link in iter_markdown_links(content):
+            resolved_path, _ = resolver.resolve_markdown_target(
+                link.target, source_path
+            )
+            if resolved_path is not None:
+                continue
             parsed_target = parse_doc_target(link.target)
             if parsed_target is None:
                 continue
-            resolution = resolver.resolve(link.target, source_path)
-            if resolution.resolved_path is not None:
-                continue
+            base_target, _ = parsed_target
+            resolution = resolver.resolve_base_target(base_target, source_path)
             if resolution.ambiguous_matches:
                 unresolved.append(
                     f"{source_path} -> {link.target} (ambiguous: {', '.join(resolution.ambiguous_matches)})",

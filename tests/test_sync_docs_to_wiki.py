@@ -41,14 +41,16 @@ class SyncDocsHelpersTest(unittest.TestCase):
         self.assertFalse(hasattr(module, "resolve_source_path"))
         self.assertFalse(hasattr(module, "compute_managed_files"))
         self.assertFalse(hasattr(module, "MANAGED_FILENAMES"))
+        self.assertFalse(hasattr(module, "find_candidates_by_suffix"))
 
     def test_module_exposes_consolidated_helper_names(self):
         module = load_sync_module()
 
         self.assertTrue(hasattr(module, "prepare_candidate_path"))
-        self.assertTrue(hasattr(module, "find_candidates_by_suffix"))
         self.assertTrue(hasattr(module, "resolve_link_path"))
         self.assertTrue(hasattr(module, "LANG_CONFIG"))
+        self.assertTrue(hasattr(module, "Segment"))
+        self.assertTrue(hasattr(module, "iter_segments"))
 
     def test_parse_doc_target_returns_base_and_anchor(self):
         module = load_sync_module()
@@ -67,6 +69,26 @@ class SyncDocsHelpersTest(unittest.TestCase):
         links = list(module.iter_markdown_links("See [Guide]\n(guide.md).\n"))
 
         self.assertEqual([link.target for link in links], ["guide.md"])
+
+    def test_iter_segments_splits_text_inline_and_fenced_code(self):
+        module = load_sync_module()
+
+        segments = list(
+            module.iter_segments(
+                "Start [Guide](/guide) `code [Guide](/guide)`\n\n```md\n[Guide](/guide)\n```\nTail\n"
+            )
+        )
+
+        self.assertEqual(
+            [(segment.kind, segment.text) for segment in segments],
+            [
+                ("text", "Start [Guide](/guide) "),
+                ("inline_code", "`code [Guide](/guide)`"),
+                ("text", "\n\n"),
+                ("code_block", "```md\n[Guide](/guide)\n```"),
+                ("text", "\nTail\n"),
+            ],
+        )
 
     def test_rewrite_links_handles_absolute_same_language_links(self):
         module = load_sync_module()
@@ -221,8 +243,8 @@ class SyncDocsHelpersTest(unittest.TestCase):
             resolver = module.LinkResolver(source_root)
 
             self.assertEqual(
-                resolver.resolve_path("/deploy/guide", "zh/index.md"),
-                "zh/deploy/guide.md",
+                resolver.resolve_markdown_target("/deploy/guide#intro", "zh/index.md"),
+                ("zh/deploy/guide.md", "#intro"),
             )
 
     def test_resolve_link_path_resolves_relative_target(self):
@@ -271,21 +293,21 @@ class SyncDocsHelpersTest(unittest.TestCase):
             module.PurePosixPath("zh/providers/start.md"),
         )
 
-    def test_find_candidates_by_suffix_matches_language_bounded_suffixes(self):
+    def test_find_existing_source_path_matches_language_bounded_suffixes(self):
         module = load_sync_module()
 
         self.assertEqual(
-            module.find_candidates_by_suffix(
-                language="zh",
-                suffix="bar/guide.md",
+            module.find_existing_source_path(
+                candidate=module.PurePosixPath("zh/bar/guide.md"),
+                source_root=Path("/tmp/nonexistent"),
                 source_pages=(
                     "zh/bar/guide.md",
                     "zh/foo/bar/guide.md",
                     "zh/foobar/guide.md",
                     "en/bar/guide.md",
                 ),
-            ),
-            ["zh/bar/guide.md", "zh/foo/bar/guide.md"],
+            ).ambiguous_matches,
+            ("zh/bar/guide.md", "zh/foo/bar/guide.md"),
         )
 
     def test_build_page_info_returns_page_info_dataclass(self):
@@ -436,8 +458,9 @@ class SyncDocsHelpersTest(unittest.TestCase):
 
             resolver = module.LinkResolver(source_root)
 
-            self.assertIsNone(
-                resolver.resolve_path("/bar/guide", "zh/index.md"),
+            self.assertEqual(
+                resolver.resolve_markdown_target("/bar/guide", "zh/index.md"),
+                (None, ""),
             )
 
     def test_live_docs_have_no_unresolved_internal_doc_links(self):

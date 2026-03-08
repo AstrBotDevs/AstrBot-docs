@@ -8,7 +8,6 @@ from pathlib import Path, PurePosixPath
 
 
 TITLE_RE = re.compile(r"^#\s+(.+)$", re.MULTILINE)
-MANAGED_FILENAMES = {"Home.md", "Home-en.md", "_Sidebar.md"}
 MANIFEST_NAME = ".astrbot-wiki-sync-manifest"
 SOURCE_ALIASES = {
     "zh/config/providers/start.md": "zh/providers/start.md",

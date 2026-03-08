@@ -18,12 +18,17 @@ concurrency:
 
 jobs:
   sync:
-    if: github.ref == 'refs/heads/v4'
     runs-on: ubuntu-latest
     permissions:
       contents: read
 
     steps:
+      - name: Validate manual ref
+        if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/v4'
+        run: |
+          echo "This workflow only publishes from refs/heads/v4. Re-run it from the v4 branch."
+          exit 1
+
       - name: Check out docs repository
         uses: actions/checkout@v4
 

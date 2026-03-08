@@ -40,6 +40,7 @@ class SyncDocsHelpersTest(unittest.TestCase):
         self.assertFalse(hasattr(module, "get_link_resolver"))
         self.assertFalse(hasattr(module, "resolve_source_path"))
         self.assertFalse(hasattr(module, "compute_managed_files"))
+        self.assertFalse(hasattr(module, "MANAGED_FILENAMES"))
 
     def test_module_exposes_consolidated_helper_names(self):
         module = load_sync_module()

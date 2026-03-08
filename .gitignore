@@ -1,6 +1,7 @@
 __pycache__/
 venv/
 .DS_Store
+.worktrees/
 node_modules/
 .vitepress/cache
 *dist

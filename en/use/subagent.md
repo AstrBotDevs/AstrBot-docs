@@ -42,6 +42,15 @@ Click the "Add SubAgent" button:
 - **Assign Tools**: Select the tools this SubAgent can invoke.
 - **Provider Override (Optional)**: You can specify different model providers for specific SubAgents. For example, the Main Agent could use GPT-4o, while a simple query SubAgent uses GPT-4o-mini to save costs.
 
+## Multimodal Image Passing
+
+When the Main Agent delegates a task to a SubAgent, images can be passed as references:
+
+- **Automatic Passing**: Images sent by the user to the Main Agent are automatically passed to the SubAgent, ensuring the SubAgent can see the reference images uploaded by the user.
+- **Manual Specification**: The Main Agent can explicitly pass image URLs via the `image_urls` parameter (supports HTTP/HTTPS public URLs or local file paths).
+
+Supported image formats include: png, jpg, jpeg, gif, webp, bmp, tif, tiff, svg, heic.
+
 ## Best Practices
 
 - **Single Responsibility**: Each SubAgent should handle one category of related tasks (e.g., search, file processing, smart home control).

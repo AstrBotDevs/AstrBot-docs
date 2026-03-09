@@ -105,6 +105,7 @@ export default defineConfig({
               { text: "Slack", link: "/slack" },
               { text: "Misskey", link: "/misskey" },
               { text: "Discord", link: "/discord" },
+              { text: "KOOK", link: "/kook" },
               {
                 text: "Satori",
                 base: "/platform/satori",
@@ -119,7 +120,6 @@ export default defineConfig({
                 collapsed: false,
                 items: [
                   { text: "Matrix", link: "/matrix" },
-                  { text: "KOOK", link: "/kook" },
                   { text: "VoceChat", link: "/vocechat" },
                 ],
               },

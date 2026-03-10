@@ -1,1 +1,1 @@
-本页面已经迁移至 [插件基础开发](/dev/star/plugin)。
+This page has moved to [AstrBot Plugin Development Guide](/en/dev/star/plugin-new).

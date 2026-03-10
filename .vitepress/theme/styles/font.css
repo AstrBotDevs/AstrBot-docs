@@ -1,18 +1,5 @@
-/*.vitepress/theme/styles/font.scss*/
-
-:root {
-    --vp-font-family-base: "Outfit", sans-serif;
-    --vp-font-family-mono: "JetBrains Mono", monospace; /* code font */
-}
-
-html, body, #app, .VPDoc, .VPContent, .VPNav, .VPNavBar, .VPFooter,
-.VPSidebar, .VPDocAside, .VPTeamPage, .VPHomeHero, .VPFeatures,
-.custom-block, .main, .content, p, h1, h2, h3, h4, h5, h6 {
-    font-family: var(--vp-font-family-base) !important;
-}
-
-pre, code, kbd, samp,
-.VPDoc pre, .VPDoc code, .VPContent pre, .VPContent code,
-.VPDocAside pre, .VPDocAside code {
-    font-family: var(--vp-font-family-mono) !important;
+/* Keep only the top-left navbar title in Outfit; use VitePress defaults elsewhere. */
+.VPNavBarTitle .title,
+.VPNavBarTitle .title .text {
+    font-family: "Outfit", sans-serif !important;
 }

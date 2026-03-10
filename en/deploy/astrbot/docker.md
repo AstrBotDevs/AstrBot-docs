@@ -7,19 +7,6 @@
 
 ## Deploy with Docker Compose
 
-::: details Deploy with NapCatQQ
-
-If you want to use NapCat to **deploy AstrBot to QQ (personal account)**, this method will deploy both AstrBot and NapCat together, which is faster.
-
-```bash
-mkdir astrbot
-cd astrbot
-wget https://raw.githubusercontent.com/NapNeko/NapCat-Docker/main/compose/astrbot.yml
-sudo docker compose -f astrbot.yml up -d
-```
-
-:::
-
 ::: details Deploy AstrBot Only (General Method)
 
 First, clone the AstrBot repository to your local machine:

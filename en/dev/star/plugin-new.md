@@ -9,8 +9,6 @@ Welcome to the AstrBot Plugin Development Guide! This section will guide you thr
 1. Some experience with Python programming.
 2. Some experience with Git and GitHub.
 
-You're welcome to join our developer-exclusive QQ group: `975206796`.
-
 ## Environment Setup
 
 ### Obtain the Plugin Template

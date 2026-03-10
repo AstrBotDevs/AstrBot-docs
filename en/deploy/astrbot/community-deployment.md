@@ -3,18 +3,6 @@
 > [!WARNING]
 > AstrBot official does not guarantee the security and stability of these deployment methods.
 
-# Linux Comprehensive Installation Script
-
-Integrates almost all installation methods found in the documentation.
-
-Also includes many practical Linux tools.
-
-AstrBot is categorized under `Basic Tools / Bot Installation / AstrBot`.
-
-```bash
-bash -c "$(curl -L https://gitee.com/nasyt/nasyt-linux-tool/raw/master/nasyt.sh)"
-```
-
 ## Linux One-Click Deployment Script
 
 Use `curl` to download the script and execute it using `bash`:

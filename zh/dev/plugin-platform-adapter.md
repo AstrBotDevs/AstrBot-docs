@@ -162,8 +162,8 @@ class FakePlatformEvent(AstrMessageEvent):
 最后，main.py 只需这样，在初始化的时候导入 fake_platform_adapter 模块。装饰器会自动注册。
 
 ```py
-from astrbot.api.star import Context, Star, register
-@register("helloworld", "Your Name", "一个简单的 Hello World 插件", "1.0.0")
+from astrbot.api.star import Context, Star
+
 class MyPlugin(Star):
     def __init__(self, context: Context):
         from .fake_platform_adapter import FakePlatformAdapter # noqa

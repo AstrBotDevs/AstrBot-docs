@@ -72,8 +72,6 @@ AstrBot 支持接入优云智算提供的模型 API。
 
 ## 接入到消息平台
 
-> 您可以参考 [AstrBot 官方文档](https://docs.astrbot.app/what-is-astrbot.html)获得最新的接入教程。打开 AstrBot 官方文档后，查看左侧 部署->部署消息平台(协议端) 即可查看各个消息平台的接入方式。AstrBot 支持快捷接入到 QQ、LINE、飞书、企业微信、微信公众号、微信客服、钉钉、KOOK、Slack、Discord 等多个平台。 
-
 - 飞书：[接入到飞书](https://docs.astrbot.app/deploy/platform/lark.html)
 - LINE：[接入到 LINE](https://docs.astrbot.app/deploy/platform/line.html)
 - 钉钉：[接入到钉钉](https://docs.astrbot.app/deploy/platform/dingtalk.html)

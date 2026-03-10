@@ -195,7 +195,6 @@ AstrBot 在载入插件时会检测插件目录下是否有 `_conf_schema.json` 
 ```py
 from astrbot.api import AstrBotConfig
 
-@register("config", "Soulter", "一个配置示例", "1.0.0")
 class ConfigPlugin(Star):
     def __init__(self, context: Context, config: AstrBotConfig): # AstrBotConfig 继承自 Dict，拥有字典的所有方法
         super().__init__(context)

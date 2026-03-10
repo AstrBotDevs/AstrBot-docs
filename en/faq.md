@@ -18,6 +18,10 @@ To modify your account credentials, follow these steps:
 4. Select MD5 encryption (32-bit), make sure to choose the 32-bit option
 5. Paste the converted string into the configuration file, keeping the `""` quotation marks
 
+### Incorrect Timestamp Display in Conversation Records
+
+If the `created_at` and `updated_at` timestamps in the dashboard's "More Features → Conversation Data" section show incorrect times (with timezone offset), please upgrade to the latest version. This issue was fixed in v4.x, caused by SQLite storing UTC timestamps without timezone information, which led to incorrect timezone handling during serialization.
+
 ## Bot Core Related
 
 ### How to Let AstrBot Control My Mac / Windows / Linux Computer?

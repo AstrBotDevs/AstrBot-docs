@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# 函数调用（Function-calling）
+# 函数调用（Function-calling、Tool Calls）
 
 ## 简介
 
@@ -15,7 +15,7 @@ outline: deep
 - GPT-5.x 系列
 - Gemini 3.x 系列
 - Claude 4.x 系列
-- Deepseek v3.2(deepseek-chat)
+- Deepseek v3.2系列
 - Qwen 3.x 系列
 
 2025年后推出的主流模型通常已支持函数调用。

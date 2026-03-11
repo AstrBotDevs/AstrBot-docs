@@ -45,6 +45,14 @@ You can also click the + button in the bottom right corner to manually install p
 
 If a plugin fails to load, the admin panel will display the error message and provide a **"Try one-click reload fix"** button. This allows you to quickly reload the plugin after fixing the environment (e.g., installing missing dependencies) or modifying the code, without having to restart the entire application.
 
+Common causes of plugin load failures include:
+
+- **Missing dependencies**: Required Python libraries are not installed, usually showing `No module named 'xxx'` in the error message
+- **Import errors**: Syntax errors or import issues in the plugin code
+- **Registration failures**: Incorrect plugin metadata configuration
+
+After reloading a plugin, regardless of success or failure, the admin panel will automatically refresh the plugin list to display the latest status. If the reload succeeds, the plugin will resume normal operation; if it still fails, the panel will display the latest error information for further troubleshooting.
+
 ## Command Management
 
 Use the `Command Management` menu on the left to centrally manage all registered commands; system plugins are hidden by default.

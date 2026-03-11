@@ -41,6 +41,20 @@ You can also click the + button in the bottom right corner to manually install p
 
 > Due to the plugin update mechanism, the AstrBot Team cannot fully guarantee the security of plugins in the plugin market. Please carefully verify them. The AstrBot Team is not responsible for any losses caused by plugins.
 
+### Installed Plugins List
+
+Installed plugins are displayed in alphabetical order by name, making it easy to quickly find and manage them.
+
+### Plugin Search
+
+On the plugins page, you can use the search box to quickly filter plugins. The search supports case-insensitive matching across the following fields:
+
+- Plugin name
+- Plugin description
+- Author
+- Supported platforms
+- AstrBot version
+
 ### Handling Plugin Load Failures
 
 If a plugin fails to load, the admin panel will display the error message and provide a **"Try one-click reload fix"** button. This allows you to quickly reload the plugin after fixing the environment (e.g., installing missing dependencies) or modifying the code, without having to restart the entire application.

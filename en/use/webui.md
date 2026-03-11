@@ -62,6 +62,15 @@ You can enable or disable trace recording using the switch at the top of the pag
 > [!NOTE]
 > Currently only recording partial model call paths from AstrBot main Agent. More coverage will be added.
 
+## ChatUI
+
+The admin panel includes a built-in ChatUI for testing conversations with the bot. In ChatUI:
+
+- **Copy Messages**: Click the copy button next to a message to copy the bot's reply. Supports copying composite messages including plain text, image placeholders, and audio placeholders.
+- **Copy Code Blocks**: A one-click copy button is available at the top-right corner of code blocks.
+
+The copy function automatically adapts to different browser environments, prioritizing synchronous copy methods for higher success rates. Toast notifications and button state feedback indicate copy success or failure.
+
 ## Updating the Admin Panel
 
 When AstrBot starts, it automatically checks if the admin panel needs updating. If it does, the first log entry (in yellow) will prompt you.

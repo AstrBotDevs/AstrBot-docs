@@ -42,7 +42,7 @@ Below is a sample `launch.json` configuration that allows VS Code to automatical
             "name": "main.py",
             "type": "debugpy",
             "request": "launch",
-            "program": "./main.py",  // Astrbot Entry point
+            "program": "./main.py",  // Astrbot entry point
             "env": {
                 "ASTRBOT_RELOAD":"1" // Enable plugin hot reload
             },

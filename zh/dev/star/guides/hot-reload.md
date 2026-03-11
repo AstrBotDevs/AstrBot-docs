@@ -25,7 +25,7 @@ $env:ASTRBOT_RELOAD = "1"
 set ASTRBOT_RELOAD=1
 ```
 
-### Linux / MacOS
+### Linux / macOS
 
 ```bash
 export ASTRBOT_RELOAD=1

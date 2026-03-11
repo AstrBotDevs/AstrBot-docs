@@ -96,6 +96,21 @@ Configure it in the AstrBot WebUI:
 
 That's it.
 
+## Environment Variables
+
+AstrBot supports configuring MCP timeout behavior through environment variables:
+
+| Environment Variable | Description | Default |
+| --- | --- | --- |
+| `ASTRBOT_MCP_INIT_TIMEOUT` | MCP server initialization timeout (seconds) | `60` |
+| `ASTRBOT_MCP_ENABLE_TIMEOUT` | MCP tool dynamic enable timeout (seconds) | `30` |
+
+If your MCP server starts slowly, you can increase the `ASTRBOT_MCP_INIT_TIMEOUT` value. For example, to set it to 120 seconds:
+
+```bash
+export ASTRBOT_MCP_INIT_TIMEOUT=120
+```
+
 Reference links:
 
 1. Learn how to use MCP here: [Model Context Protocol](https://modelcontextprotocol.io/introduction)

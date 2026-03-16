@@ -43,12 +43,12 @@ AstrBot 提供了”强大“的配置解析和可视化功能。能够让用户
 }
 ```
 
-- `type`: **此项必填**。配置的类型。支持 `string`, `text`, `int`, `float`, `bool`, `object`, `list`, `dict`, `template_list`。当类型为 `text` 时，将会可视化为一个更大的可拖拽宽高的 textarea 组件，以适应大文本。
+- `type`: **此项必填**。配置的类型。支持 `string`, `text`, `int`, `float`, `bool`, `object`, `list`, `dict`, `template_list`, `file`, `palette`, `palette_rgb`, `palette_hsv`。当类型为 `text` 时，将会可视化为一个更大的可拖拽宽高的 textarea 组件，以适应大文本。
 - `description`: 可选。配置的描述。建议一句话描述配置的行为。
 - `hint`: 可选。配置的提示信息，表现在上图中右边的问号按钮，当鼠标悬浮在问号按钮上时显示。
 - `obvious_hint`: 可选。配置的 hint 是否醒目显示。如上图的 `token`。
 - `default`: 可选。配置的默认值。如果用户没有配置，将使用默认值。int 是 0，float 是 0.0，bool 是 False，string 是 ""，object 是 {}，list 是 []。
-- `items`: 可选。如果配置的类型是 `object`，需要添加 `items` 字段。`items` 的内容是这个配置项的子 Schema。理论上可以无限嵌套，但是不建议过多嵌套。
+- `items`: 可选。如果配置的类型是 `object`，需要添加 `items` 字段。`items` 的内容是 this 配置项的子 Schema。理论上可以无限嵌套，但是不建议过多嵌套。
 - `invisible`: 可选。配置是否隐藏。默认是 `false`。如果设置为 `true`，则不会在管理面板上显示。
 - `options`: 可选。一个列表，如 `"options": ["chat", "agent", "workflow"]`。提供下拉列表可选项。
 - `editor_mode`: 可选。是否启用代码编辑器模式。需要 AstrBot >= `v3.5.10`, 低于这个版本不会报错，但不会生效。默认是 false。
@@ -80,6 +80,16 @@ AstrBot 提供了”强大“的配置解析和可视化功能。能够让用户
   }
 }
 ```
+
+### 调色板类型 (Palette)
+
+用于选择颜色。支持以下三种类型：
+
+- `palette`: HEX 格式（如 `#FFFFFF`）。
+- `palette_rgb`: RGB 格式（如 `rgb(255, 255, 255)`）。
+- `palette_hsv`: HSV 格式（如 `hsv(0, 0%, 100%)`）。
+
+在 WebUI 中将呈现为一个颜色预览块和输入框，点击预览块可打开调色板进行选择。
 
 ### dict 类型的 schema
 

@@ -71,6 +71,19 @@
 5. 降低最大对话次数设置
 6. 切换使用同一供应商的其他模型，或不同供应商的模型
 
+### 启动时报错 `JSONDecodeError: Unexpected UTF-8 BOM`
+
+在 Windows 系统上，某些文本编辑器（如记事本）保存 JSON 文件时会自动添加 UTF-8 BOM（字节顺序标记），导致 AstrBot 无法正常启动。
+
+**解决方法：**
+
+1. 使用支持无 BOM 编码的编辑器（如 VS Code、Notepad++）打开配置文件
+2. 另存为时选择 "UTF-8" 编码（不带 BOM）
+3. 或者直接在 AstrBot WebUI 中修改配置，避免手动编辑 JSON 文件
+
+> [!NOTE]
+> AstrBot 已在新版本中增加了对 UTF-8 BOM 的兼容处理，建议更新到最新版本以避免此问题。
+
 ## 插件相关
 
 ### 插件安装不上

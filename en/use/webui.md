@@ -62,13 +62,24 @@ You can enable or disable trace recording using the switch at the top of the pag
 > [!NOTE]
 > Currently only recording partial model call paths from AstrBot main Agent. More coverage will be added.
 
-## Updating the Admin Panel
+## Updates
+
+### Updating the Admin Panel
 
 When AstrBot starts, it automatically checks if the admin panel needs updating. If it does, the first log entry (in yellow) will prompt you.
 
 Use the `/dashboard_update` command to manually update the admin panel (admin command).
 
 Admin panel files are located in the data/dist directory. If you need to manually replace them, download `dist.zip` from https://github.com/AstrBotDevs/AstrBot/releases/ and extract it to the data directory.
+
+### Updating the Desktop App
+
+If you are using the AstrBot desktop client (such as AstrBot Launcher), you can check and update the desktop application by clicking the update button in the admin panel header.
+
+After clicking, it will display the current version and latest version information. If a new version is available, click confirm to automatically download and install the update. The application will restart automatically after installation completes.
+
+> [!NOTE]
+> This feature is only available in desktop client mode. If you are running AstrBot via Docker or manual deployment, please use the corresponding update method.
 
 ## Customizing WebUI Port
 

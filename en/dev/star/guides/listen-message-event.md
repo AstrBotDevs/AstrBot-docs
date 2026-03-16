@@ -251,6 +251,32 @@ async def on_astrbot_loaded(self):
 
 ```
 
+#### On Plugin Loaded
+
+Triggered when a plugin has finished loading. You can access the plugin's metadata.
+
+```python
+from astrbot.api.event import filter
+from astrbot.api.star import StarMetadata
+
+@filter.on_plugin_loaded()
+async def on_plugin_loaded(self, metadata: StarMetadata):
+    print(f"Plugin {metadata.name} has been loaded")
+```
+
+#### On Plugin Unloaded
+
+Triggered when a plugin has finished unloading. You can access the plugin's metadata.
+
+```python
+from astrbot.api.event import filter
+from astrbot.api.star import StarMetadata
+
+@filter.on_plugin_unloaded()
+async def on_plugin_unloaded(self, metadata: StarMetadata):
+    print(f"Plugin {metadata.name} has been unloaded")
+```
+
 #### On LLM Request
 
 In AstrBot's default execution flow, the `on_llm_request` hook is triggered before calling the LLM.

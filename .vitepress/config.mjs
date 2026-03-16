@@ -163,6 +163,7 @@ export default defineConfig({
             base: "/use",
             items: [
               { text: "WebUI", link: "/webui" },
+              { text: "人格设定", link: "/persona" },
               { text: "插件", link: "/plugin" },
               { text: "内置指令", link: "/command" },
               { text: "工具使用 Tools", link: "/function-calling" },
@@ -405,6 +406,7 @@ export default defineConfig({
             collapsed: true,
             items: [
               { text: "WebUI", link: "/webui" },
+              { text: "Persona", link: "/persona" },
               { text: "Plugins", link: "/plugin" },
               { text: "Built-in Commands", link: "/command" },
               { text: "Tool Use", link: "/function-calling" },

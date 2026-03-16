@@ -43,7 +43,23 @@ You can also click the + button in the bottom right corner to manually install p
 
 ### Handling Plugin Load Failures
 
-If a plugin fails to load, the admin panel will display the error message and provide a **"Try one-click reload fix"** button. This allows you to quickly reload the plugin after fixing the environment (e.g., installing missing dependencies) or modifying the code, without having to restart the entire application.
+When a plugin fails to load, the admin panel displays a **"Failed to Load Plugins"** section at the top of the installed plugins page, listing all failed plugins along with their error messages.
+
+For each failed plugin, you can:
+
+- **Reload**: Click the reload button to attempt reloading the plugin. This is useful after fixing the environment (e.g., installing missing dependencies) or modifying the code.
+- **Uninstall**: Directly uninstall the failed plugin. You can choose whether to also delete configuration files and persistent data during uninstallation.
+
+> [!TIP]
+> When plugin installation fails, the plugin directory is preserved for troubleshooting. You can try reloading after fixing the issue, or uninstall it directly to clean up.
+
+### Plugin Market
+
+In the Plugin Market page, you can browse and install plugins officially listed by AstrBot.
+
+- Click the button next to **Plugin Source** to show or hide the random recommended plugins section
+- The random recommendations section automatically collapses when searching or paginating
+- The search box is located on the right side of the page for quick plugin lookup
 
 ## Command Management
 

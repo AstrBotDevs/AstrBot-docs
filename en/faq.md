@@ -29,6 +29,13 @@ To modify your account credentials, follow these steps:
 > For security reasons, when runtime environment is set to `local`, AstrBot only allows AstrBot administrators to use computer capabilities by default.
 > You can select `sandbox` for the runtime environment, which allows all users to use computer capabilities (in an isolated sandbox). For more details, see [AstrBot Sandbox Environment](/en/use/astrbot-agent-sandbox.md)
 
+### Where are WebChat attachments (images/files) stored?
+
+WebChat attachments (images, audio, files) are stored in the unified `data/attachments/` directory.
+
+> [!NOTE]
+> In earlier versions, WebChat attachments were stored in `data/webchat/imgs/`. Newer versions have migrated to the unified `data/attachments/` directory with backward compatibility for reading from the old location.
+
 ### Bot Cannot Chat in Group Conversations
 
 1. In group chats, to prevent message flooding, the bot will not respond to every monitored message. Please try mentioning (@) the bot or using a wake word to chat, such as the default `/`, for example: `/hello`.

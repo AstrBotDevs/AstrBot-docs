@@ -29,3 +29,18 @@ from astrbot.core.utils.astrbot_path import get_astrbot_data_path
 
 plugin_data_path = get_astrbot_data_path() / "plugin_data" / self.name # self.name 为插件名称，在 v4.9.2 及以上版本可用，低于此版本请自行指定插件名称
 ```
+
+## AstrBot 数据目录结构
+
+AstrBot 的数据目录（`data/`）包含以下重要子目录：
+
+| 目录 | 说明 |
+|------|------|
+| `data/attachments/` | 统一附件存储目录，存放 WebChat 等平台的图片、音频、文件等附件 |
+| `data/plugin_data/` | 插件数据存储目录 |
+| `data/config/` | 多配置文件存储目录（以 `abconf_` 开头） |
+| `data/dist/` | 管理面板前端文件 |
+| `data/webchat/imgs/` | （已废弃）旧版 WebChat 图片目录，新版本已迁移至 `attachments/` |
+
+> [!NOTE]
+> 如需访问 WebChat 等平台的附件文件，请使用 `data/attachments/` 目录。AstrBot 会自动处理新旧目录的兼容读取。

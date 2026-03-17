@@ -53,6 +53,16 @@ Filter by plugin, type (command / command group / subcommand), permission, and s
 
 You can enable/disable and rename each command.
 
+## Chat
+
+The admin panel has a built-in chat feature that allows you to converse directly with AstrBot.
+
+### Stop Generating
+
+When the Agent is executing a task or the model is generating a response, the send button on the right side of the input box will change to a stop button (red square icon). Clicking this button will interrupt the current generation process.
+
+After interruption, any partially generated content will be preserved in the conversation history.
+
 ## Trace
 
 In the `Trace` page of the admin panel, you can view the real-time execution trace of AstrBot. This is useful for debugging model call paths, tool invocation processes, etc.

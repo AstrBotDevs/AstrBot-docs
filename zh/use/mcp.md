@@ -95,6 +95,10 @@ npx -v
 
 即可。
 
+::: tip 提示
+MCP 工具不受插件过滤逻辑的影响。即使您在某个会话或群组中设置了“只启用特定插件”（插件白名单），MCP 工具依然可以被 AI 正常调用。
+:::
+
 参考链接：
 
 1. 在这里了解如何使用 MCP: [Model Context Protocol](https://modelcontextprotocol.io/introduction)
